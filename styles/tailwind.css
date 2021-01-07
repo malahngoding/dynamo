@@ -1,0 +1,51 @@
+/* One true font */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+::selection {
+  background: #fff4cc; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #fff4cc; /* Gecko Browsers */
+}
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+/* Your own custom utilities */
+@layer utilities {
+  .shadow-drop {
+    box-shadow: 0px 4px 0px #18191f;
+  }
+  .shadow-drop:hover {
+    animation-name: shadow-drop-hover;
+    animation-duration: 0.5s;
+  }
+  @keyframes shadow-drop-hover {
+    0% {
+      box-shadow: 0px 4px 0px #18191f;
+    }
+    50% {
+      box-shadow: none;
+    }
+    100% {
+      box-shadow: 0px 4px 0px #18191f;
+    }
+  }
+}
