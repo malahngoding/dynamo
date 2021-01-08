@@ -32,7 +32,7 @@
     ]
   },
   "dependencies": {
-    "@malahngoding/instead": "0.0.2-alpha.0",
+    "@malahngoding/instead": "0.0.2-alpha.3",
     "next": "10.0.4",
     "react": "17.0.1",
     "react-dom": "17.0.1"
