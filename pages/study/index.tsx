@@ -20,9 +20,6 @@ const Study: NextPage = () => {
       </div>
       <div className="container w-full md:max-w-6xl mx-auto pb-20">
         <div className="w-full px-4 md:px-6 text-md leading-normal">
-          <p className="py-6 text-center">
-            Mulai <InLineBranding /> hanya dengan modal semangat yang membara 🔥
-          </p>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <Link href="/study/snippets">
               <a aria-label="Snippets Malah Ngoding">
@@ -32,7 +29,7 @@ const Study: NextPage = () => {
                       <PeopleA />
                     </div>
                     <div className="mx-4">
-                      <h1 className="text-xl">Snippets</h1>
+                      <h1 className="text-xl font-bold">Snippets</h1>
                       <p className="py-2 font-normal">
                         Potongan code dan script yang bisa membantu
                         menyelesaikan masalah. Simpel dan membantu.
@@ -50,7 +47,7 @@ const Study: NextPage = () => {
                       <PeopleB />
                     </div>
                     <div className="mx-4">
-                      <h1 className="text-xl">Guide</h1>
+                      <h1 className="text-xl font-bold">Guide</h1>
                       <p className="py-2 font-normal">
                         Blog yang akan membantu kamu menghabiskan waktu luang
                         untuk <InLineBranding />
@@ -68,7 +65,7 @@ const Study: NextPage = () => {
                       <PeopleC />
                     </div>
                     <div className="mx-4">
-                      <h1 className="text-xl">Project</h1>
+                      <h1 className="text-xl font-bold">Project</h1>
                       <p className="py-2 font-normal">
                         Daftar contoh project yang bisa kamu kerjakan untuk
                         melatih skill dan memberikan target.

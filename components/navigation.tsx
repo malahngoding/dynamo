@@ -131,6 +131,11 @@ export const Footer = (): ReactElement => {
               Full Stack
             </a>
           </Link>
+          <Link href="/camps/flutter">
+            <a className="text-md py-2 sm:text-sm hover:underline">
+              Hybrid Applications
+            </a>
+          </Link>
         </div>
         <div className="flex flex-col content-start items-start mt-4 md:mt-0">
           <h1 className="font-bold text-black text-lg">Services</h1>
