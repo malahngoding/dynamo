@@ -25,16 +25,12 @@ export const Nav = (): ReactElement => {
             </Link>
           </div>
           <div className="hidden md:flex content-center items-center justify-evenly">
-            <Link href="/sign-up">
-              <a>
-                <ButtonPrimary>Sign Up</ButtonPrimary>
-              </a>
-            </Link>
-            <Link href="/login">
-              <a>
-                <Button>Login</Button>
-              </a>
-            </Link>
+            <a href={`${process.env.BOX_URL}/sign-up`}>
+              <ButtonPrimary>Sign Up</ButtonPrimary>
+            </a>
+            <a href={`${process.env.BOX_URL}/login`}>
+              <Button>Login</Button>
+            </a>
           </div>
           <div className="text-black md:hidden">
             <button
@@ -92,8 +88,8 @@ export const Nav = (): ReactElement => {
           </div>
         </div>
       ) : (
-        <></>
-      )}
+          <></>
+        )}
     </>
   );
 };
