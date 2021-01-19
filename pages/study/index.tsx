@@ -65,7 +65,7 @@ const Study: NextPage = () => {
                       <PeopleC />
                     </div>
                     <div className="mx-4">
-                      <h1 className="text-xl font-bold">Project</h1>
+                      <h1 className="text-xl font-bold">Projects</h1>
                       <p className="py-2 font-normal">
                         Daftar contoh project yang bisa kamu kerjakan untuk
                         melatih skill dan memberikan target.
