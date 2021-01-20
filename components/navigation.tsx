@@ -25,10 +25,10 @@ export const Nav = (): ReactElement => {
             </Link>
           </div>
           <div className="hidden md:flex content-center items-center justify-evenly">
-            <a href={`${process.env.BOX_URL}/sign-up`}>
+            <a href={`https://${process.env.BOX_URL}/sign-up`}>
               <ButtonPrimary>Sign Up</ButtonPrimary>
             </a>
-            <a href={`${process.env.BOX_URL}/login`}>
+            <a href={`https://${process.env.BOX_URL}/login`}>
               <Button>Login</Button>
             </a>
           </div>
