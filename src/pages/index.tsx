@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           <HeadingPrimary>{heading}</HeadingPrimary>
         </HeadingBox>
       </WallOfTextBlock>
-      <div></div>
+      <Hero />
       <ColoredBanner color="yellow">
         <HeadingTertiary css={{ margin: "$1 $0 0 $0" }}>
           Menghabiskan waktu luang untuk malah ngoding.
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
         <Paragraph css={{ margin: "0 $1 $1 $1" }}>
           Bingung kalau lagi nggak ada kerjaan mau ngapain?
         </Paragraph>
-        <Box css={{ marginBottom: "-3em" }}>
+        <Box css={{ marginTop: "-2em", marginBottom: "-3em" }}>
           <ConfusedPeople />
         </Box>
       </ColoredBanner>
@@ -105,5 +105,57 @@ const Activation = styled("div", {
   backgroundImage: "url(/assets/svg/activation.svg)",
   height: "10rem",
 });
+
+const Hero = () => {
+  return (
+    <Drive>
+      <ListItem>
+        <li>
+          Belajar koding dan berlatih di platform yang sangat cocok untuk siapa
+          saja. Cocok untuk para calon pengembang web atau aplikasi mobile.
+        </li>
+        <li>
+          Dari dan untuk <i>Developers</i>
+        </li>
+        <li>
+          Malah Ngoding cocok untuk pemula yang belum pernah menulis kode satu
+          baris pun
+        </li>
+        <li>
+          Malah Ngoding juga cocok untuk para pengembang web dan aplikasi mobile
+          yang ingin mengembangkan skill-nya
+        </li>
+      </ListItem>
+      <ImageWrapper>
+        <img src="/assets/img/carbon-copy.webp" alt="code" />
+      </ImageWrapper>
+    </Drive>
+  );
+};
+
+const Drive = styled("section", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  maxWidth: "1280px",
+  margin: "auto",
+  flexDirection: "column",
+  md: {
+    flexDirection: "row",
+  },
+});
+
+const ListItem = styled("ol", {
+  margin: "0 $0",
+  listStyleType: "square",
+  marginLeft: "$2",
+  textAlign: "left",
+  li: {
+    paddingLeft: "$0",
+    margin: "$0 0",
+  },
+});
+
+const ImageWrapper = styled("div", {});
 
 export default Home;
