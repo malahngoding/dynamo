@@ -1,5 +1,10 @@
 import { NextPage } from "next";
-import { WallOfTextBlock, Box } from "src/design/block";
+import {
+  WallOfTextBlock,
+  Box,
+  SplinterBox,
+  HeadingBox,
+} from "src/design/block";
 import {
   HeadingSecondary,
   Paragraph,
@@ -14,26 +19,12 @@ const Workshop: NextPage = () => {
   return (
     <Base title={heading}>
       <WallOfTextBlock>
-        <Box
-          direction="column"
-          css={{
-            margin: "$3 0 -$0 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        <SplinterBox>
           <Splinter>{splinter}</Splinter>
-        </Box>
-        <Box
-          direction="column"
-          css={{
-            margin: "0 0 $2 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        </SplinterBox>
+        <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
-        </Box>
+        </HeadingBox>
         <TitleSecondary css={{ marginTop: "$2" }}>Gather up!</TitleSecondary>
         <Paragraph css={{ marginTop: "$1" }}>
           <strong>MALAHNGODINGBARENG</strong> merupakan event yang dilaksanakan

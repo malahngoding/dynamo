@@ -1,5 +1,10 @@
 import { NextPage } from "next";
-import { WallOfTextBlock, Box } from "src/design/block";
+import {
+  WallOfTextBlock,
+  Box,
+  SplinterBox,
+  HeadingBox,
+} from "src/design/block";
 import { RadicalCard } from "src/design/card";
 import { PeopleA, PeopleB, PeopleC } from "src/design/peeps";
 import {
@@ -16,28 +21,14 @@ const Study: NextPage = () => {
   return (
     <Base title={heading}>
       <WallOfTextBlock>
-        <Box
-          direction="column"
-          css={{
-            margin: "$3 0 -$0 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        <SplinterBox>
           <Splinter>{splinter}</Splinter>
-        </Box>
-        <Box
-          direction="column"
-          css={{
-            margin: "0 0 $2 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        </SplinterBox>
+        <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
-        </Box>
+        </HeadingBox>
         <TitleSecondary css={{ marginTop: "$2" }}>
-          Membaca adalah jendela dunia
+          Membaca adalah jendela dunia 📚
         </TitleSecondary>
         <Paragraph css={{ marginTop: "$1" }}>
           Memang membaca tulisan yang panjang sedikit membosankan di masa

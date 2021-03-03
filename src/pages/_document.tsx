@@ -56,7 +56,7 @@ export default class Document extends NextDocument {
           />
           <meta
             name="description"
-            content="Malah Ngoding merupakan platform pembelajaran praktis untuk para pengembang aplikasi web dan mobile."
+            content="Malah Ngoding merupakan platform pembelajaran praktis untuk para pengembang aplikasi web dan mobile yang bersahabat bagi pemula."
           />
         </Head>
         <body>

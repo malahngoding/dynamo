@@ -10,6 +10,11 @@ export const HeadingSecondary = styled("h2", {
   fontWeight: 1000,
   wordWrap: "break-word",
 });
+export const HeadingTertiary = styled("h3", {
+  fontSize: "$3",
+  fontWeight: 900,
+  wordWrap: "break-word",
+});
 export const TitlePrimary = styled("h3", {
   fontSize: "$3",
   fontWeight: 700,

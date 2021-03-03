@@ -1,39 +1,109 @@
 import { NextPage } from "next";
-import { Block } from "src/design/block";
+import {
+  WallOfTextBlock,
+  SplinterBox,
+  HeadingBox,
+  Box,
+} from "src/design/block";
+import { Button } from "src/design/button";
+import { ConfusedPeople } from "src/design/peeps";
+import { Spacer } from "src/design/spacer";
 import {
   HeadingPrimary,
-  HeadingSecondary,
-  TitlePrimary,
-  TitleSecondary,
+  Splinter,
+  HeadingTertiary,
   Paragraph,
+  TitleSecondary,
 } from "src/design/typography";
 import { Base } from "src/layouts/base";
+import { styled } from "stitches.config";
 
 const Home: NextPage = () => {
+  const heading = "Malah Ngoding";
+  const splinter = "Halo Dunia!";
   return (
-    <Base title="Hello World!">
-      <Block>
-        <HeadingPrimary>Hello Heading Primary!</HeadingPrimary>
-        <HeadingSecondary>Hello Heading Secondary!</HeadingSecondary>
-        <TitlePrimary>
-          Modulz January update: Pages, Inspector, redesigned property panels,
-          enhanced color tool, distance measurement, rulers, and more.
-        </TitlePrimary>
-        <Paragraph>
-          Just before Christmas, we launched the latest Modulz release to our
-          existing beta users. Today, we&apos;re inviting hundreds more from our
-          waitlist, so check your email! Since launching in December, we&apos;ve
-          released many exciting features.
+    <Base title={heading}>
+      <WallOfTextBlock>
+        <SplinterBox>
+          <Splinter>{splinter}</Splinter>
+        </SplinterBox>
+        <HeadingBox>
+          <HeadingPrimary>{heading}</HeadingPrimary>
+        </HeadingBox>
+      </WallOfTextBlock>
+      <div></div>
+      <ColoredBanner color="yellow">
+        <HeadingTertiary css={{ margin: "$1 $0 0 $0" }}>
+          Menghabiskan waktu luang untuk malah ngoding.
+        </HeadingTertiary>
+        <Paragraph css={{ margin: "0 $1 $1 $1" }}>
+          Bingung kalau lagi nggak ada kerjaan mau ngapain?
         </Paragraph>
-        <TitleSecondary>Pages</TitleSecondary>
-        <Paragraph>
-          If you&apos;re the opposite of someone like me—and you like to keep
-          your files organised—you can now do so by creating Pages within each
-          Document.
+        <Box css={{ marginBottom: "-3em" }}>
+          <ConfusedPeople />
+        </Box>
+      </ColoredBanner>
+      <WallOfTextBlock css={{ padding: "$0 $1 $2 $1", marginTop: "$5" }}>
+        <TitleSecondary>
+          Saatnya belajar <i>ngoding</i> dengan cara yang menarik dan
+          menyenangkan!
+        </TitleSecondary>
+        <Spacer />
+        <Paragraph css={{ margin: "$1 0" }}>
+          Belajar mulai dari nol, praktik sambil memahami konsep dasar. Semuanya
+          seperti bermain <i>video game</i>. Memecahkan teka-teki sambil
+          membantu eMang menjelajah luar angkasa.
         </Paragraph>
-      </Block>
+        <Spaceman className="pixel" />
+        <Paragraph css={{ margin: "$1 0" }}>
+          Kamu akan membaca perintah, memecahkan permasalahan eMang, langkah
+          demi langkah.
+        </Paragraph>
+      </WallOfTextBlock>
+      <ColoredBanner color="green">
+        <HeadingTertiary css={{ margin: "$1 $0 0 $0" }}>
+          Bergabung dengan komunitas Malah Ngoding
+        </HeadingTertiary>
+        <Paragraph css={{ margin: "0 $1 $1 $1" }}>
+          Tumbuh dan berkembang beriringan. Bersama-sama{" "}
+          <strong>Malah Ngoding</strong>.
+        </Paragraph>
+        <Button color="pink">Daftar</Button>
+        <Spacer css={{ height: "$1" }} />
+      </ColoredBanner>
+      <Activation />
     </Base>
   );
 };
+
+const Spaceman = styled("div", {
+  width: "100%",
+  height: "120px",
+  backgroundSize: "cover",
+  backgroundImage: "url(/assets/img/SpacemanTrio.png)",
+});
+
+const ColoredBanner = styled(Box, {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  variants: {
+    color: {
+      red: { backgroundColor: "$red" },
+      green: { backgroundColor: "$green" },
+      blue: { backgroundColor: "$blue" },
+      yellow: { backgroundColor: "$yellow" },
+      pink: { backgroundColor: "$pink" },
+    },
+  },
+});
+
+const Activation = styled("div", {
+  backgroundColor: "$green",
+  backgroundSize: "cover",
+  backgroundImage: "url(/assets/svg/activation.svg)",
+  height: "10rem",
+});
 
 export default Home;

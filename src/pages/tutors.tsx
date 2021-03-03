@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { WallOfTextBlock, Box } from "src/design/block";
+import { WallOfTextBlock, SplinterBox, HeadingBox } from "src/design/block";
 import {
   HeadingSecondary,
   Paragraph,
@@ -14,26 +14,12 @@ const Tutors: NextPage = () => {
   return (
     <Base title={heading}>
       <WallOfTextBlock>
-        <Box
-          direction="column"
-          css={{
-            margin: "$3 0 -$0 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        <SplinterBox>
           <Splinter>{splinter}</Splinter>
-        </Box>
-        <Box
-          direction="column"
-          css={{
-            margin: "0 0 $2 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        </SplinterBox>
+        <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
-        </Box>
+        </HeadingBox>
         <TitleSecondary css={{ marginTop: "$2" }}>Code With Me!</TitleSecondary>
         <Paragraph css={{ marginTop: "$1" }}>
           Kami tahu dan pernah mengalami kesulitan ketika memulainya. Metode

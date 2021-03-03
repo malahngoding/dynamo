@@ -43,3 +43,17 @@ export const WallOfTextBlock = styled(InnerDomain, {
   justifyContent: "center",
   padding: "0 $1",
 });
+
+export const SplinterBox = styled(Box, {
+  flexDirection: "column",
+  margin: "$3 0 -$0 0",
+  alignSelf: "flex-start",
+  md: { alignSelf: "center" },
+});
+
+export const HeadingBox = styled(Box, {
+  flexDirection: "column",
+  margin: "0 0 $2 0",
+  alignSelf: "flex-start",
+  md: { alignSelf: "center" },
+});

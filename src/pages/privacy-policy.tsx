@@ -1,6 +1,11 @@
 import { NextPage } from "next";
-import { WallOfTextBlock, Box } from "src/design/block";
-import { HeadingSecondary, Paragraph, Splinter } from "src/design/typography";
+import { WallOfTextBlock, SplinterBox, HeadingBox } from "src/design/block";
+import {
+  HeadingSecondary,
+  Paragraph,
+  Splinter,
+  TitleSecondary,
+} from "src/design/typography";
 import { Base } from "src/layouts/base";
 import { styled } from "stitches.config";
 
@@ -10,26 +15,13 @@ const PrivacyPolicy: NextPage = () => {
   return (
     <Base title={heading}>
       <WallOfTextBlock>
-        <Box
-          direction="column"
-          css={{
-            margin: "$3 0 -$0 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        <SplinterBox>
           <Splinter>{splinter}</Splinter>
-        </Box>
-        <Box
-          direction="column"
-          css={{
-            margin: "0 0 $2 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        </SplinterBox>
+        <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
-        </Box>
+        </HeadingBox>
+        <TitleSecondary>1 Januari 2021</TitleSecondary>
         <Paragraph css={{ marginTop: "$2" }}>
           <strong>MALAHNGODING</strong> menyadari pentingnya keamanan data
           pribadi setiap pengguna platform <strong>MALAHNGODING</strong>. Data

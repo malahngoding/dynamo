@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { WallOfTextBlock, Box } from "src/design/block";
+import { WallOfTextBlock, SplinterBox, HeadingBox } from "src/design/block";
 import {
   HeadingSecondary,
   TitleSecondary,
@@ -15,26 +15,13 @@ const Terms: NextPage = () => {
   return (
     <Base title={heading}>
       <WallOfTextBlock>
-        <Box
-          direction="column"
-          css={{
-            margin: "$3 0 -$0 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        <SplinterBox>
           <Splinter>{splinter}</Splinter>
-        </Box>
-        <Box
-          direction="column"
-          css={{
-            margin: "0 0 $2 0",
-            alignSelf: "flex-start",
-            md: { alignSelf: "center" },
-          }}
-        >
+        </SplinterBox>
+        <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
-        </Box>
+        </HeadingBox>
+        <TitleSecondary>1 Januari 2021</TitleSecondary>
         <Paragraph css={{ marginTop: "$2" }}>
           Terima kasih telah mengunjungi <strong>MALAHNGODING</strong> sebuah
           platform pembelajaran praktis untuk para pengembang aplikasi berbasis
