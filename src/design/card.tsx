@@ -8,6 +8,9 @@ export const RadicalCard = styled("div", {
   backgroundColor: "$light",
   margin: "$1",
   maxWidth: "320px",
+  ":hover": {
+    transform: "translateY(-8px)",
+  },
   variants: {
     color: {
       blue: {

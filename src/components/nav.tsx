@@ -7,6 +7,7 @@ import { Fragment, useState } from "react";
 import { useLockBodyScroll } from "src/hooks/useScroll";
 import { Spacer } from "src/design/spacer";
 import { BurgerIcon, CrossIcon } from "src/design/icon";
+import { useRouter } from "next/router";
 
 const Navigation = styled("nav", {
   display: "flex",
@@ -53,9 +54,17 @@ export const Nav = (): JSX.Element => {
           ))}
         </Box>
         <Box direction="row" css={{ display: "none", sm: { display: "flex" } }}>
-          <Button color="blue">Daftar</Button>
+          <Link href="/sign-up">
+            <a>
+              <Button color="blue">Sign Up</Button>
+            </a>
+          </Link>
           <Spacer />
-          <Button color="white">Masuk</Button>
+          <Link href="/login">
+            <a>
+              <Button color="white">Login</Button>
+            </a>
+          </Link>
         </Box>
         <Box
           css={{ display: "flex", sm: { display: "none" } }}
@@ -103,9 +112,17 @@ const NavSheet = (props: NavSheetProps) => {
         ))}
         <Spacer />
         <Box>
-          <Button color="blue">Sign Up</Button>
+          <Link href="/sign-up">
+            <a>
+              <Button color="blue">Sign Up</Button>
+            </a>
+          </Link>
           <Spacer />
-          <Button color="white">Login</Button>
+          <Link href="/login">
+            <a>
+              <Button color="white">Login</Button>
+            </a>
+          </Link>
         </Box>
       </Box>
     </Box>
@@ -119,8 +136,10 @@ interface NavLinkProps {
 }
 
 const NavLink = (props: NavLinkProps): JSX.Element => {
+  const router = useRouter();
   const Hyper = styled("a", {
     fontWeight: 700,
+    color: router.route === props.href ? props.color : "$dark",
     ":hover": { color: props.color, cursor: "pointer" },
   });
   return (

@@ -1,4 +1,6 @@
 import { NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import {
   SplinterBox,
   HeadingBox,
@@ -17,7 +19,6 @@ import {
 } from "src/design/typography";
 import { Base } from "src/layouts/base";
 import { styled } from "stitches.config";
-import Image from "next/image";
 
 const Home: NextPage = () => {
   const heading = "Malah Ngoding";
@@ -67,7 +68,11 @@ const Home: NextPage = () => {
           demi langkah.
         </Paragraph>
         <Box css={{ margin: "auto" }}>
-          <Button>Bantu eMang</Button>
+          <Link href="/awesome-noob">
+            <a>
+              <Button>Bantu eMang</Button>
+            </a>
+          </Link>
         </Box>
       </WallOfTextBlock>
       <ColoredBanner color="green" css={{ borderTop: "2px solid $dark300" }}>
@@ -78,7 +83,11 @@ const Home: NextPage = () => {
           Tumbuh dan berkembang beriringan. Bersama-sama{" "}
           <strong>Malah Ngoding</strong>.
         </Paragraph>
-        <Button color="pink">Daftar</Button>
+        <Link href="/sign-up">
+          <a>
+            <Button color="pink">Daftar</Button>
+          </a>
+        </Link>
         <Spacer css={{ height: "$1" }} />
       </ColoredBanner>
       <Activation />

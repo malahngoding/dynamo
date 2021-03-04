@@ -21,3 +21,23 @@
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
+
+.radical-grad {
+  background: rgb(214, 252, 247);
+  background: -moz-linear-gradient(
+    71deg,
+    rgba(214, 252, 247, 1) 36%,
+    rgba(255, 232, 232, 1) 64%
+  );
+  background: -webkit-linear-gradient(
+    71deg,
+    rgba(214, 252, 247, 1) 36%,
+    rgba(255, 232, 232, 1) 64%
+  );
+  background: linear-gradient(
+    71deg,
+    rgba(214, 252, 247, 1) 36%,
+    rgba(255, 232, 232, 1) 64%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d6fcf7",endColorstr="#ffe8e8",GradientType=1);
+}
