@@ -92,6 +92,7 @@ const NavSheet = (props: NavSheetProps) => {
         width: "100vw",
         background: "$yellow100",
         padding: "$1",
+        zIndex: 10,
       }}
     >
       <Box direction="column" css={{ gap: "$1" }}>
