@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import {
-  WallOfTextBlock,
   SplinterBox,
   HeadingBox,
   Box,
+  WallOfTextBlock,
 } from "src/design/block";
 import { Button } from "src/design/button";
 import { ConfusedPeople } from "src/design/peeps";
@@ -17,22 +17,29 @@ import {
 } from "src/design/typography";
 import { Base } from "src/layouts/base";
 import { styled } from "stitches.config";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const heading = "Malah Ngoding";
   const splinter = "Halo Dunia!";
   return (
     <Base title={heading}>
-      <WallOfTextBlock>
+      <WallOfTextBlockHome>
         <SplinterBox>
           <Splinter>{splinter}</Splinter>
         </SplinterBox>
         <HeadingBox>
           <HeadingPrimary>{heading}</HeadingPrimary>
         </HeadingBox>
-      </WallOfTextBlock>
+      </WallOfTextBlockHome>
       <Hero />
-      <ColoredBanner color="yellow">
+      <ColoredBanner
+        color="yellow"
+        css={{
+          borderTop: "2px solid $dark300",
+          borderBottom: "2px solid $dark300",
+        }}
+      >
         <HeadingTertiary css={{ margin: "$1 $0 0 $0" }}>
           Menghabiskan waktu luang untuk malah ngoding.
         </HeadingTertiary>
@@ -59,8 +66,11 @@ const Home: NextPage = () => {
           Kamu akan membaca perintah, memecahkan permasalahan eMang, langkah
           demi langkah.
         </Paragraph>
+        <Box css={{ margin: "auto" }}>
+          <Button>Bantu eMang</Button>
+        </Box>
       </WallOfTextBlock>
-      <ColoredBanner color="green">
+      <ColoredBanner color="green" css={{ borderTop: "2px solid $dark300" }}>
         <HeadingTertiary css={{ margin: "$1 $0 0 $0" }}>
           Bergabung dengan komunitas Malah Ngoding
         </HeadingTertiary>
@@ -109,43 +119,68 @@ const Activation = styled("div", {
 const Hero = () => {
   return (
     <Drive>
-      <ListItem>
-        <li>
-          Belajar koding dan berlatih di platform yang sangat cocok untuk siapa
-          saja. Cocok untuk para calon pengembang web atau aplikasi mobile.
-        </li>
-        <li>
-          Dari dan untuk <i>Developers</i>
-        </li>
-        <li>
-          Malah Ngoding cocok untuk pemula yang belum pernah menulis kode satu
-          baris pun
-        </li>
-        <li>
-          Malah Ngoding juga cocok untuk para pengembang web dan aplikasi mobile
-          yang ingin mengembangkan skill-nya
-        </li>
-      </ListItem>
-      <ImageWrapper>
-        <img src="/assets/img/carbon-copy.webp" alt="code" />
-      </ImageWrapper>
+      <Wrapper>
+        <ListItem>
+          <TitleSecondary>
+            <li>
+              Belajar koding dan berlatih di platform yang sangat cocok untuk
+              siapa saja. Cocok untuk para calon pengembang web atau aplikasi
+              mobile.
+            </li>
+          </TitleSecondary>
+          <TitleSecondary>
+            <li>
+              Dari dan untuk <i>Developers</i>
+            </li>
+          </TitleSecondary>
+          <TitleSecondary>
+            <li>
+              Malah Ngoding cocok untuk pemula yang belum pernah menulis kode
+              satu baris pun
+            </li>
+          </TitleSecondary>
+          <TitleSecondary>
+            <li>
+              Malah Ngoding juga cocok untuk para pengembang web dan aplikasi
+              mobile yang ingin mengembangkan skill-nya
+            </li>
+          </TitleSecondary>
+        </ListItem>
+        <ImageWrapper>
+          <Image
+            src="/assets/img/carbon-copy.webp"
+            alt="Code"
+            width={1280}
+            height={1003}
+          />
+          {/* <img src="/assets/img/carbon-copy.webp" alt="code" /> */}
+        </ImageWrapper>
+      </Wrapper>
     </Drive>
   );
 };
 
 const Drive = styled("section", {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
   maxWidth: "1280px",
   margin: "auto",
-  flexDirection: "column",
+});
+
+const Wrapper = styled("div", {
+  display: "flex",
+  flexDirection: "column-reverse",
+  justifyContent: "space-around",
+  alignItems: "center",
+  margin: "$0 $0 $3 $0",
   md: {
     flexDirection: "row",
+    margin: "$0 $0 $3 $0",
   },
 });
 
 const ListItem = styled("ol", {
+  display: "flex",
+  flex: 1,
+  flexDirection: "column",
   margin: "0 $0",
   listStyleType: "square",
   marginLeft: "$2",
@@ -156,6 +191,27 @@ const ListItem = styled("ol", {
   },
 });
 
-const ImageWrapper = styled("div", {});
+const ImageWrapper = styled("div", {
+  flex: 1,
+  padding: "$1",
+});
+
+export const InnerDomain = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "flex-start",
+  maxWidth: "48rem",
+  marginLeft: "auto",
+  marginRight: "auto",
+  marginBottom: "$0",
+});
+
+export const WallOfTextBlockHome = styled(InnerDomain, {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  padding: "0 $1",
+});
 
 export default Home;
