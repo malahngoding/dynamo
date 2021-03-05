@@ -123,6 +123,7 @@ const Activation = styled("div", {
   backgroundSize: "cover",
   backgroundImage: "url(/assets/svg/activation.svg)",
   height: "10rem",
+  WebkitBackgroundSize: "cover",
 });
 
 const Hero = () => {

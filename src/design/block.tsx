@@ -57,3 +57,26 @@ export const HeadingBox = styled(Box, {
   alignSelf: "flex-start",
   md: { alignSelf: "center" },
 });
+
+export const BackgroundColorSetter = styled("div", {
+  backgroundColor: "$light",
+  variants: {
+    color: {
+      blue: {
+        backgroundColor: "$blue100",
+      },
+      red: {
+        backgroundColor: "$red100",
+      },
+      green: {
+        backgroundColor: "$green100",
+      },
+      yellow: {
+        backgroundColor: "$yellow100",
+      },
+      pink: {
+        backgroundColor: "$pink100",
+      },
+    },
+  },
+});

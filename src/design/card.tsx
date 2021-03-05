@@ -12,6 +12,11 @@ export const RadicalCard = styled("div", {
     transform: "translateY(-8px)",
   },
   variants: {
+    butNot: {
+      true: {
+        boxShadow: "none",
+      },
+    },
     color: {
       blue: {
         color: "$dark",
