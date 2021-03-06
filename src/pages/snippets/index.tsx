@@ -92,6 +92,7 @@ const Snippet = (props: Snippet): JSX.Element => {
             padding: "$1",
             backgroundColor: getColor(props.language),
             justifyContent: "flex-start",
+            maxWidth: "100%",
           }}
         >
           <HeadingSecondary>{props.language}</HeadingSecondary>
