@@ -10,6 +10,8 @@ export const Block = styled("div", {
   },
 });
 
+export const Div = styled("div", {});
+
 export const Box = styled("div", {
   display: "flex",
   justifyContent: "center",

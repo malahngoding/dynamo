@@ -59,7 +59,7 @@ export const BurgerIcon = (): JSX.Element => {
   );
 };
 
-export const GithubIcon = () => {
+export const GithubIcon = (): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ export const GithubIcon = () => {
   );
 };
 
-export const YoutubeIcon = () => {
+export const YoutubeIcon = (): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ export const YoutubeIcon = () => {
   );
 };
 
-export const InstagramIcon = () => {
+export const InstagramIcon = (): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

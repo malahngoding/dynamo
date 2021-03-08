@@ -1,4 +1,3 @@
-import { Auth as AuthLayout } from "src/layouts/auth";
 import Link from "next/link";
 import useSWR from "swr";
 import { Auth, Space, Button, Icon } from "@supabase/ui";
@@ -15,15 +14,14 @@ import {
   TitleSecondary,
 } from "src/design/typography";
 
-const fetcher = (url: string, token: string) => {
+const fetcher = (url: string, token: string) =>
   fetch(url, {
     method: "GET",
     headers: new Headers({ "Content-Type": "application/json", token }),
     credentials: "same-origin",
   }).then((res) => res.json());
-};
 
-const SignUp: NextPage = () => {
+const Index: NextPage = () => {
   const { user, session } = Auth.useUser();
   const { data, error } = useSWR(
     session ? ["/api/getUser", session.access_token] : null,
@@ -115,17 +113,15 @@ const SignUp: NextPage = () => {
   };
 
   return (
-    <AuthLayout title="Daftar">
-      <Box css={{ backgroundColor: "$green100", minHeight: "100vh" }}>
-        <RadicalCard
-          chill
-          css={{ maxWidth: "420px", padding: "$1", md: { padding: "$3" } }}
-        >
-          <View />
-        </RadicalCard>
-      </Box>
-    </AuthLayout>
+    <Box css={{ backgroundColor: "$green100", minHeight: "100vh" }}>
+      <RadicalCard
+        chill
+        css={{ maxWidth: "420px", padding: "$1", md: { padding: "$3" } }}
+      >
+        <View />
+      </RadicalCard>
+    </Box>
   );
 };
 
-export default SignUp;
+export default Index;

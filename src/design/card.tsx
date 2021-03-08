@@ -12,6 +12,13 @@ export const RadicalCard = styled("div", {
     transform: "translateY(-8px)",
   },
   variants: {
+    chill: {
+      true: {
+        ":hover": {
+          transform: "translateY(0px)",
+        },
+      },
+    },
     butNot: {
       true: {
         boxShadow: "none",

@@ -1,7 +1,18 @@
 import { NextPage } from "next";
-import { UnderConstructions } from "src/components/underconstructions";
-import { WallOfTextBlock, SplinterBox, HeadingBox } from "src/design/block";
-import { HeadingSecondary, Splinter } from "src/design/typography";
+import Link from "next/link";
+import {
+  WallOfTextBlock,
+  SplinterBox,
+  HeadingBox,
+  Box,
+} from "src/design/block";
+import { Button } from "src/design/button";
+import {
+  HeadingSecondary,
+  Paragraph,
+  Splinter,
+  TitlePrimary,
+} from "src/design/typography";
 import { Base } from "src/layouts/base";
 
 const Noob: NextPage = () => {
@@ -16,8 +27,16 @@ const Noob: NextPage = () => {
         <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
         </HeadingBox>
+        <TitlePrimary>Kuy</TitlePrimary>
+        <Paragraph>Ok</Paragraph>
       </WallOfTextBlock>
-      <UnderConstructions compact />
+      <Box css={{ margin: "auto", marginTop: "-48px", marginBottom: "$3" }}>
+        <Link href="/awesome-noob/bfd280436f45fa38eaacac3b00518f29">
+          <a>
+            <Button>Berangkat!</Button>
+          </a>
+        </Link>
+      </Box>
     </Base>
   );
 };

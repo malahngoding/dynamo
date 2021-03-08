@@ -46,7 +46,7 @@ export default class Document extends NextDocument {
     return (
       <Html lang="id">
         <Head>
-          <link rel="shortcut icon" href="favicon.png" />
+          <link rel="shortcut icon" href="/favicon.png" />
           <link
             rel="preload"
             href="/fonts/Montserrat-VF.woff2"
