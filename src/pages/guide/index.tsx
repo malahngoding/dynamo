@@ -19,23 +19,23 @@ import {
 import { Base } from "src/layouts/base";
 import { styled } from "stitches.config";
 
-const guideData: GuideCardProps[] = [
+export const guideData: GuideCardProps[] = [
   {
-    url: "/1",
+    url: "/guide/mempersiapkan-perangkat-lunak-untuk-malah-ngoding",
     title: "Mempersiapkan perangkat lunak untuk malah ngoding",
     emoji: "🚙",
     date: "05 January 2021",
   },
   {
-    url: "/2",
+    url: "/guide/mengapa-belajar-membuat-program",
     title: "Mengapa belajar membuat program?",
     emoji: "🦜",
     date: "03 January 2021",
   },
   {
-    url: "/3",
-    title: "Apakah membuat program cocok untuk saya?",
-    emoji: "🚚",
+    url: "/guide/apakah-ngoding-cocok-untuk-saya",
+    title: "Apakah ngoding cocok untuk saya?",
+    emoji: "🤓",
     date: "01 January 2021",
   },
 ];
@@ -146,33 +146,29 @@ const GuideCard = (props: GuideCardProps): JSX.Element => {
               {props.title}
             </TitleTertiary>
             <Spacer />
-            <Link href="/about-us">
-              <a>
-                <AuthorDetails>
-                  <AuthorAvatar src="https://avatars.githubusercontent.com/u/76316824?s=400&u=7b3af4ed4cb10cf8034ca7da4c48021bf482f219&v=4" />
-                  <Box
-                    css={{
-                      flexDirection: "column",
-                      justifyContent: "flex-start",
-                      alignItems: "flex-start",
-                      marginLeft: "$1",
-                    }}
-                  >
-                    <Paragraph
-                      css={{
-                        fontSize: "$0",
-                        fontWeight: 700,
-                        margin: 0,
-                        padding: 0,
-                      }}
-                    >
-                      Untung So Andryanto
-                    </Paragraph>
-                    <Paragraph css={{ fontSize: "$0" }}>{props.date}</Paragraph>
-                  </Box>
-                </AuthorDetails>
-              </a>
-            </Link>
+            <AuthorDetails>
+              <AuthorAvatar src="https://avatars.githubusercontent.com/u/76316824?s=400&u=7b3af4ed4cb10cf8034ca7da4c48021bf482f219&v=4" />
+              <Box
+                css={{
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-start",
+                  marginLeft: "$1",
+                }}
+              >
+                <Paragraph
+                  css={{
+                    fontSize: "$0",
+                    fontWeight: 700,
+                    margin: 0,
+                    padding: 0,
+                  }}
+                >
+                  Untung So Andryanto
+                </Paragraph>
+                <Paragraph css={{ fontSize: "$0" }}>{props.date}</Paragraph>
+              </Box>
+            </AuthorDetails>
           </Right>
         </Card>
       </a>

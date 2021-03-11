@@ -54,13 +54,13 @@ export const Nav = (): JSX.Element => {
           ))}
         </Box>
         <Box direction="row" css={{ display: "none", sm: { display: "flex" } }}>
-          <Link href="/sign-up">
+          <Link href="/auth">
             <a>
               <Button color="blue">Sign Up</Button>
             </a>
           </Link>
           <Spacer />
-          <Link href="/login">
+          <Link href="/auth">
             <a>
               <Button color="white">Login</Button>
             </a>
@@ -113,13 +113,13 @@ const NavSheet = (props: NavSheetProps) => {
         ))}
         <Spacer />
         <Box>
-          <Link href="/sign-up">
+          <Link href="/auth">
             <a>
               <Button color="blue">Sign Up</Button>
             </a>
           </Link>
           <Spacer />
-          <Link href="/login">
+          <Link href="/auth">
             <a>
               <Button color="white">Login</Button>
             </a>

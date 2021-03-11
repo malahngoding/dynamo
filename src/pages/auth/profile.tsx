@@ -10,7 +10,7 @@ interface ProfileProps {
 
 const Profile = (props: ProfileProps) => {
   return (
-    <div style={{ maxWidth: "420px", margin: "96px auto" }}>
+    <div style={{ maxWidth: "", margin: "96px auto" }}>
       <Card>
         <Space direction="vertical" size={6}>
           <Typography.Text>You&quos;re signed in</Typography.Text>

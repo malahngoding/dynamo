@@ -1,6 +1,5 @@
-import Link from "next/link";
 import useSWR from "swr";
-import { Auth, Space, Button, Icon } from "@supabase/ui";
+import { Auth, Space, Button } from "@supabase/ui";
 import { supabase } from "src/hooks/useSupabase";
 import { useEffect, useState } from "react";
 import { NextPage } from "next";
@@ -64,7 +63,7 @@ const Index: NextPage = () => {
             providers={["google", "github"]}
             view={authView}
             socialLayout="horizontal"
-            socialButtonSize="xlarge"
+            socialButtonSize="large"
           />
         </Space>
       );
@@ -76,36 +75,18 @@ const Index: NextPage = () => {
         )}
         {user && (
           <>
-            <Paragraph>You&apos;re signed in</Paragraph>
-            <Paragraph>Email: {user.email}</Paragraph>
-
-            <Button
-              icon={<Icon src="" type="LogOut" />}
-              type="outline"
-              onClick={() => supabase.auth.signOut()}
-            >
+            <TitleSecondary>
+              Terima kasih sudah mendaftar di malahngoding.com
+            </TitleSecondary>
+            <Paragraph>Email kamu: {user.email}</Paragraph>
+            <Paragraph>
+              Saat ini malahngoding.com sedang dalam tahap pengembangan.
+            </Paragraph>
+            <Button type="outline" onClick={() => supabase.auth.signOut()}>
               Log out
             </Button>
             {error && <Paragraph>Failed to fetch user!</Paragraph>}
-            {data && !error ? (
-              <>
-                <Paragraph>
-                  User data retrieved server-side (in API route):
-                </Paragraph>
-
-                <Paragraph>
-                  <pre>{JSON.stringify(data, null, 2)}</pre>
-                </Paragraph>
-              </>
-            ) : (
-              <div>Loading...</div>
-            )}
-
-            <Paragraph>
-              <Link href="/profile">
-                <a>SSR example with getServerSideProps</a>
-              </Link>
-            </Paragraph>
+            {data && !error ? <></> : <div>Loading...</div>}
           </>
         )}
       </Space>
@@ -116,7 +97,12 @@ const Index: NextPage = () => {
     <Box css={{ backgroundColor: "$green100", minHeight: "100vh" }}>
       <RadicalCard
         chill
-        css={{ maxWidth: "420px", padding: "$1", md: { padding: "$3" } }}
+        css={{
+          maxWidth: 420,
+          pmaxWidth: 420,
+          adding: "$1",
+          md: { padding: "$3" },
+        }}
       >
         <View />
       </RadicalCard>
