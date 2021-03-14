@@ -8,5 +8,14 @@ export const Preview = (): JSX.Element => {
     width: "344px",
     padding: "$0",
   });
-  return <PreviewComponent>Preview</PreviewComponent>;
+  return (
+    <PreviewComponent>
+      <img
+        src="/assets/img/Spaceman.png"
+        alt=""
+        className="pixel"
+        style={{ height: "72px" }}
+      />
+    </PreviewComponent>
+  );
 };

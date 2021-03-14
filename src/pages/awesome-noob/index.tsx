@@ -27,8 +27,13 @@ const Noob: NextPage = () => {
         <HeadingBox>
           <HeadingSecondary>{heading}</HeadingSecondary>
         </HeadingBox>
-        <TitlePrimary>Kuy</TitlePrimary>
-        <Paragraph>Ok</Paragraph>
+        <TitlePrimary>Bantu eMang menjalani misi di luar angkasa</TitlePrimary>
+        <Paragraph css={{ margin: "$5 0" }}>
+          Halo sobat malah ngoding. eMang merupakan astronot pertama Indonesia
+          yang sampai di luar angkasa. Untuk menjalankan misi - misinya, eMang
+          membutuhkan bantuan kalian. Belajar dasar malah ngoding sambil
+          bertualang dengan <strong>eMang Adventure</strong>.
+        </Paragraph>
       </WallOfTextBlock>
       <Box css={{ margin: "auto", marginTop: "-48px", marginBottom: "$3" }}>
         <Link href="/awesome-noob/bfd280436f45fa38eaacac3b00518f29">

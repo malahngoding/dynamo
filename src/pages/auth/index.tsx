@@ -100,7 +100,7 @@ const Index: NextPage = () => {
         css={{
           maxWidth: 420,
           pmaxWidth: 420,
-          adding: "$1",
+          padding: "$1",
           md: { padding: "$3" },
         }}
       >

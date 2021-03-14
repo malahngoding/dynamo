@@ -7,7 +7,7 @@ import {
 } from "src/design/typography";
 import { styled } from "stitches.config";
 import Link from "next/link";
-import { GithubIcon, InstagramIcon, YoutubeIcon } from "src/design/icon";
+import { GitHub, Youtube, Instagram } from "react-feather";
 import { Spacer } from "src/design/spacer";
 
 const FooterBox = styled("footer", {
@@ -158,7 +158,7 @@ export const Footer = (): JSX.Element => {
           rel="noreferrer"
           aria-label="Malah Ngoding Github"
         >
-          <GithubIcon />
+          <GitHub />
         </a>
         <Spacer />
         <a
@@ -167,7 +167,7 @@ export const Footer = (): JSX.Element => {
           rel="noreferrer"
           aria-label="Malah Ngoding Instagram"
         >
-          <InstagramIcon />
+          <Instagram />
         </a>
         <Spacer />
         <a
@@ -176,7 +176,7 @@ export const Footer = (): JSX.Element => {
           rel="noreferrer"
           aria-label="Malah Ngoding Youtube"
         >
-          <YoutubeIcon />
+          <Youtube />
         </a>
       </Box>
       <Box css={{ fontSize: "$0", marginBottom: "$5" }}>

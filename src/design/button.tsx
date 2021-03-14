@@ -7,6 +7,9 @@ const scaleUp = css.keyframes({
 });
 
 export const Button = styled("button", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   textAlign: "center",
   borderRadius: "0.375rem",
   fontSize: "0.875rem",

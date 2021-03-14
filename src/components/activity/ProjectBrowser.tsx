@@ -2,6 +2,7 @@ import { styled } from "stitches.config";
 import { Logo } from "src/design/branding";
 import { Box, Div } from "src/design/block";
 import { Paragraph, TitlePrimary } from "src/design/typography";
+import { Button } from "src/design/button";
 
 interface ProjectBrowserProps {
   splinter: string;
@@ -40,6 +41,7 @@ export const ProjectBrowser = (props: ProjectBrowserProps): JSX.Element => {
           justifyContent: "flex-end",
           alignItems: "flex-start",
           marginTop: "$2",
+          padding: "$1",
         }}
       >
         <Div
@@ -56,6 +58,11 @@ export const ProjectBrowser = (props: ProjectBrowserProps): JSX.Element => {
             <li key={instructtion}>{instructtion}</li>
           ))}
         </ListItem>
+      </Box>
+      <Box css={{ margin: "$1" }}>
+        <Button color="white" css={{ width: "100%" }}>
+          Petunjuk
+        </Button>
       </Box>
     </ProjectBrowserComponent>
   );

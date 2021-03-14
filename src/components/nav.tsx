@@ -6,7 +6,7 @@ import { Button } from "src/design/button";
 import { Fragment, useState } from "react";
 import { useLockBodyScroll } from "src/hooks/useScroll";
 import { Spacer } from "src/design/spacer";
-import { BurgerIcon, CrossIcon } from "src/design/icon";
+import { Menu, X } from "react-feather";
 import { useRouter } from "next/router";
 
 const Navigation = styled("nav", {
@@ -101,7 +101,7 @@ const NavSheet = (props: NavSheetProps) => {
           rounded={true}
           onClick={() => props.handler(false)}
         >
-          <CrossIcon />
+          <X />
         </Button>
         <Spacer />
         {arrayLink.map((item) => (
@@ -151,14 +151,14 @@ const NavLink = (props: NavLinkProps): JSX.Element => {
 };
 
 const Burger = () => {
-  const Menu = styled("div", {
+  const Wrapper = styled("div", {
     ":hover": {
       cursor: "pointer",
     },
   });
   return (
-    <Menu>
-      <BurgerIcon />
-    </Menu>
+    <Wrapper>
+      <Menu />
+    </Wrapper>
   );
 };

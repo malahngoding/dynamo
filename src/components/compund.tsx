@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Box } from "src/design/block";
-import { ChevronLeftIcon } from "src/design/icon";
+import { ChevronLeft } from "react-feather";
 import { Button } from "src/design/button";
 import { styled } from "stitches.config";
 
@@ -15,7 +15,7 @@ export const BackBlock = (props: BackBlockProps): JSX.Element => {
       <Link href={props.to}>
         <Alpha>
           <Button color="white" rounded={true}>
-            <ChevronLeftIcon />
+            <ChevronLeft />
           </Button>
         </Alpha>
       </Link>
