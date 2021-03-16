@@ -83,7 +83,7 @@ const Home: NextPage = () => {
           Tumbuh dan berkembang beriringan. Bersama-sama{" "}
           <strong>Malah Ngoding</strong>.
         </Paragraph>
-        <Link href="/sign-up">
+        <Link href="/auth">
           <a>
             <Button color="pink">Daftar</Button>
           </a>
