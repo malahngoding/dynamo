@@ -48,8 +48,9 @@ const Request: NextPage = () => {
 };
 
 const Form = () => {
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>("default");
   const [description, setDescription] = useState<string>("");
+  const [submit, setSubmit] = useState<boolean>(false);
 
   const handleInput = async (
     description: string,
@@ -58,9 +59,10 @@ const Form = () => {
     const { data, error } = await supabase
       .from("request")
       .insert([{ description: description, category: category }]);
-    setCategory("");
+    setCategory("default");
     setDescription("");
     console.info(data, error);
+    setSubmit(true);
   };
 
   return (
@@ -73,35 +75,46 @@ const Form = () => {
       }}
     >
       <HeadingSecondary>Request</HeadingSecondary>
-      <Spacer />
-      <TitleSecondary>Mau apa?</TitleSecondary>
-      <Spacer />
-      <StyledSelect
-        value={category}
-        onChange={(e) => {
-          setCategory(e.target.value);
-        }}
-      >
-        <StyledOption disabled value={category}>
-          Pilih
-        </StyledOption>
-        <StyledOption value="feature">Feature</StyledOption>
-        <StyledOption value="article">Article</StyledOption>
-        <StyledOption value="bertanya">Bertanya</StyledOption>
-      </StyledSelect>
-      <Spacer />
-      <TitleSecondary>Deskripsikan</TitleSecondary>
-      <Spacer />
-      <StyledInput
-        value={description}
-        onChange={(e) => {
-          setDescription(e.target.value);
-        }}
-      />
-      <Spacer />
-      <Button color="white" onClick={() => handleInput(description, category)}>
-        Submit
-      </Button>
+      {!submit ? (
+        <>
+          <Spacer />
+          <TitleSecondary>Mau apa?</TitleSecondary>
+          <Spacer />
+          <StyledSelect
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          >
+            <StyledOption disabled value="default">
+              Pilih
+            </StyledOption>
+            <StyledOption value="feature">Feature</StyledOption>
+            <StyledOption value="article">Article</StyledOption>
+            <StyledOption value="bertanya">Bertanya</StyledOption>
+          </StyledSelect>
+          <Spacer />
+          <TitleSecondary>Deskripsikan</TitleSecondary>
+          <Spacer />
+          <StyledInput
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+          <Spacer />
+          <Button
+            color="white"
+            onClick={() => handleInput(description, category)}
+          >
+            Submit
+          </Button>
+        </>
+      ) : (
+        <>
+          <TitleSecondary>kamu telah kami terima. Terima kasih!</TitleSecondary>
+        </>
+      )}
     </Div>
   );
 };
