@@ -36,6 +36,10 @@ export const Button = styled("button", {
         backgroundColor: "$pink800",
         color: "$dark",
       },
+      green: {
+        backgroundColor: "$green800",
+        color: "$dark",
+      },
     },
     rounded: {
       true: {

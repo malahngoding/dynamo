@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Auth, Space, Button } from "@supabase/ui";
+import { Auth, Space } from "@supabase/ui";
 import { supabase } from "src/hooks/useSupabase";
 import { useEffect, useState } from "react";
 import { NextPage } from "next";
@@ -12,6 +12,8 @@ import {
   Paragraph,
   TitleSecondary,
 } from "src/design/typography";
+import { useRouter } from "next/router";
+import { Button } from "src/design/button";
 
 const fetcher = (url: string, token: string) =>
   fetch(url, {
@@ -49,6 +51,7 @@ const Index: NextPage = () => {
   }, []);
 
   const View = (): JSX.Element => {
+    const router = useRouter();
     if (!user)
       return (
         <Space direction="vertical" size={8}>
@@ -80,11 +83,17 @@ const Index: NextPage = () => {
             </TitleSecondary>
             <Paragraph>Email kamu: {user.email}</Paragraph>
             <Paragraph>
-              Saat ini malahngoding.com sedang dalam tahap pengembangan.
+              Saat ini malahngoding.com sedang dalam tahap pengembangan. Namun
+              kamu bisa request materi atau fitur yang mau ditambahkan di
+              platform ini.
             </Paragraph>
-            <Button type="outline" onClick={() => supabase.auth.signOut()}>
-              Log out
+            <Button color="green" onClick={() => router.push("/request")}>
+              Request
             </Button>
+            <Button color="blue" onClick={() => router.push("/")}>
+              Kembali
+            </Button>
+            <Button onClick={() => supabase.auth.signOut()}>Log out</Button>
             {error && <Paragraph>Failed to fetch user!</Paragraph>}
             {data && !error ? <></> : <div>Loading...</div>}
           </>
