@@ -85,7 +85,6 @@ export const LoginForm = () => {
             </div>
             <div className="flex flex-col border-2 border-black w-375px h-340px bg-white m-5 rounded-t-lg">
                 <div className="flex flex-row border-b-2 border-black">
-                    {/* <p className="my-4 ml-6">Welcome Back</p> */}
                     <div className="flex flex-1 font-sans font-extrabold text-xl mr-12 my-4 ml-6 h-28px w-302px">Welcome Back</div>
                     <svg className="mr-6 mt-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 6L6 18" stroke="#18191F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
