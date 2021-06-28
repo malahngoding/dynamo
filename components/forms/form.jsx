@@ -4,7 +4,7 @@ export const LoginForm = () => {
             <div>
                 <p className="mx-6 mt-5 mb-10 text-blue font-sans text-4xl font-bold tracking-wider">F O R M S</p>
                 <form>
-                    <div className="h-414px w-375px m-5 border-2 border-black bg-white">
+                    <div className="h-414px w-375px m-5 border-2 border-white bg-white">
                         <p className="mt-6 mx-6 w-327px h-40px text-4xl text-black font-sans text-center font-extrabold">Login</p>
                         <input className="mx-6 mt-6 w-327px h-56px border-2 border-black rounded-2xl box-border" type="text" name="email" placeholder="Email address" />
                         <input className="mx-6 mt-6 w-327px h-56px border-2 border-black rounded-2xl box-border" type="text" name="password" placeholder="Password" />
@@ -19,7 +19,7 @@ export const LoginForm = () => {
 
             <div>
                 <form>
-                    <div className="h-530px w-375px m-5 border-2 border-black bg-white">
+                    <div className="h-530px w-375px m-5 border-2 border-white bg-white">
                         <p className="mt-6 mx-6 w-327px h-40px text-4xl text-black font-sans font-extrabold">
                             Sign Up</p>
                         <p className="mx-6 mt-3 font-normal text-base">
@@ -40,7 +40,7 @@ export const LoginForm = () => {
                 </form>
             </div>
 
-            <div className="flex flex-col border-2 border-black bg-white w-375px h-224px m-5 items-stretch">
+            <div className="flex flex-col border-2 border-white bg-white w-375px h-224px m-5 items-stretch">
                 <div className="flex flex-row">
                     <div className="h-56px w-56px border-2 border-black mt-6 ml-10 rounded-2xl pt-3 text-center font-extrabold text-xl">
                         0
@@ -64,7 +64,7 @@ export const LoginForm = () => {
 
             <div>
                 <form>
-                    <div className="h-478px w-375px m-5 border-2 border-black bg-white">
+                    <div className="h-478px w-375px m-5 border-2 border-white bg-white">
                         <p className="mt-6 mx-6 w-327px h-40px text-4xl text-black font-sans font-extrabold">
                             Login</p>
                         <p className="mx-6 mt-3 font-normal text-base">
