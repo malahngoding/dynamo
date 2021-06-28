@@ -10,3 +10,13 @@ export default function Home() {
     </PageLayout>
   )
 }
+
+function Test() {
+  return (
+    <div>
+      <h1 className="text-sm">
+        Mantap
+      </h1>
+    </div>
+  )
+}
