@@ -44,6 +44,32 @@ module.exports = {
       normal: 500,
       bold: 700,
       black: 900,
+      extrabold : 800,
+    },
+    width: {
+      '56px': '56px',
+      '45px': '45px',
+      '251px': '251px',
+      '375px': '327px',
+      '327px': '327px',
+      '375px': '375px',
+      '169px': '169px',
+      '302px': '302px',
+    },
+    height: {
+      '18px': '18px',
+      '28px': '28px',
+      '45px': '45px',
+      '56px': '56px',
+      '414px': '414px',
+      '40px': '40px',
+      '60px': '60px',
+      '530px': '530px',
+      '224px': '224px',
+      '478px': '478px',
+      '340px': '340px',
+      '28px': '28px',
+
     },
     extend: {
       fontFamily: {
