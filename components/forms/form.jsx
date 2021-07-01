@@ -100,18 +100,26 @@ export const LoginForm = () => {
 
             <div className="flex flex-col border-2 border-white bg-white w-375px h-224px m-5 items-stretch">
                 <div className="flex flex-row">
-                    <div className="h-56px w-56px border-2 border-black mt-6 ml-10 rounded-2xl pt-3 text-center font-extrabold text-xl">
-                        0
-                    </div>
-                    <div className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl pt-3 text-center font-extrabold text-xl">
-                        _
-                    </div>
-                    <div className="h-56px w-56px border-2 border-black mt-6  rounded-2xl pt-3 text-center font-extrabold text-xl">
-                        _
-                    </div>
-                    <div className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl pt-3 text-center font-extrabold text-xl">
-                        _
-                    </div>
+                        <input
+                            className="h-56px w-56px border-2 border-black mt-6 ml-10 rounded-2xl text-center font-extrabold text-xl"
+                            type="text"
+                            placeholder="_"
+                        />
+                        <input
+                            className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
+                            type="text"
+                            placeholder="_"
+                        />
+                        <input
+                            className="h-56px w-56px border-2 border-black mt-6 rounded-2xl text-center font-extrabold text-xl"
+                            type="text"
+                            placeholder="_"
+                        />
+                        <input
+                            className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
+                            type="text"
+                            placeholder="_"
+                        />
                 </div>
                 <div className="flex flex-row mx-6 mt-6 items-stretch px-10">
                     <p className="text-black font-sans text-sm font-normal text-center">Didnt't get fav number?</p>
