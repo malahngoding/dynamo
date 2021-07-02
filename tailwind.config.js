@@ -44,11 +44,12 @@ module.exports = {
       normal: 500,
       bold: 700,
       black: 900,
-      extrabold : 800,
+      extrabold: 800,
     },
     width: {
       '56px': '56px',
       '45px': '45px',
+      '125px': '125px',
       '251px': '251px',
       '253px': '253px',
       '255px': '255px',
