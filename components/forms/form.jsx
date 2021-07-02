@@ -1,7 +1,6 @@
 export const LoginForm = () => {
     return (
         <div className="flex flex-col bg-green-100">
-
             <div>
                 <p className="mx-6 mt-5 mb-10 text-blue font-sans text-4xl font-bold tracking-wider">F O R M S</p>
                 <form>
