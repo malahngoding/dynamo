@@ -2,9 +2,9 @@
 export const NormalOrLarge = () => {
     return (
         <div className="pt-12 pl-6 bg-green-100">
-        <p className="pb-4 font-black text-sm text-blue">FROM COMPONENT</p>
+        <p className="pb-4 font-black text-lg text-blue">FROM COMPONENT</p>
 
-        <p className="pb-4 font-black text-xs">Normal Or Large</p>
+        <p className="pb-4 font-black text-base">Normal Or Large</p>
         <div className="pb-2">
         <button className="flex border-2 rounded-xl py-1 px-2">
             <svg className="pt-1" width="20" height="18" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +99,7 @@ export const NormalOrLarge = () => {
 export const Small = () => {
     return (
         <div className="pt-4 pl-6 bg-green-100">
-        <p className="pb-4 font-black text-xs">Small</p>
+        <p className="pb-4 font-black text-base">Small</p>
         <div className="pb-2">
         <button className="flex border-2 rounded-xl py-1 px-2">
             <p className="text-xs font-black">I'm tiny</p>
@@ -129,7 +129,7 @@ export const Small = () => {
 export const Steppers = () => {
     return (
         <div className="pt-4 pl-6 bg-green-100">
-        <p className="pb-4 font-black text-xs">Steppers</p>
+        <p className="pb-4 font-black text-base">Steppers</p>
         <div className="flex pb-2">
         <div className="pr-2">
         <p className="text-xl font-black">Add</p>
@@ -259,7 +259,7 @@ export const Steppers = () => {
 export const IconOnly = () => {
     return (
         <div className="pt-4 pl-6 bg-green-100">
-        <p className="pb-4 font-black text-xs">Icon Only</p>
+        <p className="pb-4 font-black text-base">Icon Only</p>
         <div className="pb-2">
         <button className="flex border-2 border-b-4 rounded-full w-10 h-10 shadow-xl place-items-center">
         <svg className="pl-2" width="30" height="38" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -319,7 +319,7 @@ export const IconOnly = () => {
 export const SpecialOrImage = () => {
     return (
         <div className="pt-4 pl-6 bg-green-100">
-        <p className="pb-4 font-black text-xs">Special/Image</p>
+        <p className="pb-4 font-black text-base">Special/Image</p>
         <div className="pb-6">
         <div className="grid border-2 rounded-xl w-12 h-12 items-center pl-2 bg-yellow-100">
         <svg width="27" height="27" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">

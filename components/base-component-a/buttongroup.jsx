@@ -1,17 +1,17 @@
 export const ButtonGroup = () => {
     return (
         <div className="pl-6 pb-4 bg-green-100">
-            <p className="pb-4 font-black text-sm text-blue">BUTTON GROUP</p>
+            <p className="pb-4 font-black text-lg text-blue">BUTTON GROUP</p>
             <div className="flex pr-4 pb-4">
                 <div className="pr-2">
                 <div className="flex bg-white py-2 px-2">
                     <div className="pr-2">
-                    <button className="border-2 rounded-md px-3 text-xs">
+                    <button className="border-2 rounded-md px-3 text-base">
                         Button
                     </button>
                     </div>
                     <div>
-                    <button className="border-2 rounded-md px-3 text-xs text-white bg-black border-black">
+                    <button className="border-2 rounded-md px-3 text-base text-white bg-black border-black">
                         Button
                     </button>
                     </div>
@@ -19,7 +19,7 @@ export const ButtonGroup = () => {
                 </div>
                 <div className="pr-2">
                 <div className="flex bg-white py-2.5 px-2">
-                    <button className="border-2 rounded-md px-10 text-xs text-white bg-black border-black">
+                    <button className="border-2 rounded-md px-10 text-base text-white bg-black border-black">
                         Button
                     </button>
                 </div>
@@ -32,7 +32,7 @@ export const ButtonGroup = () => {
                     </p>
                     </div>
                     <div>
-                        <button className="flex border-2 rounded-md px-10 text-xs text-white bg-black border-black py-1 items-center">
+                        <button className="flex border-2 rounded-md px-10 text-base text-white bg-black border-black py-1 items-center">
                             Buy now
                             <svg className="pl-1" width="10" height="10" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 14L8 8L2 2" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
