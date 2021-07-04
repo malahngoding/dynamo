@@ -24,10 +24,10 @@ export const InputBox = () => {
             <div className="pb-2">
                 <div className="flex border-t border-b border-l rounded bg-white items-center w-max h-6">
                     <div className="pr-2">
-                    <p className="flex-1 pl-1 text-base">Choose your love</p>
+                    <p className="pl-1 text-base">Choose your love</p>
                     </div>
-                    <div className="pl-3">
-                    <select className="bg-yellow w-5 h-6 border-t border-b border-r rounded-r">
+                    <div className="pl-3 pt-2.5">
+                    <select className="bg-yellow w-4 h-6 border-t border-b border-r rounded-r">
                         <option>hello</option>
                         <option>hai</option>
                     </select>
@@ -47,35 +47,132 @@ export const InputBox = () => {
 export const RadioButton = () => {
     return (
         <div className="pl-6 pb-4 bg-green-100">
-            <p className="pb-4 font-black text-base">Radio Button</p>
+            <div>
+                <p className="pb-2 font-black text-base">Radio Button</p>
+            </div>
+            <div className="flex">
+                <div className="pr-2">
+                    <input type="radio" className="form-radio text-red bg-black-200"></input>
+                </div>
+                <div className="pr-2">
+                    <input className="bg-blue-100 border border-8 border-black" type="radio"></input>
+                </div>
+                <div className="pr-2">
+                    <input className="form-radio text-yellow bg-black-200" type="radio" checked></input>
+                </div>
+                <div className="pr-2">
+                    <input className="form-checkbox text-yellow rounded-full border border-4 border-red" type="checkbox" checked></input>
+                </div>
+            </div>
         </div>
     )
 }
 export const CheckBox = () => {
     return (
         <div className="pl-6 pb-4 bg-green-100">
-            <p className="pb-4 font-black text-base">Check Box</p>
+            <div>
+                <p className="pb-4 font-black text-base">Check Box</p>
+            </div>
+            <div>
+                <input className="form-checkbox bg-black-200 text-yellow" type="checkbox"></input> 
+            </div>
+            <div>
+                <input className="form-checkbox bg-blue-100 text-yellow border border-8 border-black" type="checkbox"></input> 
+            </div>
+            <div>
+                <input className="form-checkbox text-yellow border border-8 border-black" type="checkbox" checked></input> 
+            </div>
+            <div>
+                <input className="form-checkbox text-yellow border border-4 border-red" type="checkbox" checked></input> 
+            </div>
         </div>
     )
 }
 export const ToggleSwitch = () => {
     return (
         <div className="pl-6 pb-4 bg-green-100">
-            <p className="pb-4 font-black text-base">Toggle Switch</p>
+            <div>
+                <p className="pb-4 font-black text-base">Toggle Switch</p>
+            </div>
+            <div>
+                <label htmlFor="unchecked" className="mt-3 inline-flex items-center cursor-pointer">
+                    <span className="relative">
+                    <span className="border border-4 border-black block w-10 h-6 bg-gray-400 rounded-full shadow-inner"></span>
+                    <span className="border border-4 border-black absolute block w-4 h-4 mt-1 ml-1 bg-white rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out">
+                        <input id="unchecked" type="checkbox" className="absolute opacity-0 w-0 h-0" />
+                    </span>
+                    </span>
+                </label>
+            </div>
+            <div>
+                <label htmlFor="checked" className="mt-3 inline-flex items-center cursor-pointer">
+                    <span className="relative">
+                    <span className="border border-4 border-black block w-10 h-6 bg-gray-400 rounded-full shadow-inner bg-yellow"></span>
+                    <span className="border border-4 border-black absolute block w-4 h-4 mt-1 ml-1 bg-white rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out bg-purple-600 transform translate-x-full">
+                        <input id="checked" type="checkbox" className="absolute opacity-0 w-0 h-0" />
+                    </span>
+                    </span>
+                </label>
+            </div>
         </div>
     )
 }
 export const Tags = () => {
     return (
         <div className="pl-6 pb-4 bg-green-100">
-            <p className="pb-4 font-black text-base">Tags</p>
+            <div>
+                <p className="pb-4 font-black text-base">Tags</p>
+            </div>
+            <div className="pb-4">
+                <div className="flex border-2 w-20 justify-center rounded-full p-1">
+                    <p className="text-sm text-black font-black">Tag name</p>
+                </div>
+            </div>
+            <div className="pb-4">
+                <div className="flex border-2 w-28 justify-center rounded-full p-1 bg-pink-800">
+                    <p className="text-sm text-black font-black pr-2">Active Tag</p>
+                    <svg className="pt-1 justify-items-center" width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4L4 12" stroke="#18191F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M4 4L12 12" stroke="#18191F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <div className="flex w-10 h-6 justify-center rounded-full bg-red">
+                    <p className="text-sm text-white font-bold">99+</p>
+                </div>
+            </div>
         </div>
     )
 }
 export const Sliderdots = () => {
     return (
         <div className="pl-6 pb-4 bg-green-100">
-            <p className="pb-4 font-black text-base">Slider dots</p>
+            <div>
+                <p className="pb-4 font-black text-base">Slider dots</p>
+            </div>
+            <div className="flex pb-4">
+                <div className="pr-2">
+                    <div className="rounded-full w-2 h-2 bg-red"></div>
+                </div>
+                <div className="pr-2">
+                    <div className="rounded-full w-2 h-2 bg-white border-2"></div>
+                </div>
+                <div>
+                    <div className="rounded-full w-2 h-2 bg-white border-2"></div>
+                </div>
+            </div>
+            <div className="flex">
+                <div className="pr-2">
+                    <div className="rounded-full w-3 h-3 bg-red"></div>
+                </div>
+                <div className="pr-2">
+                    <div className="rounded-full w-3 h-3 bg-white border-2"></div>
+                </div>
+                <div>
+                    <div className="rounded-full w-3 h-3 bg-white border-2"></div>
+                </div>
+            </div>
         </div>
     )
 }
