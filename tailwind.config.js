@@ -64,6 +64,7 @@ module.exports = {
       '302px': '302px',
       '177px': '177px',
       '155px': '155px',
+      '75px': '75px',
 
     },
     height: {
@@ -87,6 +88,7 @@ module.exports = {
       '478px': '478px',
       '340px': '340px',
       '337px': '337px',
+      '327px': '327px',
       '120px': '120px',
       '106px': '106px',
       '102px': '102px',
@@ -96,6 +98,7 @@ module.exports = {
       '184px': '184px',
       '136px': '136px',
       '238px': '238px',
+      '396px': '396px',
     },
     extend: {
       fontFamily: {
