@@ -1,6 +1,6 @@
 export const PrimaryTypeFace = () => {
     return (
-        <p className="font-medium">Montserrat</p>
+        <p className="font-normal">Montserrat</p>
     )
 }
 
@@ -18,7 +18,16 @@ export const Bold = () => {
 
 export const Medium = () => {
     return (
-        <p className="">Montserrat</p>
+        <p className="font-normal">Montserrat</p>
+    )
+}
+
+export const Download = () => {
+    return (
+        <div>
+            <p className="text-xs font-normal text-blue">fonts.google.com/specimen/Montserrat</p>
+            <p className="text-xs font-normal text-blue">contrauikit.com/montserrat-font.zip</p>
+        </div>
     )
 }
 
