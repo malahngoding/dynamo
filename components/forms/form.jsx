@@ -99,29 +99,29 @@ export const LoginForm = () => {
 
             <div className="flex flex-col border-2 border-white bg-white w-375px h-224px m-5 items-stretch">
                 <div className="flex flex-row">
-                        <input
-                            className="h-56px w-56px border-2 border-black mt-6 ml-10 rounded-2xl text-center font-extrabold text-xl"
-                            type="text"
-                            placeholder="_"
-                        />
-                        <input
-                            className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
-                            type="text"
-                            placeholder="_"
-                        />
-                        <input
-                            className="h-56px w-56px border-2 border-black mt-6 rounded-2xl text-center font-extrabold text-xl"
-                            type="text"
-                            placeholder="_"
-                        />
-                        <input
-                            className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
-                            type="text"
-                            placeholder="_"
-                        />
+                    <input
+                        className="h-56px w-56px border-2 border-black mt-6 ml-10 rounded-2xl text-center font-extrabold text-xl"
+                        type="text"
+                        placeholder="_"
+                    />
+                    <input
+                        className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
+                        type="text"
+                        placeholder="_"
+                    />
+                    <input
+                        className="h-56px w-56px border-2 border-black mt-6 rounded-2xl text-center font-extrabold text-xl"
+                        type="text"
+                        placeholder="_"
+                    />
+                    <input
+                        className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
+                        type="text"
+                        placeholder="_"
+                    />
                 </div>
                 <div className="flex flex-row mx-6 mt-6 items-stretch px-10">
-                    <p className="text-black font-sans text-sm font-normal text-center">Didnt't get fav number?</p>
+                    <p className="text-black font-sans text-sm font-normal text-center">Didnt&apos;t get fav number?</p>
                     <p className="text-red font-sans text-sm font-bold ml-1">Get new</p>
                 </div>
                 <button className="mt-5 mx-6 w-327px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Verify</button>
@@ -133,7 +133,7 @@ export const LoginForm = () => {
                         <p className="mt-6 mx-6 w-327px h-40px text-4xl text-black font-sans font-extrabold">
                             Login</p>
                         <p className="mx-6 mt-3 font-normal text-base">
-                            You don't think you should login first
+                            You don&apos;t think you should login first
                         </p>
                         <p className="mx-6 font-normal text-base">
                             and behave like human not robot.
