@@ -121,7 +121,7 @@ export const LoginForm = () => {
                         />
                 </div>
                 <div className="flex flex-row mx-6 mt-6 items-stretch px-10">
-                    <p className="text-black font-sans text-sm font-normal text-center">Didnt't get fav number?</p>
+                    <p className="text-black font-sans text-sm font-normal text-center">Didnt&apos;t get fav number?</p>
                     <p className="text-red font-sans text-sm font-bold ml-1">Get new</p>
                 </div>
                 <button className="mt-5 mx-6 w-327px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Verify</button>
@@ -133,7 +133,7 @@ export const LoginForm = () => {
                         <p className="mt-6 mx-6 w-327px h-40px text-4xl text-black font-sans font-extrabold">
                             Login</p>
                         <p className="mx-6 mt-3 font-normal text-base">
-                            You don't think you should login first
+                            You do&apos;t think you should login first
                         </p>
                         <p className="mx-6 font-normal text-base">
                             and behave like human not robot.
