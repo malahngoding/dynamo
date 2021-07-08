@@ -330,3 +330,16 @@ export const SpecialOrImage = () => {
         </div>
     )
 }
+
+export function Button(props) {
+    const { tittle, width, height, border, rounded, color = "bg-black", color_img ="black"} = props;
+    return (
+      <div>
+        <button className={`flex flex-row ${border} ${rounded} ${width} ${height} shadow-xl ${color} justify-center`}>
+            <div className="m-1">
+            {tittle}
+            </div>
+        </button>
+      </div>
+    );
+  }
