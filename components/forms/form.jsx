@@ -14,7 +14,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="text" name="email" placeholder="Email address" />
+                                <input className="w-251px h-28px my-3" name="email" placeholder="Email address" />
                             </div>
                         </div>
                         <div className="flex flex-row border-2 border-black mx-6 mt-6 w-327px h-56px rounded-2xl box-border">
@@ -25,7 +25,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="password" name="password" placeholder="●●●●●●●" />
+                                <input className="w-251px h-28px my-3" name="password" placeholder="●●●●●●●" />
                             </div>
                         </div>
                         <button className="mt-12 mx-6 w-327px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
@@ -63,7 +63,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="text" name="email" placeholder="Full Name" />
+                                <input className="w-251px h-28px my-3" name="email" placeholder="Full Name" />
                             </div>
                         </div>
                         <div className="flex flex-row border-2 border-black mx-6 mt-6 w-327px h-56px rounded-2xl box-border">
@@ -74,7 +74,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="text" name="password" placeholder="Email address" />
+                                <input className="w-251px h-28px my-3" name="password" placeholder="Email address" />
                             </div>
                         </div>
                         <div className="flex flex-row border-2 border-black mx-6 mt-6 w-327px h-56px rounded-2xl box-border">
@@ -85,7 +85,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="password" name="password" placeholder="●●●●●●●" />
+                                <input className="w-251px h-28px my-3" name="password" placeholder="●●●●●●●" />
                             </div>
                         </div>
                         <button className="mt-8 mx-6 w-327px h-60px rounded-2xl bg-yellow text-black border-2 border-black font-sans text-xl font-extrabold box-border shadow-lg ">Sign up</button>
@@ -101,22 +101,22 @@ export const LoginForm = () => {
                 <div className="flex flex-row">
                     <input
                         className="h-56px w-56px border-2 border-black mt-6 ml-10 rounded-2xl text-center font-extrabold text-xl"
-                        type="text"
+
                         placeholder="_"
                     />
                     <input
                         className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
-                        type="text"
+
                         placeholder="_"
                     />
                     <input
                         className="h-56px w-56px border-2 border-black mt-6 rounded-2xl text-center font-extrabold text-xl"
-                        type="text"
+
                         placeholder="_"
                     />
                     <input
                         className="h-56px w-56px border-2 border-black mt-6 mx-6 rounded-2xl text-center font-extrabold text-xl"
-                        type="text"
+
                         placeholder="_"
                     />
                 </div>
@@ -146,7 +146,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="text" name="email" placeholder="Email address" />
+                                <input className="w-251px h-28px my-3" name="email" placeholder="Email address" />
                             </div>
                         </div>
                         <div className="flex flex-row border-2 border-black mx-6 mt-6 w-327px h-56px rounded-2xl box-border">
@@ -157,7 +157,7 @@ export const LoginForm = () => {
                                 </svg>
                             </div>
                             <div>
-                                <input className="w-251px h-28px my-3" type="password" name="password" placeholder="●●●●●●●" />
+                                <input className="w-251px h-28px my-3" name="password" placeholder="●●●●●●●" />
                             </div>
                         </div>
                         <button className="mt-12 mx-6 w-327px h-60px rounded-2xl bg-yellow text-black border-2 border-black font-sans text-xl font-extrabold box-border shadow-lg ">Sign in</button>
@@ -185,7 +185,7 @@ export const LoginForm = () => {
                             </svg>
                         </div>
                         <div>
-                            <input className="w-251px h-28px my-3" type="text" name="email" placeholder="Email address" />
+                            <input className="w-251px h-28px my-3" name="email" placeholder="Email address" />
                         </div>
                     </div>
                     <div className="flex flex-row border-2 border-black mx-6 mt-6 w-327px h-56px rounded-2xl box-border">
@@ -196,7 +196,7 @@ export const LoginForm = () => {
                             </svg>
                         </div>
                         <div>
-                            <input className="w-251px h-28px my-3" type="password" name="password" placeholder="●●●●●●●" />
+                            <input className="w-251px h-28px my-3" name="password" placeholder="●●●●●●●" />
                         </div>
                     </div>
                     <button className="mt-6 mx-6 mb-8 w-327px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
