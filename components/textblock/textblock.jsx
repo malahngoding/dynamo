@@ -287,7 +287,7 @@ export function TextBlock(props) {
                 </defs>
                 </svg>
                 
-                <p className="text-black-400 text-xs text-normal">Name, name and 3 more</p>
+                <p className="text-black-400 text-xs font-normal pt-2">Name, name and 3 more</p>
                 </div>
             </div>
             <div className="pb-2">
