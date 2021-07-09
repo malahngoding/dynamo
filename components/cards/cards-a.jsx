@@ -386,6 +386,178 @@ export const CardsA = () => {
                 </div>
             </div>
 
+            <div className="w-327px h-299px bg-yellow m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-col">
+                    <div>
+                        mantap
+                    </div>
+                    <div className="bg-white">DJ Night Hawa</div>
+                    <div className="flex flex-row">
+                        <div>
+                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.75 8.5C15.75 13.75 9 18.25 9 18.25C9 18.25 2.25 13.75 2.25 8.5C2.25 6.70979 2.96116 4.9929 4.22703 3.72703C5.4929 2.46116 7.20979 1.75 9 1.75C10.7902 1.75 12.5071 2.46116 13.773 3.72703C15.0388 4.9929 15.75 6.70979 15.75 8.5Z" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 10.75C10.2426 10.75 11.25 9.74264 11.25 8.5C11.25 7.25736 10.2426 6.25 9 6.25C7.75736 6.25 6.75 7.25736 6.75 8.5C6.75 9.74264 7.75736 10.75 9 10.75Z" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>Milky Way, Mars</div>
+                        <div></div>
+                    </div>
+                    <div className="flex flex-row">
+                        <div>
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.25 3H3.75C2.92157 3 2.25 3.67157 2.25 4.5V15C2.25 15.8284 2.92157 16.5 3.75 16.5H14.25C15.0784 16.5 15.75 15.8284 15.75 15V4.5C15.75 3.67157 15.0784 3 14.25 3Z" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 1.5V4.5" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M6 1.5V4.5" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M2.25 7.5H15.75" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>12 March, 2020</div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-260px h-356px bg-blue m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-col text-center mt-10">
+                    <div className="font-normal text-white text-xl">POPULAR</div>
+                    <div className="mt-2 font-extrabold text-white text-4xl">$19</div>
+                </div>
+                <div className="flex flex-col mx-6 mt-8 text-center">
+                    <div className="text-white text-base font-normal">You don't think you</div>
+                    <div className="text-white text-base font-normal">should give some dollar</div>
+                    <div className="text-white text-base font-normal">to use our service.</div>
+                </div>
+                <button className="mt-10 mx-6 w-212px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Select</button>
+            </div>
+
+            <div className="w-251px h-80px bg-yellow m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-col m-4">
+                    <div className="font-bold text-base">Message bubble with</div>
+                    <div className="font-bold text-base">more than single line.</div>
+                </div>
+            </div>
+
+            <div className="w-176px h-56px bg-yellow m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-col m-4">
+                    <div className="font-bold text-base">Single Message.</div>
+                </div>
+            </div>
+
+            <div className="w-327px h-112px bg-white m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-row ml-6 my-6">
+                    <div className="flex flex-col">
+                        <div className="font-extrabold text-2xl">Header Title</div>
+                        <div className="font-bold text-red">Subtite here</div>
+                    </div>
+                    <div className="flex flex-row">
+                        <div>
+                            <div className="justify-center items-center ml-20 mt-2">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="24" cy="24" r="24" fill="#F95A2C" />
+                                    <path d="M21.333 32L29.333 24L21.333 16" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="w-327px h-159px bg-white m-5 border-2 border-black rounded-2xl text-center">
+                <div>ini map</div>
+            </div>
+            <div className="flex flex-row ml-6">
+                <div className="flex flex-row">
+                    <div className="flex flex-col">
+                        <div className="font-extrabold text-2xl">Space 8</div>
+                        <div className="font-normal text-xl text-black-800">Wolf Crater, 897, Marsh</div>
+                    </div>
+                </div>
+                <div className="flex flex-row">
+                    <div>
+                        <svg width="60" height="62" viewBox="0 0 60 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d)">
+                                <circle cx="30" cy="30" r="29" fill="white" stroke="#18191F" stroke-width="2" />
+                                <path d="M19.5 28.8333L41.6667 18.3333L31.1667 40.5L28.8333 31.1666L19.5 28.8333Z" stroke="#18191F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_d" x="0" y="0" width="60" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                    <feOffset dy="2" />
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0.0941176 0 0 0 0 0.0980392 0 0 0 0 0.121569 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-327px h-312px bg-white m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-col text-center mt-8">
+                    <div className="font-extrabold text-black text-4xl">Title of the features</div>
+                </div>
+                <div className="flex flex-col mt-4 mx-6 text-center">
+                    <div className="text-black text-sm font-normal">This title may have some detailed descriptions, which can go here.</div>
+                    <div className="text-black text-sm font-normal"> Some of these text box information</div>
+                    <div className="text-black text-sm font-normal">is secured.</div>
+                </div>
+                <button className="mt-3 mb-8 mx-6 w-279px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
+                    <div className="flex flex-row justify-center items-center">
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.945 22C11.835 22 11.7249 22 11.6149 21.887H11.5049C9.08422 20.6441 3.3627 17.1412 1.38217 11.6045C1.05208 10.5876 0.281877 6.40678 2.70252 3.80791C4.1329 2.22599 5.45325 2 6.33349 2C8.42405 2 10.6246 3.24294 11.945 5.05085C13.2653 3.12994 15.2459 2 17.5565 2C18.4367 2 19.7571 2.22599 21.2975 3.80791C23.7181 6.40678 22.9479 10.7006 22.6178 11.6045C20.6373 17.2542 14.8057 20.6441 12.4951 21.887C12.2751 22 12.055 22 11.945 22Z" fill="white" />
+                            </svg>
+                        </div>
+                        <div className="ml-2">Confirm here</div>
+                    </div>
+                </button>
+            </div>
+
+            <div className="w-327px h-404px bg-white m-5 border-2 border-black rounded-2xl">
+                <div className="flex flex-col text-center mt-6">
+                    <div className="font-extrabold text-black text-4xl">Login</div>
+                </div>
+                <div className="flex flex-col mt-4 mx-6 text-center">
+                    <div className="text-black-800 text-base font-normal">You don't think you should</div>
+                    <div className="text-black-800 text-base font-normal"> login first and behave like</div>
+                    <div className="text-black-800 text-base font-normal">human not robot.</div>
+                </div>
+                <button className="mt-4 mx-6 w-279px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
+                    <div className="flex flex-row justify-center items-center">
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M22 6L12 13L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div className="ml-2">Email</div>
+                    </div>
+                </button>
+                <button className="mt-4 mx-6 w-279px h-60px rounded-2xl bg-blue text-white font-sans text-xl font-extrabold">
+                    <div className="flex flex-row justify-center items-center">
+                        <div>
+                            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.5 2H15.5C14.1739 2 12.9021 2.52678 11.9645 3.46447C11.0268 4.40215 10.5 5.67392 10.5 7V10H7.5V14H10.5V22H14.5V14H17.5L18.5 10H14.5V7C14.5 6.73478 14.6054 6.48043 14.7929 6.29289C14.9804 6.10536 15.2348 6 15.5 6H18.5V2Z" fill="white" />
+                            </svg>
+                        </div>
+                        <div className="ml-2">Facebook</div>
+                    </div>
+                </button>
+                <button className="mt-4 mx-6 w-279px h-60px rounded-2xl bg-green text-white font-sans text-xl font-extrabold">
+                    <div className="flex flex-row justify-center items-center">
+                        <div>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4 5.5 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z" fill="white" />
+                            </svg>
+                        </div>
+                        <div className="ml-2">Twitter</div>
+                    </div>
+                </button>
+            </div>
         </div>
     )
 }

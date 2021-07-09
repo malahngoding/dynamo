@@ -70,11 +70,19 @@ module.exports = {
       '155px': '155px',
       '75px': '75px',
       '219px': '219px',
+      '260px': '260px',
+      '212px': '212px',
+      '176px': '176px',
+
+
 
     },
     height: {
+      '404px': '404px',
       '428px': '428px',
+      '159px': '159px',
       '84px': '84px',
+      '80px': '80px',
       '132px': '132px',
       '16px': '16px',
       '36px': '36px',
@@ -112,6 +120,12 @@ module.exports = {
       '256px': '256px',
       '208px': '208px',
       '172px': '172px',
+      '179px': '179px',
+      '299px': '299px',
+      '356px': '356px',
+      '112px': '112px',
+
+
     },
     extend: {
       fontFamily: {
