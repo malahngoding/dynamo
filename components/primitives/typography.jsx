@@ -1,26 +1,25 @@
-export const PrimaryTypeFace = () => {
+export const Black = () => {
     return (
-        <p className="font-normal">Montserrat</p>
+        <p className="font-black text-2xl">Montserrat</p>
     )
 }
-
 export const ExtraBold = () => {
     return (
-        <p className="font-black text-lg">Montserrat</p>
+        <p className="font-extrabold text-xl">Montserrat</p>
     )
 }
 
 export const Bold = () => {
     return (
-        <p className="font-bold text-xxl">Montserrat</p>
+        <p className="font-bold text-xl">Montserrat</p>
+    )
+}
+export const PrimaryTypeFace = () => {
+    return (
+        <p className="font-normal text-xl">Montserrat</p>
     )
 }
 
-export const Medium = () => {
-    return (
-        <p className="font-normal">Montserrat</p>
-    )
-}
 
 export const Download = () => {
     return (
