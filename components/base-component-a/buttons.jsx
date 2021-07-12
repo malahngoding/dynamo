@@ -132,11 +132,11 @@ export const Steppers = () => {
         <p className="pb-4 font-black text-base">Steppers</p>
         <div className="flex pb-2">
         <div className="pr-2">
-        <p className="text-xl font-black">Add</p>
+        <p className="text-4xl font-black">Add</p>
         </div>
-        <div className="pr-2">
-        <button data-action="decrement" className="object-none border bg-yellow w-7 h-7 object-center rounded-lg">
-        <svg className="pl-1.5 w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="pr-2 w">
+        <button className="flex border bg-yellow w-56px h-48px justify-center rounded-xl">
+        <svg className="pt-3 w-36px h-36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 5V19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M5 12H19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -144,17 +144,17 @@ export const Steppers = () => {
         </div>
         <div className="pr-1">
             {/* <input className="text-xl font-black w-7 h-7" type="number" min="2" placeholder="2"/>  */}
-            <p className="text-xl font-black">2</p>
+            <p className="text-4xl font-black">2</p>
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b rounded-l-lg bg-yellow py-3 px-2.5">
-                <svg width="10" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button className="border-t border-l border-b rounded-l-xl bg-yellow pl-4 w-45px h-48px">
+                <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <button className="border rounded-r-lg bg-yellow px-2.5">
-                <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button className="border rounded-r-xl bg-yellow pl-4 w-45px h-48px">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -163,11 +163,11 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b text-base font-black rounded-l-lg bg-yellow py-0.5 px-3.5">
+                <button className="border-t border-l border-b text-xl font-black rounded-l-xl bg-yellow w-80px h-48px">
                 Add
                 </button>
-                <button className="border-t border-r border-b rounded-r-lg bg-white px-2.5">
-                <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-32px h-48px pl-2">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -175,15 +175,15 @@ export const Steppers = () => {
             </div>
         </div>
         <div className="pr-2">
-            <div className="flex justify-items-center">
-                <button className="border-t border-l border-b text-base font-black rounded-l-lg bg-white py-0.5 px-2.5">
-                <svg width="10" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="flex justify-center">
+                <button className="border-t border-l border-b text-base font-black rounded-l-xl bg-white w-45px h-48px pl-4">
+                <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <p className="border-t border-b text-xl font-black bg-yellow px-2">2</p>
-                <button className="border-t border-r border-b rounded-r-lg bg-white px-2.5">
-                <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <p className="flex items-center border-t border-b text-2xl font-black bg-yellow w-45px h-48px pl-4">2</p>
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-45px h-48px pl-4">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -194,11 +194,11 @@ export const Steppers = () => {
         {/* small */}
         <div className="flex pb-2">
         <div className="pr-2">
-        <p className="text-sm font-black">Add</p>
+        <p className="text-xl font-black">Add</p>
         </div>
-        <div className="pr-2">
-        <button data-action="decrement" className="object-none border bg-yellow w-6 h-6 object-center rounded-lg">
-        <svg className="pl-1 w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="pr-2 w">
+        <button className="flex border bg-yellow w-36px h-36px justify-center rounded-lg">
+        <svg className="pt-2 w-28px h-28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 5V19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M5 12H19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -206,17 +206,17 @@ export const Steppers = () => {
         </div>
         <div className="pr-1">
             {/* <input className="text-xl font-black w-7 h-7" type="number" min="2" placeholder="2"/>  */}
-            <p className="text-sm font-black">2</p>
+            <p className="text-xl font-black">0</p>
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b rounded-l-lg bg-yellow py-2 px-1.5">
-                <svg width="10" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button className="border-t border-l border-b rounded-l-xl bg-yellow pl-2 w-32px h-36px">
+                <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <button className="border rounded-r-lg bg-yellow px-1.5">
-                <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button className="border rounded-r-xl bg-yellow pl-2 w-32px h-36px">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -225,11 +225,11 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b text-sm font-black rounded-l-lg bg-yellow px-1.5">
+                <button className="border-t border-l border-b text-lg font-black rounded-l-xl bg-yellow w-56px h-36px">
                 Add
                 </button>
-                <button className="border-t border-r border-b rounded-r-lg bg-white px-1.5">
-                <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-32px h-36px pl-2">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -237,15 +237,15 @@ export const Steppers = () => {
             </div>
         </div>
         <div className="pr-2">
-            <div className="flex justify-items-center">
-                <button className="border-t border-l border-b text-sm font-black rounded-l-lg bg-white py-0.5 px-1.5">
-                <svg width="10" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="flex justify-center">
+                <button className="border-t border-l border-b text-base font-black rounded-l-xl bg-white w-32px h-36px pl-2">
+                <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <p className="border-t border-b text-sm font-black bg-yellow px-1">2</p>
-                <button className="border-t border-r border-b rounded-r-lg bg-white px-1.5">
-                <svg width="10" height="10" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <p className="flex items-center border-t border-b text-xl font-black bg-yellow w-32px h-36px pl-2">2</p>
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-32px h-36px pl-2">
+                <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -316,7 +316,23 @@ export const IconOnly = () => {
         </div>
     )
 }
-export const SpecialOrImage = () => {
+
+export function SpecialOrImage(props) {
+    const { tittle, width, height, border, rounded, color = "bg-black", color_img ="black"} = props;
+    return (
+      <div>
+        <button className={`flex flex-row ${border} ${rounded} ${width} ${height} shadow-xl ${color} justify-center`}>
+            <div className="p-5">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.9998 2.66669L20.1198 11.0134L29.3332 12.36L22.6665 18.8534L24.2398 28.0267L15.9998 23.6934L7.75984 28.0267L9.33317 18.8534L2.6665 12.36L11.8798 11.0134L15.9998 2.66669Z" fill="#FFBD12" stroke="#18191F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            </div>
+        </button>
+      </div>
+    );
+  }
+
+export const SpecialOrImage1 = () => {
     return (
         <div className="pt-4 pl-6 bg-green-100">
         <p className="pb-4 font-black text-base">Special/Image</p>
@@ -330,3 +346,16 @@ export const SpecialOrImage = () => {
         </div>
     )
 }
+
+export function Button(props) {
+    const { tittle, width, height, border, rounded, color = "bg-black", color_img ="black"} = props;
+    return (
+      <div>
+        <button className={`flex flex-row ${border} ${rounded} ${width} ${height} shadow-xl ${color} justify-center`}>
+            <div className="m-1">
+            {tittle}
+            </div>
+        </button>
+      </div>
+    );
+  }
