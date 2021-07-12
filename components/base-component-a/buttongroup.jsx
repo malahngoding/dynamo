@@ -1,5 +1,5 @@
 export function ButtonGroup1(props) {
-  const { tittle, color = "bg-black" } = props;
+  const { tittle, color = "bg-white" } = props;
   return (
     <div>
       <button

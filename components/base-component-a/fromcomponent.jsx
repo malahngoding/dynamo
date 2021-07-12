@@ -4,7 +4,7 @@ export const InputBox = () => {
       <p className="pb-4 font-black text-lg text-blue">FROM COMPONENT</p>
       <p className="pb-2 font-black text-base">Input Box</p>
       <div className="pb-2 inline-block">
-        <div className="flex border rounded bg-white items-center p-3 w-52 h-7">
+        <div className="flex border rounded-xl bg-white items-center p-3 w-327px h-48px">
           <svg
             className="pr-1"
             width="22"
@@ -23,16 +23,16 @@ export const InputBox = () => {
           </svg>
 
           <input
-            className="bg-white w-40 h-5 focus:outline-none text-base font-normal placeholder-black"
+            className="bg-white border-r-0 border-l-0 w-302px h-48px focus:outline-none text-base font-normal placeholder-black"
             type="text"
             placeholder="Input your love here"
           />
         </div>
       </div>
       <div className="pb-2 inline-block">
-        <div className="flex border rounded bg-white items-center p-3 w-52 h-7">
+        <div className="flex border rounded-xl bg-white items-center p-3 w-327px h-48px ">
           <input
-            className="pr-1 bg-white w-40 h-4 focus:outline-none text-base font-normal placeholder-black"
+            className="pr-1 bg-white border-r-0 border-l-0 w-302px h-48px focus:outline-none text-base font-normal placeholder-black"
             type="text"
             placeholder="Search with love ..."
           />
@@ -61,12 +61,12 @@ export const InputBox = () => {
         </div>
       </div>
       <div className="pb-2">
-        <div className="flex border-t border-b border-l rounded bg-white items-center w-max h-6">
+        <div className="flex border-t border-b border-l rounded-xl bg-white items-center p-3 w-327px h-48px">
           <div className="pr-2">
-            <p className="pl-1 text-base">Choose your love</p>
+            <p className="pl-1 text-base w-251px">Choose your love</p>
           </div>
-          <div className="pl-3 pt-2.5">
-            <select className="bg-yellow w-4 h-6 border-t border-b border-r rounded-r">
+          <div className="">
+            <select className="bg-yellow w-48px h-48px border-t border-b border-r rounded-r-xl">
               <option>hello</option>
               <option>hai</option>
             </select>
@@ -75,8 +75,8 @@ export const InputBox = () => {
       </div>
       <div className="pb-2 inline-block">
         <div className="">
-          <button className="border rounded-lg bg-white px-3 py-1">
-            <p className="text-base font-black">0</p>
+          <button className="border rounded-xl bg-white w-60px h-60px">
+            <p className="text-2xl font-black">0</p>
           </button>
         </div>
       </div>
