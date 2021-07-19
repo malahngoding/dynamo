@@ -46,6 +46,7 @@ module.exports = {
       black: 900,
       extrabold: 800,
     },
+    
     extend: {
       width: {
         "2px": "2px",
