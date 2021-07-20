@@ -6,7 +6,7 @@ export const CardsA = () => {
                     B I G C A R D S</p>
             </div>
 
-            <div className="w-327px h-396px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[396px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="mt-6 ml-6">
                     <svg className="rounded-full" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">
@@ -36,7 +36,7 @@ export const CardsA = () => {
                         </div>
                         <div className="ml-28">
                             <button>
-                                <div className="bg-yellow border-2 border-black rounded-xl w-75px h-36px">
+                                <div className="bg-yellow border-2 border-black rounded-xl w-[75px] h-[36px]">
                                     <p className="font-extrabold text-xs mt-2">Follow</p>
                                 </div>
                             </button>
@@ -45,7 +45,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-327px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[327px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row">
                     <div className="ml-6 mt-6"><svg className="rounded-full" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">
@@ -136,7 +136,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-270px bg-yellow-100 m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[270px] bg-yellow-100 m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row">
                     <div className="ml-6 mt-6"><svg className="rounded-full" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">
@@ -185,7 +185,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-144px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[144px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col ml-6 mt-8">
                     <div className="font-bold text-xs text-black-800">by Lara Trina  •  12 March, 20</div>
                     <div className="font-extrabold text-2xl mt-2">I’m post title, Please</div>
@@ -193,11 +193,11 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-184px bg-green m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[184px] bg-green m-5 border-2 border-black rounded-2xl">
                 <div className="font-extrabold text-xl ml-6 mt-6">Angela Mahera</div>
                 <div className="font-bold text-base text-green-100 ml-6">Designer</div>
                 <div className="flex flex-row">
-                    <div className="w-89px h-36px ml-6 mt-10 bg-black text-white rounded-xl text-xs font-extrabold text-center">
+                    <div className="w-[89px] h-[36px] ml-6 mt-10 bg-black text-white rounded-xl text-xs font-extrabold text-center">
                         <p className="mt-2">Message</p></div>
                     <div className="mt-11 ml-4">
                         <svg width="54" height="24" viewBox="0 0 54 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,13 +212,13 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-256px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[256px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row mt-8 ml-6">
                     <div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="12" r="11" fill="#FFBD12" stroke="#18191F" strokeWidth="2" />
                     </svg>
                     </div>
-                    <div className="font-extrabold text-base ml-3 h-24px w-219px ">Account</div>
+                    <div className="font-extrabold text-base ml-3 h-[24px] w-[219px] ">Account</div>
                     <div className="">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 18L16 12L10 6" stroke="#18191F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -231,7 +231,7 @@ export const CardsA = () => {
                             <circle cx="12" cy="12" r="11" fill="#61E4C5" stroke="#18191F" strokeWidth="2" />
                         </svg>
                     </div>
-                    <div className="font-extrabold text-base ml-3 h-24px w-219px ">Password</div>
+                    <div className="font-extrabold text-base ml-3 h-[24px] w-[219px] ">Password</div>
                     <div className="">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 18L16 12L10 6" stroke="#18191F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -244,7 +244,7 @@ export const CardsA = () => {
                             <circle cx="12" cy="12" r="11" fill="#FF9692" stroke="#18191F" strokeWidth="2" />
                         </svg>
                     </div>
-                    <div className="font-extrabold text-base ml-3 h-24px w-219px ">Privacy</div>
+                    <div className="font-extrabold text-base ml-3 h-[24px] w-[219px] ">Privacy</div>
                     <div className="">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 18L16 12L10 6" stroke="#18191F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -256,7 +256,7 @@ export const CardsA = () => {
                         <circle cx="12" cy="12" r="11" fill="#FFBD12" stroke="#18191F" strokeWidth="2" />
                     </svg>
                     </div>
-                    <div className="font-extrabold text-base ml-3 h-24px w-219px ">Preferences</div>
+                    <div className="font-extrabold text-base ml-3 h-[24px] w-[219px] ">Preferences</div>
                     <div className="">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 18L16 12L10 6" stroke="#18191F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -265,7 +265,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-102px bg-green m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[102px] bg-green m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row">
                     <div className="flex flex-col ml-6 mt-6">
                         <div className="font-extrabold text-xl text-white">City Name</div>
@@ -283,7 +283,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-102px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[102px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row">
                     <div className="flex flex-col ml-6 mt-6">
                         <div className="font-extrabold text-xl text-black">City Name</div>
@@ -301,7 +301,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-102px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[102px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row">
                     <div className="flex flex-col ml-6 mt-6">
                         <div className="font-extrabold text-xl text-black">Country</div>
@@ -314,7 +314,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-208px bg-red m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[208px] bg-red m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col mt-6 ml-6">
                     <div>
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -327,7 +327,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-172px bg-red-100 m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[172px] bg-red-100 m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col mt-6 ml-6">
                     <p className="font-extrabold text-2xl">Happiness</p>
                     <p className="font-bold text-sm mt-2">Colorful and Beautiful life if you</p>
@@ -354,7 +354,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-172px bg-red m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[172px] bg-red m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col mt-6 ml-6">
                     <p className="font-extrabold text-2xl text-white">Happiness</p>
                     <p className="font-bold text-sm mt-2 text-white">Colorful and Beautiful life if you</p>
@@ -381,7 +381,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-84px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[84px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row">
                     <div className="ml-4 mt-3"><svg className="rounded-full" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">
@@ -405,14 +405,14 @@ export const CardsA = () => {
                         <div className="font-normal text-sm text-black-800">Planet Designer</div>
                     </div>
                     <div className="my-6 ml-10"><button>
-                        <div className="bg-yellow border-2 border-black rounded-xl w-75px h-36px">
+                        <div className="bg-yellow border-2 border-black rounded-xl w-[75px] h-[36px]">
                             <p className="font-extrabold text-xs mt-2">Follow</p>
                         </div>
                     </button></div>
                 </div>
             </div>
 
-            <div className="w-327px h-428px bg-red m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[428px] bg-red m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col text-center mt-10">
                     <div className="font-normal text-white text-xl">POPULAR</div>
                     <div className="mt-2 font-extrabold text-white text-4xl">FREE</div>
@@ -441,17 +441,17 @@ export const CardsA = () => {
                     </div>
                     <div className="text-white ml-5 text-xl">120+ Screens</div>
                 </div>
-                <button className="mt-8 mx-6 w-279px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Love button</button>
+                <button className="mt-8 mx-6 w-[279px] h-[60px] rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Love button</button>
             </div>
 
-            <div className="w-327px h-132px bg-yellow m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[132px] bg-yellow m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col my-6 text-center">
                     <div className="font-extrabold text-5xl">$29</div>
                     <div className=" font-normal text-xl mt-1">per month</div>
                 </div>
             </div>
 
-            <div className="w-327px h-299px bg-yellow m-5 border-r-2 border-l-2 border-t-2 rounded-t-lg rounded-b-lg">
+            <div className="w-[327px] h-[299px] bg-yellow m-5 border-r-2 border-l-2 border-t-2 rounded-t-lg rounded-b-lg">
                 <div className="border-b-2 border-black h-179px">
                     <div className="mx-4 pt-1">
                         <svg width="296" height="172" viewBox="0 0 296 172" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -499,7 +499,7 @@ export const CardsA = () => {
                         </svg>
                     </div>
                 </div>
-                <div className="flex flex-col bg-white h-120px border-b-2 rounded-b-lg">
+                <div className="flex flex-col bg-white h-[120px] border-b-2 rounded-b-lg">
                     <div className="mt-2 ml-6 font-extrabold text-2xl">DJ Night Hawa</div>
                     <div className="flex flex-row mt-2 ml-6">
                         <div>
@@ -524,10 +524,10 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-183px bg-yellow m-5 border-r-2 border-l-2 border-t-2 rounded-t-lg rounded-b-lg">
-                <div className="border-b-2 border-black h-99px">
+            <div className="w-[327px] h-[183px] bg-yellow m-5 border-r-2 border-l-2 border-t-2 rounded-t-lg rounded-b-lg">
+                <div className="border-b-2 border-black h-[99px]">
                 </div>
-                <div className="flex flex-row bg-white h-84px border-b-2 rounded-b-lg">
+                <div className="flex flex-row bg-white h-[84px] border-b-2 rounded-b-lg">
                     <div className="ml-4 mt-4"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="24" cy="24" r="24" fill="#FFBD12" />
                     </svg>
@@ -540,7 +540,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-260px h-356px bg-blue m-5 border-2 border-black rounded-2xl">
+            <div className="w-[260px] h-[356px] bg-blue m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col text-center mt-10">
                     <div className="font-normal text-white text-xl">POPULAR</div>
                     <div className="mt-2 font-extrabold text-white text-4xl">$19</div>
@@ -550,23 +550,23 @@ export const CardsA = () => {
                     <div className="text-white text-base font-normal">should give some dollar</div>
                     <div className="text-white text-base font-normal">to use our service.</div>
                 </div>
-                <button className="mt-10 mx-6 w-212px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Select</button>
+                <button className="mt-10 mx-6 w-[212px] h-[60px] rounded-2xl bg-black text-white font-sans text-xl font-extrabold">Select</button>
             </div>
 
-            <div className="w-251px h-80px bg-yellow m-5 border-2 border-black rounded-2xl">
+            <div className="w-[251px] h-[80px] bg-yellow m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col m-4">
                     <div className="font-bold text-base">Message bubble with</div>
                     <div className="font-bold text-base">more than single line.</div>
                 </div>
             </div>
 
-            <div className="w-176px h-56px bg-yellow m-5 border-2 border-black rounded-2xl">
+            <div className="w-[176px] h-[56px] bg-yellow m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col m-4">
                     <div className="font-bold text-base">Single Message.</div>
                 </div>
             </div>
 
-            <div className="w-327px h-112px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[112px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-row ml-6 my-6">
                     <div className="flex flex-col">
                         <div className="font-extrabold text-2xl">Header Title</div>
@@ -586,7 +586,7 @@ export const CardsA = () => {
             </div>
 
 
-            <div className="w-327px h-159px bg-white m-5 border-2 border-black rounded-2xl text-center">
+            <div className="w-[327px] h-[159px] bg-white m-5 border-2 border-black rounded-2xl text-center">
                 <div>ini map</div>
             </div>
             <div className="flex flex-row ml-6">
@@ -618,7 +618,7 @@ export const CardsA = () => {
                 </div>
             </div>
 
-            <div className="w-327px h-312px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[312px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col text-center mt-8">
                     <div className="font-extrabold text-black text-4xl">Title of the features</div>
                 </div>
@@ -627,7 +627,7 @@ export const CardsA = () => {
                     <div className="text-black text-sm font-normal"> Some of these text box information</div>
                     <div className="text-black text-sm font-normal">is secured.</div>
                 </div>
-                <button className="mt-3 mb-8 mx-6 w-279px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
+                <button className="mt-3 mb-8 mx-6 w-[279px] h-[60px] rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
                     <div className="flex flex-row justify-center items-center">
                         <div>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -639,7 +639,7 @@ export const CardsA = () => {
                 </button>
             </div>
 
-            <div className="w-327px h-404px bg-white m-5 border-2 border-black rounded-2xl">
+            <div className="w-[327px] h-[404px] bg-white m-5 border-2 border-black rounded-2xl">
                 <div className="flex flex-col text-center mt-6">
                     <div className="font-extrabold text-black text-4xl">Login</div>
                 </div>
@@ -648,7 +648,7 @@ export const CardsA = () => {
                     <div className="text-black-800 text-base font-normal"> login first and behave like</div>
                     <div className="text-black-800 text-base font-normal">human not robot.</div>
                 </div>
-                <button className="mt-4 mx-6 w-279px h-60px rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
+                <button className="mt-4 mx-6 w-[279px] h-[60px] rounded-2xl bg-black text-white font-sans text-xl font-extrabold">
                     <div className="flex flex-row justify-center items-center">
                         <div>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -659,7 +659,7 @@ export const CardsA = () => {
                         <div className="ml-2">Email</div>
                     </div>
                 </button>
-                <button className="mt-4 mx-6 w-279px h-60px rounded-2xl bg-blue text-white font-sans text-xl font-extrabold">
+                <button className="mt-4 mx-6 w-[279px] h-[60px] rounded-2xl bg-blue text-white font-sans text-xl font-extrabold">
                     <div className="flex flex-row justify-center items-center">
                         <div>
                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -669,7 +669,7 @@ export const CardsA = () => {
                         <div className="ml-2">Facebook</div>
                     </div>
                 </button>
-                <button className="mt-4 mx-6 w-279px h-60px rounded-2xl bg-green text-white font-sans text-xl font-extrabold">
+                <button className="mt-4 mx-6 w-[279px] h-[60px] rounded-2xl bg-green text-white font-sans text-xl font-extrabold">
                     <div className="flex flex-row justify-center items-center">
                         <div>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
