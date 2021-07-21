@@ -5,12 +5,12 @@ export const Listing = () => {
                 <p className="mx-6 mt-5 mb-10 text-blue font-sans text-4xl font-bold tracking-wider">L I S T I NG</p>
             </div>
 
-            <div className="h-56px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[56px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row items-stretch">
                     <svg className="ml-6 my-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="12" r="11" fill="#FFBD12" stroke="#18191F" strokeWidth="2" />
                     </svg>
-                    <div className="w-267px h-24px ml-3 my-4 font-extrabold text-base">
+                    <div className="w-[267px] h-[24px] ml-3 my-4 font-extrabold text-base">
                         Title of the option
                     </div>
                     <svg className="my-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,9 +19,9 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-56px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[56px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row items-stretch">
-                    <div className="w-295px h-24px ml-6 my-4 font-extrabold text-base">
+                    <div className="w-[295px] h-[24px] ml-6 my-4 font-extrabold text-base">
                         This is single line text
                     </div>
                     <svg className="my-4 ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,9 +30,9 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-76px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[76px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row items-stretch">
-                    <div className="w-296px h-28px ml-6 my-6 font-extrabold text-xl">
+                    <div className="w-[296px] h-[28px] ml-6 my-6 font-extrabold text-xl">
                         This is single line text
                     </div>
                     <svg className="my-6 ml-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,9 +41,9 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-76px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[76px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row items-stretch">
-                    <div className="w-255px h-28px ml-6 my-6 font-extrabold text-xl">
+                    <div className="w-[255px] h-[28px] ml-6 my-6 font-extrabold text-xl">
                         Option to active
                     </div>
                     <svg className="my-5 ml-3" width="60" height="36" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,9 +54,9 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-120px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[120px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
-                    <div className="h-28px w-253px mt-6 ml-6 font-extrabold text-xl">
+                    <div className="h-[28px] w-[253px] mt-6 ml-6 font-extrabold text-xl">
                         Option to active</div>
                     <div>
                         <svg className="mt-6 mr-6 ml-3" width="60" height="36" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-106px w-376px m-5 border-2 border-white bg-white">
+            <div className="h-[106px] w-[376px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
                     <svg className="ml-6 my-4 rounded-full" width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">
@@ -91,8 +91,8 @@ export const Listing = () => {
                         </defs>
                     </svg>
                     <div className="flex flex-col">
-                        <div className="w-177px h-28px mt-4 ml-3 font-extrabold text-xl">Card Title</div>
-                        <div className="w-177px h-16px ml-3 font-bold text-xs text-black-800">Subtitle or short details</div>
+                        <div className="w-[177px] h-[28px] mt-4 ml-3 font-extrabold text-xl">Card Title</div>
+                        <div className="w-[177px] h-[16px] ml-3 font-bold text-xs text-black-800">Subtitle or short details</div>
                         <div className="flex flex-row">
                             <svg className="ml-3 mt-1" width="128" height="24" viewBox="0 0 128 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.1033 3.81663C11.4701 3.07346 12.5299 3.07346 12.8967 3.81663L14.8576 7.78909C15.0031 8.08394 15.2843 8.2884 15.6096 8.33595L19.9962 8.97712C20.8161 9.09696 21.1429 10.1048 20.5493 10.683L17.3768 13.773C17.1409 14.0027 17.0333 14.3339 17.0889 14.6584L17.8374 19.0226C17.9775 19.8396 17.12 20.4626 16.3864 20.0767L12.4655 18.0148C12.1741 17.8615 11.8259 17.8615 11.5345 18.0148L7.61363 20.0767C6.88 20.4626 6.02245 19.8396 6.16257 19.0226L6.91109 14.6584C6.96675 14.3339 6.85908 14.0027 6.62321 13.773L3.45068 10.683C2.85708 10.1048 3.18387 9.09696 4.00378 8.97712L8.39037 8.33595C8.71572 8.2884 8.99691 8.08394 9.14245 7.78909L11.1033 3.81663Z" fill="#FFBD12" />
@@ -114,7 +114,7 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-120px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[120px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
                     <div className="ml-6 mt-6">
                         <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +134,7 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-96px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[96px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
                     <div className="my-6 ml-6">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +147,7 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-102px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[102px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
                     <div className="my-6 ml-6">
                         <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +161,7 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-98px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[98px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
                     <div className="my-6 ml-6">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -185,7 +185,7 @@ export const Listing = () => {
                 </div>
             </div>
 
-            <div className="h-68px w-375px m-5 border-2 border-white bg-white">
+            <div className="h-[68px] w-[375px] m-5 border-2 border-white bg-white">
                 <div className="flex flex-row">
                     <div className="ml-6 my-4">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

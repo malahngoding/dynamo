@@ -5,8 +5,8 @@ export const Cards = () => {
                 <p className="mx-6 mt-5 mb-10 text-blue font-sans text-4xl font-bold tracking-wider">
                     C A R D  B L O C K S</p>
             </div>
-            <div className="w-375px h-337px bg-white m-5">
-                <div className="flex flex-col w-327px h-212px bg-red mt-6 mx-6 rounded-2xl border-2 border-black">
+            <div className="w-[375px] h-[337px] bg-white m-5">
+                <div className="flex flex-col w-[327px] h-[212px] bg-red mt-6 mx-6 rounded-2xl border-2 border-black">
                     <div className="mx-11">
                         <svg width="235" height="212" viewBox="0 0 235 212" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" clipRule="evenodd" d="M26.2717 159.875C25.5531 166.429 23.9254 173.649 27.0282 179.833C25.074 179.92 26.6593 180.483 27.7139 180.676C28.3161 181.14 29.1254 181.324 29.8864 181.259C33.8379 182.09 37.9171 182.391 41.9293 182.861C92.0231 187.001 142.453 185.902 192.64 184.118C194.272 184.048 195.368 182.868 195.493 181.279C197.332 157.895 198.247 134.438 198.201 110.982C197.383 102.739 203.645 105.956 200.305 95.0939C197.62 83.6372 193.645 72.4857 188.577 61.8598C185.074 54.9452 181.773 47.6695 176.434 41.9355C174.747 41.7036 173.31 40.036 171.884 39.1047C170.44 38.8248 169.37 37.6048 167.906 37.2296C165.117 36.5077 158.875 34.9724 156.5 36.8188C156.406 36.7933 156.311 36.7716 156.217 36.7451C155.752 37.258 155.114 36.8733 154.767 36.4124C153.58 35.4956 148.393 35.4013 147.804 33.9943C144.735 31.2242 143.913 25.3941 143.913 21.9833C142.766 20.7002 142.686 20.9385 141.128 20.2603C139.601 18.3434 137.756 16.6737 135.696 15.3574C124.106 7.78533 107.287 15.7643 104.574 28.9256C100.285 32.3047 95.8697 35.7373 90.6162 37.498C88.0524 36.1858 85.1318 35.7669 82.4108 35.7643C80.3825 35.691 77.5797 34.5239 76.2616 36.6479C54.0856 43.871 40.7019 64.879 31.1851 84.7842C29.8511 87.6183 28.2553 90.5857 28.6636 93.8146C28.9442 97.6816 33.162 99.9832 32.365 104.081C31.2065 115.354 29.8886 126.616 28.6826 137.886C27.8788 145.215 27.0752 152.545 26.2717 159.875Z" fill="white" />
@@ -25,7 +25,7 @@ export const Cards = () => {
                 <div className="ml-6 font-extrabold text-2xl">$189</div>
             </div>
 
-            <div className="w-375px h-150px bg-white m-5">
+            <div className="w-[375px] h-[150px] bg-white m-5">
                 <div className="flex flex-row">
                     <div className="font-extrabold text-5xl ml-6 mt-6">06:30</div>
                     <div className="font-extrabold text-base mt-10 ml-1">AM</div>
@@ -41,7 +41,7 @@ export const Cards = () => {
                 <div className="font-normal text-black-800 text-sm ml-6">Caption or title</div>
             </div>
 
-            <div className="w-375px h-150px bg-white m-5">
+            <div className="w-[375px] h-[150px] bg-white m-5">
                 <div className="flex flex-row">
                     <div className="font-extrabold text-5xl ml-6 mt-6 text-black-400">06:30</div>
                     <div className="font-extrabold text-base mt-10 ml-1 text-black-400">AM</div>
@@ -57,7 +57,7 @@ export const Cards = () => {
                 <div className="font-normal text-sm ml-6 text-black-400">Caption or title</div>
             </div>
 
-            <div className="w-375px h-168px bg-white m-5 border-b-2 border-black">
+            <div className="w-[375px] h-[168px] bg-white m-5 border-b-2 border-black">
                 <div className="flex flex-row">
                     <div className="my-6 ml-6 ">
                         <svg width="100" height="120" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@ export const Cards = () => {
                 </div>
             </div>
 
-            <div className="w-375px h-184px bg-white m-5">
+            <div className="w-[375px] h-[184px] bg-white m-5">
                 <div className="flex flex-row">
                     <div className="my-8 ml-6 ">
                         <svg width="100" height="120" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +100,7 @@ export const Cards = () => {
                         <div className="font-bold text-black text-xl">Name single line...</div>
                         <div className="mt-3 font-extrabold text-black text-2xl">$189</div>
                         <div className="flex flex-row ">
-                            <div className="w-104px h-36px mt-3 font-bold text-black text-2xl border-2 shadow-lg border-black rounded-lg text-center">
+                            <div className="w-[104px] h-[36px] mt-3 font-bold text-black text-2xl border-2 shadow-lg border-black rounded-lg text-center">
                                 <div className="font-extrabold text-xs my-2">Add to cart</div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ export const Cards = () => {
                 </div>
             </div>
 
-            <div className="w-375px h-180px bg-white m-5">
+            <div className="w-[375px] h-[180px] bg-white m-5">
                 <div className="flex flex-row">
                     <div className="my-8 ml-6 ">
                         <svg width="100" height="116" viewBox="0 0 100 116" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,7 +143,7 @@ export const Cards = () => {
             <p className="mx-6 mt-5 mb-10 text-blue font-sans text-4xl font-bold tracking-wider">
                 S M A L L C A R D S</p>
 
-            <div className="w-155px h-136px bg-white border-2 border-black m-5 rounded-2xl text-center">
+            <div className="w-[155px] h-[136px] bg-white border-2 border-black m-5 rounded-2xl text-center">
                 <p className="mt-8 mx-4 font-extrabold text-base">Im a big title</p>
                 <p className="mx-4 font-extrabold text-base">of this great</p>
                 <p className=" mx-4 font-extrabold text-base">article</p>
@@ -193,7 +193,7 @@ export const Cards = () => {
                 <div className="text-black-800 font-normal text-xs">Optional line</div>
             </div>
 
-            <div className="w-155px h-238px bg-yellow m-5 rounded-2xl border-2 border-black">
+            <div className="w-[155px] h-[238px] bg-yellow m-5 rounded-2xl border-2 border-black">
                 <div className="mx-4 mt-6">
                     <svg width="123" height="134" viewBox="0 0 123 134" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">
@@ -215,7 +215,7 @@ export const Cards = () => {
                 </div>
             </div>
 
-            <div className="w-155px h-196px bg-white m-5 rounded-2xl border-2 border-black">
+            <div className="w-[155px] h-[196px] bg-white m-5 rounded-2xl border-2 border-black">
                 <div className=" mx-4 mt-6">
                     <p className="font-extrabold text-base mt-3">Some two</p>
                     <p className="font-extrabold text-base">line title here</p>
