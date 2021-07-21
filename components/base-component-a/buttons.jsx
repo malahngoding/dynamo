@@ -135,8 +135,8 @@ export const Steppers = () => {
         <p className="text-4xl font-black">Add</p>
         </div>
         <div className="pr-2 w">
-        <button className="flex border bg-yellow w-56px h-48px justify-center rounded-xl">
-        <svg className="pt-3 w-36px h-36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button className="flex border bg-yellow w-[56px] h-[48px] justify-center rounded-xl">
+        <svg className="pt-3 w-[36px] h-[36px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 5V19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M5 12H19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -148,12 +148,12 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b rounded-l-xl bg-yellow pl-4 w-45px h-48px">
+                <button className="border-t border-l border-b rounded-l-xl bg-yellow pl-4 w-[45px] h-[48px]">
                 <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <button className="border rounded-r-xl bg-yellow pl-4 w-45px h-48px">
+                <button className="border rounded-r-xl bg-yellow pl-4 w-[45px] h-[48px]">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -163,10 +163,10 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b text-xl font-black rounded-l-xl bg-yellow w-80px h-48px">
+                <button className="border-t border-l border-b text-xl font-black rounded-l-xl bg-yellow w-[80px] h-[48px]">
                 Add
                 </button>
-                <button className="border-t border-r border-b rounded-r-xl bg-white w-32px h-48px pl-2">
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-[32px] h-[48px] pl-2">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -176,13 +176,13 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-center">
-                <button className="border-t border-l border-b text-base font-black rounded-l-xl bg-white w-45px h-48px pl-4">
+                <button className="border-t border-l border-b text-base font-black rounded-l-xl bg-white w-[45px] h-[48px] pl-4">
                 <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <p className="flex items-center border-t border-b text-2xl font-black bg-yellow w-45px h-48px pl-4">2</p>
-                <button className="border-t border-r border-b rounded-r-xl bg-white w-45px h-48px pl-4">
+                <p className="flex items-center border-t border-b text-2xl font-black bg-yellow w-[45px] h-[48px] pl-4">2</p>
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-[45px] h-[48px] pl-4">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -197,8 +197,8 @@ export const Steppers = () => {
         <p className="text-xl font-black">Add</p>
         </div>
         <div className="pr-2 w">
-        <button className="flex border bg-yellow w-36px h-36px justify-center rounded-lg">
-        <svg className="pt-2 w-28px h-28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button className="flex border bg-yellow w-[36px] h-[36px] justify-center rounded-lg">
+        <svg className="pt-2 w-[28px] h-[28px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 5V19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M5 12H19" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -210,12 +210,12 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b rounded-l-xl bg-yellow pl-2 w-32px h-36px">
+                <button className="border-t border-l border-b rounded-l-xl bg-yellow pl-2 w-[32px] h-[36px]">
                 <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <button className="border rounded-r-xl bg-yellow pl-2 w-32px h-36px">
+                <button className="border rounded-r-xl bg-yellow pl-2 w-[32px] h-[36px]">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -225,10 +225,10 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-items-center">
-                <button className="border-t border-l border-b text-lg font-black rounded-l-xl bg-yellow w-56px h-36px">
+                <button className="border-t border-l border-b text-lg font-black rounded-l-xl bg-yellow w-[56px] h-[36px]">
                 Add
                 </button>
-                <button className="border-t border-r border-b rounded-r-xl bg-white w-32px h-36px pl-2">
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-[32px] h-[36px] pl-2">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -238,13 +238,13 @@ export const Steppers = () => {
         </div>
         <div className="pr-2">
             <div className="flex justify-center">
-                <button className="border-t border-l border-b text-base font-black rounded-l-xl bg-white w-32px h-36px pl-2">
+                <button className="border-t border-l border-b text-base font-black rounded-l-xl bg-white w-[32px] h-[36px] pl-2">
                 <svg width="14" height="8" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 2H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 </button>
-                <p className="flex items-center border-t border-b text-xl font-black bg-yellow w-32px h-36px pl-2">2</p>
-                <button className="border-t border-r border-b rounded-r-xl bg-white w-32px h-36px pl-2">
+                <p className="flex items-center border-t border-b text-xl font-black bg-yellow w-[32px] h-[36px] pl-2">2</p>
+                <button className="border-t border-r border-b rounded-r-xl bg-white w-[32px] h-[36px] pl-2">
                 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 2V16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M2 9H16" stroke="#18191F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>

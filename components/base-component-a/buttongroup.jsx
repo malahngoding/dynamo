@@ -3,7 +3,7 @@ export function ButtonGroup1(props) {
   return (
     <div>
       <button
-        className={`w-155px h-60px ${color} p-2 text-center font-black border-2 rounded-lg`}
+        className={`w-[155px] h-[60px] ${color} p-2 text-center font-black border-2 rounded-lg`}
       >
         {tittle}
       </button>
@@ -15,7 +15,7 @@ export function LongButton(props) {
     return (
       <div>
         <button
-          className={`w-327px h-60px ${color} p-2 text-center font-black border-2 rounded-lg`}
+          className={`w-[327px] h-[60px] ${color} p-2 text-center font-black border-2 rounded-lg`}
         >
           {tittle}
         </button>
