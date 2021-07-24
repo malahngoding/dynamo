@@ -1,38 +1,14 @@
-import Link from 'next/link'
-import Head from 'next/head'
-import { useAuth } from '@/hooks/auth'
+import { SecondaryButton } from '@/components/design/button'
+import { SecondarySmallButton } from '@/components/design/button'
+import { SmallPrimaryButton } from '@/components/design/button'
+import { PrimaryButton } from '@/components/design/button'
+import { LandingLayout } from '@/Layouts/landing-layout'
 
 export default function Home() {
-    const { user } = useAuth({ middleware: 'guest' })
 
     return (
-        <>
-            <Head>
-                <title>Laravel</title>
-            </Head>
-
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <div className="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    {user ?
-                        <Link href="/dashboard">
-                            <a className="ml-4 text-sm text-gray-700 underline">
-                                Dashboard
-                            </a>
-                        </Link>
-                        :
-                        <>
-                            <Link href="/login">
-                                <a className="text-sm text-gray-700 underline">Login</a>
-                            </Link>
-
-                            <Link href="/register">
-                                <a className="ml-4 text-sm text-gray-700 underline">
-                                    Register
-                                </a>
-                            </Link>
-                        </>
-                    }
-                </div>
+        <LandingLayout title="Hello World!">
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
                 <div className="flex flex-col justify-start items-center">
                     <h1 className="text-4xl font-black">
                         Black
@@ -58,8 +34,17 @@ export default function Home() {
                     <h1 className="text-4xl font-extralight">
                         Extralight
                     </h1>
+                    <div className="h-4" />
+                    <PrimaryButton>Primary Button</PrimaryButton>
+                    <div className="h-4" />
+                    <SecondaryButton>Secondary Button</SecondaryButton>
+                    <div className="h-4" />
+                    <SmallPrimaryButton>Small Button</SmallPrimaryButton>
+                    <div className="h-4" />
+                    <SecondarySmallButton>Secondary Small Button</SecondarySmallButton>
+                    <div className="h-4" />
                 </div>
             </div>
-        </>
+        </LandingLayout>
     )
 }
