@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useAuth } from '@/hooks/auth'
 import Button from '@/components/Button'
 import AuthCard from '@/components/AuthCard'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import GuestLayout from '@/Layouts/GuestLayout'
 import ApplicationLogo from '@/components/ApplicationLogo'
 
 const VerifyEmail = () => {

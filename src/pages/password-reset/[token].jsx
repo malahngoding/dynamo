@@ -7,7 +7,7 @@ import Button from '@/components/Button'
 import { useEffect, useState } from 'react'
 import AuthCard from '@/components/AuthCard'
 import ApplicationLogo from '@/components/ApplicationLogo'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import GuestLayout from '@/Layouts/GuestLayout'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import AuthValidationErrors from '@/components/AuthValidationErrors'
 

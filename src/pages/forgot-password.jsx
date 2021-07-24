@@ -6,7 +6,7 @@ import Input from '@/components/Input'
 import Button from '@/components/Button'
 import AuthCard from '@/components/AuthCard'
 import ApplicationLogo from '@/components/ApplicationLogo'
-import GuestLayout from '@/components/Layouts/GuestLayout'
+import GuestLayout from '@/Layouts/GuestLayout'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import AuthValidationErrors from '@/components/AuthValidationErrors'
 

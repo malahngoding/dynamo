@@ -89,6 +89,7 @@ export const useAuth = ({ middleware, redirectToDashboardIfAuthenticated } = {})
     useEffect(() => {
         if (middleware == 'guest' && redirectToDashboardIfAuthenticated && user) router.push('/dashboard')
         if (middleware == 'auth' && error) logout()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, error])
 
     return {
