@@ -80,16 +80,12 @@ const PasswordReset = () => {
                     </div>
                     {/* Confirm Password */}
                     <div className="mt-4">
-                        <Label htmlFor="password_confirmation">
-                            Confirm Password
-                        </Label>
+                        <Label htmlFor="password_confirmation">Confirm Password</Label>
                         <Input
                             id="password_confirmation"
                             className="block mt-1 w-full"
                             type="password"
-                            onChange={event =>
-                                setPasswordConfirmation(event.target.value)
-                            }
+                            onChange={event => setPasswordConfirmation(event.target.value)}
                             value={password_confirmation}
                             required
                         />

@@ -63,11 +63,8 @@ const Navigation = ({ user }) => {
                                     </div>
                                 </button>
                             }>
-
                             {/* Authentication */}
-                            <DropdownButton onClick={logout}>
-                                Logout
-                            </DropdownButton>
+                            <DropdownButton onClick={logout}>Logout</DropdownButton>
                         </Dropdown>
                     </div>
 
@@ -146,9 +143,7 @@ const Navigation = ({ user }) => {
 
                         <div className="mt-3 space-y-1">
                             {/* Authentication */}
-                            <ResponsiveNavButton onClick={logout}>
-                                Logout
-                            </ResponsiveNavButton>
+                            <ResponsiveNavButton onClick={logout}>Logout</ResponsiveNavButton>
                         </div>
                     </div>
                 </div>

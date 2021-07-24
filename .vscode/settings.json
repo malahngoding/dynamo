@@ -16,6 +16,7 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#118ab2",
+  "editor.tabSize": 4,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }
