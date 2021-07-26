@@ -24,7 +24,7 @@ export const NavigationBar = (props) => {
                         <Menu2 size={32} />
                     </button>
                 </div>
-                <div className="hidden sm:flex flex-row justify-center items-center">
+                <div className="hidden sm:flex flex-row justify-center items-center pl-0 md:pl-44">
                     <Link href="/study">
                         <a>
                             <span className="font-extrabold mx-2 text-base text-black hover:text-blue">Study</span>

@@ -3,18 +3,12 @@ import { LandingLayout } from "@/Layouts/landing-layout";
 import { Terminal } from "tabler-icons-react";
 import Image from "next/image";
 import Link from "next/link";
+import { LandingTitle } from "@/components/landing-title";
 
 export default function Home() {
     return (
         <LandingLayout title="Hello World!">
-            <div className="w-full px-4 py-8 leading-normal md:p-8 text-md">
-                <h3 className="font-bold tracking-widest text-left uppercase text-blue md:text-center">
-                    Hello World!
-                </h3>
-                <h1 className="text-5xl font-black text-left text-black md:text-center">
-                    Malah Ngoding
-                </h1>
-            </div>
+            <LandingTitle title="Malah Ngoding" subTitle="Hello World!" />
             <div className="container px-4 pb-32 mx-auto">
                 <div className="flex flex-wrap items-center">
                     <div className="w-full ml-auto md:w-5/12 md:px-4">

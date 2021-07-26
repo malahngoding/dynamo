@@ -16,8 +16,14 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#118ab2",
-  "editor.tabSize": 4,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "files.associations": {
+    "*.md": "mdx"
+  },
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 120,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
 }
