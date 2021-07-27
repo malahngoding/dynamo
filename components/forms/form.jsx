@@ -1,3 +1,5 @@
+import { CircleButtonBack } from '@/components/base-component-a/circlebutton'
+
 export const LoginForm = () => {
     return (
         <div className="flex flex-col bg-green-100">
@@ -332,6 +334,46 @@ export const SignUpFormYellow = () => {
                     Already have account?
                 </p>
                 <p className="text-red font-sans text-sm font-bold ml-1">Go here</p>
+            </div>
+        </form>
+    )
+}
+
+export const ForgotPasswordForm = () => {
+    return (
+        <form>
+            <div className=" xs:m-2 border-2 lg:border-0 border-b-8 lg:border-b-0 border-black bg-white p-2 lg:p-6 rounded-xl">
+                <div className="ml-3 xs:mx-6 pt-6">
+                    <CircleButtonBack width="w-[45px] lg:w-[60px]" height="h-[45px] lg:h-[60px]" color="bg-white" border="border-2 border-b-4" rounded="rounded-full" />
+                </div>
+                <p className="mt-3  ml-6 text-4xl text-black font-sans text-start  font-extrabold">Lupa Password</p>
+                <p className="ml-6  text-xl  text-black font-sans  font-normal">Malah Ngoding</p>
+                <p className="ml-6 mt-14 text-base font-normal">Silahkan masukan email kamu, nanti </p>
+                <p className="ml-6 text-base font-normal">kita setel ulang sandinya</p>
+                <div className="flex flex-row border-2 border-black mx-6 mt-2 lg:mt-6 lg:w-[327px] lg:h-[56px] rounded-2xl">
+                    <div>
+                        <svg className="my-3 mx-2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#18191F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#18191F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+                    <div>
+                        <input className="border-0 focus:border-yellow my-1 w-full rounded-xl lg:w-[251px] lg:h-[28px] lg:my-3" name="email" type="text" placeholder="Email address" />
+                    </div>
+
+                </div>
+                <div>
+                    <p className="xs:mx-6 text-sm text-red"></p>
+                </div>
+                <div>
+                    <p className="xs:mx-6 text-sm text-red"></p>
+                </div>
+                <div className="flex flex-col justify-center items-center border-2 border-b-4 mt-6 mx-6 h-[60px] lg:w-[327px] lg:h-[60px] rounded-2xl bg-red-800 text-black font-sans text-xl font-extrabold" >
+                    <div className="flex flex-row justify-center items-center">
+                        <div className="">Kirim</div>
+                    </div>
+                </div>
+
             </div>
         </form>
     )
