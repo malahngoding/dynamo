@@ -1,29 +1,19 @@
 {
   "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#15aee1",
-    "activityBar.activeBorder": "#fce2f6",
-    "activityBar.background": "#15aee1",
+    "activityBar.activeBackground": "#c0b3ff",
+    "activityBar.activeBorder": "#df2600",
+    "activityBar.background": "#c0b3ff",
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#fce2f6",
-    "activityBarBadge.foreground": "#15202b",
-    "statusBar.background": "#118ab2",
-    "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#15aee1",
-    "titleBar.activeBackground": "#118ab2",
-    "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#118ab299",
-    "titleBar.inactiveForeground": "#e7e7e799"
+    "activityBarBadge.background": "#df2600",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#9580ff",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#6a4dff",
+    "titleBar.activeBackground": "#9580ff",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#9580ff99",
+    "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#118ab2",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "files.associations": {
-    "*.md": "mdx"
-  },
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 120,
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true
+  "peacock.color": "#9580FF"
 }

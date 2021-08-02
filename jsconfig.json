@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
-    "baseUrl": "src/",
+    "noEmit": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/lib/*": ["lib/*"],
+      "@/styles/*": ["styles/*"]
     }
   }
 }
