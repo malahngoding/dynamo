@@ -68,7 +68,10 @@ export default function Login() {
               // GET USER
               axios.get(hostName + 'api/user').then(
                 (response) => {
+                  console.log('TEST')
                   console.log(response)
+                  localStorage.setItem('email', response.data.email)
+                  localStorage.setItem('name', response.data.name)
                 },
                 // GET USER ERROR
                 (error) => {
@@ -94,6 +97,8 @@ export default function Login() {
   }
 
   const handleLogout = () => {
+    localStorage.removeItem('email')
+    localStorage.removeItem('name')
     const hostName = 'http://localhost/'
     axios.defaults.withCredentials = true
     // CSRF COOKIE
@@ -133,6 +138,11 @@ export default function Login() {
         console.error('Could not complete the login', error)
       }
     )
+  }
+
+  const handleGet = () => {
+    //Arrow Function
+    alert(`${localStorage.getItem('email')} ${localStorage.getItem('name')}`)
   }
 
   return (
@@ -197,6 +207,10 @@ export default function Login() {
 
           <PrimaryButton className="ml-3" onClick={handleRegister}>
             Register
+          </PrimaryButton>
+
+          <PrimaryButton className="ml-3" onClick={handleGet}>
+            Get Local Storage
           </PrimaryButton>
         </div>
       </div>
