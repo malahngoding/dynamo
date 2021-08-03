@@ -20,10 +20,13 @@ export default NextAuth({
     Providers.Credentials({
       name: 'Credentials',
       async authorize(req) {
-        console.log(req.body)
-        const user = { ok: 'ok' }
-        if (user) {
-          return user
+        if (req.body.email === 'superadmin@malahngoding.com' && req.body.password === 'developer') {
+          return {
+            name: 'Super Admin',
+            email: 'superadmin@malahngoding.com',
+            image:
+              'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=512&q=80',
+          }
         } else {
           return null
         }
