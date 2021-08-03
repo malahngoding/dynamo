@@ -5,12 +5,9 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { LogoMalahNgoding } from './design/logo'
 import { PrimaryButton } from './design/button'
-import { useAuth } from '@/hooks/auth'
 import { Fragment } from 'react'
 
 export const NavigationBar = (props) => {
-  const { user } = useAuth({ middleware: 'guest' })
-
   return (
     <header className="flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-black-800">
       <div>
@@ -39,16 +36,36 @@ export const NavigationBar = (props) => {
             </Link>
           ))}
         </div>
-        {user ? (
-          <Fragment />
-        ) : (
-          <Link href="/login">
-            <PrimaryButton type="success">Masuk</PrimaryButton>
-          </Link>
-        )}
+        <Link href="/login">
+          <PrimaryButton type="success">Masuk</PrimaryButton>
+        </Link>
         <ThemeSwitch />
         <MobileNav />
+        <Fuck />
       </div>
     </header>
+  )
+}
+
+import { signIn, signOut, useSession } from 'next-auth/client'
+
+export default function Fuck() {
+  const [session, loading] = useSession()
+  console.log(session)
+  return (
+    <>
+      {!session && (
+        <>
+          Not signed in <br />
+          <button onClick={() => signIn()}>Sign in</button>
+        </>
+      )}
+      {session && (
+        <>
+          Signed in as {session.user.email} <br />
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )}
+    </>
   )
 }
