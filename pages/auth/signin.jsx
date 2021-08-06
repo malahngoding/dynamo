@@ -1,9 +1,31 @@
 import { Card } from '@/components/design/card'
+import { email } from '@/data/siteMetadata'
 import { getProviders, signIn, getCsrfToken, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 export default function SignIn({ providers, csrfToken }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+  const [formError, setFormError] = useState(false)
+
+  const onSubmit = async (data) => {
+    const status = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    })
+    if (status.error === null) {
+      router.push('/')
+    } else {
+      setFormError(true)
+    }
+  }
+
   const [session, loading] = useSession()
   const router = useRouter()
 
@@ -38,19 +60,37 @@ export default function SignIn({ providers, csrfToken }) {
                     </button>
                   </div>
                 ))}
-                <form
-                  method="post"
-                  action="/api/auth/callback/credentials"
-                  className="flex flex-col"
-                >
-                  <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+                <div className="h-4" />
+                {formError && <p>Wrong credentials</p>}
+                <form method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+                  <input
+                    name="csrfToken"
+                    type="hidden"
+                    defaultValue={csrfToken}
+                    {...register('csrfToken')}
+                  />
                   <label>
-                    Username
-                    <input name="username" type="text" />
+                    Email
+                    <input
+                      name="email"
+                      type="email"
+                      {...register('email', {
+                        required: true,
+                        pattern: {
+                          value: /\S+@\S+\.\S+/,
+                        },
+                      })}
+                    />
+                    {errors.email && <span>This field is required</span>}
                   </label>
                   <label>
                     Password
-                    <input name="password" type="password" />
+                    <input
+                      name="password"
+                      type="password"
+                      {...register('password', { required: true })}
+                    />
+                    {errors.password && <span>This field is required</span>}
                   </label>
                   <button type="submit">Sign in</button>
                 </form>

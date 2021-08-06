@@ -11,6 +11,7 @@ export default function Error() {
       <PageSeo title={siteMetadata.titleHandler('Error')} description={siteMetadata.description} />
       <div className="flex flex-col min-h-screen min-w-full justify-center items-center">
         {router.query.error === 'Callback' && 'Masalah Otentikasi'}
+        {router.query.error}
         <Link href="/" passHref>
           <PrimaryButton>Kembali</PrimaryButton>
         </Link>

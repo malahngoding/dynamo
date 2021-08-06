@@ -1,7 +1,13 @@
+import { comparePassword } from '@/lib/bcrypt'
+import { detuser } from '@/lib/deta'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 export default NextAuth({
+  session: {
+    jwt: true,
+    maxAge: 30 * 24 * 60 * 60,
+  },
   pages: {
     signIn: '/auth/signin',
     error: '/auth/error',
@@ -20,15 +26,23 @@ export default NextAuth({
     Providers.Credentials({
       name: 'Credentials',
       async authorize(req) {
-        if (req.body.email === 'superadmin@malahngoding.com' && req.body.password === 'developer') {
-          return {
-            name: 'Super Admin',
-            email: 'superadmin@malahngoding.com',
-            image:
-              'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=512&q=80',
+        try {
+          const email = req.email
+          const password = req.password
+          const data = await detuser.get(email)
+
+          const isPasswordCorrect = await comparePassword(password, data.password)
+          if (isPasswordCorrect) {
+            return {
+              name: data.name,
+              email: data.key,
+              image:
+                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=512&q=80',
+            }
           }
-        } else {
-          return null
+        } catch (e) {
+          const errorMessage = e.response.data.message
+          throw new Error(errorMessage + '&email=' + 'ngeng')
         }
       },
     }),
