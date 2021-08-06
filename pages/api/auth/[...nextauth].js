@@ -5,10 +5,6 @@ import Providers from 'next-auth/providers'
 
 export default NextAuth({
   secret: process.env.SECRET,
-  session: {
-    jwt: true,
-    maxAge: 30 * 24 * 60 * 60,
-  },
   pages: {
     signIn: '/auth/signin',
     error: '/auth/error',

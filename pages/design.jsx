@@ -22,13 +22,13 @@ export default function Design() {
         <div className="flex flex-col justify-center items-center w-2/4">
           <PrimaryButton>Primary</PrimaryButton>
           <div className="h-8" />
-          <PrimaryButton type="normal">Normal</PrimaryButton>
+          <PrimaryButton variant="normal">Normal</PrimaryButton>
           <div className="h-8" />
-          <PrimaryButton type="warning">Warning</PrimaryButton>
+          <PrimaryButton variant="warning">Warning</PrimaryButton>
           <div className="h-8" />
-          <PrimaryButton type="danger">Danger</PrimaryButton>
+          <PrimaryButton variant="danger">Danger</PrimaryButton>
           <div className="h-8" />
-          <PrimaryButton type="success">Success</PrimaryButton>
+          <PrimaryButton variant="success">Success</PrimaryButton>
           <div className="h-8" />
           <SecondaryButton>Secondary</SecondaryButton>
         </div>

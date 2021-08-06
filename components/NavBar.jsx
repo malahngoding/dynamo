@@ -54,13 +54,13 @@ const Auth = () => {
       ) : (
         <>
           {!session && (
-            <PrimaryButton type="success" onClick={() => signIn()}>
+            <PrimaryButton variant="success" onClick={() => signIn()}>
               Masuk
             </PrimaryButton>
           )}
 
           {session && (
-            <PrimaryButton type="warning" onClick={() => signOut()}>
+            <PrimaryButton variant="warning" onClick={() => signOut()}>
               {session.user.name}
             </PrimaryButton>
           )}
