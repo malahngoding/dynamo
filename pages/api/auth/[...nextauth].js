@@ -4,6 +4,7 @@ import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 export default NextAuth({
+  secret: process.env.SECRET,
   session: {
     jwt: true,
     maxAge: 30 * 24 * 60 * 60,
