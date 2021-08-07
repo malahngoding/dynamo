@@ -3,9 +3,9 @@ export function Tags(props) {
   return (
     <div>
       <button
-        className={`flex flex-row ${border} ${rounded} ${width} ${height} shadow-xl ${color} justify-center`}
+        className={`flex flex-row ${border} ${rounded} ${width} ${height} shadow-xl ${color} justify-center items-center`}
       >
-        <div className="m-1">{tittle}</div>
+        <div className="py-2">{tittle}</div>
       </button>
     </div>
   )
