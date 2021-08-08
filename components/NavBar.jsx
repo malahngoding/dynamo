@@ -7,9 +7,10 @@ import { LogoMalahNgoding } from './design/logo'
 import { PrimaryButton } from './design/button'
 import { useAuth } from '@/hooks/auth'
 import { Fragment } from 'react'
+import { useState } from 'react'
 
 export const NavigationBar = (props) => {
-  const { user } = useAuth({ middleware: 'guest' })
+  const { user } = useAuth({ middleware: 'user' })
 
   return (
     <header className="flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-black-800">
@@ -39,13 +40,34 @@ export const NavigationBar = (props) => {
             </Link>
           ))}
         </div>
-        {user ? (
-          <Fragment />
+        {(() => {
+          if (!user) {
+            return (
+              <Fragment>
+                <Link href="/dash">
+                  <PrimaryButton type="normal">Dash</PrimaryButton>
+                </Link>
+              </Fragment>
+            )
+          } else {
+            return (
+              <Link href="/login">
+                <PrimaryButton type="success">Masuk</PrimaryButton>
+              </Link>
+            )
+          }
+        })()}
+        {/* {user !== 'guest' ? (
+          <Fragment>
+            <Link href="/dash">
+              <PrimaryButton type="normal">Dash</PrimaryButton>
+            </Link>
+          </Fragment>
         ) : (
           <Link href="/login">
             <PrimaryButton type="success">Masuk</PrimaryButton>
           </Link>
-        )}
+        )} */}
         <ThemeSwitch />
         <MobileNav />
       </div>

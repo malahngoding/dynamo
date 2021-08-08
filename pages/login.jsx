@@ -2,10 +2,12 @@ import { PrimaryButton } from '@/components/design/button'
 import axios from 'axios'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Login() {
   const [email, setEmail] = useState('superadmin@malahngoding.com')
   const [password, setPassword] = useState('developer')
+  const router = useRouter()
 
   const handleRegister = () => {
     const hostName = 'http://localhost/'
@@ -52,7 +54,7 @@ export default function Login() {
   }
 
   const handleLogin = () => {
-    const hostName = 'http://localhost/'
+    const hostName = 'http://localhost:8000/'
     axios.defaults.withCredentials = true
     // CSRF COOKIE
     axios.get(hostName + 'sanctum/csrf-cookie').then(
@@ -64,6 +66,7 @@ export default function Login() {
             password: password,
           })
           .then(
+            router.push('/'),
             (response) => {
               // GET USER
               axios.get(hostName + 'api/user').then(
@@ -99,7 +102,7 @@ export default function Login() {
   const handleLogout = () => {
     localStorage.removeItem('email')
     localStorage.removeItem('name')
-    const hostName = 'http://localhost/'
+    const hostName = 'http://localhost:8000/'
     axios.defaults.withCredentials = true
     // CSRF COOKIE
     axios.get(hostName + 'sanctum/csrf-cookie').then(
@@ -111,6 +114,7 @@ export default function Login() {
             password: password,
           })
           .then(
+            router.push('/'),
             (response) => {
               // GET USER
               axios.get(hostName + 'api/user').then(
