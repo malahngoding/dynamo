@@ -1,7 +1,7 @@
 import { FormProfile, BottomBar } from '@/components/profile/ComponentProfile'
 import { NavigationBar } from '@/components/NavBar'
 import { Tags } from '@/components/backup/components/base-component-a/tags'
-export default function ProfilePage() {
+export default function LoginPage() {
   return (
     <div className="w-full h-screen">
       <div className="inset-x-0 bottom-0 visible h-auto sm:h-0 sm:invisible fixed ">
