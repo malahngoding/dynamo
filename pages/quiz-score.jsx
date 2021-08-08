@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable prettier/prettier */
 import Link from 'next/link'
 
