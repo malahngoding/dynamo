@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+input[type='password'] {
+  font-family: caption;
+}
+
 .remark-code-title {
   @apply px-5 py-3 font-mono text-sm font-bold text-gray-200 bg-gray-700 rounded-t;
 }
