@@ -1,8 +1,10 @@
-// import { useState } from 'react'
+// import { useEffect, useState } from 'react'
 import { CircleButtonNextChevron } from '@/components/backup/components/base-component-a/circlebutton'
 import { Tags } from '@/components/backup/components/base-component-a/tags'
 
 export function FormProfile() {
+  // const [local_storage_name, setLocalStorageName] = useState(localStorage.getItem('name'))
+
   return (
     <div className="flex flex-col justify-start items-start w-full h-screen">
       <div className="flex flex-col justify-start items-center  bg-blue w-full pb-6 rounded-b-xl mb-4">
@@ -86,7 +88,7 @@ export function FormProfile() {
             </svg>
           </div>
           <div>
-            <p className="font-extrabold text-2xl mb-2 text-white">Denny Rismanto</p>
+            <p className={`font-extrabold text-2xl mb-2 text-white`}>Denny Rismanto</p>
           </div>
           <div>
             <p className="font-extrabold text-base mb-2 text-white">@dennyrismanto</p>
