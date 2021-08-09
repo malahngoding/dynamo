@@ -74,7 +74,7 @@ export default function FourZeroFour() {
               Silahkan kembali ke muka.
             </p>
             <Link href="/">
-              <PrimaryButton type="normal">Kembali ke Laman Muka</PrimaryButton>
+              <PrimaryButton variant="normal">Kembali ke Laman Muka</PrimaryButton>
             </Link>
           </div>
         </div>

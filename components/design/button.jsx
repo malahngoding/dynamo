@@ -1,6 +1,6 @@
 export const PrimaryButton = (props) => {
   const typeHandler = () => {
-    switch (props.type) {
+    switch (props.variant) {
       case 'normal':
         return 'bg-blue-800 hover:bg-blue-100 text-[#000000] dark:text-black'
       case 'warning':
@@ -10,11 +10,11 @@ export const PrimaryButton = (props) => {
       case 'success':
         return 'bg-green-800 hover:bg-green-100 dark:text-black'
       default:
-        return `bg-white dark:bg-black hover:bg-black-800 text-black dark:text-white`
+        return `bg-white dark:bg-black hover:bg-black-100 text-black dark:text-white`
     }
   }
   return (
-    <button onClick={props.onClick}>
+    <button onClick={props.onClick} className={`${props.parentClassName}`}>
       <div
         className={`${
           props.className

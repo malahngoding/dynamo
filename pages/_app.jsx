@@ -1,3 +1,5 @@
+import { Provider } from 'next-auth/client'
+
 import '@fontsource/montserrat/100.css'
 import '@fontsource/montserrat/200.css'
 import '@fontsource/montserrat/300.css'
@@ -15,11 +17,13 @@ import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider attribute="class">
-      <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-      </Head>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Provider session={pageProps.session}>
+      <ThemeProvider attribute="class">
+        <Head>
+          <meta content="width=device-width, initial-scale=1" name="viewport" />
+        </Head>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
   )
 }

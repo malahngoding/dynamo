@@ -314,7 +314,7 @@ const Activation = () => {
         <h2 className="px-4 mb-8 text-xl text-start dark:text-black md:text-center">
           Bergabung dengan komunitas malah ngoding
         </h2>
-        <Link href="/register">
+        <Link href="/auth/register">
           <a className="text-start md:text-center">
             <SecondaryButton>
               <span className="text-black">Bergabung</span>

@@ -5,13 +5,9 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { LogoMalahNgoding } from './design/logo'
 import { PrimaryButton } from './design/button'
-import { useAuth } from '@/hooks/auth'
-import { Fragment } from 'react'
-import { useState } from 'react'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 export const NavigationBar = (props) => {
-  const { user } = useAuth({ middleware: 'user' })
-
   return (
     <header className="flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-black-800">
       <div>
@@ -40,37 +36,36 @@ export const NavigationBar = (props) => {
             </Link>
           ))}
         </div>
-        {(() => {
-          if (!user) {
-            return (
-              <Fragment>
-                <Link href="/dash">
-                  <PrimaryButton type="normal">Dash</PrimaryButton>
-                </Link>
-              </Fragment>
-            )
-          } else {
-            return (
-              <Link href="/login">
-                <PrimaryButton type="success">Masuk</PrimaryButton>
-              </Link>
-            )
-          }
-        })()}
-        {/* {user !== 'guest' ? (
-          <Fragment>
-            <Link href="/dash">
-              <PrimaryButton type="normal">Dash</PrimaryButton>
-            </Link>
-          </Fragment>
-        ) : (
-          <Link href="/login">
-            <PrimaryButton type="success">Masuk</PrimaryButton>
-          </Link>
-        )} */}
+        <Auth />
         <ThemeSwitch />
         <MobileNav />
       </div>
     </header>
+  )
+}
+
+const Auth = () => {
+  const [session, loading] = useSession()
+
+  return (
+    <>
+      {loading ? (
+        <p>Checking...</p>
+      ) : (
+        <>
+          {!session && (
+            <PrimaryButton variant="success" onClick={() => signIn()}>
+              Masuk
+            </PrimaryButton>
+          )}
+
+          {session && (
+            <PrimaryButton variant="warning" onClick={() => signOut()}>
+              {session.user.name}
+            </PrimaryButton>
+          )}
+        </>
+      )}
+    </>
   )
 }

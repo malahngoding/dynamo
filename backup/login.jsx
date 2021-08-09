@@ -1,4 +1,5 @@
 import { FormLogin, ImageLogin } from '@/components/login/login'
+
 export default function LoginPage() {
   return (
     <div className="flex flex-col-reverse w-screen min-h-screen bg-green-100 lg:bg-white lg:flex lg:flex-row lg:justify-around lg:items-center lg:w-screen lg:min-h-screen">
