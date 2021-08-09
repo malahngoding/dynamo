@@ -1,11 +1,11 @@
-import { detuser } from '@/lib/deta'
+import { detaUser } from '@/lib/deta'
 import { comparePassword } from '@/lib/bcrypt'
 
 export default async function handler(req, res) {
   const email = 'superadmin@malahngoding.com'
   const password = 'developer'
 
-  const data = await detuser.get(email)
+  const data = await detaUser.get(email)
 
   const isPasswordCorrect = await comparePassword(password, data.password)
 

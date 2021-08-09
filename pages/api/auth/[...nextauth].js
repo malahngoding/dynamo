@@ -1,5 +1,5 @@
 import { comparePassword } from '@/lib/bcrypt'
-import { detuser } from '@/lib/deta'
+import { detaUser } from '@/lib/deta'
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
@@ -26,7 +26,7 @@ export default NextAuth({
         try {
           const email = req.email
           const password = req.password
-          const data = await detuser.get(email)
+          const data = await detaUser.get(email)
 
           const isPasswordCorrect = await comparePassword(password, data.password)
           if (isPasswordCorrect) {
