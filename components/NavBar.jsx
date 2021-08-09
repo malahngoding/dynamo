@@ -60,8 +60,8 @@ const Auth = () => {
           )}
 
           {session && (
-            <PrimaryButton variant="warning" onClick={() => signOut()}>
-              {session.user.name}
+            <PrimaryButton variant="normal" onClick={() => signOut()}>
+              Dash
             </PrimaryButton>
           )}
         </>
