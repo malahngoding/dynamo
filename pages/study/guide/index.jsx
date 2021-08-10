@@ -26,7 +26,9 @@ export default function Study({ posts, initialDisplayPosts, pagination }) {
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
-        title="All Posts"
+        title="Baca Panduan"
+        subTitle="Intinya Blog Lah"
+        category="guide"
       />
     </LayoutWrapper>
   )

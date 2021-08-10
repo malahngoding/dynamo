@@ -46,7 +46,7 @@ const MobileNav = () => {
           </div>
           {[
             { href: '/study/snippet', title: 'Snippet' },
-            { href: '/snippet/guide', title: 'Guide' },
+            { href: '/study/guide', title: 'Guide' },
             ...headerNavLinks,
             { href: '/sign-up', title: 'Bergabung' },
           ].map((link) => (

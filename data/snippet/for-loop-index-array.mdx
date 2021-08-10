@@ -1,0 +1,18 @@
+---
+title: Index dari Array
+date: '2021-08-10'
+tags: ['javascript', 'code', 'array']
+draft: false
+summary: Mendapatakan index dari array dengan menggunakan for...of looop
+---
+
+## Code Blocks
+
+```javascript
+const items = ['a', 'b', 'c']
+
+for (let [index, item] of items.entries()) {
+  console.log(`${index}: ${item}`)
+}
+// LOGS: 0: a, 1: b, 2: c
+```
