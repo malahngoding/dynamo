@@ -3,18 +3,18 @@ import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
 import { Search } from 'tabler-icons-react'
-import { Card } from '@/components/design/card'
 import Image from '@/components/Image'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-export default function ListLayout({
+export const StudyListLayout = ({
   posts,
   title,
   subTitle,
   category,
   initialDisplayPosts = [],
   pagination,
-}) {
+}) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
@@ -23,18 +23,17 @@ export default function ListLayout({
 
   const router = useRouter()
 
-  // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
-  const handleClick = (e, rule) => {
-    e.preventDefault()
+  const handleClick = (event, rule) => {
+    event.preventDefault()
     router.push(rule)
   }
 
   return (
     <>
-      <div className="divide-y p-4">
+      <div className="p-4">
         <div className="pb-8 space-y-2 md:space-y-5 flex flex-col justify-center items-center">
           <section className="w-full px-4 py-8 leading-normal md:p-8 md:mt-10 text-md">
             <h3 className="font-bold tracking-widest text-left uppercase text-blue dark:text-white md:text-center">
@@ -57,38 +56,30 @@ export default function ListLayout({
             </div>
           </div>
         </div>
-        <section className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 px-4 gap-8">
-          {!filteredBlogPosts.length && 'No posts found.'}
-          {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
-            return (
-              <Card
-                key={slug}
-                className="hover:bg-blue-100 hover:cursor-pointer bg-white dark:bg-black dark:hover:bg-black-800"
-                onClick={(event) => {
-                  handleClick(event, `/study/${category}/${slug}`)
-                }}
-              >
-                <div className="flex flex-row justify-start items-center">
-                  <div className="flex w-1/4 justify-center items-center">
-                    <div className="rounded-xl bg-black-100 dark:bg-black p-2">
+        <section className="container mx-auto" style={{ maxWidth: '960px' }}>
+          <div className="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {!filteredBlogPosts.length && 'No posts found.'}
+            {displayPosts.map((frontMatter) => {
+              const { slug, date, title, summary, tags } = frontMatter
+              return (
+                <Link key={slug} href={`/study/${category}/${slug}`} passHref>
+                  <a>
+                    <ArticleCard>
                       <Image src="https://emojicdn.elk.sh/🗂️" width="48" height="48" alt="Guide" />
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-start items-start w-3/4 py-6">
-                    <time dateTime={date}>{formatDate(date)}</time>
-                    <h1 className="font-extrabold text-xl"> {title}</h1>
-                    <div className="flex flex-row">
-                      {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
-                    </div>
-                    <p className="text-sm mt-2 hidden">{summary}</p>
-                  </div>
-                </div>
-              </Card>
-            )
-          })}
+                      <time dateTime={date}>{formatDate(date)}</time>
+                      <h1 className="font-extrabold text-xl"> {title}</h1>
+                      <div className="flex flex-row">
+                        {tags.map((tag) => (
+                          <Tag key={tag} text={tag} />
+                        ))}
+                      </div>
+                      <p className="text-sm mt-2 hidden">{summary}</p>
+                    </ArticleCard>
+                  </a>
+                </Link>
+              )
+            })}
+          </div>
         </section>
       </div>
       <div className="h-12" />
@@ -100,5 +91,13 @@ export default function ListLayout({
         />
       )}
     </>
+  )
+}
+
+const ArticleCard = (props) => {
+  return (
+    <div className="m-2  border-2 border-black rounded-lg drop-shadow bg-white dark:bg-black dark:hover:border-white hover:bg-blue-100 hover:drop-shadow-lg px-4 py-2 h-[240px]">
+      <div className="flex flex-col justify-between items-start h-full">{props.children}</div>
+    </div>
   )
 }

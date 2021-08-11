@@ -7,14 +7,14 @@ import { Card } from '@/components/design/card'
 import Image from '@/components/Image'
 import { useRouter } from 'next/router'
 
-export default function ListLayout({
+export const ListLayoutStudy = ({
   posts,
   title,
   subTitle,
   category,
   initialDisplayPosts = [],
   pagination,
-}) {
+}) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')

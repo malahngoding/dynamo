@@ -1,10 +1,10 @@
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
+import { StudyListLayout } from '@/layouts/StudyListLayout'
 import { PageSeo } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-export const POSTS_PER_PAGE = 5
+export const POSTS_PER_PAGE = 6
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('guide')
@@ -22,7 +22,7 @@ export default function Study({ posts, initialDisplayPosts, pagination }) {
   return (
     <LayoutWrapper>
       <PageSeo title={`Study - ${siteMetadata.author}`} description={siteMetadata.description} />
-      <ListLayout
+      <StudyListLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
