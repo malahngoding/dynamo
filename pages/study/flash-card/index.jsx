@@ -2,15 +2,54 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import { UnderConstruction } from '@/components/UnderConstruction'
 import siteMetadata from '@/data/siteMetadata'
+import CustomLink from '@/components/Link'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useSession } from 'next-auth/client'
 
-export default function FlashCard() {
+export default function FlashCardInitiation() {
+  const [session, loading] = useSession()
+
+  const [currentQuestionGroup, setCurrentQuestionGroup] = useState(1)
+  // GET CURRENT QUESTION GROUP
+  console.log(session)
+  useEffect(() => {
+    // Ini yang akan dilakukan diambil dari stand
+    axios
+      .get('https://opentdb.com/api.php?amount=10')
+      .then(function (response) {
+        // handle success
+        console.log(response.data.results)
+        // setCurrentQuestionGroup()
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function () {
+        // always executed
+      })
+
+    // Ini yang akan dilakukan
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <LayoutWrapper>
       <PageSeo
         title={siteMetadata.titleHandler('Flash Card')}
         description={siteMetadata.description}
       />
-      <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
+      <div className="hidden">
+        <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
+      </div>
+      <div className="flex flex-col justify-center items-center my-8">
+        <div className="w-[352px] h-[720px] border-2 border-black">
+          <div>Pertanyaan Quiz ke 1</div>
+          <CustomLink href={`/study/flash-card/question?id=${currentQuestionGroup}`}>
+            Menuju Pertanyaan
+          </CustomLink>
+        </div>
+      </div>
     </LayoutWrapper>
   )
 }

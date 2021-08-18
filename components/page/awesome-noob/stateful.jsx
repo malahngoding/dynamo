@@ -1,14 +1,19 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export const QuestionCard = (props) => {
   let correctAnswerCount = 0
   let wrongAnserCount = 0
   const [question, setQuestion] = useState([])
+  const router = useRouter()
+  console.log(router.query.id)
+
   useEffect(() => {
     // Ini yang akan dilakukan
     axios
-      .get('https://opentdb.com/api.php?amount=10')
+      // ${router.query.id}
+      .get(`https://opentdb.com/api.php?amount=10`)
       .then(function (response) {
         // handle success
         setQuestion(response.data.results)
@@ -35,9 +40,12 @@ export const QuestionCard = (props) => {
           <p className="text-xs">{question[props.currentPage - 1].question} </p>
           <div>
             <button
-              className="border-black border-2 m-4 p-2"
+              className={`border-black border-2 m-4 p-2 ${
+                props.isActive ? 'bg-black text-white' : 'bg-white'
+              }`}
               onClick={() => {
                 correctAnswerCount++
+                props.setIsActive(true)
               }}
             >
               {question[props.currentPage - 1].correct_answer}
@@ -78,7 +86,10 @@ export const QuestionPagination = (props) => {
       {currentPage !== totalPage ? (
         <button
           className="border-black border-2 m-4 p-2"
-          onClick={() => setCurrentPage(currentPage + 1)}
+          onClick={() => {
+            setCurrentPage(currentPage + 1)
+            props.setIsActive(false)
+          }}
         >
           Lanjut
         </button>
