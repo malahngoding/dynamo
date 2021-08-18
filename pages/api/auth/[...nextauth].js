@@ -44,11 +44,4 @@ export default NextAuth({
       },
     }),
   ],
-  callbacks: {
-    async session(session) {
-      const data = await detaUser.get(session.user.email)
-      session.isAdmin = data.isMalahNgodingAdmin
-      return session
-    },
-  },
 })
