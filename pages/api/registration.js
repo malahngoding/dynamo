@@ -11,6 +11,7 @@ export default async function handler(req, res) {
           name: body.name,
           password: await hashPassword(body.password),
           registeredAt: new Date(),
+          isMalahNgodingAdmin: false,
         },
         body.email
       )

@@ -6,7 +6,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getProviders, signIn, getCsrfToken, useSession } from 'next-auth/client'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { At, BrandGithub, BrandGoogle, Lock } from 'tabler-icons-react'
 
