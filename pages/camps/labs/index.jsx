@@ -26,8 +26,8 @@ export default function Labs({ posts, initialDisplayPosts, pagination }) {
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
-        title="Baca Panduan"
-        subTitle="Intinya Blog Lah"
+        title="Proyek Eksperimen"
+        subTitle="Proyek Untuk Belajar"
         category="labs"
       />
     </LayoutWrapper>

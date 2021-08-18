@@ -5,6 +5,7 @@ import { CihuyComponent, CihuyComponent2 } from '@/components/page/awesome-noob/
 import { CihuyButton } from '@/components/page/awesome-noob/cihuy-component'
 import { QuestionCard, QuestionPagination } from '@/components/page/awesome-noob/stateful'
 import { useState } from 'react'
+import { UnderConstruction } from '@/components/UnderConstruction'
 
 // Cara 1
 export default function AwesomeNoobs() {
@@ -21,7 +22,8 @@ export default function AwesomeNoobs() {
         title={siteMetadata.titleHandler('Awesome Noob')}
         description={siteMetadata.description}
       />
-      <div>
+      <UnderConstruction title="Awesome Noobs" subTitle="Penuh Semangat" />
+      <div className="hidden">
         <QuestionCard currentPage={page} />
         <QuestionPagination currentPage={page} setCurrentPage={setPage} totalPage={totalPage} />
       </div>
