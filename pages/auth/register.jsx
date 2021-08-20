@@ -108,8 +108,8 @@ export default function Register({ providers, csrfToken }) {
                       <div className="relative text-black focus-within:text-black w-full">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                           <button
-                            tabIndex={-1}
                             className="p-1 focus:outline-none focus:shadow-outline"
+                            tabIndex={-1}
                           >
                             <User />
                           </button>
@@ -136,8 +136,8 @@ export default function Register({ providers, csrfToken }) {
                       <div className="relative text-black focus-within:text-black w-full">
                         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                           <button
-                            tabIndex={-1}
                             className="p-1 focus:outline-none focus:shadow-outline"
+                            tabIndex={-1}
                           >
                             <At />
                           </button>
