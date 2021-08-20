@@ -1,23 +1,14 @@
 import CustomLink from '@/components/Link'
+import { PageSeo } from '@/components/SEO'
+import siteMetadata from '@/data/siteMetadata'
 import { AdminLayout } from '@/layouts/AdminLayout'
-import { useSession } from 'next-auth/client'
 
 export default function AdminPage() {
-  const [session, loading] = useSession()
-
-  if (loading) {
-    return (
-      <div className="flex flex-col justify-center items-center min-h-screen">
-        <span className="font-black">Loading...</span>
-      </div>
-    )
-  } else {
-    console.log(session)
-    return (
-      <AdminLayout>
-        <h1>Malah Ngoding Admin</h1>
-        <CustomLink href="/">OK</CustomLink>
-      </AdminLayout>
-    )
-  }
+  return (
+    <AdminLayout>
+      <PageSeo title={siteMetadata.titleHandler('Admin')} description={siteMetadata.description} />
+      <h1>Malah Ngoding Dashboard</h1>
+      <CustomLink href="/">OK</CustomLink>
+    </AdminLayout>
+  )
 }
