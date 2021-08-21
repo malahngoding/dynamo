@@ -6,6 +6,7 @@ import ThemeSwitch from './ThemeSwitch'
 import { LogoMalahNgoding } from './design/logo'
 import { PrimaryButton } from './design/button'
 import { signIn, signOut, useSession } from 'next-auth/client'
+import { useDashNav } from '@/modules/dash-nav.store'
 
 export const NavigationBar = (props) => {
   return (
@@ -46,7 +47,12 @@ export const NavigationBar = (props) => {
 
 const Auth = () => {
   const [session, loading] = useSession()
+  const shown = useDashNav((state) => state.shown)
+  const toggleNav = useDashNav((state) => state.toggleNav)
 
+  const handleToggleDash = () => {
+    toggleNav()
+  }
   return (
     <>
       {loading ? (
@@ -60,8 +66,8 @@ const Auth = () => {
           )}
 
           {session && (
-            <PrimaryButton variant="warning" onClick={() => signOut()}>
-              {session.user.name}
+            <PrimaryButton variant={shown ? 'info' : 'normal'} onClick={handleToggleDash}>
+              <span className="font-bold">Dash</span>
             </PrimaryButton>
           )}
         </>

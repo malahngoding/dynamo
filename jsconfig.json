@@ -8,6 +8,7 @@
       "@/layouts/*": ["layouts/*"],
       "@/hooks/*": ["hooks/*"],
       "@/lib/*": ["lib/*"],
+      "@/modules/*": ["modules/*"],
       "@/styles/*": ["styles/*"]
     }
   }
