@@ -15,7 +15,7 @@ export default function User() {
             src={current.user.image}
             alt={`Sebuah gambar avatar dari pengguna ${current.user.name}`}
           />
-          <h1 className="font-extrabold text-xl mt-4 dark:text-black">{current.user.name}</h1>
+          <h1 className="font-extrabold text-xl mt-4">{current.user.name}</h1>
         </div>
       )}
     </div>

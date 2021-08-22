@@ -2,15 +2,40 @@
 import { useSession, signOut } from 'next-auth/client'
 import { Logout } from 'tabler-icons-react'
 import { PrimaryButton } from '../design/button'
+import ThemeSwitch from '../ThemeSwitch'
 
 export default function Settings() {
   const [current] = useSession()
   return (
     <div>
       {current && (
-        <div>
-          <h1 className="font-black text-4xl mb-2">Pengaturan</h1>
-          <PrimaryButton variant="danger" className="w-full mt-4" onClick={signOut}>
+        <div className="flex flex-col">
+          <h1 className="font-black text-4xl mb-8">Pengaturan</h1>
+          <p className="font-medium my-4">Tema</p>
+          <ThemeSwitch />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+          <div className="h-24" />
+
+          <PrimaryButton
+            variant="danger"
+            className="w-full mt-4 flex flex-row justify-center"
+            onClick={signOut}
+          >
             <span>
               <Logout />
             </span>

@@ -19,7 +19,7 @@ export const DashWrapper = () => {
 }
 
 const Wrap = (props) => {
-  useLockBodyScroll()
+  // useLockBodyScroll()
   return (
     <Transition
       show={props.shown}
@@ -30,7 +30,7 @@ const Wrap = (props) => {
       leaveFrom="opacity-100 rotate-0 scale-100 "
       leaveTo="opacity-0 scale-95 "
     >
-      <div className="fixed bottom-0 right-0 w-screen md:w-[414px] h-screen bg-white dark:bg-black border-l-2 border-black dark:border-white transition-opacity">
+      <div className="z-30 fixed bottom-0 right-0 w-screen md:w-[414px] h-screen bg-white dark:bg-black border-l-2 border-black dark:border-white transition-opacity">
         <PrimaryButton
           className="rounded-full m-4"
           onClick={() => {
@@ -51,7 +51,7 @@ const Wrap = (props) => {
               <SettingsComponent />
             </Tab.Panel>
           </Tab.Panels>
-          <Tab.List className="h-16 absolute bottom-0 border-t-2 border-black dark:border-white w-full flex flex-row justify-around items-center dark:text-black">
+          <Tab.List className="h-16 absolute bottom-0 border-t-2 border-black dark:border-white w-full flex flex-row justify-around items-center dark:text-black bg-white dark:bg-black-800">
             <Tab>
               {({ selected }) => (
                 <>
