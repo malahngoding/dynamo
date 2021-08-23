@@ -19,7 +19,7 @@ export default function FlashCardInitiation() {
       .get('https://opentdb.com/api.php?amount=10')
       .then(function (response) {
         // handle success
-        console.log(response.data.results)
+        console.log(response.data)
         // setCurrentQuestionGroup()
       })
       .catch(function (error) {

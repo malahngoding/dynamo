@@ -13,10 +13,10 @@ export const QuestionCard = (props) => {
     // Ini yang akan dilakukan
     axios
       // ${router.query.id}
-      .get(`https://opentdb.com/api.php?amount=10`)
+      .get(`http://127.0.0.1:8080/api/questions/get`)
       .then(function (response) {
         // handle success
-        setQuestion(response.data.results)
+        setQuestion(response.data)
       })
       .catch(function (error) {
         // handle error
@@ -36,7 +36,7 @@ export const QuestionCard = (props) => {
       ) : (
         <div className="m-4 h-[512px] w-[512px] border-black border-2">
           Pertanyaan ke - {props.currentPage} <br />
-          {question[props.currentPage - 1].category} <br />
+          {question[props.currentPage - 1].groupname} <br />
           <p className="text-xs">{question[props.currentPage - 1].question} </p>
           <div>
             <button
@@ -50,7 +50,7 @@ export const QuestionCard = (props) => {
             >
               {question[props.currentPage - 1].correct_answer}
             </button>
-            {question[props.currentPage - 1].incorrect_answers.map((item, index) => (
+            {question[props.currentPage - 1].incorrect_answer.map((item, index) => (
               <button
                 key={index}
                 className="border-black border-2 m-4 p-2"
