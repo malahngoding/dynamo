@@ -5,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import CustomLink from '@/components/Link'
 import { useRouter } from 'next/router'
 import axios from '@/lib/axios'
+import { QuizResultPages } from '@/components/quiz-score'
 
 export default function FlashCardResults() {
   const router = useRouter()
@@ -36,10 +37,13 @@ export default function FlashCardResults() {
       <div className="hidden">
         <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
       </div>
-      <div className="w-[352px] border-2 border-black">
+      {/* <div className="w-[352px] border-2 border-black">
         <div>Score anda adalah</div>
-        <button onClick={handleSubmit}>selesai</button>
+        <button onClick={handleSubmit}>selesai</b\utton>
         <CustomLink href="/study/flash-card">Menuju Pertanyaan</CustomLink>
+      </div> */}
+      <div className="flex flex-col justify-center items-center my-8">
+        <QuizResultPages />
       </div>
     </LayoutWrapper>
   )

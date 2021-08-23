@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 import Link from 'next/link'
 
-export default function quizQuestionPage() {
+export const QuizResultPages = () => {
   return (
     <div>
       <div className="flex flex-col border-4 border-purple-400 rounded-xl m-5 bg-white overflow-y-auto">
