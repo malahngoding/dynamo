@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable prettier/prettier */
-import Link from 'next/link'
+import CustomLink from '@/components/Link'
 
 export const QuizResultPages = () => {
   return (
@@ -51,11 +51,11 @@ export const QuizResultPages = () => {
             </div>
           </div>
         </div>
-        <Link href="/quiz-dashboard">
-          <button className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold">
+        <CustomLink href="/study/flash-card">
+          <div className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold">
             Selesai
-          </button>
-        </Link>
+          </div>
+        </CustomLink>
       </div>
     </div>
   )
