@@ -11,25 +11,25 @@ import { QuizDashboardPages } from '@/components/quiz-dashboard'
 export default function FlashCardInitiation() {
   // const [session, loading] = useSession()
 
-  // const [currentQuestionGroup, setCurrentQuestionGroup] = useState(1)
-  // // GET CURRENT QUESTION GROUP
-  // console.log(session.user.email)
-  // useEffect(() => {
-  //   // Ini yang akan dilakukan diambil dari stand
-  //   axios
-  //     .get('http://localhost:8080/api/quiz-group-name')
-  //     .then(function (response) {
-  //       // handle success
-  //       console.log(response.data.results)
-  //       // setCurrentQuestionGroup()
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error)
-  //     })
-  //     .then(function () {
-  //       // always executed
-  //     })
+  const [currentQuestionGroup, setCurrentQuestionGroup] = useState(1)
+  // GET CURRENT QUESTION GROUP
+  console.log(session)
+  useEffect(() => {
+    // Ini yang akan dilakukan diambil dari stand
+    axios
+      .get('https://opentdb.com/api.php?amount=10')
+      .then(function (response) {
+        // handle success
+        console.log(response.data)
+        // setCurrentQuestionGroup()
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function () {
+        // always executed
+      })
 
   //   // Ini yang akan dilakukan
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
