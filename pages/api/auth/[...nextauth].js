@@ -9,6 +9,12 @@ export default NextAuth({
     signIn: '/auth/signin',
     error: '/auth/error',
   },
+  callbacks: {
+    async signIn(user, account, profile) {
+      console.log(user, account, profile)
+      return true
+    },
+  },
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,

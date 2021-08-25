@@ -92,6 +92,7 @@ export default function SignIn({ providers, csrfToken }) {
                           <button
                             type="submit"
                             className="p-1 focus:outline-none focus:shadow-outline"
+                            tabIndex={-1}
                           >
                             <At />
                           </button>
@@ -123,6 +124,7 @@ export default function SignIn({ providers, csrfToken }) {
                           <button
                             type="submit"
                             className="p-1 focus:outline-none focus:shadow-outline"
+                            tabIndex={-1}
                           >
                             <Lock />
                           </button>

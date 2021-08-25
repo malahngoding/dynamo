@@ -2,14 +2,14 @@ import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
 import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
 import { LogoMalahNgoding } from './design/logo'
 import { PrimaryButton } from './design/button'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, useSession } from 'next-auth/client'
+import { useDashNav } from '@/modules/dash-nav.store'
 
 export const NavigationBar = (props) => {
   return (
-    <header className="flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-black-800">
+    <header className="sticky bg-white dark:bg-black-800 z-10 top-0 flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-yellow-800">
       <div>
         <Link href="/" aria-label="Malah Ngoding">
           <div className="flex items-center justify-between">
@@ -37,7 +37,6 @@ export const NavigationBar = (props) => {
           ))}
         </div>
         <Auth />
-        <ThemeSwitch />
         <MobileNav />
       </div>
     </header>
@@ -46,7 +45,12 @@ export const NavigationBar = (props) => {
 
 const Auth = () => {
   const [session, loading] = useSession()
+  const shown = useDashNav((state) => state.shown)
+  const toggleNav = useDashNav((state) => state.toggleNav)
 
+  const handleToggleDash = () => {
+    toggleNav()
+  }
   return (
     <>
       {loading ? (
@@ -60,8 +64,8 @@ const Auth = () => {
           )}
 
           {session && (
-            <PrimaryButton variant="warning" onClick={() => signOut()}>
-              {session.user.name}
+            <PrimaryButton variant={shown ? 'info' : 'normal'} onClick={handleToggleDash}>
+              <span className="font-bold">Dash</span>
             </PrimaryButton>
           )}
         </>
