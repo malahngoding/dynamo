@@ -9,13 +9,45 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   return (
+    <button aria-label="Toggle Theme Mode" type="button">
+      {mounted && (
+        <div className="flex flex-row justify-evenly items-center my-4">
+          <DarkTheme theme={theme} setTheme={setTheme} resolvedTheme={resolvedTheme} />
+          <LightTheme theme={theme} setTheme={setTheme} resolvedTheme={resolvedTheme} />
+        </div>
+      )}
+    </button>
+  )
+}
+
+const LightTheme = (props) => {
+  return (
     <button
-      aria-label="Toggle Dark Mode"
-      type="button"
-      className="w-8 h-8 p-1 ml-1 mr-1 rounded sm:ml-4"
-      onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
+      className={`flex flex-row justify-center py-1 px-4 ${
+        props.theme === 'light' ? 'border-2 border-black' : 'border-2 border-black'
+      }`}
+      onClick={() =>
+        props.setTheme(props.theme === 'dark' || props.resolvedTheme === 'dark' ? 'light' : 'dark')
+      }
     >
-      {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? <Moon /> : <Sun />}
+      <Sun />
+      <span className="ml-4">Terang</span>
+    </button>
+  )
+}
+
+const DarkTheme = (props) => {
+  return (
+    <button
+      className={`flex flex-row justify-center py-1 px-4 ${
+        props.theme === 'light' ? 'border-2 border-white' : 'border-2 border-white'
+      }`}
+      onClick={() =>
+        props.setTheme(props.theme === 'dark' || props.resolvedTheme === 'dark' ? 'light' : 'dark')
+      }
+    >
+      <Moon />
+      <span className="ml-4">Gelap</span>
     </button>
   )
 }

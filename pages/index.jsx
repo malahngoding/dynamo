@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { PageSeo } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import Link from 'next/link'
@@ -24,7 +25,7 @@ export const Hero = () => {
         <div className="flex flex-col justify-center">
           <div className="max-w-xl mb-6">
             <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight dark:text-yellow text-gray-800 sm:text-4xl leading-snug sm:leading-normal">
-              <span className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink to-green">{`<HelloWorld/>`}</span>
+              <span className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink to-green">{`<Hello World/>`}</span>
               <br className="m-2 md:m-6" />
               Selamat datang di{' '}
               <span className="relative px-1">
@@ -35,7 +36,8 @@ export const Hero = () => {
             <p className="text-base text-gray-800 dark:text-white md:text-lg">
               Belajar koding dan berlatih di platform yang di desain cocok untuk siapa saja. Membaca
               panduan dan update terbaru. Cocok untuk siapa saja yang bersemangat untuk{' '}
-              <em>ngoding</em>. Semua dalam Bahasa Indonesia.{' '}
+              <em>ngoding</em>. <br />
+              Semua dalam Bahasa Indonesia.{' '}
               <span role="img" aria-label="indonesian flag" className="text-xl">
                 🇮🇩
               </span>
