@@ -36,11 +36,11 @@ export default function FlashCardAnsweringQuestion() {
           setIsActive={setIsActive}
         /> */}
       </div>
-      <CustomLink
+      {/* <CustomLink
         href={`/study/flash-card/result?id=1&total_correct=${7}&total_incorrect=${2}&total_question=${10}`}
       >
         Menuju Pertanyaan
-      </CustomLink>
+      </CustomLink> */}
       <div className="flex flex-col justify-center items-center">
         <div className="w-[352px] h-full md:w-[540px] md:h-full">
           <QuizQuestionPage currentPage={page} setCurrentPage={setPage} totalPage={totalPage} />

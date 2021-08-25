@@ -13,23 +13,6 @@ export default function Settings() {
           <h1 className="font-black text-4xl mb-8">Pengaturan</h1>
           <p className="font-medium my-4">Tema</p>
           <ThemeSwitch />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
-          <div className="h-24" />
 
           <PrimaryButton
             variant="danger"

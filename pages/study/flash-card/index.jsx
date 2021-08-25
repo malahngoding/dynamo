@@ -13,7 +13,7 @@ export default function FlashCardInitiation() {
 
   const [currentQuestionGroup, setCurrentQuestionGroup] = useState(1)
   // GET CURRENT QUESTION GROUP
-  console.log(session)
+  // console.log(session)
   useEffect(() => {
     // Ini yang akan dilakukan diambil dari stand
     axios
@@ -31,9 +31,9 @@ export default function FlashCardInitiation() {
         // always executed
       })
 
-  //   // Ini yang akan dilakukan
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+    //   // Ini yang akan dilakukan
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <LayoutWrapper>
       <PageSeo
