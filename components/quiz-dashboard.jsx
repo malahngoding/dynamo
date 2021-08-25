@@ -17,25 +17,27 @@ export const QuizDashboardPages = () => {
   // GET CURRENT QUESTION GROUP
   useEffect(() => {
     // Ini yang akan dilakukan diambil dari stand
-    axios
-      .post(`http://localhost:8080/api/quiz-group-name/`, { email: session.user.email })
-      .then(function (response) {
-        // handle success
-        setCurrentQuestionGroup(response.data[0])
-        // console.log(setCurrentQuestionGroup)
-        // setCurrentQuestionGroup()
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error)
-      })
-      .then(function () {
-        // always executed
-      })
+    if (loading) {
+      axios
+        .post(`http://localhost:8080/api/quiz-group-name/`, { email: session.user.email })
+        .then(function (response) {
+          // handle success
+          setCurrentQuestionGroup(response.data[0])
+          // console.log(setCurrentQuestionGroup)
+          // setCurrentQuestionGroup()
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error)
+        })
+        .then(function () {
+          // always executed
+        })
+    }
 
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [loading])
 
   return (
     <div className=" flex flex-col border-4 border-black bg-white rounded-3xl m-5 w-[375px]">

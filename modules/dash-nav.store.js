@@ -1,6 +1,9 @@
 import create from 'zustand'
 
-export const useDashNav = create((set, get) => ({
+export const useDashNav = create((set) => ({
   shown: false,
-  toggleNav: () => set({ shown: !get().shown }),
+  toggleNav: () =>
+    set((state) => ({
+      shown: !state.shown,
+    })),
 }))
