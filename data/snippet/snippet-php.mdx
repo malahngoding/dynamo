@@ -1,0 +1,89 @@
+## Hypertext Preprocessor
+
+#### Cara menggunakan fungsi if dan else
+
+```php
+if ($a > $b){
+echo "a lebih besar dari b"
+} else{
+echo "a tidak lebih besar dari b"
+};
+```
+
+#### Cara menggunakan fungsi elseif
+
+```php
+if ($a > $b) {
+    echo "a lebih besar dari b";
+} elseif ($a == $b) {
+    echo "a sama dengan b";
+} else {
+    echo "a lebih kecil dari b";
+}
+```
+
+#### Cara memasukkan array baru ke dalam array
+
+```php
+$names = array();
+array_push($names, 'David', 'John');
+```
+
+#### Cara menggabungkan dua atau lebih array
+
+```php
+$merged = array_merge($arr1, $arr2);
+```
+
+#### Cara menghitung jumlah array
+
+```php
+$nama_buah = [mangga, jeruk, apel, melon, salak];
+count($nama_buah);
+```
+
+#### Cara loop data memiliki range tertentu
+
+```php
+for ($i = 0; $i <= 3; $i++) {
+        echo "Loop data : " . $i;
+    }
+```
+
+#### Cara loop data berupa array
+
+```php
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) {
+    $value = $value * 2;
+}
+```
+
+#### Cara mengkoneksi/menyambungkan data ke database menggunakan localhost MySql
+
+```php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Gagal terkoneksi: " . $conn->connect_error);
+}
+echo "Berhasil terkoneksi";
+```
+
+#### Fungsi GET parameter URL
+
+```php
+echo $_GET['link'];
+```
+
+#### Fungsi POST parameter URL
+
+```php
+echo $_POST['link'];
+```
