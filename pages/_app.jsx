@@ -18,7 +18,7 @@ import Head from 'next/head'
 export default function App({ Component, pageProps }) {
   return (
     <Provider session={pageProps.session}>
-      <ThemeProvider attribute="class">
+      <ThemeProvider attribute="class" defaultTheme="light">
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
