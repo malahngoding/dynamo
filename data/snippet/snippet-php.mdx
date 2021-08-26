@@ -1,6 +1,8 @@
-## Hypertext Preprocessor
+clea## Hypertext Preprocessor
 
-#### Cara menggunakan fungsi if dan else
+#### Fungsi if dan else
+
+Fungsi if dan else adalah suatu fungsi untuk menentukan suatu aksi dalam suatu kondisi. Cara menentukan fungsi if dan else pada php, sebagai berikut:
 
 ```php
 if ($a > $b){
@@ -10,7 +12,9 @@ echo "a tidak lebih besar dari b"
 };
 ```
 
-#### Cara menggunakan fungsi elseif
+#### Fungsi elseif
+
+Fungsi elseif adalah suatu fungsi untuk menentukan suatu aksi dalam beberapa kondisi. Cara menentukan fungsi elseif pada php, sebagai berikut:
 
 ```php
 if ($a > $b) {
@@ -22,27 +26,35 @@ if ($a > $b) {
 }
 ```
 
-#### Cara memasukkan array baru ke dalam array
+#### Fungsi Array Push
+
+Array push berfungsi untuk memasukkan array baru ke dalam array. Penggunaan fungsi array push pada php, sebagai berikut:
 
 ```php
 $names = array();
 array_push($names, 'David', 'John');
 ```
 
-#### Cara menggabungkan dua atau lebih array
+#### Fungsi Array merge
+
+Array merge berfungsi untuk menggabungkan dua array atau lebih. Penggunaan fungsi array merge pada php, sebagai berikut:
 
 ```php
 $merged = array_merge($arr1, $arr2);
 ```
 
-#### Cara menghitung jumlah array
+#### Fungsi count
+
+Count berfungsi untuk menghitung jumlah array. Penggunaan fungsi count pada php, sebagai berikut:
 
 ```php
 $nama_buah = [mangga, jeruk, apel, melon, salak];
 count($nama_buah);
 ```
 
-#### Cara loop data memiliki range tertentu
+#### Loop data memiliki range tertentu
+
+Untuk loop data yang memiliki range tertentu dapat menggunakan fungsi for. Penggunaan fungsi for pada php, sebagai berikut:
 
 ```php
 for ($i = 0; $i <= 3; $i++) {
@@ -50,7 +62,9 @@ for ($i = 0; $i <= 3; $i++) {
     }
 ```
 
-#### Cara loop data berupa array
+#### Loop data berupa array
+
+Untuk loop data berupa array dapat menggunakan fungsi foreach. Penggunaan fungsi foreach pada php, sebagai berikut:
 
 ```php
 $arr = array(1, 2, 3, 4);
@@ -59,31 +73,78 @@ foreach ($arr as &$value) {
 }
 ```
 
-#### Cara mengkoneksi/menyambungkan data ke database menggunakan localhost MySql
+#### Menghubungkan data dari database menggunakan MySql
+
+Sebelum kita dapat mengakses data dari database, kita perlu menghubungkan ke server dengan cara, sebagai berikut:
 
 ```php
 $servername = "localhost";
 $username = "username";
 $password = "password";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
+// Membuat koneksi
+$database = new mysqli($servername, $username, $password);
 
-// Check connection
-if ($conn->connect_error) {
-  die("Gagal terkoneksi: " . $conn->connect_error);
+// Mengecek koneksi
+if ($database->connect_error) {
+  die("Gagal terkoneksi: " . $database->connect_error);
 }
 echo "Berhasil terkoneksi";
 ```
 
-#### Fungsi GET parameter URL
+#### Memasukkan data menggunakan MySql
+
+Cara memasukkan data ke dalam tabel profile menggunakan MySql, sebagai berikut:
 
 ```php
-echo $_GET['link'];
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "ProfileTable";
+
+// Membuat koneksi
+$database = new mysqli($servername, $username, $password, $dbname);
+// Mengecek koneksi
+if ($database->connect_error) {
+  die("Gagal terkoneksi: " . $database->connect_error);
+}
+
+$sql = "INSERT INTO Profile (firstname, lastname, email)
+VALUES ('Galih', 'Indrasari', 'galihindrasari@gmail.com')";
+
+if ($database->query($sql) === TRUE) {
+  echo "Data baru berhasil tersimpan";
+} else {
+  echo "Error: " . $sql . "<br>" . $database->error;
+}
+
+$database->close();
 ```
 
-#### Fungsi POST parameter URL
+#### Mengupdate data menggunakan MySql
+
+Cara mengupdate data ke dalam tabel profile menggunakan MySql, sebagai berikut:
 
 ```php
-echo $_POST['link'];
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "ProfileTable";
+
+// Membuat koneksi
+$database = new mysqli($servername, $username, $password, $dbname);
+// Mengecek koneksi
+if ($database->connect_error) {
+  die("Gagal terkoneksi: " . $database->connect_error);
+}
+
+$sql = "UPDATE Profile SET lastname='Silalahi' WHERE id=2";
+
+if ($database->query($sql) === TRUE) {
+  echo "Data baru berhasil terupdate";
+} else {
+  echo "Error: " . $database->error;
+}
+
+$database->close();
 ```
