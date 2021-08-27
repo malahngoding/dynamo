@@ -1,8 +1,57 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable prettier/prettier */
 import CustomLink from '@/components/Link'
-
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useSession } from 'next-auth/client'
+import { email } from '@/data/siteMetadata'
 export const QuizResultPages = () => {
+  const [session, loading] = useSession()
+  const [result, setResult] = useState([])
+
+  useEffect(() => {
+    // Ini yang akan dilakukan
+    if (!loading) {
+      axios
+        // ${router.query.id}
+        .get(`http://127.0.0.1:8080/api/quiz-result/${session.user.email}`)
+        .then(function (response) {
+          // handle success
+          console.log(response.data[0])
+          setResult(response.data[0])
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error)
+          console.log('mantap')
+        })
+        .then(function () {
+          // always executed
+        })
+    }
+    // Ini yang akan dilakukan
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading])
+
+  //   axios
+  //     // ${router.query.id}
+  //     .get(`http://127.0.0.1:8080/quiz-result/${session.user.email}`)
+  //     .then(function (response) {
+  //       // handle success
+  //       // console.log(response)
+  //       setResult(response.data)
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error)
+  //     })
+  //     .then(function () {
+  //       // always executed
+  //     })
+  //   // Ini yang akan dilakukan
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [loading])
   return (
     <div>
       <div className="flex flex-col border-4 border-purple-400 rounded-xl m-5 bg-white overflow-y-auto">
@@ -15,7 +64,7 @@ export const QuizResultPages = () => {
           </div>
           <div className="rounded-full h-24 w-24 mx-32 my-8 flex items-center justify-center bg-white border-4 border-black">
             <div className="flex flex-col text-center">
-              <p className="text-center font-bold text-2xl">20</p>
+              <p className="text-center font-bold text-2xl">{result.nilai}</p>
               <p>Points</p>
             </div>
           </div>
@@ -27,13 +76,13 @@ export const QuizResultPages = () => {
           <div className="flex flex-1 ml-5">
             <div className="flex flex-col">
               <p className="text-gray font-bold justify-center">Jawaban Benar</p>
-              <p className="text-black text-2xl font-bold"> 2 Soal</p>
+              <p className="text-black text-2xl font-bold">{result.jawaban_benar} Soal</p>
             </div>
           </div>
           <div className="flex flex-1">
             <div className="flex flex-col justify-start">
               <p className="text-gray font-bold">Rata-rata point</p>
-              <p className="text-black text-2xl font-bold">20</p>
+              <p className="text-black text-2xl font-bold">{result.rata_rata}</p>
             </div>
           </div>
         </div>
@@ -41,13 +90,13 @@ export const QuizResultPages = () => {
           <div className="flex flex-1">
             <div className="flex flex-col ml-5">
               <p className="text-gray font-bold justify-center">Akurasi</p>
-              <p className="text-black text-2xl font-bold">32%</p>
+              <p className="text-black text-2xl font-bold">{result.akurasi}</p>
             </div>
           </div>
           <div className="flex flex-1">
             <div className="flex flex-col justify-start ml-2">
               <p className="text-gray font-bold">Soal dilewati</p>
-              <p className="text-black text-2xl font-bold">1</p>
+              <p className="text-black text-2xl font-bold">{result.soal_dilewati}</p>
             </div>
           </div>
         </div>

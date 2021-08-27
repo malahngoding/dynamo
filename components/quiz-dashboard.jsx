@@ -43,17 +43,6 @@ export const QuizDashboardPages = () => {
     <>
       {currentQuestionGroup.length !== 0 && (
         <div className=" flex flex-col border-4 border-black bg-white rounded-3xl m-5 w-[375px]">
-          <div className="flex flex-row border-4 border-white bg-white mx-5 mt-5 rounded-3xl">
-            <div className="flex flex-1 m-5 mt-6 mb-0  font-bold">Hi Sulthan Taqi Rabbani</div>
-            <div className="flex flex-1 justify-end m-4">
-              <img
-                className="flex rounded-full h-10 w-10"
-                src="https://i.postimg.cc/PJckkCxW/3.png"
-                alt=""
-              />
-            </div>
-          </div>
-
           <CustomLink href={`/study/flash-card/question?id=${currentQuestionGroup.QuizGroup}`}>
             <div className="flex flex-row border-4 border-yellow-100 mx-5 bg-yellow-100 m-6 rounded-3xl">
               <div className="flex flex-1">
