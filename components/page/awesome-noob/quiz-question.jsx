@@ -5,77 +5,129 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 import Link from 'next/link'
-import axios from 'axios'
+
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import CustomLink from '@/components/Link'
+import axios from 'axios'
+import { useSession } from 'next-auth/client'
 
 export const QuizQuestionPage = (props) => {
   // let correctAnswerCount = 0
   const [CorrectAnswerCount, setCorrectAnswerCount] = useState(0)
+  const [CorrectScore, setCorrectScore] = useState(0)
+  const [AvarageScore, setAvarageScore] = useState(0)
+  const [AccuracyScore, setAccuracyScore] = useState(0)
   // let wrongAnswerCount = 0
   const [WrongAnswerCount, setWrongAnswerCount] = useState(0)
   const [TotalAnswerCount, setTotalAnswerCount] = useState(0)
-  const [question, setQuestion] = useState([])
-  const router = useRouter()
-  console.log(router.query.id)
+  const [TotalScores, setTotalScore] = useState(0)
+  const [TrueAnswer, setTrueAnswer] = useState('')
+  const [Soal_dilewati, setSoal_dilewati] = useState(0)
+  const [session, loading] = useSession('')
+  console.log(session.user.email)
 
-  // const handleClick = () => {
-  //   for (let i = 0; i < correctAnswerCount.length; i++) {
-  //     totalAnswerCount = correctAnswerCount[i].value + wrongAnswerCount[i].value
+  // const response = {
+  //   correct_answer: TrueAnswer,
+  //   wrong_answer: ['wrong answer 1', 'wrong answer 2', 'wrong answer 3'],
+  // }
+  let arrayWrongAnswer = []
+  console.log(arrayWrongAnswer)
+
+  const arrayTrueAnswer = []
+  console.log(arrayTrueAnswer)
+
+  const result = arrayTrueAnswer.concat(arrayWrongAnswer)
+  const arr = [{ arrayWrongAnswer, arrayTrueAnswer }]
+  console.log(result)
+
+  // function shuffleArray(arr) {
+  //   for (let i = arr.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1))
+  //     ;[arr[i], arr[j]] = [arr[j], arr[i]]
   //   }
   // }
+  // console.log(arr)
+  // const [session, loading] = useSession('')
+  // console.log(session.user.email)
 
-  useEffect(() => {
-    // Ini yang akan dilakukan
-    axios
-      // ${router.query.id}
-      .get(`http://127.0.0.1:8080/api/questions/get/${router.query.id}`)
-      .then(function (response) {
-        // handle success
-        setQuestion(response.data)
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error)
-      })
-      .then(function () {
-        // always executed
-      })
+  // const handleClick = () => {}
 
-    // Ini yang akan dilakukan
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
   return (
     <>
-      {question.length === 0 ? (
+      {props.question.length === 0 ? (
         <>Loading</>
       ) : (
         <div>
-          <div className="flex flex-row border-4 border-black-400 mt-5 pb-5 bg-black-400 rounded-t-lg mx-5">
-            <div className="flex flex-1 mt-5 justify-center font-bold">
-              <button>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="feather feather-arrow-left"
+          <div className="flex flex-row justify-center items-center border-4 border-black-400 h-[75px] bg-black-400 rounded-t-lg mx-5">
+            <div className="flex flex-1 justify-center items-center font-bold"></div>
+            <div className="flex flex-1 pr-6 justify-center items-center font-bold">
+              {props.question[props.currentPage - 1].groupname}
+            </div>
+            <div className="flex flex-1 justify-center items-end">
+              {props.currentPage !== props.totalPage ? (
+                <button
+                  className="border-2 bg-black-800 p-2 rounded-lg  text-white"
+                  onClick={() => {
+                    props.setCurrentPage(props.currentPage + 1)
+                    setSoal_dilewati(Soal_dilewati + 1)
+                    setTotalAnswerCount(TotalAnswerCount + 1)
+                  }}
                 >
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-              </button>
+                  <p>SKIP</p>
+                </button>
+              ) : (
+                <CustomLink href={`/study/flash-card/result`}>
+                  <button
+                    className="border-2 bg-black-800 p-2 rounded-lg  text-white"
+                    onClick={() => {
+                      setSoal_dilewati(Soal_dilewati + 1)
+                      setTotalAnswerCount(TotalAnswerCount + 1)
+                      setCorrectAnswerCount(CorrectAnswerCount)
+                      setAccuracyScore(
+                        AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100
+                      )
+                      setAvarageScore(
+                        AvarageScore +
+                          (CorrectScore + props.question[props.currentPage - 1].score) /
+                            (TotalAnswerCount + 1)
+                      )
+                      setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
+                      setTotalScore(
+                        parseInt(props.totalscore) +
+                          CorrectScore +
+                          props.question[props.currentPage - 1].score
+                      )
+
+                      axios
+                        .post(`http://127.0.0.1:8080/api/post-result`, {
+                          email: session.user.email,
+                          nilai: CorrectScore,
+                          jawaban_benar: CorrectAnswerCount,
+                          akurasi:
+                            AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
+
+                          rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
+                          TotalScore: parseInt(props.totalscore) + CorrectScore,
+                          soal_dilewati: Soal_dilewati + 1,
+                        })
+                        .then(function (response) {
+                          // handle success
+                        })
+                        .catch(function (error) {
+                          // handle error
+                          console.log(error)
+                        })
+                        .then(function () {
+                          // always executed
+                        })
+                    }}
+                  >
+                    <p>SKIP</p>
+                  </button>
+                </CustomLink>
+              )}
             </div>
-            <div className="flex flex-1 mt-5 justify-center font-bold">
-              {question[props.currentPage - 1].groupname}
-            </div>
-            <div className="flex flex-1"></div>
           </div>
           <div className="flex flex-col border-4 border-purple-100 mt-0 mb-5 bg-white mx-5 rounded-b-lg">
             <div>
@@ -87,9 +139,11 @@ export const QuizQuestionPage = (props) => {
               />
             </div>
             <div className="flex justify-center mx-28 rounded-full py-3 px-4 bg-yellow mb-5 text-white">
-              Nilai {question[props.currentPage - 1].score} Point
+              Nilai {props.question[props.currentPage - 1].score} Point
             </div>
-            <div className="text-center mx-4 my-4">{question[props.currentPage - 1].question}</div>
+            <div className="text-center mx-4 my-4">
+              {props.question[props.currentPage - 1].question}
+            </div>
 
             <div className="flex flex-col justify-start items-center">
               {props.currentPage !== props.totalPage ? (
@@ -97,33 +151,88 @@ export const QuizQuestionPage = (props) => {
                   className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
                   onClick={() => {
                     props.setCurrentPage(props.currentPage + 1)
+                    setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
                     setCorrectAnswerCount(CorrectAnswerCount + 1)
                     setTotalAnswerCount(TotalAnswerCount + 1)
                   }}
                 >
-                  <div>{question[props.currentPage - 1].correct_answer}</div>
+                  <div>{props.question[props.currentPage - 1].correct_answer}</div>
                 </button>
               ) : (
                 <CustomLink
                   href={`/study/flash-card/result?id=1&total_correct=${
                     CorrectAnswerCount + 1
-                  }&total_incorrect=${WrongAnswerCount}&total_question=${TotalAnswerCount + 1}`}
+                  }&total_incorrect=${WrongAnswerCount}&total_question=${
+                    TotalAnswerCount + 1
+                  }&score=${CorrectScore + props.question[props.currentPage - 1].score}&akurasi=${
+                    AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100
+                  }&rata-rata_nilai=${
+                    AvarageScore +
+                    (CorrectScore + props.question[props.currentPage - 1].score) /
+                      (TotalAnswerCount + 1)
+                  }&totalnilai=${
+                    parseInt(props.totalscore) +
+                    CorrectScore +
+                    props.question[props.currentPage - 1].score
+                  }`}
                 >
                   <button
                     className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
                     onClick={() => {
-                      // props.setCurrentPage(props.currentPage + 1)
                       setCorrectAnswerCount(CorrectAnswerCount + 1)
+                      setAccuracyScore(
+                        AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100
+                      )
+                      setAvarageScore(
+                        AvarageScore +
+                          (CorrectScore + props.question[props.currentPage - 1].score) /
+                            (TotalAnswerCount + 1)
+                      )
+                      setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
                       setTotalAnswerCount(TotalAnswerCount + 1)
+                      setTotalScore(
+                        parseInt(props.totalscore) +
+                          CorrectScore +
+                          props.question[props.currentPage - 1].score
+                      )
+
+                      axios
+                        .post(`http://127.0.0.1:8080/api/post-result`, {
+                          email: session.user.email,
+                          nilai: CorrectScore + props.question[props.currentPage - 1].score,
+                          jawaban_benar: CorrectAnswerCount + 1,
+                          akurasi:
+                            AccuracyScore +
+                            ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100,
+
+                          rata_rata:
+                            AvarageScore +
+                            (CorrectScore + props.question[props.currentPage - 1].score) /
+                              (TotalAnswerCount + 1),
+                          TotalScore:
+                            parseInt(props.totalscore) +
+                            CorrectScore +
+                            props.question[props.currentPage - 1].score,
+                          soal_dilewati: Soal_dilewati,
+                        })
+                        .then(function (response) {
+                          // handle success
+                        })
+                        .catch(function (error) {
+                          // handle error
+                          console.log(error)
+                        })
+                        .then(function () {
+                          // always executed
+                        })
                     }}
                   >
-                    <div>{question[props.currentPage - 1].correct_answer}</div>
+                    <div>{props.question[props.currentPage - 1].correct_answer}</div>
                   </button>
                 </CustomLink>
               )}
-
               {props.currentPage !== props.totalPage ? (
-                question[props.currentPage - 1].incorrect_answer.map((item, index) => (
+                props.question[props.currentPage - 1].incorrect_answer.map((item, index) => (
                   <button
                     key={index}
                     className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
@@ -142,14 +251,53 @@ export const QuizQuestionPage = (props) => {
                     WrongAnswerCount + 1
                   }&total_question=${TotalAnswerCount + 1}`}
                 >
-                  {question[props.currentPage - 1].incorrect_answer.map((item, index) => (
+                  {props.question[props.currentPage - 1].incorrect_answer.map((item, index) => (
                     <button
                       key={index}
                       className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
                       onClick={() => {
                         // props.setCurrentPage(props.currentPage + 1)
                         setWrongAnswerCount(WrongAnswerCount + 1)
+                        setSoal_dilewati(Soal_dilewati)
                         setTotalAnswerCount(TotalAnswerCount + 1)
+                        setCorrectAnswerCount(CorrectAnswerCount)
+                        setAccuracyScore(
+                          AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100
+                        )
+                        setAvarageScore(
+                          AvarageScore +
+                            (CorrectScore + props.question[props.currentPage - 1].score) /
+                              (TotalAnswerCount + 1)
+                        )
+                        setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
+                        setTotalScore(
+                          parseInt(props.totalscore) +
+                            CorrectScore +
+                            props.question[props.currentPage - 1].score
+                        )
+
+                        axios
+                          .post(`http://127.0.0.1:8080/api/post-result`, {
+                            email: session.user.email,
+                            nilai: CorrectScore,
+                            jawaban_benar: CorrectAnswerCount,
+                            akurasi:
+                              AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
+
+                            rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
+                            TotalScore: parseInt(props.totalscore) + CorrectScore,
+                            soal_dilewati: Soal_dilewati,
+                          })
+                          .then(function (response) {
+                            // handle success
+                          })
+                          .catch(function (error) {
+                            // handle error
+                            console.log(error)
+                          })
+                          .then(function () {
+                            // always executed
+                          })
                       }}
                     >
                       <div>{item}</div>
@@ -157,6 +305,18 @@ export const QuizQuestionPage = (props) => {
                   ))}
                 </CustomLink>
               )}
+              {/* Loop jawaban */}
+              {/* {props.currentPage !== props.totalPage ? (
+                props.question[props.currentPage - 1].incorrect_answer.map((item) => {
+                  arrayWrongAnswer.push({ isCorrect: false, question: item })
+                }) &&
+                arrayTrueAnswer.push({
+                  isCorrect: true,
+                  question: props.question[props.currentPage - 1].correct_answer,
+                })
+              ) : (
+                <></>
+              )} */}
             </div>
           </div>
         </div>

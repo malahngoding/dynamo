@@ -9,7 +9,7 @@ import { useSession } from 'next-auth/client'
 import { QuizDashboardPages } from '@/components/quiz-dashboard'
 
 export default function FlashCardInitiation() {
-  // const [session, loading] = useSession()
+  const [session, loading] = useSession()
 
   const [currentQuestionGroup, setCurrentQuestionGroup] = useState(1)
   // GET CURRENT QUESTION GROUP
@@ -31,9 +31,9 @@ export default function FlashCardInitiation() {
         // always executed
       })
 
-  //   // Ini yang akan dilakukan
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+    //   // Ini yang akan dilakukan
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <LayoutWrapper>
       <PageSeo
@@ -43,7 +43,7 @@ export default function FlashCardInitiation() {
       <div className="hidden">
         <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
       </div>
-      {/* <div className="flex flex-col justify-center items-center my-8">
+      <div className="flex flex-col justify-center items-center my-8">
         <div className="w-[352px] h-[720px] border-2 border-black">
           <div>Pertanyaan Quiz ke 1</div>
           <CustomLink href={`/study/flash-card/question?id=${currentQuestionGroup}`}>
@@ -51,10 +51,10 @@ export default function FlashCardInitiation() {
           </CustomLink>
         </div>
       </div>
-       */}
-      <div className="flex flex-col justify-center items-center my-8">
+
+      {/* <div className="flex flex-col justify-center items-center my-8">
         <QuizDashboardPages />
-      </div>
+      </div> */}
     </LayoutWrapper>
   )
 }
