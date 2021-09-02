@@ -32,26 +32,114 @@ export const QuizQuestionPage = (props) => {
   //   wrong_answer: ['wrong answer 1', 'wrong answer 2', 'wrong answer 3'],
   // }
   let arrayWrongAnswer = []
+  props.question.length === 0 ? (
+    <>Loading</>
+  ) : (
+    props.question[props.currentPage - 1].incorrect_answer.map((item) => {
+      arrayWrongAnswer.push({ isCorrect: false, question: item })
+    })
+  )
   console.log(arrayWrongAnswer)
 
   const arrayTrueAnswer = []
+  props.question.length === 0 ? (
+    <>Loading</>
+  ) : (
+    arrayTrueAnswer.push({
+      isCorrect: true,
+      question: props.question[props.currentPage - 1].correct_answer,
+    })
+  )
   console.log(arrayTrueAnswer)
 
-  const result = arrayTrueAnswer.concat(arrayWrongAnswer)
-  const arr = [{ arrayWrongAnswer, arrayTrueAnswer }]
-  console.log(result)
+  const arr = [...arrayWrongAnswer, ...arrayTrueAnswer]
+  console.log(arr)
 
-  // function shuffleArray(arr) {
-  //   for (let i = arr.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1))
-  //     ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  //   }
-  // }
-  // console.log(arr)
+  const shuffleArray = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+  }
+  console.log(shuffleArray(arr))
   // const [session, loading] = useSession('')
   // console.log(session.user.email)
 
-  // const handleClick = () => {}
+  const handleClickTrueAnswer = () => {
+    setCorrectAnswerCount(CorrectAnswerCount + 1)
+    setAccuracyScore(AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100)
+    setAvarageScore(
+      AvarageScore +
+        (CorrectScore + props.question[props.currentPage - 1].score) / (TotalAnswerCount + 1)
+    )
+    setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
+    setTotalAnswerCount(TotalAnswerCount + 1)
+    setTotalScore(
+      parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
+    )
+
+    axios
+      .post(`http://127.0.0.1:8080/api/post-result`, {
+        email: session.user.email,
+        nilai: CorrectScore + props.question[props.currentPage - 1].score,
+        jawaban_benar: CorrectAnswerCount + 1,
+        akurasi: AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100,
+
+        rata_rata:
+          AvarageScore +
+          (CorrectScore + props.question[props.currentPage - 1].score) / (TotalAnswerCount + 1),
+        TotalScore:
+          parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score,
+        soal_dilewati: Soal_dilewati,
+      })
+      .then(function (response) {
+        // handle success
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function () {
+        // always executed
+      })
+  }
+  const handleClickFalseAnswer = () => {
+    setWrongAnswerCount(WrongAnswerCount + 1)
+    setSoal_dilewati(Soal_dilewati)
+    setTotalAnswerCount(TotalAnswerCount + 1)
+    setCorrectAnswerCount(CorrectAnswerCount)
+    setAccuracyScore(AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100)
+    setAvarageScore(
+      AvarageScore +
+        (CorrectScore + props.question[props.currentPage - 1].score) / (TotalAnswerCount + 1)
+    )
+    setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
+    setTotalScore(
+      parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
+    )
+
+    axios
+      .post(`http://127.0.0.1:8080/api/post-result`, {
+        email: session.user.email,
+        nilai: CorrectScore,
+        jawaban_benar: CorrectAnswerCount,
+        akurasi: AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
+
+        rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
+        TotalScore: parseInt(props.totalscore) + CorrectScore,
+        soal_dilewati: Soal_dilewati,
+      })
+      .then(function (response) {
+        // handle success
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function () {
+        // always executed
+      })
+  }
 
   return (
     <>
@@ -146,7 +234,48 @@ export const QuizQuestionPage = (props) => {
             </div>
 
             <div className="flex flex-col justify-start items-center">
-              {props.currentPage !== props.totalPage ? (
+              {props.currentPage !== props.totalPage
+                ? arr.map((item, index) => (
+                    <button
+                      key={index}
+                      className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
+                      onClick={() => {
+                        if (item.isCorrect === true) {
+                          props.setCurrentPage(props.currentPage + 1)
+                          setCorrectScore(
+                            CorrectScore + props.question[props.currentPage - 1].score
+                          )
+                          setCorrectAnswerCount(CorrectAnswerCount + 1)
+                          setTotalAnswerCount(TotalAnswerCount + 1)
+                        } else {
+                          props.setCurrentPage(props.currentPage + 1)
+                          setWrongAnswerCount(WrongAnswerCount + 1)
+                          setTotalAnswerCount(TotalAnswerCount + 1)
+                        }
+                      }}
+                    >
+                      {item.question}
+                    </button>
+                  ))
+                : arr.map((item, index) => (
+                    <CustomLink href={`/study/flash-card/result`} key={index}>
+                      <button
+                        className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
+                        onClick={() => {
+                          if (item.isCorrect === true) {
+                            handleClickTrueAnswer()
+                            console.log('benar')
+                          } else {
+                            handleClickFalseAnswer()
+                            console.log('salah')
+                          }
+                        }}
+                      >
+                        {item.question}
+                      </button>
+                    </CustomLink>
+                  ))}
+              {/* {props.currentPage !== props.totalPage ? (
                 <button
                   className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
                   onClick={() => {
@@ -304,18 +433,6 @@ export const QuizQuestionPage = (props) => {
                     </button>
                   ))}
                 </CustomLink>
-              )}
-              {/* Loop jawaban */}
-              {/* {props.currentPage !== props.totalPage ? (
-                props.question[props.currentPage - 1].incorrect_answer.map((item) => {
-                  arrayWrongAnswer.push({ isCorrect: false, question: item })
-                }) &&
-                arrayTrueAnswer.push({
-                  isCorrect: true,
-                  question: props.question[props.currentPage - 1].correct_answer,
-                })
-              ) : (
-                <></>
               )} */}
             </div>
           </div>
