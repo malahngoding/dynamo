@@ -38,7 +38,7 @@ export const QuizDashboardPages = () => {
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
-
+  console.log(currentQuestionGroup.QuizGroup)
   return (
     <>
       {currentQuestionGroup.length !== 0 && (
