@@ -83,7 +83,7 @@ export const QuizQuestionPage = (props) => {
     setQuizGroup(parseInt(router.query.id) + 1)
 
     axios
-      .post(`http://127.0.0.1:8080/api/post-result`, {
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
         email: session.user.email,
         nilai: CorrectScore + props.question[props.currentPage - 1].score,
         jawaban_benar: CorrectAnswerCount + 1,
@@ -125,7 +125,7 @@ export const QuizQuestionPage = (props) => {
     setQuizGroup(parseInt(router.query.id) + 1)
 
     axios
-      .post(`http://127.0.0.1:8080/api/post-result`, {
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
         email: session.user.email,
         nilai: CorrectScore,
         jawaban_benar: CorrectAnswerCount,
@@ -196,7 +196,7 @@ export const QuizQuestionPage = (props) => {
                       setQuizGroup(parseInt(router.query.id) + 1)
 
                       axios
-                        .post(`http://127.0.0.1:8080/api/post-result`, {
+                        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
                           email: session.user.email,
                           nilai: CorrectScore,
                           jawaban_benar: CorrectAnswerCount,
@@ -335,7 +335,7 @@ export const QuizQuestionPage = (props) => {
                       )
 
                       axios
-                        .post(`http://127.0.0.1:8080/api/post-result`, {
+                        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
                           email: session.user.email,
                           nilai: CorrectScore + props.question[props.currentPage - 1].score,
                           jawaban_benar: CorrectAnswerCount + 1,
@@ -415,7 +415,7 @@ export const QuizQuestionPage = (props) => {
                         )
 
                         axios
-                          .post(`http://127.0.0.1:8080/api/post-result`, {
+                          .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
                             email: session.user.email,
                             nilai: CorrectScore,
                             jawaban_benar: CorrectAnswerCount,

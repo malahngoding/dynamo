@@ -13,7 +13,7 @@ export const QuestionCard = (props) => {
     // Ini yang akan dilakukan
     axios
       // ${router.query.id}
-      .get(`http://127.0.0.1:8080/api/questions/get`)
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get`)
       .then(function (response) {
         // handle success
         setQuestion(response.data)

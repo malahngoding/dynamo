@@ -20,7 +20,9 @@ export const QuizDashboardPages = () => {
     // Ini yang akan dilakukan diambil dari stand
     if (!loading) {
       axios
-        .post(`http://localhost:8080/api/quiz-group-name/`, { email: session.user.email })
+        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`, {
+          email: session.user.email,
+        })
         .then(function (response) {
           // handle success
           console.log(response.data[0])

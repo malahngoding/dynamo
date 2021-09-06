@@ -30,13 +30,15 @@ export default function FlashCardAnsweringQuestion() {
     // Ini yang akan dilakukan
     axios
       // ${router.query.id}
-      .get(`http://127.0.0.1:8080/api/questions/get/${router.query.id}`)
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${router.query.id}`)
       .then(function (response) {
         // handle success
         setQuestions(response.data)
         console.log(response.data)
         axios
-          .post(`http://127.0.0.1:8080/api/get-total-score/`, { email: session.user.email })
+          .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`, {
+            email: session.user.email,
+          })
           .then(function (response) {
             // handle success
             setTotalScores(response.data.TotalScore)

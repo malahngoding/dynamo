@@ -16,7 +16,7 @@ export const QuizResultPages = () => {
     if (!loading) {
       axios
         // ${router.query.id}
-        .get(`http://127.0.0.1:8080/api/quiz-result/${session.user.email}`)
+        .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/${session.user.email}`)
         .then(function (response) {
           // handle success
           console.log(response.data[0])
