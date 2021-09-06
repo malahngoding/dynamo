@@ -92,7 +92,7 @@ export const QuizQuestionPage = (props) => {
         rata_rata:
           AvarageScore +
           (CorrectScore + props.question[props.currentPage - 1].score) / (TotalAnswerCount + 1),
-        TotalScore:
+        totalscore:
           parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score,
         soal_dilewati: Soal_dilewati,
         QuizGroup: parseInt(router.query.id) + 1,
@@ -132,7 +132,7 @@ export const QuizQuestionPage = (props) => {
         akurasi: AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
 
         rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
-        TotalScore: parseInt(props.totalscore) + CorrectScore,
+        totalscore: parseInt(props.totalscore) + CorrectScore,
         soal_dilewati: Soal_dilewati,
         QuizGroup: parseInt(router.query.id) + 1,
       })
@@ -204,7 +204,7 @@ export const QuizQuestionPage = (props) => {
                             AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
 
                           rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
-                          TotalScore: parseInt(props.totalscore) + CorrectScore,
+                          totalscore: parseInt(props.totalscore) + CorrectScore,
                           soal_dilewati: Soal_dilewati + 1,
                           QuizGroup: parseInt(router.query.id) + 1,
                         })
