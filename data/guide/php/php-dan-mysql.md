@@ -1,0 +1,9 @@
+# PHP dan MySQL
+
+PHP sering digunakan bersama dengan MySQL untuk membangun sebuah website yang dinamis. MySQL adalah sebuah sistem manajemen database yang akan mengakses dan memproses data.
+
+Bagaimana proses kerja keduanya?
+
+Sebelumnya PHP dan MySQL harus sudah terhubung satu sama lain. Nah, ketika ada permintaan dari browser ke web server, PHP akan menghubungi MySQL server untuk mencarikan data yang dibutuhkan di database. Setelah mendapatkan datanya, MySQL server akan meneruskan informasi tersebut ke server untuk dilanjutkan ke browser.
+
+Jadi, dengan adanya PHP dan kemampuannya berkomunikasi dengan sebuah database, Anda akan lebih mudah jika ingin mengembangkan website lebih besar lagi.

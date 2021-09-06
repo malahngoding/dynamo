@@ -1,0 +1,8 @@
+# Perbedaan PHP dan Javascipt
+
+| PHP                                                                                                                                    | Javascript                                                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --- |
+| Bekerja pada sisi server (server-side scripting)                                                                                       | Bekerja pada sisi pengguna (user-side scripting)                                                                                   |
+| Diperlukan penginstalan                                                                                                                | **Tidak** memerlukan penginstalan                                                                                                  |
+| Memerlukan proses **loading** halaman web dalam tiap eksekusi perintahnya (perubahan dapat dilihat setelah halaman web di-**reload**). | **Tidak** memerlukan proses **loading** halaman web dalam tiap eksekusi perintahnya (perubahan langsung dapat dilihat).            |     |
+| Perintah-perintah PHP tidak tampak pada dokumern HTML                                                                                  | Perintah-perintah JavaScript pada dokumen HTML (paling tidak jejaknya) dapat dilihat dengan menggunakan fasilitas View Page Source |     |

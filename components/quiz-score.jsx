@@ -9,6 +9,7 @@ import { email } from '@/data/siteMetadata'
 export const QuizResultPages = () => {
   const [session, loading] = useSession()
   const [result, setResult] = useState([])
+  const [updatequizgroup, setUpdateQuizGroup] = useState(0)
 
   useEffect(() => {
     // Ini yang akan dilakukan
@@ -34,24 +35,6 @@ export const QuizResultPages = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
 
-  //   axios
-  //     // ${router.query.id}
-  //     .get(`http://127.0.0.1:8080/quiz-result/${session.user.email}`)
-  //     .then(function (response) {
-  //       // handle success
-  //       // console.log(response)
-  //       setResult(response.data)
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error)
-  //     })
-  //     .then(function () {
-  //       // always executed
-  //     })
-  //   // Ini yang akan dilakukan
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [loading])
   return (
     <div>
       <div className="flex flex-col border-4 border-purple-400 rounded-xl m-5 bg-white overflow-y-auto">
@@ -69,7 +52,9 @@ export const QuizResultPages = () => {
             </div>
           </div>
           <div>
-            <p className="text-center font-bold text-purple-100 mb-8">Total point kamu 900</p>
+            <p className="text-center font-bold text-purple-100 mb-8">
+              Total point kamu {result.totalscore}
+            </p>
           </div>
         </div>
         <div className="flex flex-row border-4 border-white m-3">
