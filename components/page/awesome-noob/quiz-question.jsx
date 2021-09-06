@@ -24,6 +24,9 @@ export const QuizQuestionPage = (props) => {
   const [TotalScores, setTotalScore] = useState(0)
   const [TrueAnswer, setTrueAnswer] = useState('')
   const [Soal_dilewati, setSoal_dilewati] = useState(0)
+  const [QuizGroup, setQuizGroup] = useState(0)
+  const router = useRouter()
+  console.log(router.query.id)
   const [session, loading] = useSession('')
   console.log(session.user.email)
 
@@ -77,6 +80,7 @@ export const QuizQuestionPage = (props) => {
     setTotalScore(
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
+    setQuizGroup(parseInt(router.query.id) + 1)
 
     axios
       .post(`http://127.0.0.1:8080/api/post-result`, {
@@ -91,6 +95,7 @@ export const QuizQuestionPage = (props) => {
         TotalScore:
           parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score,
         soal_dilewati: Soal_dilewati,
+        QuizGroup: parseInt(router.query.id) + 1,
       })
       .then(function (response) {
         // handle success
@@ -117,6 +122,7 @@ export const QuizQuestionPage = (props) => {
     setTotalScore(
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
+    setQuizGroup(parseInt(router.query.id) + 1)
 
     axios
       .post(`http://127.0.0.1:8080/api/post-result`, {
@@ -128,6 +134,7 @@ export const QuizQuestionPage = (props) => {
         rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
         TotalScore: parseInt(props.totalscore) + CorrectScore,
         soal_dilewati: Soal_dilewati,
+        QuizGroup: parseInt(router.query.id) + 1,
       })
       .then(function (response) {
         // handle success
@@ -186,6 +193,7 @@ export const QuizQuestionPage = (props) => {
                           CorrectScore +
                           props.question[props.currentPage - 1].score
                       )
+                      setQuizGroup(parseInt(router.query.id) + 1)
 
                       axios
                         .post(`http://127.0.0.1:8080/api/post-result`, {
@@ -198,6 +206,7 @@ export const QuizQuestionPage = (props) => {
                           rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
                           TotalScore: parseInt(props.totalscore) + CorrectScore,
                           soal_dilewati: Soal_dilewati + 1,
+                          QuizGroup: parseInt(router.query.id) + 1,
                         })
                         .then(function (response) {
                           // handle success
