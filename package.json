@@ -1,16 +1,30 @@
 {
   "name": "@malahngoding/dynamo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "scripts": {
-    "start": "next-remote-watch ./data",
     "dev": "next dev",
     "export": "next export",
-    "build": "next build && node ./scripts/generate-sitemap",
+    "build": "next build",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky install"
+    "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
+    "postinstall": "husky install",
+    "commit": "cz"
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,js,jsx,tsx}": [
+      "npm run lint --fix"
+    ],
+    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
+      "npm run format"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.1",
@@ -22,10 +36,10 @@
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "deta": "^1.0.0",
-    "esbuild": "^0.12.15",
+    "esbuild": "^0.12.25",
     "gray-matter": "^4.0.2",
     "image-size": "1.0.0",
-    "mdx-bundler": "^5.1.2",
+    "mdx-bundler": "^5.2.1",
     "next": "11.1.2",
     "next-auth": "^3.27.3",
     "next-themes": "^0.0.14",
@@ -63,21 +77,16 @@
     "husky": "^6.0.0",
     "inquirer": "^8.1.1",
     "lint-staged": "^11.0.0",
-    "next-remote-watch": "^1.0.0",
     "prettier": "2.2.1",
     "rehype": "11.0.0",
     "remark-frontmatter": "3.0.0",
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
     "unified": "9.2.1",
-    "unist-util-visit": "2.0.3"
-  },
-  "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": [
-      "eslint --fix"
-    ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
-    ]
+    "unist-util-visit": "2.0.3",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0"
   }
 }
