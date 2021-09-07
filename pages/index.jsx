@@ -25,7 +25,7 @@ export const Hero = () => {
         <div className="flex flex-col justify-center">
           <div className="max-w-xl mb-6">
             <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight dark:text-yellow text-gray-800 sm:text-4xl leading-snug sm:leading-normal">
-              <span className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink to-green">{`<Hello World/>`}</span>
+              <span className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green to-green">{`<Hello World/>`}</span>
               <br className="m-2 md:m-6" />
               Selamat datang di{' '}
               <span className="relative px-1">
