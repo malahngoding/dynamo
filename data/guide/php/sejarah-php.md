@@ -1,3 +1,14 @@
+---
+title: 'Introducing Tailwind Nexjs Starter Blog'
+date: '2021-01-12'
+lastmod: '2021-07-18'
+tags: ['next-js', 'tailwind', 'guide']
+draft: false
+summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
+images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
+authors: ['default']
+---
+
 # Sejarah PHP
 
 Pada awalnya PHP merupakan kependekan dari _Personal Home Page_ (Situs personal). PHP pertama kali dibuat oleh Rasmus Lerdorf pada tahun 1995. Pada waktu itu PHP masih bernama _Form Interpreted_ (FI), yang wujudnya berupa sekumpulan skrip yang digunakan untuk mengolah data formulir dari web.
