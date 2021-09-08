@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/client'
 
-export const AdminLayout = (props) => {
+const AdminLayout = (props) => {
   const [session, loading] = useSession()
   console.log(session)
   if (loading) {
@@ -13,3 +13,5 @@ export const AdminLayout = (props) => {
     return <div>{props.children}</div>
   }
 }
+
+export default AdminLayout

@@ -1,4 +1,4 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
 
@@ -16,7 +16,7 @@ export default function Workshop({ content }) {
     <>
       <LayoutWrapper>
         <MDXLayoutRenderer
-          layout={frontMatter.layout || DEFAULT_LAYOUT}
+          layout={DEFAULT_LAYOUT}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
         />

@@ -7,7 +7,7 @@ import Image from '@/components/Image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-export const LabsListLayout = ({
+const LabsListLayout = ({
   posts,
   title,
   subTitle,
@@ -101,3 +101,5 @@ const ArticleCard = (props) => {
     </div>
   )
 }
+
+export default LabsListLayout

@@ -1,4 +1,4 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import { UnderConstruction } from '@/components/UnderConstruction'
 import siteMetadata from '@/data/siteMetadata'

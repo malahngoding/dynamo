@@ -2,7 +2,7 @@ import Footer from '@/components/Footer'
 import { NavigationBar } from '@/components/NavBar'
 import { DashWrapper } from '@/components/dash/dash-wrapper'
 
-const LayoutWrapper = ({ children }) => {
+export const LayoutWrapper = ({ children }) => {
   return (
     <>
       <NavigationBar />
@@ -12,5 +12,3 @@ const LayoutWrapper = ({ children }) => {
     </>
   )
 }
-
-export default LayoutWrapper

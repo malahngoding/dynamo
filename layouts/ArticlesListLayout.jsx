@@ -3,11 +3,11 @@ import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
 import { Search } from 'tabler-icons-react'
-import { Card } from '@/components/design/card'
 import Image from '@/components/Image'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-export const ListLayoutStudy = ({
+const ArticlesListLayout = ({
   posts,
   title,
   subTitle,
@@ -23,18 +23,17 @@ export const ListLayoutStudy = ({
 
   const router = useRouter()
 
-  // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
-  const handleClick = (e, rule) => {
-    e.preventDefault()
+  const handleClick = (event, rule) => {
+    event.preventDefault()
     router.push(rule)
   }
 
   return (
     <>
-      <div className="divide-y p-4">
+      <div className="p-4">
         <div className="pb-8 space-y-2 md:space-y-5 flex flex-col justify-center items-center">
           <section className="w-full px-4 py-8 leading-normal md:p-8 md:mt-10 text-md">
             <h3 className="font-bold tracking-widest text-left uppercase text-blue dark:text-white md:text-center">
@@ -47,53 +46,40 @@ export const ListLayoutStudy = ({
           <div className="w-full">
             <div className="relative mx-4 lg:mx-12 xl:mx-96">
               <input
-                aria-label="Cari artikel"
+                aria-label="Cari panduan"
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Cari artikel"
+                placeholder="Cari panduan"
                 className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md dark:border-gray-900 focus:ring-blue focus:border-blue dark:bg-gray-800 dark:text-gray-100 dark:focus:ring-yellow dark:focus:border-yellow"
               />
               <Search className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300" />
             </div>
           </div>
         </div>
-        <section className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 px-4 gap-8">
-          {!filteredBlogPosts.length && 'No posts found.'}
-          {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
-            return (
-              <Card
-                key={slug}
-                className="hover:bg-blue-100 hover:cursor-pointer bg-white dark:bg-black dark:hover:bg-black-800"
-                onClick={(event) => {
-                  handleClick(event, `/study/${category}/${slug}`)
-                }}
-              >
-                <div className="flex flex-row justify-start items-center">
-                  <div className="flex w-1/4 justify-center items-center">
-                    <div className="rounded-xl bg-black-100 dark:bg-black p-2">
-                      <Image
-                        src="https://emojicdn.elk.sh/🗂️"
-                        width="48"
-                        height="48"
-                        alt="Article"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col justify-start items-start w-3/4 py-6">
-                    <time dateTime={date}>{formatDate(date)}</time>
-                    <h1 className="font-extrabold text-xl"> {title}</h1>
-                    <div className="flex flex-row">
-                      {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
-                    </div>
-                    <p className="text-sm mt-2 hidden">{summary}</p>
-                  </div>
-                </div>
-              </Card>
-            )
-          })}
+        <section className="container mx-auto" style={{ maxWidth: '960px' }}>
+          <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
+            {!filteredBlogPosts.length && 'No posts found.'}
+            {displayPosts.map((frontMatter) => {
+              const { slug, date, title, summary, tags, emoji } = frontMatter
+              return (
+                <Link key={slug} href={`/study/${category}/${slug}`} passHref>
+                  <a>
+                    <ArticleCard>
+                      <Image src={emoji} width="48" height="48" alt="Article" />
+                      <time dateTime={date}>{formatDate(date)}</time>
+                      <h1 className="font-extrabold text-xl"> {title}</h1>
+                      <div className="flex flex-row">
+                        {tags.map((tag) => (
+                          <Tag key={tag} text={tag} />
+                        ))}
+                      </div>
+                      <p className="text-sm mt-2 hidden">{summary}</p>
+                    </ArticleCard>
+                  </a>
+                </Link>
+              )
+            })}
+          </div>
         </section>
       </div>
       <div className="h-12" />
@@ -107,3 +93,13 @@ export const ListLayoutStudy = ({
     </>
   )
 }
+
+const ArticleCard = (props) => {
+  return (
+    <div className="m-4 border-2 border-black rounded-lg bg-white dark:bg-black dark:hover:border-white hover:bg-blue-100 px-6 py-4 h-[240px]">
+      <div className="flex flex-col justify-between items-start h-full">{props.children}</div>
+    </div>
+  )
+}
+
+export default ArticlesListLayout

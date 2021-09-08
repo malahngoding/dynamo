@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@/components/design/button'
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { useTheme } from 'next-themes'

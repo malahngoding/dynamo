@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import Link from 'next/link'
 import Image from '@/components/Image'
 import { SecondaryButton } from '@/components/design/button'
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { Notes, PlayCard, Scissors, Tent } from 'tabler-icons-react'
 
 export default function Home() {

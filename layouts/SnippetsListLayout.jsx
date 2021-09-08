@@ -7,7 +7,7 @@ import Image from '@/components/Image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-export const StudyListLayout = ({
+const SnippetsListLayout = ({
   posts,
   title,
   subTitle,
@@ -57,23 +57,27 @@ export const StudyListLayout = ({
           </div>
         </div>
         <section className="container mx-auto" style={{ maxWidth: '960px' }}>
-          <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
+          <div className="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {!filteredBlogPosts.length && 'No posts found.'}
             {displayPosts.map((frontMatter) => {
-              const { slug, date, title, summary, tags, emoji } = frontMatter
+              const { slug, date, title, tags } = frontMatter
               return (
                 <Link key={slug} href={`/study/${category}/${slug}`} passHref>
                   <a>
                     <ArticleCard>
-                      <Image src={emoji} width="48" height="48" alt="Article" />
                       <time dateTime={date}>{formatDate(date)}</time>
                       <h1 className="font-extrabold text-xl"> {title}</h1>
                       <div className="flex flex-row">
                         {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
+                          <Image
+                            key={tag}
+                            src={`/static/images/${tag}.png`}
+                            alt={tag}
+                            width={48}
+                            height={48}
+                          />
                         ))}
                       </div>
-                      <p className="text-sm mt-2 hidden">{summary}</p>
                     </ArticleCard>
                   </a>
                 </Link>
@@ -96,8 +100,10 @@ export const StudyListLayout = ({
 
 const ArticleCard = (props) => {
   return (
-    <div className="m-4 border-2 border-black rounded-lg bg-white dark:bg-black dark:hover:border-white hover:bg-blue-100 px-6 py-4 h-[240px]">
+    <div className="m-4 border-2 border-black rounded-lg bg-white dark:bg-black dark:hover:border-white hover:bg-red-100 px-6 py-4 h-[240px]">
       <div className="flex flex-col justify-between items-start h-full">{props.children}</div>
     </div>
   )
 }
+
+export default SnippetsListLayout

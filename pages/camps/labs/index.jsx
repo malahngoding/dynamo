@@ -1,7 +1,7 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { LabsListLayout } from '@/layouts/LabsListLayout'
+import LabsListLayout from '@/layouts/LabsListLayout'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 
 export const POSTS_PER_PAGE = 6

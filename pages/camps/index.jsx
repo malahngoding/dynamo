@@ -1,6 +1,6 @@
 import { Card } from '@/components/design/card'
 import Image from '@/components/Image'
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { useRouter } from 'next/router'

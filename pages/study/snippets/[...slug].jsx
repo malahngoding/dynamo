@@ -3,8 +3,9 @@ import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 
-const DEFAULT_LAYOUT = 'PostLayout'
+const DEFAULT_LAYOUT = 'SnippetsLayout'
 
 export async function getStaticPaths() {
   const posts = getFiles('snippets')
@@ -42,10 +43,10 @@ export default function Snippets({ post, authorDetails, prev, next }) {
   const { mdxSource, frontMatter } = post
 
   return (
-    <>
+    <LayoutWrapper>
       {frontMatter.draft !== true ? (
         <MDXLayoutRenderer
-          layout={frontMatter.layout || DEFAULT_LAYOUT}
+          layout={DEFAULT_LAYOUT}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
           authorDetails={authorDetails}
@@ -62,6 +63,6 @@ export default function Snippets({ post, authorDetails, prev, next }) {
           </PageTitle>
         </div>
       )}
-    </>
+    </LayoutWrapper>
   )
 }

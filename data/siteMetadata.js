@@ -9,7 +9,7 @@ const siteMetadata = {
     'Malah Ngoding merupakan platform pembelajaran praktis untuk para pengembang aplikasi web dan mobile yang bersahabat bagi pemula.',
   language: 'en-us',
   siteUrl: 'https://malahngoding.com',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteRepo: 'https://github.com/malahngoding/dynamo',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
@@ -18,7 +18,7 @@ const siteMetadata = {
   youtube: 'https://youtube.com/malahngoding',
   instagram: 'https://instagram.com/malahngoding',
   tiktok: 'https://tiktok.com/@malahngoding',
-  locale: 'en-US',
+  locale: 'id-ID',
 }
 
 module.exports = siteMetadata

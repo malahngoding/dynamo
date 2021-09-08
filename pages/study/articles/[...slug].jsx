@@ -3,9 +3,9 @@ import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 
-const DEFAULT_LAYOUT = 'PostLayout'
+const DEFAULT_LAYOUT = 'ArticlesLayout'
 
 export async function getStaticPaths() {
   const posts = getFiles('articles')
@@ -46,7 +46,7 @@ export default function Study({ post, authorDetails, prev, next }) {
     <LayoutWrapper>
       {frontMatter.draft !== true ? (
         <MDXLayoutRenderer
-          layout={frontMatter.layout || DEFAULT_LAYOUT}
+          layout={DEFAULT_LAYOUT}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
           authorDetails={authorDetails}

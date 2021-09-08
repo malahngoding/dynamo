@@ -1,7 +1,7 @@
 import Image from '@/components/Image'
 import { PageSeo } from '@/components/SEO'
 
-export default function WallOfTextLayout({ children, frontMatter }) {
+const WallOfTextLayout = ({ children, frontMatter }) => {
   const { title, subTitle, description } = frontMatter
 
   return (
@@ -21,3 +21,5 @@ export default function WallOfTextLayout({ children, frontMatter }) {
     </>
   )
 }
+
+export default WallOfTextLayout

@@ -1,8 +1,8 @@
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
-import { StudyListLayout } from '@/layouts/StudyListLayout'
+import ArticlesListLayout from '@/layouts/ArticlesListLayout'
 import { PageSeo } from '@/components/SEO'
-import LayoutWrapper from '@/components/LayoutWrapper'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 
 export const POSTS_PER_PAGE = 64
 
@@ -22,7 +22,7 @@ export default function Study({ posts, initialDisplayPosts, pagination }) {
   return (
     <LayoutWrapper>
       <PageSeo title={`Study - ${siteMetadata.author}`} description={siteMetadata.description} />
-      <StudyListLayout
+      <ArticlesListLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
