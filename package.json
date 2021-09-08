@@ -3,10 +3,10 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "export": "next export",
-    "build": "next build",
-    "serve": "next start",
+    "dev": " rimraf ./next && next dev",
+    "export": "rimraf ./next && next build && next export",
+    "build": "rimraf ./next && next build",
+    "serve": "rimraf ./next && next build && next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
@@ -63,9 +63,13 @@
     "zustand": "^3.5.9"
   },
   "devDependencies": {
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
     "@next/bundle-analyzer": "11.0.1",
     "@svgr/webpack": "^5.5.0",
+    "commitizen": "4.2.4",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "3.3.0",
     "dedent": "^0.7.0",
     "eslint": "^7.29.0",
     "eslint-config-next": "11.0.1",
@@ -82,11 +86,8 @@
     "remark-frontmatter": "3.0.0",
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
+    "rimraf": "^3.0.2",
     "unified": "9.2.1",
-    "unist-util-visit": "2.0.3",
-    "commitizen": "4.2.4",
-    "cz-conventional-changelog": "3.3.0",
-    "@commitlint/cli": "13.1.0",
-    "@commitlint/config-conventional": "13.1.0"
+    "unist-util-visit": "2.0.3"
   }
 }
