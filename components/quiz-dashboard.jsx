@@ -13,7 +13,6 @@ import CustomLink from '@/components/Link'
 export const QuizDashboardPages = () => {
   const [session, loading] = useSession()
   const [currentQuestionGroup, setCurrentQuestionGroup] = useState([])
-  const [currentQuestionGroupLength, setCurrentQuestionGroupLength] = useState([])
 
   // GET CURRENT QUESTION GROUP
   useEffect(() => {
@@ -43,7 +42,6 @@ export const QuizDashboardPages = () => {
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
-  console.log(currentQuestionGroup.QuizGroup)
   return (
     <>
       <div className=" flex flex-col border-4 border-black bg-white rounded-3xl m-5 w-[375px]">
@@ -70,18 +68,6 @@ export const QuizDashboardPages = () => {
             <div className="flex rounded-full h-12 w-12 items-center justify-center bg-orange border-b-4 border-l-4 border-t-4 border-yellow m-5 mr-8"></div>
           </div>
         )}
-
-        {/* <CustomLink href={`/study/flash-card/question?id=${currentQuestionGroup.QuizGroup}`}>
-          <div className="flex flex-row border-4 border-yellow-100 mx-5 bg-yellow-100 m-6 rounded-3xl">
-            <div className="flex flex-1">
-              <div className="flex flex-col justify-center">
-                <div className="ml-3 mt-3">Lanjutkan Quizmu</div>
-                <div className="mt-1 ml-3 mb-3 font-bold ">{currentQuestionGroup.groupname}</div>
-              </div>
-            </div>
-            <div className="flex rounded-full h-12 w-12 items-center justify-center bg-orange border-b-4 border-l-4 border-t-4 border-yellow m-5 mr-8"></div>
-          </div>
-        </CustomLink> */}
 
         <div className="flex flex-row mt-0 border-4 border-green mx-5 bg-green m-6 rounded-3xl">
           <div className="flex flex-1">
