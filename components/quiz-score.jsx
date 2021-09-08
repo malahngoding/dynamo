@@ -7,34 +7,12 @@ import axios from 'axios'
 import { useSession } from 'next-auth/client'
 import { email } from '@/data/siteMetadata'
 import { useRouter } from 'next/router'
+
 export const QuizResultPages = (props) => {
   const [session, loading] = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
   const router = useRouter()
-  // useEffect(() => {
-  //   // Ini yang akan dilakukan
-  //   if (!loading) {
-  //     axios
-  //       // ${router.query.id}
-  //       .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/${session.user.email}`)
-  //       .then(function (response) {
-  //         // handle success
-  //         console.log(response.data[0])
-  //         setResult(response.data[0])
-  //       })
-  //       .catch(function (error) {
-  //         // handle error
-  //         console.log(error)
-  //         console.log('mantap')
-  //       })
-  //       .then(function () {
-  //         // always executed
-  //       })
-  //   }
-  //   // Ini yang akan dilakukan
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [loading])
 
   return (
     <div>
@@ -86,11 +64,15 @@ export const QuizResultPages = (props) => {
             </div>
           </div>
         </div>
-        <CustomLink href="/study/flash-card">
-          <div className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold">
-            Selesai
-          </div>
-        </CustomLink>
+
+        <button
+          className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold"
+          onClick={() => {
+            router.push('/study/flash-card')
+          }}
+        >
+          Selesai
+        </button>
       </div>
     </div>
   )
