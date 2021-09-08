@@ -54,7 +54,6 @@ export const QuizQuestionPage = (props) => {
     })
   )
   console.log(arrayTrueAnswer)
-
   const arr = [...arrayWrongAnswer, ...arrayTrueAnswer]
   console.log(arr)
 
@@ -68,6 +67,44 @@ export const QuizQuestionPage = (props) => {
   // const [session, loading] = useSession('')
   // console.log(session.user.email)
 
+  const handleClickSkip = () => {
+    setSoal_dilewati(Soal_dilewati + 1)
+    setTotalAnswerCount(TotalAnswerCount + 1)
+    setCorrectAnswerCount(CorrectAnswerCount)
+    setAccuracyScore(AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100)
+    setAvarageScore(
+      AvarageScore +
+        (CorrectScore + props.question[props.currentPage - 1].score) / (TotalAnswerCount + 1)
+    )
+    setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
+    setTotalScore(
+      parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
+    )
+    setQuizGroup(parseInt(router.query.id) + 1)
+
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
+        email: session.user.email,
+        nilai: CorrectScore,
+        jawaban_benar: CorrectAnswerCount,
+        akurasi: AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
+
+        rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
+        totalscore: parseInt(props.totalscore) + CorrectScore,
+        soal_dilewati: Soal_dilewati + 1,
+        QuizGroup: parseInt(router.query.id) + 1,
+      })
+      .then(function (response) {
+        // handle success
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function () {
+        // always executed
+      })
+  }
   const handleClickTrueAnswer = () => {
     setCorrectAnswerCount(CorrectAnswerCount + 1)
     setAccuracyScore(AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100)
@@ -176,48 +213,7 @@ export const QuizQuestionPage = (props) => {
                   <button
                     className="border-2 bg-black-800 p-2 rounded-lg  text-white"
                     onClick={() => {
-                      setSoal_dilewati(Soal_dilewati + 1)
-                      setTotalAnswerCount(TotalAnswerCount + 1)
-                      setCorrectAnswerCount(CorrectAnswerCount)
-                      setAccuracyScore(
-                        AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100
-                      )
-                      setAvarageScore(
-                        AvarageScore +
-                          (CorrectScore + props.question[props.currentPage - 1].score) /
-                            (TotalAnswerCount + 1)
-                      )
-                      setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
-                      setTotalScore(
-                        parseInt(props.totalscore) +
-                          CorrectScore +
-                          props.question[props.currentPage - 1].score
-                      )
-                      setQuizGroup(parseInt(router.query.id) + 1)
-
-                      axios
-                        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
-                          email: session.user.email,
-                          nilai: CorrectScore,
-                          jawaban_benar: CorrectAnswerCount,
-                          akurasi:
-                            AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
-
-                          rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
-                          totalscore: parseInt(props.totalscore) + CorrectScore,
-                          soal_dilewati: Soal_dilewati + 1,
-                          QuizGroup: parseInt(router.query.id) + 1,
-                        })
-                        .then(function (response) {
-                          // handle success
-                        })
-                        .catch(function (error) {
-                          // handle error
-                          console.log(error)
-                        })
-                        .then(function () {
-                          // always executed
-                        })
+                      handleClickSkip()
                     }}
                   >
                     <p>SKIP</p>

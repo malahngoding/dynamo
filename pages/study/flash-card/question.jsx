@@ -41,8 +41,8 @@ export default function FlashCardAnsweringQuestion() {
           })
           .then(function (response) {
             // handle success
-            setTotalScores(response.data.TotalScore)
-            console.log(response.data.TotalScore)
+            setTotalScores(response.data.totalscore)
+            console.log(response.data.totalscore)
           })
           .catch(function (error) {
             // handle error
