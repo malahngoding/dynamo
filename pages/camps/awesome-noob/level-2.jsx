@@ -8,58 +8,73 @@ export default function Level2() {
   const [commands, setCommands] = useState([])
   const [pion, setPion] = useState([])
 
-  // for (let index = 0; index < pion.length; index++) {
-  //   setTimeout(() => {
-  //     //
-  //   }, 500)
-  // }
-  // handleKeKiri() {
-  //   currentX ? currentY ?
-  //     x = 1 ? cicing/diem
-  // }
+  const array = [
+    [
+      { isPlayer: false, isStone: false, isFinish: false, tes: '1' },
+      { isPlayer: false, isStone: false, isFinish: false, tes: '2' },
+      { isPlayer: false, isStone: false, isFinish: true, tes: '3' },
+    ],
+    [
+      { isPlayer: false, isStone: false, isFinish: false, tes: '4' },
+      { isPlayer: false, isStone: true, isFinish: false, tes: '5' },
+      { isPlayer: false, isStone: false, isFinish: false, tes: '6' },
+    ],
+    [
+      { isPlayer: true, isStone: false, isFinish: false, tes: '7' },
+      { isPlayer: false, isStone: false, isFinish: false, tes: '8' },
+      { isPlayer: false, isStone: false, isFinish: false, tes: '9' },
+    ],
+  ]
+  const [playerState, setPlayerState] = useState(array)
+  const handleClick = () => {
+    setPlayerState(
+      [{ isPlayer: false }, { isPlayer: false }, { isPlayer: false }],
+      [{ isPlayer: false }, { isPlayer: true }, { isPlayer: false }],
+      [{ isPlayer: false }, { isPlayer: false }, { isPlayer: false }]
+    )
+  }
   return (
     <>
       <div className="flex flex-col justify-center items-center min-h-screen">
-        <div className="flex flex-row">
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>1,1</div>
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>1,2</div>
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>
-            <Image
-              className={`max-w-full ${pion}`}
-              src="/static/images/finish.png"
-              alt="Finish"
-              width="100"
-              height="100"
-            />
-          </div>
+        <div className="grid grid-cols-3 mb-8">
+          {playerState.map((item) =>
+            item.map((itemx) => (
+              <div
+                className="grid justify-center items-center border-2 border-black w-[100px] h-[100px]"
+                key={item}
+              >
+                {itemx.isPlayer ? (
+                  <Image
+                    className=""
+                    src="/static/images/user.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}
+                {itemx.isStone ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="Rock"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}
+                {itemx.isFinish ? (
+                  <Image
+                    className=""
+                    src="/static/images/finish.png"
+                    alt="Finish"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}
+                {itemx.tes}
+              </div>
+            ))
+          )}
         </div>
-        <div className="flex flex-row">
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>2,1</div>
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>
-            <Image
-              className="max-w-full"
-              src="/static/images/rock.png"
-              alt="Rock"
-              width="100"
-              height="100"
-            />
-          </div>
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>2,3</div>
-        </div>
-        <div className="flex flex-row mb-6">
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>
-            <Image
-              className="max-w-full"
-              src="/static/images/user.png"
-              alt="User"
-              width="100"
-              height="100"
-            />
-          </div>
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>3,2</div>
-          <div className={`border-black border-2 w-[100px] h-[100px]`}>3,3</div>
-        </div>
-
         {commands.map((item, index) => (
           <p key={index}>{item}</p>
         ))}

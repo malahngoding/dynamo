@@ -2,6 +2,7 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import { UnderConstruction } from '@/components/UnderConstruction'
 import siteMetadata from '@/data/siteMetadata'
+import { useEffect, useState } from 'react'
 import CustomLink from '@/components/Link'
 import { useRouter } from 'next/router'
 import axios from '@/lib/axios'
@@ -9,46 +10,12 @@ import { QuizResultPages } from '@/components/quiz-score'
 import { useSession } from 'next-auth/client'
 import { getSession } from 'next-auth/client'
 
+
 export default function FlashCardResults(props) {
   const router = useRouter()
   console.log(router.query)
-
-  // useEffect(() => {
-  //   // Ini yang akan dilakukan
-  //   axios
-  //     // ${router.query.id}
-  //     .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${router.query.id}`)
-  //     .then(function (response) {
-  //       // handle success
-
-  //       axios
-  //         .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`, {
-  //           email: session.user.email,
-  //         })
-  //         .then(function (response) {
-  //           // handle success
-  //           setTotalScores(response.data.totalscore)
-  //           console.log(response.data.totalscore)
-  //         })
-  //         .catch(function (error) {
-  //           // handle error
-  //           console.log(error)
-  //         })
-  //         .then(function () {
-  //           // always executed
-  //         })
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error)
-  //     })
-  //     .then(function () {
-  //       // always executed
-  //     })
-
-  //   // Ini yang akan dilakukan
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+  const [session, loading] = useSession('')
+  const [TotalScores, setTotalScores] = useState(0)
 
   return (
     <LayoutWrapper>
