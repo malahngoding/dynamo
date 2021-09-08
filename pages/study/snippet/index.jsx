@@ -4,7 +4,7 @@ import ListLayout from '@/layouts/ListLayout'
 import { PageSeo } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-export const POSTS_PER_PAGE = 5
+export const POSTS_PER_PAGE = 64
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('snippet')
