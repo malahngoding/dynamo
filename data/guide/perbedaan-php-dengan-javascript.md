@@ -1,11 +1,11 @@
 ---
-title: 'Introducing Tailwind Nexjs Starter Blog'
-date: '2021-01-12'
-lastmod: '2021-07-18'
-tags: ['next-js', 'tailwind', 'guide']
+title: 'Perbedaan PHP dan Javascipt'
+date: '2021-05-04'
+lastmod: '2021-05-04'
+tags: ['javascript', 'php']
 draft: false
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
-images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
+summary: 'Bekerja pada sisi server (server-side scripting).'
+images: ['/static/images/canada/mountains.jpg']
 authors: ['default']
 ---
 

@@ -1,15 +1,15 @@
 ---
-title: 'Introducing Tailwind Nexjs Starter Blog'
-date: '2021-01-12'
-lastmod: '2021-07-18'
-tags: ['next-js', 'tailwind', 'guide']
+title: 'Pengenalan PHP'
+date: '2021-03-03'
+lastmod: '2021-03-03'
+tags: ['php']
 draft: false
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
-images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
+summary: 'Pengenalan PHP'
+images: ['/static/images/canada/mountains.jpg']
 authors: ['default']
 ---
 
-# **PHP Introduction**
+# PHP Introduction
 
 PHP code is executed on the server.
 PHP is an amazing and popular language!

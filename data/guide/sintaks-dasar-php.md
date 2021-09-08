@@ -1,11 +1,11 @@
 ---
-title: 'Introducing Tailwind Nexjs Starter Blog'
-date: '2021-01-12'
-lastmod: '2021-07-18'
-tags: ['next-js', 'tailwind', 'guide']
+title: 'Sintaks Dasar PHP'
+date: '2021-07-21'
+lastmod: '2021-07-21'
+tags: ['php']
 draft: false
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
-images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
+summary: 'PHP hanya mengeksekusi kode yang ditulis dalam pembatas sebagaimana ditentukan oleh dasar sintaks PHP.'
+images: ['/static/images/canada/mountains.jpg']
 authors: ['default']
 ---
 
