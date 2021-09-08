@@ -5,8 +5,7 @@ const Image = ({ ...rest }) => (
   <NextImage
     {...rest}
     placeholder="blur"
-    blurDataURL="data:image/png;base64=iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=
-"
+    blurDataURL="data:image/png;base64=iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII="
   />
 )
 

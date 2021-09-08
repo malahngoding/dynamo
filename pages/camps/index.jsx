@@ -34,7 +34,7 @@ export default function Camps() {
             <div className="flex w-1/4 justify-center items-center">
               <div className="rounded-xl bg-black-100 dark:bg-black p-2">
                 <Image
-                  src="https://emojicdn.elk.sh/👨‍🚀️"
+                  src="https://emojicdn.elk.sh/%F0%9F%91%A8%E2%80%8D%F0%9F%9A%80%EF%B8%8F"
                   width="48"
                   height="48"
                   alt="Awesome Noob"
@@ -57,7 +57,7 @@ export default function Camps() {
             <div className="flex w-1/4 justify-center items-center">
               <div className="rounded-xl bg-black-100 dark:bg-black p-2">
                 <Image
-                  src="https://emojicdn.elk.sh/👨‍💻️"
+                  src="https://emojicdn.elk.sh/%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB%EF%B8%8F"
                   width="48"
                   height="48"
                   alt="Code Interact"
@@ -81,7 +81,12 @@ export default function Camps() {
           <div className="flex flex-row justify-start items-center">
             <div className="flex w-1/4 justify-center items-center">
               <div className="rounded-xl bg-black-100 dark:bg-black p-2">
-                <Image src="https://emojicdn.elk.sh/⚗️" width="48" height="48" alt="Labs" />
+                <Image
+                  src="https://emojicdn.elk.sh/%E2%9A%97%EF%B8%8F"
+                  width="48"
+                  height="48"
+                  alt="Labs"
+                />
               </div>
             </div>
             <div className="flex flex-col justify-start items-start w-3/4 py-6">
