@@ -65,7 +65,12 @@ export const LabsListLayout = ({
                 <Link key={slug} href={`/study/${category}/${slug}`} passHref>
                   <a>
                     <ArticleCard>
-                      <Image src="https://emojicdn.elk.sh/🗂️" width="48" height="48" alt="Guide" />
+                      <Image
+                        src="https://emojicdn.elk.sh/🗂️"
+                        width="48"
+                        height="48"
+                        alt="Article"
+                      />
                       <time dateTime={date}>{formatDate(date)}</time>
                       <h1 className="font-extrabold text-xl"> {title}</h1>
                       <p className="text-sm mt-2 hidden">{summary}</p>

@@ -65,7 +65,7 @@ export const StudyListLayout = ({
                 <Link key={slug} href={`/study/${category}/${slug}`} passHref>
                   <a>
                     <ArticleCard>
-                      <Image src={emoji} width="48" height="48" alt="Guide" />
+                      <Image src={emoji} width="48" height="48" alt="Article" />
                       <time dateTime={date}>{formatDate(date)}</time>
                       <h1 className="font-extrabold text-xl"> {title}</h1>
                       <div className="flex flex-row">

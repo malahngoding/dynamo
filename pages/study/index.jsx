@@ -28,7 +28,7 @@ export default function Study() {
         <Card
           className="hover:bg-blue-100 hover:cursor-pointer dark:hover:bg-black-800"
           onClick={(event) => {
-            handleClick(event, 'guide')
+            handleClick(event, 'article')
           }}
         >
           <div className="flex flex-row justify-start items-center">
@@ -38,12 +38,12 @@ export default function Study() {
                   src="https://emojicdn.elk.sh/%F0%9F%97%82%EF%B8%8F"
                   width="48"
                   height="48"
-                  alt="Guide"
+                  alt="article"
                 />
               </div>
             </div>
             <div className="flex flex-col justify-start items-start w-3/4 py-6">
-              <h1 className="font-extrabold text-xl">Guide</h1>
+              <h1 className="font-extrabold text-xl">Articles</h1>
               <p className="text-sm mt-2">
                 Artikel yang akan memandu mu melakukan berbagai macam hal tentang{' '}
                 <em>programming</em>.
@@ -54,17 +54,17 @@ export default function Study() {
         <Card
           className="hover:bg-yellow-100 hover:cursor-pointer dark:hover:bg-black-800"
           onClick={(event) => {
-            handleClick(event, 'snippet')
+            handleClick(event, 'snippets')
           }}
         >
           <div className="flex flex-row justify-start items-center">
             <div className="flex w-1/4 justify-center items-center">
               <div className="rounded-xl bg-black-100 dark:bg-black p-2">
-                <Image src="https://emojicdn.elk.sh/💾" width="48" height="48" alt="Snippet" />
+                <Image src="https://emojicdn.elk.sh/💾" width="48" height="48" alt="Snippets" />
               </div>
             </div>
             <div className="flex flex-col justify-start items-start w-3/4 py-6">
-              <h1 className="font-extrabold text-xl">Snippet</h1>
+              <h1 className="font-extrabold text-xl">Snippets</h1>
               <p className="text-sm mt-2">
                 Potongan kode untuk melakukan suatu hal. Tinggal <em>copy</em> kemudian{' '}
                 <em>paste</em> di bagian kamu membutuhkannya.

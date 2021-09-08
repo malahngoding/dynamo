@@ -44,13 +44,8 @@ const MobileNav = () => {
               <ArrowRight />
             </button>
           </div>
-          {[
-            { href: '/study/snippet', title: 'Snippet' },
-            { href: '/study/guide', title: 'Guide' },
-            ...headerNavLinks,
-            { href: '/sign-up', title: 'Bergabung' },
-          ].map((link) => (
-            <div key={link.title} className="px-12 py-4 w-full">
+          {[...headerNavLinks, { href: '/sign-up', title: 'Bergabung' }].map((link) => (
+            <div key={`mobile-nav${link.title}`} className="px-12 py-4 w-full">
               <Link
                 href={link.href}
                 // eslint-disable-next-line prettier/prettier

@@ -72,7 +72,12 @@ export const ListLayoutStudy = ({
                 <div className="flex flex-row justify-start items-center">
                   <div className="flex w-1/4 justify-center items-center">
                     <div className="rounded-xl bg-black-100 dark:bg-black p-2">
-                      <Image src="https://emojicdn.elk.sh/🗂️" width="48" height="48" alt="Guide" />
+                      <Image
+                        src="https://emojicdn.elk.sh/🗂️"
+                        width="48"
+                        height="48"
+                        alt="Article"
+                      />
                     </div>
                   </div>
                   <div className="flex flex-col justify-start items-start w-3/4 py-6">

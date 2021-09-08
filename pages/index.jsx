@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from '@/components/Image'
 import { SecondaryButton } from '@/components/design/button'
 import LayoutWrapper from '@/components/LayoutWrapper'
+import { Notes, PlayCard, Scissors, Tent } from 'tabler-icons-react'
 
 export default function Home() {
   return (
@@ -35,8 +36,8 @@ export const Hero = () => {
             </h2>
             <p className="text-base text-gray-800 dark:text-white md:text-lg">
               Belajar koding dan berlatih di platform yang di desain cocok untuk siapa saja. Membaca
-              panduan dan update terbaru. Cocok untuk siapa saja yang bersemangat untuk{' '}
-              <em>ngoding</em>. <br />
+              panduan dan update terbaru di dunia pemrograman. Cocok untuk siapa saja yang
+              bersemangat untuk <em>ngoding</em>. <br />
               Semua dalam Bahasa Indonesia.{' '}
               <span role="img" aria-label="indonesian flag" className="text-xl">
                 🇮🇩
@@ -60,11 +61,34 @@ export const Hero = () => {
 
 const Wow = () => {
   return (
-    <div className="flex flex-col items-center content-center w-full pt-16 bg-yellow">
+    <div className="flex flex-col items-center content-center w-full pt-16 bg-yellow-100">
       <div className="w-full md:w-3/4 lg:w-1/2">
         <h2 className="mb-8 px-4 text-xl font-bold text-start md:text-center dark:text-black">
           Bingung mulai dari mana?
         </h2>
+      </div>
+      <div className="grid grid-cols-3 gap-6">
+        <Image
+          src="/static/images/javascript.png"
+          alt="Javascript"
+          width="64"
+          height="64"
+          className="hover:animate-wiggle"
+        />
+        <Image
+          src="/static/images/python.png"
+          alt="Python"
+          width="64"
+          height="64"
+          className="hover:animate-wiggle"
+        />
+        <Image
+          src="/static/images/php.png"
+          alt="PHP"
+          width="64"
+          height="64"
+          className="hover:animate-wiggle"
+        />
       </div>
       <svg width="240px" height="324px" viewBox="0 0 240 324" version="1.1">
         <title>peep-2</title>
@@ -167,58 +191,34 @@ export const Feature = () => {
       </div>
       <div className="grid max-w-screen-lg gap-8 row-gap-10 mx-auto lg:grid-cols-2">
         <div className="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-          <div className="mr-4">
+          <div className="mr-4 mt-[-14px]">
             <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-blue-100 dark:bg-yellow dark:text-black">
-              <svg
-                className="w-10 h-10 text-deep-purple-accent-400"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
+              <Notes />
             </div>
           </div>
           <div>
-            <h6 className="mb-3 text-xl font-black leading-5 dark:text-yellow">Panduan</h6>
+            <h6 className="mb-3 text-xl font-black leading-5 dark:text-yellow">Artikel</h6>
             <p className="mb-3 text-sm text-black dark:text-white">
-              Blog yang akan membantu kamu menghabiskan waktu luang untuk malah ngoding.
+              Tulisan-tulisan yang akan membantu kamu menghabiskan waktu luang untuk malah ngoding.
             </p>
-            <Link href="/study/guide">
+            <Link href="/study/articles">
               <a
                 aria-label=""
                 className="inline-flex items-center font-extrabold transition-colors duration-200 text-blue-800 hover:text-blue dark:text-green-800 dark:hover:text-green"
               >
-                Mulai Disini
+                Baca Disini
               </a>
             </Link>
           </div>
         </div>
         <div className="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-          <div className="mr-4">
+          <div className="mr-4 mt-[-14px]">
             <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-blue-100 dark:bg-yellow dark:text-black">
-              <svg
-                className="w-10 h-10 text-deep-purple-accent-400"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
+              <Scissors />
             </div>
           </div>
           <div>
-            <h6 className="mb-3 text-xl font-black leading-5 dark:text-yellow">Snippet</h6>
+            <h6 className="mb-3 text-xl font-black leading-5 dark:text-yellow">Snippets</h6>
             <p className="mb-3 text-sm text-black dark:text-white">
               Potongan kode dan <em>script</em> yang bisa membantu menyelesaikan masalah. Semoga
               dapat membantu menyelesaikan masalah perkodinganmu.
@@ -228,27 +228,15 @@ export const Feature = () => {
                 aria-label=""
                 className="inline-flex items-center font-extrabold transition-colors duration-200 text-blue-800 hover:text-blue dark:text-green-800 dark:hover:text-green"
               >
-                Mulai Disini
+                Cari Disini
               </a>
             </Link>
           </div>
         </div>
         <div className="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-          <div className="mr-4">
+          <div className="mr-4 mt-[-14px]">
             <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-blue-100 dark:bg-yellow dark:text-black">
-              <svg
-                className="w-10 h-10 text-deep-purple-accent-400"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
+              <PlayCard />
             </div>
           </div>
           <div>
@@ -262,27 +250,15 @@ export const Feature = () => {
                 aria-label=""
                 className="inline-flex items-center font-extrabold transition-colors duration-200 text-blue-800 hover:text-blue dark:text-green-800 dark:hover:text-green"
               >
-                Mulai Disini
+                Mulai Menjawab
               </a>
             </Link>
           </div>
         </div>
         <div className="flex flex-col max-w-md sm:mx-auto sm:flex-row">
-          <div className="mr-4">
+          <div className="mr-4 mt-[-14px]">
             <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-blue-100 dark:bg-yellow dark:text-black">
-              <svg
-                className="w-10 h-10 text-deep-purple-accent-400"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
+              <Tent />
             </div>
           </div>
           <div>
@@ -296,7 +272,7 @@ export const Feature = () => {
                 aria-label=""
                 className="inline-flex items-center font-extrabold transition-colors duration-200 text-blue-800 hover:text-blue dark:text-green-800 dark:hover:text-green"
               >
-                Mulai Disini
+                Awali Petualangan
               </a>
             </Link>
           </div>

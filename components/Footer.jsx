@@ -19,12 +19,12 @@ export default function Footer() {
           <h1 className="text-lg font-extrabold text-black dark:text-white">Study</h1>
           <div className="h-4"></div>
           {[
-            { title: 'Guide', url: '/study/guide' },
-            { title: 'Snippet', url: '/study/snippet' },
+            { title: 'Articles', url: '/study/articles' },
+            { title: 'Snippets', url: '/study/snippets' },
             { title: 'Flash Card', url: '/study/flash-card' },
           ].map((item, index) => {
             return (
-              <Link href={item.url} key={`${item.title}-${index}`} className="py-1">
+              <Link href={item.url} key={`FOOTER${item.title}-${index}`} className="py-1">
                 <span className="py-2 text-md sm:text-sm font-medium hover:underline">
                   {item.title}
                 </span>

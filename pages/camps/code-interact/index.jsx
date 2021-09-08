@@ -22,8 +22,11 @@ export default function Code() {
 
   const showValue = () => {
     const value = editorRef.current.getValue()
-    setEval(value)
+
+    setEval(eval(value))
   }
+
+  const resetValue = () => {}
 
   return (
     <LayoutWrapper>
@@ -46,7 +49,9 @@ export default function Code() {
             <PrimaryButton variant="normal" className="text-xs" onClick={showValue}>
               Jalankan
             </PrimaryButton>
-            <PrimaryButton className="ml-2 text-xs text-bold">Set Ulang</PrimaryButton>
+            <PrimaryButton className="ml-2 text-xs text-bold" onClick={resetValue}>
+              Set Ulang
+            </PrimaryButton>
           </div>
           <div>
             <p className="text-sm mt-2">Output :</p>
