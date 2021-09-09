@@ -46,10 +46,10 @@ const LabsListLayout = ({
           <div className="w-full">
             <div className="relative mx-4 lg:mx-12 xl:mx-96">
               <input
-                aria-label="Cari artikel"
+                aria-label="Temukan Eksperimen"
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Cari artikel"
+                placeholder="Temukan Eksperimen"
                 className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md dark:border-gray-900 focus:ring-blue focus:border-blue dark:bg-gray-800 dark:text-gray-100 dark:focus:ring-yellow dark:focus:border-yellow"
               />
               <Search className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300" />
@@ -60,18 +60,15 @@ const LabsListLayout = ({
           <div className="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {!filteredBlogPosts.length && 'No posts found.'}
             {displayPosts.map((frontMatter) => {
-              const { slug, date, title, summary, tags } = frontMatter
+              const { slug, date, title, summary, emoji } = frontMatter
               return (
-                <Link key={slug} href={`/study/${category}/${slug}`} passHref>
+                <Link key={slug} href={`/camps/${category}/${slug}`} passHref>
                   <a>
                     <ArticleCard>
-                      <Image
-                        src="https://emojicdn.elk.sh/🗂️"
-                        width="48"
-                        height="48"
-                        alt="Article"
-                      />
-                      <time dateTime={date}>{formatDate(date)}</time>
+                      <Image src={emoji} width="48" height="48" alt="Article" />
+                      <time className="mt-6" dateTime={date}>
+                        {formatDate(date)}
+                      </time>
                       <h1 className="font-extrabold text-xl"> {title}</h1>
                       <p className="text-sm mt-2 hidden">{summary}</p>
                     </ArticleCard>
@@ -97,7 +94,7 @@ const LabsListLayout = ({
 const ArticleCard = (props) => {
   return (
     <div className="m-2  border-2 border-black rounded-lg drop-shadow bg-white dark:bg-black dark:hover:border-white hover:bg-blue-100 hover:drop-shadow-lg px-4 py-2 h-[240px]">
-      <div className="flex flex-col justify-between items-start h-full">{props.children}</div>
+      <div className="flex flex-col justify-center items-center h-full">{props.children}</div>
     </div>
   )
 }

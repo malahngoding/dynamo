@@ -3,10 +3,9 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSeo } from '@/components/SEO'
 import Image from '@/components/Image'
-import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/feature-cms/data/blog/${fileName}`
+const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/feature-cms/data/snippets/${fileName}`
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `${siteMetadata.siteUrl}/blog/${slug}`
@@ -20,7 +19,7 @@ const SnippetsLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
   return (
     <SectionContainer>
       <BlogSeo
-        url={`${siteMetadata.siteUrl}/blog/${slug}`}
+        url={`${siteMetadata.siteUrl}/study/snippets/${slug}`}
         authorDetails={authorDetails}
         {...frontMatter}
       />
@@ -96,12 +95,15 @@ const SnippetsLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
               <div className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
                 {tags && (
                   <div className="py-4 xl:py-8">
-                    <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                      Tags
-                    </h2>
-                    <div className="flex flex-wrap">
+                    <div className="flex flex-wrap gap-4">
                       {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
+                        <Image
+                          key={tag}
+                          src={`/static/images/${tag}.png`}
+                          alt={tag}
+                          width={48}
+                          height={48}
+                        />
                       ))}
                     </div>
                   </div>
@@ -111,20 +113,20 @@ const SnippetsLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
                     {prev && (
                       <div>
                         <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Previous Article
+                          Snippets sebelumnya
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                          <Link href={`/study/snippets/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
                     {next && (
                       <div>
                         <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Next Article
+                          Snippets selanjutnya
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                          <Link href={`/study/snippets/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
                     )}
@@ -133,10 +135,10 @@ const SnippetsLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
               </div>
               <div className="pt-4 xl:pt-8">
                 <Link
-                  href="/blog"
+                  href="/study/snippets"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                 >
-                  &larr; Back to the blog
+                  &larr; Kembali ke daftar Snippets
                 </Link>
               </div>
             </footer>

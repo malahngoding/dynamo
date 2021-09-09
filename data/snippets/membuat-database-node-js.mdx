@@ -1,0 +1,29 @@
+---
+title: Membuat database menggunakan MySql dengan Node.js
+date: '2021-08-14'
+tags: ['javascript', 'nodejs']
+draft: false
+---
+
+## Membuat database menggunakan MySql dengan Node.js
+
+Sebelum kita dapat mengakses data dari database, kita perlu membuat database terlebih dahulu dengan cara membuat database di MySQL, sebagai berikut:
+
+```javascript
+var mysql = require('mysql')
+
+var con = mysql.createConnection({
+  host: 'localhost',
+  user: 'yourusername',
+  password: 'yourpassword',
+})
+
+con.connect(function (err) {
+  if (err) throw err
+  console.log('Connected!')
+  con.query('CREATE DATABASE mydb', function (err, result) {
+    if (err) throw err
+    console.log('Database created')
+  })
+})
+```

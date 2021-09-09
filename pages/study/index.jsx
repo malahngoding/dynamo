@@ -28,7 +28,7 @@ export default function Study() {
         <Card
           className="hover:bg-blue-100 hover:cursor-pointer dark:hover:bg-black-800"
           onClick={(event) => {
-            handleClick(event, 'article')
+            handleClick(event, 'articles')
           }}
         >
           <div className="flex flex-row justify-start items-center">
@@ -38,7 +38,7 @@ export default function Study() {
                   src="https://emojicdn.elk.sh/%F0%9F%97%82%EF%B8%8F"
                   width="48"
                   height="48"
-                  alt="article"
+                  alt="articles"
                 />
               </div>
             </div>

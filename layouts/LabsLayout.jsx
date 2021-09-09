@@ -6,21 +6,21 @@ import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/feature-cms/data/articles/${fileName}`
+const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/feature-cms/data/labs/${fileName}`
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `${siteMetadata.siteUrl}/study/articles/${slug}`
+    `${siteMetadata.siteUrl}/camps/labs/${slug}`
   )}`
 
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-const ArticlesLayout = ({ frontMatter, authorDetails, next, prev, children }) => {
+const LabsLayout = ({ frontMatter, authorDetails, next, prev, children }) => {
   const { slug, fileName, date, title, tags } = frontMatter
 
   return (
     <SectionContainer>
       <BlogSeo
-        url={`${siteMetadata.siteUrl}/study/articles/${slug}`}
+        url={`${siteMetadata.siteUrl}/camps/labs/${slug}`}
         authorDetails={authorDetails}
         {...frontMatter}
       />
@@ -111,20 +111,20 @@ const ArticlesLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
                     {prev && (
                       <div>
                         <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Kembali
+                          Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/study/articles/${prev.slug}`}>{prev.title}</Link>
+                          <Link href={`/camps/labs/${prev.slug}`}>{prev.title}</Link>
                         </div>
                       </div>
                     )}
                     {next && (
                       <div>
                         <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Lanjut
+                          Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/study/articles/${next.slug}`}>{next.title}</Link>
+                          <Link href={`/camps/labs/${next.slug}`}>{next.title}</Link>
                         </div>
                       </div>
                     )}
@@ -133,10 +133,10 @@ const ArticlesLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
               </div>
               <div className="pt-4 xl:pt-8">
                 <Link
-                  href="/study/articles"
+                  href="/camps/labs"
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                 >
-                  &larr; Ke daftar artikel
+                  &larr; Kembali ke daftar Labs
                 </Link>
               </div>
             </footer>
@@ -147,4 +147,4 @@ const ArticlesLayout = ({ frontMatter, authorDetails, next, prev, children }) =>
   )
 }
 
-export default ArticlesLayout
+export default LabsLayout

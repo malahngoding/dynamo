@@ -53,6 +53,7 @@ export default function Footer() {
           <h1 className="text-lg font-extrabold text-black dark:text-white">Services</h1>
           <div className="h-4"></div>
           {[
+            { title: 'Changelog', url: '/changelog' },
             { title: 'Coding Tutor', url: '/coding-tutor' },
             { title: 'Workshop', url: '/workshop' },
             { title: 'Development Service', url: '/development-service' },

@@ -46,10 +46,10 @@ const SnippetsListLayout = ({
           <div className="w-full">
             <div className="relative mx-4 lg:mx-12 xl:mx-96">
               <input
-                aria-label="Cari panduan"
+                aria-label="Temukan Snippets"
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Cari panduan"
+                placeholder="Temukan Snippets"
                 className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md dark:border-gray-900 focus:ring-blue focus:border-blue dark:bg-gray-800 dark:text-gray-100 dark:focus:ring-yellow dark:focus:border-yellow"
               />
               <Search className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300" />
@@ -66,8 +66,8 @@ const SnippetsListLayout = ({
                   <a>
                     <ArticleCard>
                       <time dateTime={date}>{formatDate(date)}</time>
-                      <h1 className="font-extrabold text-xl"> {title}</h1>
-                      <div className="flex flex-row">
+                      <h1 className="font-extrabold text-md"> {title}</h1>
+                      <div className="flex flex-row flex-wrap gap-4">
                         {tags.map((tag) => (
                           <Image
                             key={tag}
@@ -75,6 +75,7 @@ const SnippetsListLayout = ({
                             alt={tag}
                             width={48}
                             height={48}
+                            className="mr-2"
                           />
                         ))}
                       </div>
