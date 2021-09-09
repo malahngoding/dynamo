@@ -41,7 +41,7 @@ export default function Camps() {
                 />
               </div>
             </div>
-            <div className="flex flex-col justify-start items-start w-3/4 py-6">
+            <div className="flex flex-col justify-start items-start w-3/4 py-6 ml-4">
               <h1 className="font-extrabold text-xl">Awesome Noob</h1>
               <p className="text-sm mt-2">Menyelesaikan tantangan luar angkasa.</p>
             </div>
@@ -64,7 +64,7 @@ export default function Camps() {
                 />
               </div>
             </div>
-            <div className="flex flex-col justify-start items-start w-3/4 py-6">
+            <div className="flex flex-col justify-start items-start w-3/4 py-6 ml-4">
               <h1 className="font-extrabold text-xl">Code Interact</h1>
               <p className="text-sm mt-2">
                 Langsung <em>ngoding</em> tanpa menginstall apapun.
@@ -89,7 +89,7 @@ export default function Camps() {
                 />
               </div>
             </div>
-            <div className="flex flex-col justify-start items-start w-3/4 py-6">
+            <div className="flex flex-col justify-start items-start w-3/4 py-6 ml-4">
               <h1 className="font-extrabold text-xl">Labs</h1>
               <p className="text-sm mt-2">
                 Kumpulan project yang menarik untuk dibuat. Langkah demi langkah.

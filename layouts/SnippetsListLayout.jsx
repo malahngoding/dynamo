@@ -1,4 +1,3 @@
-import Tag from '@/components/Tag'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
@@ -6,6 +5,7 @@ import { Search } from 'tabler-icons-react'
 import Image from '@/components/Image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { ArticleCard } from '@/components/ArticleCard'
 
 const SnippetsListLayout = ({
   posts,
@@ -95,14 +95,6 @@ const SnippetsListLayout = ({
         />
       )}
     </>
-  )
-}
-
-const ArticleCard = (props) => {
-  return (
-    <div className="m-4 border-2 border-black rounded-lg bg-white dark:bg-black dark:hover:border-white hover:bg-red-100 px-6 py-4 h-[240px]">
-      <div className="flex flex-col justify-between items-start h-full">{props.children}</div>
-    </div>
   )
 }
 

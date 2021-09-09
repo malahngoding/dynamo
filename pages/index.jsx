@@ -45,7 +45,7 @@ export const Hero = () => {
             </p>
           </div>
         </div>
-        <div>
+        <div className="flex flex-row justify-center items-center">
           <Image
             className="max-w-full"
             src="/static/images/carbon-copy.webp"
@@ -61,9 +61,9 @@ export const Hero = () => {
 
 const Wow = () => {
   return (
-    <div className="flex flex-col items-center content-center w-full pt-16 bg-yellow-100">
+    <div className="flex flex-col items-center content-center w-full pt-16 bg-yellow-100 dark:bg-black">
       <div className="w-full md:w-3/4 lg:w-1/2">
-        <h2 className="mb-8 px-4 text-xl font-bold text-start md:text-center dark:text-black">
+        <h2 className="mb-8 px-4 text-xl font-bold text-start md:text-center">
           Bingung mulai dari mana?
         </h2>
       </div>

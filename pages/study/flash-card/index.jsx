@@ -11,7 +11,7 @@ export default function FlashCardInitiation() {
         description={siteMetadata.description}
       />
       <div>
-        <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
+        <UnderConstruction title="Tanya Jawab!" subTitle="Flash Card" />
       </div>
     </LayoutWrapper>
   )

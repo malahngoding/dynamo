@@ -9,7 +9,7 @@ import { useDashNav } from '@/modules/dash-nav.store'
 
 export const NavigationBar = (props) => {
   return (
-    <header className="sticky bg-white dark:bg-black-800 z-10 top-0 flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-yellow-800">
+    <header className="sticky bg-white dark:bg-black z-10 top-0 flex items-center justify-between p-5 border-b-2 border-black-200 dark:border-black-800">
       <div>
         <Link href="/" aria-label="Malah Ngoding">
           <div className="flex items-center justify-between">
