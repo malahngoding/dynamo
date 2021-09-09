@@ -76,7 +76,7 @@ export default function SignIn({ providers, csrfToken }) {
                   {formError && (
                     <p className="text-red my-2 mb-4">Periksa kembali email/password kamu</p>
                   )}
-                  <form method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+                  <form method="post" onSubmit={handleSubmit(onSubmit)} className="hidden flex-col">
                     <input
                       name="csrfToken"
                       type="hidden"
