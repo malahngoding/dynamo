@@ -2,8 +2,13 @@ import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
 import { LogoMalahNgoding } from '@/components/design/logo'
+import { useTheme } from 'next-themes'
+import Image from './Image'
+import CustomLink from './Link'
 
 export default function Footer() {
+  const { theme } = useTheme()
+  console.log(theme)
   const year = new Date().getFullYear()
   return (
     <footer className="w-screen px-4 pt-4 border-t-2 border-black-200 dark:border-black-800 md:px-8 lg:px-32 lg:pt-8 xl:px-64">
@@ -87,6 +92,25 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col items-center content-center justify-center pt-8">
+        <CustomLink
+          href={`https://www.dewaweb.com/?source=https://malahngoding.com`}
+          target="_blank"
+        >
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-xs">Powered By</p>
+            <Image
+              src={
+                theme === 'dark'
+                  ? `/static/images/sponsor/dewaweb-chp-horizontal-logo-monochrome-white.png`
+                  : `/static/images/sponsor/dewaweb-chp-horizontal-logo-rgb.png`
+              }
+              width={220.47}
+              height={96}
+              alt="Powered By: Dewaweb, Cloud Hosting Expert https://www.dewaweb.com/ "
+            />
+          </div>
+        </CustomLink>
+        <div className="h-8"></div>
         <div className="flex mb-3 space-x-4">
           <SocialIcon kind="github" href={siteMetadata.github} size="6" />
           <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" />
