@@ -8,7 +8,6 @@ import CustomLink from './Link'
 
 export default function Footer() {
   const { theme } = useTheme()
-  console.log(theme)
   const year = new Date().getFullYear()
   return (
     <footer className="w-screen px-4 pt-4 border-t-2 border-black-200 dark:border-black-800 md:px-8 lg:px-32 lg:pt-8 xl:px-64">

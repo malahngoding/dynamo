@@ -46,7 +46,7 @@ export default function Register({ providers, csrfToken }) {
       }
       return data
     } catch (error) {
-      console.log(error.response) // this is the main part. Use the response property from the error object
+      console.error(error.response) // this is the main part. Use the response property from the error object
       return error.response
     }
   }
