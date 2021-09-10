@@ -27,9 +27,8 @@ export const QuizQuestionPage = (props) => {
   const [QuizGroup, setQuizGroup] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  console.log(router.query.id)
+
   const [session, loading] = useSession('')
-  console.log(session.user.email)
 
   // const response = {
   //   correct_answer: TrueAnswer,
@@ -43,7 +42,6 @@ export const QuizQuestionPage = (props) => {
       arrayWrongAnswer.push({ isCorrect: false, question: item })
     })
   )
-  console.log(arrayWrongAnswer)
 
   const arrayTrueAnswer = []
   props.question.length === 0 ? (
@@ -54,9 +52,8 @@ export const QuizQuestionPage = (props) => {
       question: props.question[props.currentPage - 1].correct_answer,
     })
   )
-  console.log(arrayTrueAnswer)
+
   const arr = [...arrayWrongAnswer, ...arrayTrueAnswer]
-  console.log(arr)
 
   const shuffleArray = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -65,8 +62,6 @@ export const QuizQuestionPage = (props) => {
     }
   }
   console.log(shuffleArray(arr))
-  // const [session, loading] = useSession('')
-  // console.log(session.user.email)
 
   const handleClickSkip = () => {
     setSoal_dilewati(Soal_dilewati + 1)
@@ -102,7 +97,6 @@ export const QuizQuestionPage = (props) => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error)
       })
       .finally(function () {
         // always executed
@@ -145,7 +139,6 @@ export const QuizQuestionPage = (props) => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error)
       })
       .finally(function () {
         // always executed
@@ -187,7 +180,6 @@ export const QuizQuestionPage = (props) => {
       })
       .catch(function (error) {
         // handle error
-        console.log(error)
       })
       .finally(function () {
         // always executed
@@ -290,10 +282,8 @@ export const QuizQuestionPage = (props) => {
                             onClick={() => {
                               if (item.isCorrect === true) {
                                 handleClickTrueAnswer()
-                                console.log('benar')
                               } else {
                                 handleClickFalseAnswer()
-                                console.log('salah')
                               }
                             }}
                           >

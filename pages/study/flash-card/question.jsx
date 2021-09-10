@@ -24,45 +24,6 @@ export default function FlashCardAnsweringQuestion(props) {
 
   const [session, loading] = useSession('')
 
-  // console.log(session.user.email)
-
-  // useEffect(() => {
-  //   // Ini yang akan dilakukan
-  //   axios
-  //     // ${router.query.id}
-  //     .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${router.query.id}`)
-  //     .then(function (response) {
-  //       // handle success
-  //       // setQuestions(response.data)
-  //       console.log(response.data, 'Efecct question')
-  //       axios
-  //         .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`, {
-  //           email: session.user.email,
-  //         })
-  //         .then(function (response) {
-  //           // handle success
-  //           // setTotalScores(response.data.totalscore)
-  //           console.log(response.data.totalscore, 'effect totalscore')
-  //         })
-  //         .catch(function (error) {
-  //           // handle error
-  //           console.log(error)
-  //         })
-  //         .then(function () {
-  //           // always executed
-  //         })
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error)
-  //     })
-  //     .then(function () {
-  //       // always executed
-  //     })
-
-  //   // Ini yang akan dilakukan
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
   return (
     <LayoutWrapper>
       <PageSeo
@@ -72,21 +33,6 @@ export default function FlashCardAnsweringQuestion(props) {
       <div className="hidden">
         <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
       </div>
-      <div>
-        {/* <QuestionCard currentPage={page} isActive={isActive} setIsActive={setIsActive} />
-        <QuestionPagination
-          currentPage={page}
-          setCurrentPage={setPage}
-          totalPage={totalPage}
-          isActive={isActive}
-          setIsActive={setIsActive}
-        /> */}
-      </div>
-      {/* <CustomLink
-        href={`/study/flash-card/result?id=1&total_correct=${7}&total_incorrect=${2}&total_question=${10}`}
-      >
-        Menuju Pertanyaan
-      </CustomLink> */}
       <div className="flex flex-col justify-center items-center">
         <div className="w-[352px] h-full md:w-[540px] md:h-full">
           <QuizQuestionPage
