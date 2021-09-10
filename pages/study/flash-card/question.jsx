@@ -7,62 +7,62 @@ import { CihuyButton } from '@/components/page/awesome-noob/cihuy-component'
 // import { QuestionCard, QuestionPagination } from '@/components/page/awesome-noob/stateful'
 import { QuizQuestionPage } from '@/components/page/awesome-noob/quiz-question'
 import { useEffect, useState } from 'react'
-import { useSession } from 'next-auth/client'
+import { getSession, useSession } from 'next-auth/client'
 import CustomLink from '@/components/Link'
 import axios from 'axios'
 
 import { useRouter } from 'next/router'
 
-export default function FlashCardAnsweringQuestion() {
+export default function FlashCardAnsweringQuestion(props) {
   const [isActive, setIsActive] = useState(false)
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState(props.dataQuestions)
   const [page, setPage] = useState(1)
   const totalPage = questions.length
   const router = useRouter()
-  console.log(router.query.id)
 
-  const [TotalScores, setTotalScores] = useState(0)
+  const [TotalScores, setTotalScores] = useState(props.dataTotalScore)
 
   const [session, loading] = useSession('')
-  console.log(session.user.email)
 
-  useEffect(() => {
-    // Ini yang akan dilakukan
-    axios
-      // ${router.query.id}
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${router.query.id}`)
-      .then(function (response) {
-        // handle success
-        setQuestions(response.data)
-        console.log(response.data)
-        axios
-          .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`, {
-            email: session.user.email,
-          })
-          .then(function (response) {
-            // handle success
-            setTotalScores(response.data.totalscore)
-            console.log(response.data.totalscore)
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error)
-          })
-          .then(function () {
-            // always executed
-          })
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error)
-      })
-      .then(function () {
-        // always executed
-      })
+  // console.log(session.user.email)
 
-    // Ini yang akan dilakukan
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   // Ini yang akan dilakukan
+  //   axios
+  //     // ${router.query.id}
+  //     .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${router.query.id}`)
+  //     .then(function (response) {
+  //       // handle success
+  //       // setQuestions(response.data)
+  //       console.log(response.data, 'Efecct question')
+  //       axios
+  //         .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`, {
+  //           email: session.user.email,
+  //         })
+  //         .then(function (response) {
+  //           // handle success
+  //           // setTotalScores(response.data.totalscore)
+  //           console.log(response.data.totalscore, 'effect totalscore')
+  //         })
+  //         .catch(function (error) {
+  //           // handle error
+  //           console.log(error)
+  //         })
+  //         .then(function () {
+  //           // always executed
+  //         })
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error)
+  //     })
+  //     .then(function () {
+  //       // always executed
+  //     })
+
+  //   // Ini yang akan dilakukan
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
   return (
     <LayoutWrapper>
       <PageSeo
@@ -100,6 +100,26 @@ export default function FlashCardAnsweringQuestion() {
       </div>
     </LayoutWrapper>
   )
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  const questionss = await axios.get(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${context.query.id}`
+  )
+  const totalscores = await axios.post(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`,
+    {
+      email: session.user.email,
+    }
+  )
+  return {
+    props: {
+      id: context.query.id,
+      dataQuestions: questionss.data,
+      dataTotalScore: totalscores.data.totalscore,
+    }, // will be passed to the page component as props
+  }
 }
 
 export const Backup1 = () => {
