@@ -25,10 +25,10 @@ export const QuizQuestionPage = (props) => {
   const [TrueAnswer, setTrueAnswer] = useState('')
   const [Soal_dilewati, setSoal_dilewati] = useState(0)
   const [QuizGroup, setQuizGroup] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-  console.log(router.query.id)
+
   const [session, loading] = useSession('')
-  console.log(session.user.email)
 
   // const response = {
   //   correct_answer: TrueAnswer,
@@ -42,7 +42,6 @@ export const QuizQuestionPage = (props) => {
       arrayWrongAnswer.push({ isCorrect: false, question: item })
     })
   )
-  console.log(arrayWrongAnswer)
 
   const arrayTrueAnswer = []
   props.question.length === 0 ? (
@@ -53,9 +52,8 @@ export const QuizQuestionPage = (props) => {
       question: props.question[props.currentPage - 1].correct_answer,
     })
   )
-  console.log(arrayTrueAnswer)
+
   const arr = [...arrayWrongAnswer, ...arrayTrueAnswer]
-  console.log(arr)
 
   const shuffleArray = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -64,8 +62,6 @@ export const QuizQuestionPage = (props) => {
     }
   }
   console.log(shuffleArray(arr))
-  // const [session, loading] = useSession('')
-  // console.log(session.user.email)
 
   const handleClickSkip = () => {
     setSoal_dilewati(Soal_dilewati + 1)
@@ -81,6 +77,7 @@ export const QuizQuestionPage = (props) => {
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
     setQuizGroup(parseInt(router.query.id) + 1)
+    setIsLoading(true)
 
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
@@ -96,13 +93,14 @@ export const QuizQuestionPage = (props) => {
       })
       .then(function (response) {
         // handle success
+        router.push('/study/flash-card/result')
       })
       .catch(function (error) {
         // handle error
-        console.log(error)
       })
-      .then(function () {
+      .finally(function () {
         // always executed
+        setIsLoading(false)
       })
   }
   const handleClickTrueAnswer = () => {
@@ -118,6 +116,7 @@ export const QuizQuestionPage = (props) => {
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
     setQuizGroup(parseInt(router.query.id) + 1)
+    setIsLoading(true)
 
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
@@ -136,13 +135,14 @@ export const QuizQuestionPage = (props) => {
       })
       .then(function (response) {
         // handle success
+        router.push('/study/flash-card/result')
       })
       .catch(function (error) {
         // handle error
-        console.log(error)
       })
-      .then(function () {
+      .finally(function () {
         // always executed
+        setIsLoading(false)
       })
   }
   const handleClickFalseAnswer = () => {
@@ -160,6 +160,7 @@ export const QuizQuestionPage = (props) => {
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
     setQuizGroup(parseInt(router.query.id) + 1)
+    setIsLoading(true)
 
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
@@ -175,13 +176,14 @@ export const QuizQuestionPage = (props) => {
       })
       .then(function (response) {
         // handle success
+        router.push('/study/flash-card/result')
       })
       .catch(function (error) {
         // handle error
-        console.log(error)
       })
-      .then(function () {
+      .finally(function () {
         // always executed
+        setIsLoading(false)
       })
   }
 
@@ -209,16 +211,22 @@ export const QuizQuestionPage = (props) => {
                   <p>SKIP</p>
                 </button>
               ) : (
-                <CustomLink href={`/study/flash-card/result`}>
-                  <button
-                    className="border-2 bg-black-800 p-2 rounded-lg  text-white"
-                    onClick={() => {
-                      handleClickSkip()
-                    }}
-                  >
-                    <p>SKIP</p>
-                  </button>
-                </CustomLink>
+                <>
+                  {isLoading ? (
+                    <p>Loading...</p>
+                  ) : (
+                    <>
+                      <button
+                        className="border-2 bg-black-800 p-2 rounded-lg  text-white"
+                        onClick={() => {
+                          handleClickSkip()
+                        }}
+                      >
+                        <p>SKIP</p>
+                      </button>
+                    </>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -263,182 +271,28 @@ export const QuizQuestionPage = (props) => {
                     </button>
                   ))
                 : arr.map((item, index) => (
-                    <CustomLink href={`/study/flash-card/result`} key={index}>
-                      <button
-                        className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
-                        onClick={() => {
-                          if (item.isCorrect === true) {
-                            handleClickTrueAnswer()
-                            console.log('benar')
-                          } else {
-                            handleClickFalseAnswer()
-                            console.log('salah')
-                          }
-                        }}
-                      >
-                        {item.question}
-                      </button>
-                    </CustomLink>
+                    <>
+                      {isLoading ? (
+                        <p>Loading...</p>
+                      ) : (
+                        <>
+                          <button
+                            key={index}
+                            className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
+                            onClick={() => {
+                              if (item.isCorrect === true) {
+                                handleClickTrueAnswer()
+                              } else {
+                                handleClickFalseAnswer()
+                              }
+                            }}
+                          >
+                            {item.question}
+                          </button>
+                        </>
+                      )}
+                    </>
                   ))}
-              {/* {props.currentPage !== props.totalPage ? (
-                <button
-                  className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
-                  onClick={() => {
-                    props.setCurrentPage(props.currentPage + 1)
-                    setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
-                    setCorrectAnswerCount(CorrectAnswerCount + 1)
-                    setTotalAnswerCount(TotalAnswerCount + 1)
-                  }}
-                >
-                  <div>{props.question[props.currentPage - 1].correct_answer}</div>
-                </button>
-              ) : (
-                <CustomLink
-                  href={`/study/flash-card/result?id=1&total_correct=${
-                    CorrectAnswerCount + 1
-                  }&total_incorrect=${WrongAnswerCount}&total_question=${
-                    TotalAnswerCount + 1
-                  }&score=${CorrectScore + props.question[props.currentPage - 1].score}&akurasi=${
-                    AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100
-                  }&rata-rata_nilai=${
-                    AvarageScore +
-                    (CorrectScore + props.question[props.currentPage - 1].score) /
-                      (TotalAnswerCount + 1)
-                  }&totalnilai=${
-                    parseInt(props.totalscore) +
-                    CorrectScore +
-                    props.question[props.currentPage - 1].score
-                  }`}
-                >
-                  <button
-                    className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
-                    onClick={() => {
-                      setCorrectAnswerCount(CorrectAnswerCount + 1)
-                      setAccuracyScore(
-                        AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100
-                      )
-                      setAvarageScore(
-                        AvarageScore +
-                          (CorrectScore + props.question[props.currentPage - 1].score) /
-                            (TotalAnswerCount + 1)
-                      )
-                      setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
-                      setTotalAnswerCount(TotalAnswerCount + 1)
-                      setTotalScore(
-                        parseInt(props.totalscore) +
-                          CorrectScore +
-                          props.question[props.currentPage - 1].score
-                      )
-
-                      axios
-                        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
-                          email: session.user.email,
-                          nilai: CorrectScore + props.question[props.currentPage - 1].score,
-                          jawaban_benar: CorrectAnswerCount + 1,
-                          akurasi:
-                            AccuracyScore +
-                            ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100,
-
-                          rata_rata:
-                            AvarageScore +
-                            (CorrectScore + props.question[props.currentPage - 1].score) /
-                              (TotalAnswerCount + 1),
-                          TotalScore:
-                            parseInt(props.totalscore) +
-                            CorrectScore +
-                            props.question[props.currentPage - 1].score,
-                          soal_dilewati: Soal_dilewati,
-                        })
-                        .then(function (response) {
-                          // handle success
-                        })
-                        .catch(function (error) {
-                          // handle error
-                          console.log(error)
-                        })
-                        .then(function () {
-                          // always executed
-                        })
-                    }}
-                  >
-                    <div>{props.question[props.currentPage - 1].correct_answer}</div>
-                  </button>
-                </CustomLink>
-              )}
-              {props.currentPage !== props.totalPage ? (
-                props.question[props.currentPage - 1].incorrect_answer.map((item, index) => (
-                  <button
-                    key={index}
-                    className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
-                    onClick={() => {
-                      props.setCurrentPage(props.currentPage + 1)
-                      setWrongAnswerCount(WrongAnswerCount + 1)
-                      setTotalAnswerCount(TotalAnswerCount + 1)
-                    }}
-                  >
-                    <div>{item}</div>
-                  </button>
-                ))
-              ) : (
-                <CustomLink
-                  href={`/study/flash-card/result?id=1&total_correct=${CorrectAnswerCount}&total_incorrect=${
-                    WrongAnswerCount + 1
-                  }&total_question=${TotalAnswerCount + 1}`}
-                >
-                  {props.question[props.currentPage - 1].incorrect_answer.map((item, index) => (
-                    <button
-                      key={index}
-                      className="flex mx-2 py-2 px-3 rounded-xl mb-4 md:mx-2 md:py-3 md:px-4 flex-row border-2 md:rounded-full border-blue bg-blue text-purple-100"
-                      onClick={() => {
-                        // props.setCurrentPage(props.currentPage + 1)
-                        setWrongAnswerCount(WrongAnswerCount + 1)
-                        setSoal_dilewati(Soal_dilewati)
-                        setTotalAnswerCount(TotalAnswerCount + 1)
-                        setCorrectAnswerCount(CorrectAnswerCount)
-                        setAccuracyScore(
-                          AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100
-                        )
-                        setAvarageScore(
-                          AvarageScore +
-                            (CorrectScore + props.question[props.currentPage - 1].score) /
-                              (TotalAnswerCount + 1)
-                        )
-                        setCorrectScore(CorrectScore + props.question[props.currentPage - 1].score)
-                        setTotalScore(
-                          parseInt(props.totalscore) +
-                            CorrectScore +
-                            props.question[props.currentPage - 1].score
-                        )
-
-                        axios
-                          .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
-                            email: session.user.email,
-                            nilai: CorrectScore,
-                            jawaban_benar: CorrectAnswerCount,
-                            akurasi:
-                              AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
-
-                            rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
-                            TotalScore: parseInt(props.totalscore) + CorrectScore,
-                            soal_dilewati: Soal_dilewati,
-                          })
-                          .then(function (response) {
-                            // handle success
-                          })
-                          .catch(function (error) {
-                            // handle error
-                            console.log(error)
-                          })
-                          .then(function () {
-                            // always executed
-                          })
-                      }}
-                    >
-                      <div>{item}</div>
-                    </button>
-                  ))}
-                </CustomLink>
-              )} */}
             </div>
           </div>
         </div>
