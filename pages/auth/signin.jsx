@@ -17,12 +17,7 @@ export default function SignIn({ providers, csrfToken }) {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
-  } = useForm({
-    defaultValues: {
-      email: 'admin@malahngoding.com',
-      password: 'developer',
-    },
-  })
+  } = useForm()
   const [formError, setFormError] = useState(false)
 
   const onSubmit = async (data) => {

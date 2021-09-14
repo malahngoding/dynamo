@@ -14,6 +14,7 @@ module.exports = withBundleAnalyzer({
       'avatars.githubusercontent.com',
       'images.unsplash.com',
       'avatars.dicebear.com',
+      'lh3.googleusercontent.com',
     ],
   },
   webpack: (config, { dev, isServer }) => {

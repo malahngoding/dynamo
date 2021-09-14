@@ -9,8 +9,8 @@ export default function User() {
       {status === 'authenticated' && (
         <div className="p-4 rounded-xl flex flex-col justify-center items-center">
           <Image
-            height={210}
-            width={210}
+            height={128}
+            width={128}
             className="rounded-full border-2 border-black"
             src={session.user.image}
             alt={`Sebuah gambar avatar dari pengguna ${session.user.name}`}

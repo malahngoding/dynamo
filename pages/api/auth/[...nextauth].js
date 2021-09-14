@@ -11,13 +11,32 @@ export default NextAuth({
     error: '/auth/error',
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      const data = await standService.post('/api/dynamo/handshake', {
-        email: credentials.email,
-        provider: account.provider,
-      })
-      user.dynamoToken = data.data.token
-      return true
+    async signIn({ user, account, credentials }) {
+      if (account.provider === 'credentials') {
+        const data = await standService.post('/api/dynamo/handshake', {
+          email: credentials.email,
+          authProvider: account.provider,
+        })
+
+        user.dynamoToken = data.data.token
+        return true
+      } else if (account.provider === 'google') {
+        const data = await standService.post('/api/dynamo/handshake', {
+          email: account.providerAccountId,
+          authProvider: account.provider,
+        })
+        user.dynamoToken = data.data.token
+        return true
+      } else if (account.provider === 'github') {
+        const data = await standService.post('/api/dynamo/handshake', {
+          email: account.providerAccountId,
+          authProvider: account.provider,
+        })
+        user.dynamoToken = data.data.token
+        return true
+      } else {
+        return false
+      }
     },
     async jwt({ token, user }) {
       if (user) {
