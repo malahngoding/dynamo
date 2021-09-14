@@ -9,7 +9,12 @@ module.exports = withBundleAnalyzer({
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
   images: {
-    domains: ['emojicdn.elk.sh', 'avatars.githubusercontent.com', 'images.unsplash.com'],
+    domains: [
+      'emojicdn.elk.sh',
+      'avatars.githubusercontent.com',
+      'images.unsplash.com',
+      'avatars.dicebear.com',
+    ],
   },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({

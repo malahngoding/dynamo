@@ -1,4 +1,4 @@
-import { Provider } from 'next-auth/client'
+import { SessionProvider } from 'next-auth/react'
 
 import '@fontsource/montserrat/100.css'
 import '@fontsource/montserrat/200.css'
@@ -17,13 +17,13 @@ import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
   return (
-    <Provider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
       <ThemeProvider attribute="class" defaultTheme="light">
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
         <Component {...pageProps} />
       </ThemeProvider>
-    </Provider>
+    </SessionProvider>
   )
 }

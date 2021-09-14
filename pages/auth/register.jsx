@@ -1,16 +1,16 @@
 import { PrimaryButton } from '@/components/design/button'
 import { Card } from '@/components/design/card'
-import { getProviders, signIn, getCsrfToken, useSession } from 'next-auth/client'
+import { getProviders, signIn, getCsrfToken, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { At, BrandGithub, BrandGoogle, Lock, User } from 'tabler-icons-react'
-import Axios from 'axios'
 import { PageSeo } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
+import { standService } from '@/lib/service'
 
 export default function Register({ providers, csrfToken }) {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
   const {
     register,
@@ -22,23 +22,24 @@ export default function Register({ providers, csrfToken }) {
   const onSubmit = async (data) => {
     const { name, email, password, csrfToken } = data
     try {
-      const response = await Axios({
+      const response = await standService({
         method: 'post',
-        url: '/api/registration',
+        url: '/api/dynamo/registration',
         data: {
           name: name,
           email: email,
           password: password,
           csrfToken: csrfToken,
+          authProvider: 'credentials',
         },
       })
       if (response.data.status === 'SUCCESS') {
-        const status = await signIn('credentials', {
+        const nextstep = await signIn('credentials', {
           email: email,
           password: password,
           redirect: false,
         })
-        if (status.error === null) {
+        if (nextstep.error === null) {
           router.push('/')
         } else {
           setFormError(true)
@@ -53,7 +54,7 @@ export default function Register({ providers, csrfToken }) {
 
   useEffect(() => {
     const handler = () => {
-      if (loading && session) {
+      if (status === 'loading' && session) {
         router.push('/')
       }
       if (session) {
@@ -61,7 +62,7 @@ export default function Register({ providers, csrfToken }) {
       }
     }
     handler()
-  }, [loading, router, session])
+  }, [status, router, session])
 
   return (
     <>
@@ -94,7 +95,7 @@ export default function Register({ providers, csrfToken }) {
                   {formError && (
                     <p className="text-red my-2 mb-4">Periksa kembali email/password kamu</p>
                   )}
-                  <form method="post" onSubmit={handleSubmit(onSubmit)} className="hidden flex-col">
+                  <form method="post" onSubmit={handleSubmit(onSubmit)} className="flex-col">
                     <input
                       name="csrfToken"
                       type="hidden"

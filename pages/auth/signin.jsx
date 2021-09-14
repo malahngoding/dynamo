@@ -3,7 +3,7 @@ import { Card } from '@/components/design/card'
 import { LogoMalahNgoding } from '@/components/design/logo'
 import { PageSeo } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { getProviders, signIn, getCsrfToken, useSession } from 'next-auth/client'
+import { getProviders, signIn, getCsrfToken, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -11,13 +11,18 @@ import { useForm } from 'react-hook-form'
 import { At, BrandGithub, BrandGoogle, Lock } from 'tabler-icons-react'
 
 export default function SignIn({ providers, csrfToken }) {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
   const router = useRouter()
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
-  } = useForm()
+  } = useForm({
+    defaultValues: {
+      email: 'admin@malahngoding.com',
+      password: 'developer',
+    },
+  })
   const [formError, setFormError] = useState(false)
 
   const onSubmit = async (data) => {
@@ -35,12 +40,12 @@ export default function SignIn({ providers, csrfToken }) {
 
   useEffect(() => {
     const handler = () => {
-      if (loading && session) {
+      if (status === 'loading' && session) {
         router.push('/')
       }
     }
     handler()
-  }, [loading, router, session])
+  }, [status, router, session])
 
   return (
     <>
@@ -76,7 +81,7 @@ export default function SignIn({ providers, csrfToken }) {
                   {formError && (
                     <p className="text-red my-2 mb-4">Periksa kembali email/password kamu</p>
                   )}
-                  <form method="post" onSubmit={handleSubmit(onSubmit)} className="hidden flex-col">
+                  <form method="post" onSubmit={handleSubmit(onSubmit)} className="flex-col">
                     <input
                       name="csrfToken"
                       type="hidden"

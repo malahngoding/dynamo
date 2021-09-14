@@ -9,14 +9,14 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   return (
-    <button aria-label="Toggle Theme Mode" type="button">
+    <div aria-label="Toggle Theme Mode">
       {mounted && (
         <div className="flex flex-row justify-evenly items-center my-4">
           <DarkTheme theme={theme} setTheme={setTheme} resolvedTheme={resolvedTheme} />
           <LightTheme theme={theme} setTheme={setTheme} resolvedTheme={resolvedTheme} />
         </div>
       )}
-    </button>
+    </div>
   )
 }
 

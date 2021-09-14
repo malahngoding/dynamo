@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { useSession, signOut } from 'next-auth/client'
+import { useSession, signOut } from 'next-auth/react'
 import { Logout } from 'tabler-icons-react'
 import { PrimaryButton } from '../design/button'
 import ThemeSwitch from '../ThemeSwitch'
 
 export default function Settings() {
-  const [current] = useSession()
+  const { status } = useSession()
   return (
     <div>
-      {current && (
+      {status === 'authenticated' && (
         <div className="flex flex-col">
           <h1 className="font-black text-4xl mb-8">Pengaturan</h1>
           <p className="font-medium my-4">Tema</p>

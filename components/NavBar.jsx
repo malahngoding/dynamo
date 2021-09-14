@@ -4,7 +4,7 @@ import Link from './Link'
 import MobileNav from './MobileNav'
 import { LogoMalahNgoding } from './design/logo'
 import { PrimaryButton } from './design/button'
-import { signIn, useSession } from 'next-auth/client'
+import { signIn, useSession } from 'next-auth/react'
 import { useDashNav } from '@/modules/dash-nav.store'
 
 export const NavigationBar = (props) => {
@@ -44,7 +44,7 @@ export const NavigationBar = (props) => {
 }
 
 const Auth = () => {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
   const shown = useDashNav((state) => state.shown)
   const toggleNav = useDashNav((state) => state.toggleNav)
 
@@ -53,7 +53,7 @@ const Auth = () => {
   }
   return (
     <>
-      {loading ? (
+      {status === 'loading' ? (
         <p>Checking...</p>
       ) : (
         <>

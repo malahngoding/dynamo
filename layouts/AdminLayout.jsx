@@ -1,9 +1,8 @@
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 
 const AdminLayout = (props) => {
-  const [session, loading] = useSession()
-  console.log(session)
-  if (loading) {
+  const { status } = useSession()
+  if (status === 'loading') {
     return (
       <div className="flex flex-col justify-center items-center min-h-screen">
         <span className="font-black">Loading...</span>

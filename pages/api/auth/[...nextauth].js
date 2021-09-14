@@ -1,7 +1,8 @@
-import { comparePassword } from '@/lib/bcrypt'
-import { detaUser } from '@/lib/deta'
+import { standService } from '@/lib/service'
 import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+import GithubProviders from 'next-auth/providers/github'
+import GoogleProviders from 'next-auth/providers/google'
+import CredentialsProviders from 'next-auth/providers/credentials'
 
 export default NextAuth({
   secret: process.env.SECRET,
@@ -10,37 +11,56 @@ export default NextAuth({
     error: '/auth/error',
   },
   callbacks: {
-    async signIn(user, account, profile) {
-      console.log(user, account, profile)
+    async signIn({ user, account, profile, email, credentials }) {
+      const data = await standService.post('/api/dynamo/handshake', {
+        email: credentials.email,
+        provider: account.provider,
+      })
+      user.dynamoToken = data.data.token
       return true
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.dynamoToken = user.dynamoToken
+      }
+      return token
+    },
+    async session({ session, user, token }) {
+      session.dynamoToken = token.dynamoToken
+      return session
     },
   },
   providers: [
-    Providers.GitHub({
+    GithubProviders({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    Providers.Google({
+    GoogleProviders({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorizationUrl:
         'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
     }),
-    Providers.Credentials({
+    CredentialsProviders({
       name: 'Credentials',
       async authorize(req) {
         try {
           const email = req.email
           const password = req.password
-          const data = await detaUser.get(email)
+          const response = await standService({
+            method: 'post',
+            url: '/api/dynamo/login',
+            data: {
+              email: email,
+              password: password,
+            },
+          })
 
-          const isPasswordCorrect = await comparePassword(password, data.password)
-          if (isPasswordCorrect) {
+          if (response.data.status === 'SUCCESS') {
             return {
-              name: data.name,
-              email: data.key,
-              image:
-                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=512&q=80',
+              name: response.data.user.name,
+              email: response.data.user.email,
+              image: `https://avatars.dicebear.com/api/miniavs/${response.data.user.email}.svg`,
             }
           }
         } catch (e) {

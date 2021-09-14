@@ -79,6 +79,7 @@ export default function Footer() {
             { title: 'Help & FAQs', url: '/help-and-faqs' },
             { title: 'Terms and Conditions', url: '/terms-and-conditions' },
             { title: 'Privacy Policy', url: '/privacy-policy' },
+            { title: 'Bantu Kami', url: '/bantu-kami' },
           ].map((item, index) => {
             return (
               <Link href={item.url} key={`${item.title}-${index}`} className="py-1">

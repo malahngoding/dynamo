@@ -4,16 +4,16 @@ import CustomLink from '@/components/Link'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useSession } from 'next-auth/client'
+import { useSession } from ''
 import { email } from '@/data/siteMetadata'
 export const QuizResultPages = () => {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
 
   useEffect(() => {
     // Ini yang akan dilakukan
-    if (!loading) {
+    if (status !== 'loading') {
       axios
         // ${router.query.id}
         .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/${session.user.email}`)
@@ -33,7 +33,7 @@ export const QuizResultPages = () => {
     }
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading])
+  }, [status])
 
   return (
     <div>

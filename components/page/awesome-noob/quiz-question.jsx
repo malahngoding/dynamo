@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import CustomLink from '@/components/Link'
 import axios from 'axios'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 
 export const QuizQuestionPage = (props) => {
   // let correctAnswerCount = 0

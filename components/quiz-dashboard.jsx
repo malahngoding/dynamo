@@ -6,19 +6,19 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import { email } from '@/data/siteMetadata'
 import CustomLink from '@/components/Link'
 
 export const QuizDashboardPages = () => {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
   const [currentQuestionGroup, setCurrentQuestionGroup] = useState([])
   const [currentQuestionGroupLength, setCurrentQuestionGroupLength] = useState([])
 
   // GET CURRENT QUESTION GROUP
   useEffect(() => {
     // Ini yang akan dilakukan diambil dari stand
-    if (!loading) {
+    if (status !== 'loading') {
       axios
         .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`, {
           email: session.user.email,
@@ -42,7 +42,7 @@ export const QuizDashboardPages = () => {
 
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading])
+  }, [status])
   console.log(currentQuestionGroup.QuizGroup)
   return (
     <>
