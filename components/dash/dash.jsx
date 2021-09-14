@@ -1,8 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
+import { standService } from '@/lib/service'
 import { useSession } from 'next-auth/react'
 
 export default function Dash() {
   const { data: session, status } = useSession()
+
   return (
     <div>
       {status === 'authenticated' && (
