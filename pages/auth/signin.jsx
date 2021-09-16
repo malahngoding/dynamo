@@ -35,7 +35,7 @@ export default function SignIn({ providers, csrfToken }) {
 
   useEffect(() => {
     const handler = () => {
-      if (status === 'loading' && session) {
+      if (status === 'authenticated') {
         router.push('/')
       }
     }

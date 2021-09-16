@@ -54,10 +54,7 @@ export default function Register({ providers, csrfToken }) {
 
   useEffect(() => {
     const handler = () => {
-      if (status === 'loading' && session) {
-        router.push('/')
-      }
-      if (session) {
+      if (status === 'authenticated') {
         router.push('/')
       }
     }
