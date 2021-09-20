@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import CustomLink from '@/components/Link'
 import axios from 'axios'
 import { useSession } from 'next-auth/client'
+import { useLoading } from '@/modules/loading-flashcard.store'
 
 export const QuizQuestionPage = (props) => {
   // let correctAnswerCount = 0
@@ -25,10 +26,11 @@ export const QuizQuestionPage = (props) => {
   const [TrueAnswer, setTrueAnswer] = useState('')
   const [Soal_dilewati, setSoal_dilewati] = useState(0)
   const [QuizGroup, setQuizGroup] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
+  const loading = useLoading((state) => state.loading)
+  const toggleLoading = useLoading((state) => state.toggleLoading)
   const router = useRouter()
 
-  const [session, loading] = useSession('')
+  const [session] = useSession('')
 
   // const response = {
   //   correct_answer: TrueAnswer,
@@ -64,6 +66,7 @@ export const QuizQuestionPage = (props) => {
   console.log(shuffleArray(arr))
 
   const handleClickSkip = () => {
+    toggleLoading()
     setSoal_dilewati(Soal_dilewati + 1)
     setTotalAnswerCount(TotalAnswerCount + 1)
     setCorrectAnswerCount(CorrectAnswerCount)
@@ -77,7 +80,6 @@ export const QuizQuestionPage = (props) => {
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
     setQuizGroup(parseInt(router.query.id) + 1)
-    setIsLoading(true)
 
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
@@ -100,10 +102,10 @@ export const QuizQuestionPage = (props) => {
       })
       .finally(function () {
         // always executed
-        setIsLoading(false)
       })
   }
   const handleClickTrueAnswer = () => {
+    toggleLoading()
     setCorrectAnswerCount(CorrectAnswerCount + 1)
     setAccuracyScore(AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100)
     setAvarageScore(
@@ -116,7 +118,6 @@ export const QuizQuestionPage = (props) => {
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
     setQuizGroup(parseInt(router.query.id) + 1)
-    setIsLoading(true)
 
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
@@ -142,10 +143,10 @@ export const QuizQuestionPage = (props) => {
       })
       .finally(function () {
         // always executed
-        setIsLoading(false)
       })
   }
   const handleClickFalseAnswer = () => {
+    toggleLoading()
     setWrongAnswerCount(WrongAnswerCount + 1)
     setSoal_dilewati(Soal_dilewati)
     setTotalAnswerCount(TotalAnswerCount + 1)
@@ -160,7 +161,6 @@ export const QuizQuestionPage = (props) => {
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
     setQuizGroup(parseInt(router.query.id) + 1)
-    setIsLoading(true)
 
     axios
       .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`, {
@@ -183,7 +183,6 @@ export const QuizQuestionPage = (props) => {
       })
       .finally(function () {
         // always executed
-        setIsLoading(false)
       })
   }
 
@@ -212,7 +211,7 @@ export const QuizQuestionPage = (props) => {
                 </button>
               ) : (
                 <>
-                  {isLoading ? (
+                  {loading ? (
                     <p>Loading...</p>
                   ) : (
                     <>
@@ -272,7 +271,7 @@ export const QuizQuestionPage = (props) => {
                   ))
                 : arr.map((item, index) => (
                     <>
-                      {isLoading ? (
+                      {loading ? (
                         <p>Loading...</p>
                       ) : (
                         <>
