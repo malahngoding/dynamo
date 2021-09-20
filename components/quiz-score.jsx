@@ -7,11 +7,13 @@ import axios from 'axios'
 import { useSession } from 'next-auth/client'
 import { email } from '@/data/siteMetadata'
 import { useRouter } from 'next/router'
+import { useLoading } from '@/modules/loading-flashcard.store'
 export const QuizResultPages = () => {
   const [session, loading] = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
   const router = useRouter()
+  const toggleLoadingFalse = useLoading((state) => state.toggleLoadingFalse)
 
   useEffect(() => {
     // Ini yang akan dilakukan
@@ -91,7 +93,9 @@ export const QuizResultPages = () => {
         <button
           className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold"
           onClick={() => {
-            router.push('/study/flash-card')
+            router.push('/study/flash-card').then(() => {
+              toggleLoadingFalse()
+            })
           }}
         >
           Selesai
