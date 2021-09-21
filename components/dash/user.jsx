@@ -5,7 +5,7 @@ import Image from '../Image'
 export default function User() {
   const { data: session, status } = useSession()
   return (
-    <div>
+    <div className="overflow-y-scroll" style={{ height: 'calc(100vh - 148px)' }}>
       {status === 'authenticated' && (
         <div className="p-4 rounded-xl flex flex-col justify-center items-center">
           <Image

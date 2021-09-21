@@ -7,7 +7,7 @@ import ThemeSwitch from '../ThemeSwitch'
 export default function Settings() {
   const { status } = useSession()
   return (
-    <div>
+    <div className="overflow-y-scroll" style={{ height: 'calc(100vh - 148px)' }}>
       {status === 'authenticated' && (
         <div className="flex flex-col">
           <h1 className="font-black text-4xl mb-8">Pengaturan</h1>
