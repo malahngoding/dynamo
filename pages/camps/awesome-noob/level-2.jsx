@@ -7,124 +7,6 @@ import { getSession, useSession } from 'next-auth/client'
 import axios from 'axios'
 
 export default function Level2() {
-  // const [commands, setCommands] = useState([])
-  // const [playerIndex, setPlayerIndex] = useState(5)
-  // const array = [
-  //   { isPlayer: false, isStone: false, isFinish: false, y: 3, x: 1 },
-  //   { isPlayer: false, isStone: false, isFinish: false, y: 3, x: 2 },
-  //   { isPlayer: false, isStone: false, isFinish: true, x: 3, y: 3 },
-  //   { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 2 },
-  //   { isPlayer: false, isStone: true, isFinish: false, x: 2, y: 2 },
-  //   { isPlayer: false, isStone: false, isFinish: false, x: 3, y: 2 },
-  //   { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
-  //   { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 1 },
-  //   { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 1 },
-  // ]
-  // const [playerState, setPlayerState] = useState(array)
-  // const search = (playerState) => playerState.isPlayer === true
-  // const playerData = array.findIndex(search)
-  // const xCurrent = playerState[playerData].x
-  // const yCurrent = playerState[playerData].y
-  // const [currentSetPlayer, setcurrentSetPlayer] = useState(0)
-  // const handleClick = () => {
-  //   const object = playerState
-  //   for (let index = 0; index < commands.length; index++) {
-  //     setTimeout(() => {
-  //       const element = commands[index]
-  //       switch (element) {
-  //         case 'bawah':
-  //           break
-  //         case 'kiri':
-  //           if (xCurrent >= 1 && xCurrent > -1 && xCurrent != 0) {
-  //             const xTarget = xCurrent - commands.length
-  //             const yTarget = yCurrent
-  //             const newState = playerState.map((obj) =>
-  //               obj.y === yTarget && obj.x === xTarget
-  //                 ? { ...obj, isPlayer: true }
-  //                 : obj && obj.y === yCurrent && obj.x === xCurrent
-  //                 ? { ...obj, isPlayer: false }
-  //                 : obj
-  //             )
-  //             console.log(newState)
-  //             setPlayerState(newState)
-  //             console.log('yes')
-  //           } else {
-  //             alert('no')
-  //           }
-  //           break
-  //         case 'kanan':
-  //           break
-  //         case 'atas':
-  //           break
-  //         default:
-  //           break
-  //       }
-  //     }, 1000 * (index + 1))
-  //   }
-  // }
-  // return (
-  //   <>
-  //     <div className="flex flex-col justify-center items-center min-h-screen">
-  //       <div className="grid grid-cols-3 mb-8">
-  //         {playerState.map((item, index) => (
-  //           <div
-  //             className="grid justify-center items-center border-2 border-black w-[100px] h-[100px]"
-  //             key={index}
-  //           >
-  //             {item.isPlayer ? (
-  //               <Image
-  //                 className=""
-  //                 src="/static/images/user.png"
-  //                 alt="User"
-  //                 width="50"
-  //                 height="50"
-  //               />
-  //             ) : null}
-  //             {item.isStone ? (
-  //               <Image
-  //                 className=""
-  //                 src="/static/images/rock.png"
-  //                 alt="Rock"
-  //                 width="50"
-  //                 height="50"
-  //               />
-  //             ) : null}
-  //             {item.isFinish ? (
-  //               <Image
-  //                 className=""
-  //                 src="/static/images/finish.png"
-  //                 alt="Finish"
-  //                 width="50"
-  //                 height="50"
-  //               />
-  //             ) : null}
-  //             {item.tes}
-  //           </div>
-  //         ))}
-  //       </div>
-  //       {commands.map((item, index) => (
-  //         <p key={index}>{item}</p>
-  //       ))}
-  //       <div className="flex flex-row">
-  //         <button className="border-2 p-2 ml-2" onClick={() => setCommands([...commands, 'kiri'])}>
-  //           Kiri
-  //         </button>
-  //         <button className="border-2 p-2 ml-2" onClick={() => setCommands([...commands, 'kanan'])}>
-  //           Kanan
-  //         </button>
-  //         <button className="border-2 p-2 ml-2" onClick={() => setCommands([...commands, 'atas'])}>
-  //           Atas
-  //         </button>
-  //         <button className="border-2 p-2 ml-2" onClick={() => setCommands([...commands, 'bawah'])}>
-  //           Bawah
-  //         </button>
-  //         <button className="border-2 p-2 ml-2" onClick={handleClick}>
-  //           Result
-  //         </button>
-  //       </div>
-  //     </div>
-  //   </>
-  // )
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(2)
   const [stoneIndex] = useState(4)
@@ -155,8 +37,6 @@ export default function Level2() {
     return index
   }
 
-  console.log(functionGetIndexFromXY(4, 4))
-
   const handleRun = (item) => {
     let currentInterval = 0
 
@@ -168,12 +48,12 @@ export default function Level2() {
             let currentX = maps[current].x
             let currentY = maps[current].y
             if (currentX === 3 && currentY === 2) {
-              alert('Ups, game over !!')
-              setPlayerIndex(functionGetIndexFromXY(currentX - 1, currentY))
+              alert('Ups, kamu tidak bisa melewati batu')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             } else if (currentX > 1) {
               setPlayerIndex(functionGetIndexFromXY(currentX - 1, currentY))
             } else {
-              alert('Game over !!')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             }
           })
           break
@@ -182,15 +62,12 @@ export default function Level2() {
             let currentX = maps[current].x
             let currentY = maps[current].y
             if (currentX === 1 && currentY === 2) {
-              alert('Ups, game over !!')
-              setPlayerIndex(functionGetIndexFromXY(currentX + 1, currentY))
-            } else if (currentX === 2 && currentY === 1) {
-              alert('Kamu menang !!')
-              setPlayerIndex(functionGetIndexFromXY(currentX + 1, currentY))
+              alert('Ups, kamu tidak bisa melewati batu')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             } else if (currentX < 3) {
               setPlayerIndex(functionGetIndexFromXY(currentX + 1, currentY))
             } else {
-              alert('Game over !!')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             }
           })
           break
@@ -199,15 +76,12 @@ export default function Level2() {
             let currentX = maps[current].x
             let currentY = maps[current].y
             if (currentX === 2 && currentY === 3) {
-              alert('Ups, game over !!')
-              setPlayerIndex(functionGetIndexFromXY(currentX, currentY - 1))
-            } else if (currentX === 3 && currentY === 2) {
-              alert('Kamu menang !!')
-              setPlayerIndex(functionGetIndexFromXY(currentX, currentY - 1))
+              alert('Ups, kamu tidak bisa melewati batu')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             } else if (currentY > 1) {
               setPlayerIndex(functionGetIndexFromXY(currentX, currentY - 1))
             } else {
-              alert('Game over !!')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             }
           })
           break
@@ -216,32 +90,41 @@ export default function Level2() {
             let currentX = maps[current].x
             let currentY = maps[current].y
             if (currentX === 2 && currentY === 1) {
-              alert('Ups, game over !!')
-              setPlayerIndex(functionGetIndexFromXY(currentX, currentY + 1))
+              alert('Ups, kamu tidak bisa melewati batu')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             } else if (currentY < 3) {
               setPlayerIndex(functionGetIndexFromXY(currentX, currentY + 1))
             } else {
-              alert('Game over !!')
+              setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
             }
           })
           break
       }
       currentInterval = currentInterval + 1
+
       // HANDLE MOVEMENT
       if (currentInterval === arrayOfCommand.length) {
-        // if (playerIndex === trophyIndex) {
-        //   alert('win')
-        // } else if (playerIndex === stoneIndex) {
-        //   alert('ups, game over !!')
-        // }
-        clearInterval(makeIntervalID)
+        setPlayerIndex((current) => {
+          let currentX = maps[current].x
+          let currentY = maps[current].y
+          if (functionGetIndexFromXY(currentX, currentY) !== trophyIndex) {
+            alert('Kamu kalah')
+            setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
+          } else if (functionGetIndexFromXY(currentX, currentY) === stoneIndex) {
+            setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
+          } else {
+            alert('Selamat kamu menang')
+            setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
+          }
+          clearInterval(makeIntervalID)
+        })
       }
     }, 1000)
   }
 
   const reset = () => {
     setArrayOfCommand([])
-    setPlayerIndex(5)
+    setPlayerIndex(6)
   }
   return (
     <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full md:flex md:flex-row md:justify-center md:item-center">
@@ -257,11 +140,11 @@ export default function Level2() {
             <div>
               {playerIndex === index ? (
                 <Image
-                  className=""
+                  className="animate-bounce z-10"
                   src="/static/images/user.png"
                   alt="User"
                   width="50"
-                  height="50"
+                  height="65"
                 />
               ) : null}
               {trophyIndex === index ? (
