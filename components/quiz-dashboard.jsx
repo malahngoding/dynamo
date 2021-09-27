@@ -11,13 +11,12 @@ import { email } from '@/data/siteMetadata'
 import CustomLink from '@/components/Link'
 
 export const QuizDashboardPages = () => {
-  const { data: session, loading } = useSession()
+  const { data: session, status } = useSession()
   const [currentQuestionGroup, setCurrentQuestionGroup] = useState([])
-
   // GET CURRENT QUESTION GROUP
   useEffect(() => {
     // Ini yang akan dilakukan diambil dari stand
-    if (!loading) {
+    if (status === 'authenticated') {
       axios
         .post(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`,
@@ -47,7 +46,8 @@ export const QuizDashboardPages = () => {
 
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading])
+  }, [status])
+
   return (
     <>
       <div className=" flex flex-col border-4 border-black bg-white rounded-3xl m-5 w-[375px]">

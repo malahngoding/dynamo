@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import { UnderConstruction } from '@/components/UnderConstruction'
@@ -23,6 +24,9 @@ export default function FlashCardAnsweringQuestion(props) {
   const [TotalScores, setTotalScores] = useState(props.dataTotalScore)
 
   const { data: session, status } = useSession()
+  console.log(props.id)
+  console.log(props.dataQuestions)
+  console.log(props.dataTotalScore)
 
   return (
     <LayoutWrapper>
@@ -51,8 +55,14 @@ export default function FlashCardAnsweringQuestion(props) {
 export async function getServerSideProps(context) {
   const session = await getSession(context)
   const questionss = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${context.query.id}`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${context.query.id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${session.dynamoToken}`,
+      },
+    }
   )
+
   const totalscores = await axios.post(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-total-score/`,
     {},

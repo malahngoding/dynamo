@@ -1,14 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useSession } from 'next-auth/react'
-import { data } from 'autoprefixer'
-import { standService } from '@/lib/service'
 
 const DEFAULT_LAYOUT = 'ArticlesLayout'
 
@@ -41,14 +38,11 @@ export async function getStaticProps({ params }) {
   const rss = generateRss(allPosts)
   fs.writeFileSync('./public/feed.xml', rss)
 
-  return { props: { post, authorDetails, prev, next, params } }
+  return { props: { post, authorDetails, prev, next } }
 }
 
-export default function Study({ post, authorDetails, prev, next, params }) {
+export default function Study({ post, authorDetails, prev, next }) {
   const { mdxSource, frontMatter } = post
-  const { data: session, status } = useSession()
-  const [questionss, setQuestion] = useState([])
-  const [after_answer, setAfterAnswer] = useState('')
 
   let arrayWrongAnswer = []
 
@@ -189,34 +183,38 @@ export default function Study({ post, authorDetails, prev, next, params }) {
         </div>
       )}
       {after_answer === '' ? (
-        <div className="flex flex-col justify-center items-center">
-          <div className="border-2 p-6 max-w-xl">
-            <p className="font-bold text-base mb-4">Pertanyaan</p>
-            <div className="border-2 p-2 mb-4 break-all">
-              <p>{questionss.question}</p>
-            </div>
-            <p className="font-bold text-base mb-4">Jawaban</p>
-            <div className="grid grid-cols-2">
-              {arr.map((item, index) => (
-                <>
-                  <button
-                    key={index}
-                    className="mx-2 py-2 px-3 mb-4 md:mx-2 md:py-3 md:px-4   border-2 border-b-4 border-black dark:border-white rounded-lg break-all"
-                    onClick={() => {
-                      if (item.isCorrect === true) {
-                        handleClickTrueAnswer()
-                      } else {
-                        handleClickFalseAnswer()
-                      }
-                    }}
-                  >
-                    {item.question}
-                  </button>
-                </>
-              ))}
+        questionss.length === 0 ? (
+          <></>
+        ) : (
+          <div className="flex flex-col justify-center items-center">
+            <div className="border-2 p-6 max-w-xl">
+              <p className="font-bold text-base mb-4">Pertanyaan</p>
+              <div className="border-2 p-2 mb-4 break-all">
+                <p>{questionss.question}</p>
+              </div>
+              <p className="font-bold text-base mb-4">Jawaban</p>
+              <div className="grid grid-cols-2">
+                {arr.map((item, index) => (
+                  <>
+                    <button
+                      key={index}
+                      className="mx-2 py-2 px-3 mb-4 md:mx-2 md:py-3 md:px-4   border-2 border-b-4 border-black dark:border-white rounded-lg break-all"
+                      onClick={() => {
+                        if (item.isCorrect === true) {
+                          handleClickTrueAnswer()
+                        } else {
+                          handleClickFalseAnswer()
+                        }
+                      }}
+                    >
+                      {item.question}
+                    </button>
+                  </>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )
       ) : (
         <div className="flex flex-col justify-center items-center">
           <p>{after_answer}</p>

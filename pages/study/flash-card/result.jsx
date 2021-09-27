@@ -5,7 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { useEffect, useState } from 'react'
 import CustomLink from '@/components/Link'
 import { useRouter } from 'next/router'
-import axios from '@/lib/axios'
+import axios from 'axios'
 import { QuizResultPages } from '@/components/quiz-score'
 import { useSession } from 'next-auth/react'
 import { getSession } from 'next-auth/react'
@@ -36,14 +36,11 @@ export default function FlashCardResults(props) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
-  const score = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/${session.user.email}`,
-    {
-      headers: {
-        Authorization: `Bearer ${session.dynamoToken}`,
-      },
-    }
-  )
+  const score = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/`, {
+    headers: {
+      Authorization: `Bearer ${session.dynamoToken}`,
+    },
+  })
   return {
     props: {
       score: score.data,

@@ -6,8 +6,9 @@ import axios from 'axios'
 
 export default function Dash() {
   const { data: session, status } = useSession()
-  const [questionResult, setquestionResult] = useState([])
   const [sum, setSum] = useState(0)
+  const [correct, setCorrect] = useState(0)
+  const [incorrect, setIncorrect] = useState(0)
   // console.log(session, status)
   const token = session.dynamoToken
 
@@ -18,10 +19,33 @@ export default function Dash() {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then(function (response) {
-          setquestionResult(response.data)
-          const correct = parseInt(response.data.correct_answer)
-          const incorrect = parseInt(response.data.incorrect_answer)
-          setSum(correct + incorrect)
+          setSum(response.data.length)
+        })
+        .catch(function (error) {
+          // handle error
+        })
+        .then(function () {
+          // always executed
+        })
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dash-question-correct`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(function (response) {
+          setCorrect(response.data.length)
+        })
+        .catch(function (error) {
+          // handle error
+        })
+        .then(function () {
+          // always executed
+        })
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/dash-question-incorrect`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(function (response) {
+          setIncorrect(response.data.length)
         })
         .catch(function (error) {
           // handle error
@@ -30,7 +54,7 @@ export default function Dash() {
           // always executed
         })
     }
-  }, [])
+  }, [status, session, token])
 
   return (
     <div>
@@ -40,8 +64,8 @@ export default function Dash() {
           <h2 className="font-bold text-lg">{session.user.name}</h2>
           <h2 className="font-bold text-lg">Menjawab Pertanyaan Artikel</h2>
           <h2 className="font-bold text-lg">Total : {sum} Kali</h2>
-          <h2 className="font-bold text-lg">Benar : {questionResult.correct_answer}</h2>
-          <h2 className="font-bold text-lg">Salah : {questionResult.incorrect_answer}</h2>
+          <h2 className="font-bold text-lg">Benar : {correct}</h2>
+          <h2 className="font-bold text-lg">Salah : {incorrect}</h2>
         </div>
       )}
     </div>
