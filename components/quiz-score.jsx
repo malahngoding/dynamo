@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useSession } from ''
 import { email } from '@/data/siteMetadata'
-export const QuizResultPages = () => {
+export const QuizResultPages = (props) => {
   const { data: session, status } = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
@@ -67,7 +67,9 @@ export const QuizResultPages = () => {
           <div className="flex flex-1">
             <div className="flex flex-col justify-start">
               <p className="text-gray font-bold">Rata-rata point</p>
-              <p className="text-black text-2xl font-bold">{result.rata_rata}</p>
+              <p className="text-black text-2xl font-bold">
+                {Number(parseFloat(props.score.rata_rata).toFixed(2))}
+              </p>
             </div>
           </div>
         </div>
@@ -75,7 +77,9 @@ export const QuizResultPages = () => {
           <div className="flex flex-1">
             <div className="flex flex-col ml-5">
               <p className="text-gray font-bold justify-center">Akurasi</p>
-              <p className="text-black text-2xl font-bold">{result.akurasi}</p>
+              <p className="text-black text-2xl font-bold">
+                {Number(parseFloat(props.score.akurasi).toFixed(2))}
+              </p>
             </div>
           </div>
           <div className="flex flex-1">
