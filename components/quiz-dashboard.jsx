@@ -18,9 +18,15 @@ export const QuizDashboardPages = () => {
     // Ini yang akan dilakukan diambil dari stand
     if (status === 'authenticated') {
       axios
-        .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`, {
-          email: session.user.email,
-        })
+        .post(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${session.dynamoToken}`,
+            },
+          }
+        )
         .then(function (response) {
           // handle success
           console.log(response.data[0])
@@ -41,6 +47,7 @@ export const QuizDashboardPages = () => {
     // Ini yang akan dilakukan
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status])
+
   return (
     <>
       <div className=" flex flex-col border-4 border-black bg-white rounded-3xl m-5 w-[375px]">
