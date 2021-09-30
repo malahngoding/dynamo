@@ -4,36 +4,12 @@ import CustomLink from '@/components/Link'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useSession } from ''
+import { useSession } from 'next-auth/react'
 import { email } from '@/data/siteMetadata'
 export const QuizResultPages = (props) => {
   const { data: session, status } = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
-
-  useEffect(() => {
-    // Ini yang akan dilakukan
-    if (status !== 'loading') {
-      axios
-        // ${router.query.id}
-        .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/${session.user.email}`)
-        .then(function (response) {
-          // handle success
-          console.log(response.data[0])
-          setResult(response.data[0])
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error)
-          console.log('mantap')
-        })
-        .then(function () {
-          // always executed
-        })
-    }
-    // Ini yang akan dilakukan
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [status])
 
   return (
     <div>
@@ -47,13 +23,13 @@ export const QuizResultPages = (props) => {
           </div>
           <div className="rounded-full h-24 w-24 mx-32 my-8 flex items-center justify-center bg-white border-4 border-black">
             <div className="flex flex-col text-center">
-              <p className="text-center font-bold text-2xl">{result.nilai}</p>
+              <p className="text-center font-bold text-2xl">{props.score.nilai}</p>
               <p>Points</p>
             </div>
           </div>
           <div>
             <p className="text-center font-bold text-purple-100 mb-8">
-              Total point kamu {result.totalscore}
+              Total point kamu {props.score.totalscore}
             </p>
           </div>
         </div>
@@ -61,7 +37,7 @@ export const QuizResultPages = (props) => {
           <div className="flex flex-1 ml-5">
             <div className="flex flex-col">
               <p className="text-gray font-bold justify-center">Jawaban Benar</p>
-              <p className="text-black text-2xl font-bold">{result.jawaban_benar} Soal</p>
+              <p className="text-black text-2xl font-bold">{props.score.jawaban_benar} Soal</p>
             </div>
           </div>
           <div className="flex flex-1">
@@ -85,7 +61,7 @@ export const QuizResultPages = (props) => {
           <div className="flex flex-1">
             <div className="flex flex-col justify-start ml-2">
               <p className="text-gray font-bold">Soal dilewati</p>
-              <p className="text-black text-2xl font-bold">{result.soal_dilewati}</p>
+              <p className="text-black text-2xl font-bold">{props.score.soal_dilewati}</p>
             </div>
           </div>
         </div>

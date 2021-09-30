@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
@@ -6,6 +5,11 @@ import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useSession } from 'next-auth/react'
+import { data } from 'autoprefixer'
+import { standService } from '@/lib/service'
 
 const DEFAULT_LAYOUT = 'ArticlesLayout'
 
@@ -38,11 +42,14 @@ export async function getStaticProps({ params }) {
   const rss = generateRss(allPosts)
   fs.writeFileSync('./public/feed.xml', rss)
 
-  return { props: { post, authorDetails, prev, next } }
+  return { props: { post, authorDetails, prev, next, params } }
 }
 
-export default function Study({ post, authorDetails, prev, next }) {
+export default function Study({ post, authorDetails, prev, next, params }) {
   const { mdxSource, frontMatter } = post
+  const { data: session, status } = useSession()
+  const [questionss, setQuestion] = useState([])
+  const [after_answer, setAfterAnswer] = useState('')
 
   let arrayWrongAnswer = []
 
