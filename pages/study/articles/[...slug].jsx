@@ -10,7 +10,8 @@ import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { data } from 'autoprefixer'
 import { standService } from '@/lib/service'
-
+import Image from '@/components/Image'
+import { CommentPost, CommentList } from '@/components/CommentSection'
 const DEFAULT_LAYOUT = 'ArticlesLayout'
 
 export async function getStaticPaths() {
@@ -50,7 +51,6 @@ export default function Study({ post, authorDetails, prev, next, params }) {
   const { data: session, status } = useSession()
   const [questionss, setQuestion] = useState([])
   const [after_answer, setAfterAnswer] = useState('')
-
   let arrayWrongAnswer = []
 
   questionss.length === 0 ? (
@@ -79,7 +79,6 @@ export default function Study({ post, authorDetails, prev, next, params }) {
       ;[arr[i], arr[j]] = [arr[j], arr[i]]
     }
   }
-  console.log(shuffleArray(arr))
   useEffect(() => {
     if (status === 'authenticated') {
       standService
@@ -104,7 +103,6 @@ export default function Study({ post, authorDetails, prev, next, params }) {
               .then(function (response) {
                 // handle success
                 setQuestion(response.data[0])
-                console.log(response.data[0])
                 // setCurrentQuestionGroup()
               })
               .catch(function (error) {
@@ -227,6 +225,8 @@ export default function Study({ post, authorDetails, prev, next, params }) {
           <p>{after_answer}</p>
         </div>
       )}
+      {status === 'authenticated' ? <CommentPost url={params.slug}></CommentPost> : <></>}
+      <CommentList url={params.slug}></CommentList>
     </LayoutWrapper>
   )
 }
