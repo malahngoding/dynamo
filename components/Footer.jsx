@@ -79,7 +79,7 @@ export default function Footer() {
             <h1 className="text-lg font-extrabold text-black dark:text-white">Ours</h1>
             <div className="h-4"></div>
             {[
-              { title: 'About Us', url: '/about-us' },
+              { title: 'Tentang kami', url: '/about-us' },
               { title: 'Help & FAQs', url: '/help-and-faqs' },
               { title: 'Terms and Conditions', url: '/terms-and-conditions' },
               { title: 'Privacy Policy', url: '/privacy-policy' },
@@ -165,7 +165,7 @@ export default function Footer() {
               { title: 'Help & FAQs', url: '/help-and-faqs' },
               { title: 'Terms and Conditions', url: '/terms-and-conditions' },
               { title: 'Privacy Policy', url: '/privacy-policy' },
-              { title: 'Bantu Kami', url: '/bantu-kami' },
+              { title: 'Help us', url: '/bantu-kami' },
             ].map((item, index) => {
               return (
                 <Link href={item.url} key={`${item.title}-${index}`} className="py-1">
