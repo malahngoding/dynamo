@@ -110,8 +110,6 @@ const Auth = () => {
         </>
       )}
       <div className="ml-4">
-        {languageID === true && languageENG === false ? <p>Aku</p> : <p>I'am</p>}
-
         <button className="border-2 mr-4 py-1 px-2" onClick={handleClickSwitchingID}>
           ID
         </button>
