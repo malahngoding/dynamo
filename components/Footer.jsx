@@ -10,8 +10,16 @@ import { useLanguageSwitching } from '@/modules/languageswitch-home.store'
 export default function Footer() {
   const { theme } = useTheme()
   const year = new Date().getFullYear()
+  const toogleSwitchingID = useLanguageSwitching((state) => state.toogleSwitchingID)
+  const toogleSwitchingENG = useLanguageSwitching((state) => state.toogleSwitchingENG)
   const languageID = useLanguageSwitching((state) => state.languageID)
   const languageENG = useLanguageSwitching((state) => state.languageENG)
+  const handleClickSwitchingID = () => {
+    toogleSwitchingID()
+  }
+  const handleClickSwitchingENG = () => {
+    toogleSwitchingENG()
+  }
   return (
     <footer className="w-screen px-4 pt-4 border-t-2 border-black-200 dark:border-black-800 md:px-8 lg:px-32 lg:pt-8 xl:px-64">
       {languageID === true && (
@@ -198,6 +206,14 @@ export default function Footer() {
             />
           </div>
         </CustomLink>
+        <div className="ml-4">
+          <button className="border-2 mr-4 py-1 px-2" onClick={handleClickSwitchingID}>
+            ID
+          </button>
+          <button className="border-2 py-1 px-2" onClick={handleClickSwitchingENG}>
+            ENG
+          </button>
+        </div>
         <div className="h-8"></div>
         <div className="flex mb-3 space-x-4">
           <SocialIcon kind="github" href={siteMetadata.github} size="6" />
