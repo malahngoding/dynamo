@@ -8,6 +8,19 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+  async headers() {
+    return [
+      {
+        source: '/.well-known/brave-rewards-verification.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain',
+          },
+        ],
+      },
+    ]
+  },
   images: {
     domains: [
       'emojicdn.elk.sh',
