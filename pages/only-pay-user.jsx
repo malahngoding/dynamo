@@ -30,7 +30,7 @@ const LoginButton = (props) => {
         })
         .then(function (response) {
           // handle success
-          console.log(response.data[0].status_pembayaran)
+
           setStatusPayment(response.data[0].status_pembayaran)
         })
         .catch(function (error) {
