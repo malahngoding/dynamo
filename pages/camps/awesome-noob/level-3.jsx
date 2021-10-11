@@ -12,6 +12,8 @@ export default function Level3() {
     stoneIndex2: 4,
     stoneIndex3: 5,
   })
+  const [isLastLoop, setIsLastLoop] = useState(false)
+  console.log(isLastLoop)
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const maps = [
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
@@ -70,6 +72,7 @@ export default function Level3() {
               currentY === 2 &&
               checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex1)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -82,6 +85,7 @@ export default function Level3() {
               currentY === 2 &&
               checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex2)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -117,6 +121,7 @@ export default function Level3() {
               currentY === 2 &&
               checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex2)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -129,6 +134,7 @@ export default function Level3() {
               currentY === 2 &&
               checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -164,6 +170,7 @@ export default function Level3() {
               currentY === 3 &&
               checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex1)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -176,6 +183,7 @@ export default function Level3() {
               currentY === 3 &&
               checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex2)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -211,6 +219,7 @@ export default function Level3() {
               currentY === 1 &&
               checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex1)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -223,6 +232,7 @@ export default function Level3() {
               currentY === 1 &&
               checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex2)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -235,6 +245,7 @@ export default function Level3() {
               currentY === 1 &&
               checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex3)
             ) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -266,6 +277,7 @@ export default function Level3() {
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else if (currentX === 2 && currentY === 1) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: 100,
@@ -274,6 +286,7 @@ export default function Level3() {
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else if (currentX === 3 && currentY === 1) {
+              alert('Ups, Kamu menabrak batu!')
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
@@ -390,6 +403,9 @@ export default function Level3() {
 
       // HANDLE MOVEMENT
       if (currentInterval === arrayOfCommand.length) {
+        console.log(currentInterval, 'interval')
+        console.log(arrayOfCommand.length, 'command')
+        setIsLastLoop(true)
         setGameState((current) => {
           let currentX = maps[current.playerIndex].x
           let currentY = maps[current.playerIndex].y
@@ -420,6 +436,7 @@ export default function Level3() {
 
   const reset = () => {
     setArrayOfCommand([])
+    setIsLastLoop(false)
     setGameState({
       playerIndex: 0,
       trophyIndex: 8,
@@ -430,8 +447,12 @@ export default function Level3() {
   }
   useEffect(
     () => {
-      // if (gameState.playerIndex === gameState.trophyIndex) {
-      //   alert('Selamat kamu menang!')
+      // if (isLastLoop === true) {
+      //   if (gameState.playerIndex !== gameState.trophyIndex) {
+      //     alert('Kamu kalah')
+      //   } else if (gameState.playerIndex === gameState.trophyIndex) {
+      //     alert('Selamat kamu menang!')
+      //   }
       // }
       return () => {
         // sesatu yang dijalankan kalau component menghilang
@@ -439,7 +460,8 @@ export default function Level3() {
     },
     [
       // nilai
-      // gameState,
+      // gameState?.playerIndex,
+      // gameState?.trophyIndex,
     ]
   )
   return (
