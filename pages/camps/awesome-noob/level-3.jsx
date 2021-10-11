@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
 
 export default function Level3() {
@@ -12,11 +12,6 @@ export default function Level3() {
     stoneIndex2: 4,
     stoneIndex3: 5,
   })
-  // const [playerIndex, setGameState] = useState(0)
-  // const [trophyIndex] = useState(8)
-  // const [stoneIndex1, setStoneIndex1] = useState(3)
-  // const [stoneIndex2, setStoneIndex2] = useState(4)
-  // const [stoneIndex3, setStoneIndex3] = useState(5)
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const maps = [
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
@@ -44,7 +39,7 @@ export default function Level3() {
     return index
   }
 
-  const sandungBatuTarget = (item, batu) => {
+  const checkStoneTarget = (item, batu) => {
     if (item === batu) {
       return true
     } else {
@@ -73,7 +68,7 @@ export default function Level3() {
             } else if (
               currentX === 2 &&
               currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex1)
+              checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex1)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -85,7 +80,7 @@ export default function Level3() {
             } else if (
               currentX === 3 &&
               currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex2)
+              checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex2)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -120,7 +115,7 @@ export default function Level3() {
             } else if (
               currentX === 1 &&
               currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex2)
+              checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex2)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -132,7 +127,7 @@ export default function Level3() {
             } else if (
               currentX === 2 &&
               currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
+              checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -164,13 +159,37 @@ export default function Level3() {
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
+            } else if (
+              currentX === 1 &&
+              currentY === 3 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex1)
+            ) {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 3 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex2)
+            ) {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
             } else {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
                 trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
+                playerIndex: functionGetIndexFromXY(currentX, currentY - 1),
               })
             }
           })
@@ -190,7 +209,7 @@ export default function Level3() {
             } else if (
               currentX === 1 &&
               currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex1)
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex1)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -202,7 +221,7 @@ export default function Level3() {
             } else if (
               currentX === 2 &&
               currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex2)
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex2)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -214,7 +233,7 @@ export default function Level3() {
             } else if (
               currentX === 3 &&
               currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex3)
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex3)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
@@ -262,6 +281,14 @@ export default function Level3() {
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
+            } else {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
             }
           })
           break
@@ -282,6 +309,14 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: 100,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
@@ -308,6 +343,45 @@ export default function Level3() {
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
+            } else {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            }
+          })
+          break
+        case 'tembak-atas':
+          setGameState((current) => {
+            let currentX = maps[current.playerIndex].x
+            let currentY = maps[current.playerIndex].y
+            if (currentX === 1 && currentY === 3) {
+              setGameState({
+                stoneIndex1: 100,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else if (currentX === 2 && currentY === 3) {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: 100,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
             }
           })
           break
@@ -319,8 +393,8 @@ export default function Level3() {
         setGameState((current) => {
           let currentX = maps[current.playerIndex].x
           let currentY = maps[current.playerIndex].y
-          if (current.playerIndex === current.trophyIndex) {
-            alert('Selamat kamu menang')
+          if (current.playerIndex == current.trophyIndex) {
+            alert('Selamat kamu menang!')
             setGameState({
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
@@ -354,6 +428,20 @@ export default function Level3() {
       stoneIndex3: 5,
     })
   }
+  useEffect(
+    () => {
+      // if (gameState.playerIndex === gameState.trophyIndex) {
+      //   alert('Selamat kamu menang!')
+      // }
+      return () => {
+        // sesatu yang dijalankan kalau component menghilang
+      }
+    },
+    [
+      // nilai
+      // gameState,
+    ]
+  )
   return (
     <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full md:flex md:flex-row md:justify-center md:item-center">
       <div className="grid grid-cols-3">
@@ -362,9 +450,9 @@ export default function Level3() {
             className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
             key={`${item.x}_${item.y}`}
           >
-            {/* <p className="font-mono">
+            <p className="font-mono">
               ({`${item.x},${item.y}`})-[{index}]
-            </p> */}
+            </p>
             <div>
               {gameState?.playerIndex === index ? (
                 <Image
