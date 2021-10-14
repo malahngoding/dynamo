@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
 
 export default function Level3() {
+  const [successModal, setSuccessModal] = useState(false)
+  const [failureModal, setFailureModal] = useState(false)
   const [gameState, setGameState] = useState({
     playerIndex: 0,
     trophyIndex: 8,
@@ -394,7 +396,7 @@ export default function Level3() {
           let currentX = maps[current.playerIndex].x
           let currentY = maps[current.playerIndex].y
           if (current.playerIndex == current.trophyIndex) {
-            alert('Selamat kamu menang!')
+            setSuccessModal(true)
             setGameState({
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
@@ -403,7 +405,7 @@ export default function Level3() {
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           } else {
-            alert('Kamu kalah')
+            setFailureModal(true)
             setGameState({
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
@@ -428,154 +430,221 @@ export default function Level3() {
       stoneIndex3: 5,
     })
   }
-  useEffect(
-    () => {
-      // if (gameState.playerIndex === gameState.trophyIndex) {
-      //   alert('Selamat kamu menang!')
-      // }
-      return () => {
-        // sesatu yang dijalankan kalau component menghilang
-      }
-    },
-    [
-      // nilai
-      // gameState,
-    ]
-  )
-  return (
-    <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full md:flex md:flex-row md:justify-center md:item-center">
-      <div className="grid grid-cols-3">
-        {maps.map((item, index) => (
-          <div
-            className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
-            key={`${item.x}_${item.y}`}
-          >
-            <p className="font-mono">
-              ({`${item.x},${item.y}`})-[{index}]
-            </p>
-            <div>
-              {gameState?.playerIndex === index ? (
-                <Image
-                  className="animate-bounce z-10"
-                  src="/static/images/user.png"
-                  alt="User"
-                  width="50"
-                  height="65"
-                />
-              ) : null}
-              {gameState?.trophyIndex === index ? (
-                <Image
-                  className=""
-                  src="/static/images/finish.png"
-                  alt="User"
-                  width="50"
-                  height="50"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex1 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="50"
-                  height="50"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex2 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="50"
-                  height="50"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex3 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="50"
-                  height="50"
-                />
-              ) : null}{' '}
-            </div>
-          </div>
-        ))}
-      </div>
+  useEffect(() => {
+    if (successModal === true) {
+      setTimeout(() => {
+        setSuccessModal(false)
+      }, 2000)
+    } else if (failureModal === true) {
+      setTimeout(() => {
+        setFailureModal(false)
+      }, 2000)
+    }
+  }, [successModal, failureModal])
 
-      <div className="my-2">
-        <div className="flex flex-col flex-wrap justify-center items-center my-2">
-          <ul>
-            {arrayOfCommand.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+  return (
+    <div>
+      <div className="w-[200px] h-[50px] m-6">
+        {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
+        {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
+      </div>
+      <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full md:flex md:flex-row md:justify-center md:item-center">
+        <div className="grid grid-cols-3">
+          {maps.map((item, index) => (
+            <div
+              className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
+              key={`${item.x}_${item.y}`}
+            >
+              <p className="font-mono">
+                ({`${item.x},${item.y}`})-[{index}]
+              </p>
+              <div>
+                {gameState?.playerIndex === index ? (
+                  <Image
+                    className="animate-bounce z-10"
+                    src="/static/images/user.png"
+                    alt="User"
+                    width="50"
+                    height="65"
+                  />
+                ) : null}
+                {gameState?.trophyIndex === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/finish.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex1 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex2 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex3 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="flex flex-row justify-center items-center ml-2 mb-2">
-          <button
-            onClick={() => addArrayOfCommand('kiri')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
-          >
-            kiri
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('kanan')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            kanan
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('atas')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            atas
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('bawah')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            bawah
-          </button>
+
+        <div className="my-2">
+          <div className="flex flex-col flex-wrap justify-center items-center my-2">
+            <ul>
+              {arrayOfCommand.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-row justify-center items-center ml-2 mb-2">
+            <button
+              onClick={() => addArrayOfCommand('kiri')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
+            >
+              kiri
+            </button>
+            <button
+              onClick={() => addArrayOfCommand('kanan')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+            >
+              kanan
+            </button>
+            <button
+              onClick={() => addArrayOfCommand('atas')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+            >
+              atas
+            </button>
+            <button
+              onClick={() => addArrayOfCommand('bawah')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+            >
+              bawah
+            </button>
+          </div>
+          <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
+            <button
+              onClick={() => addArrayOfCommand('tembak-kiri')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 py-2 px-4"
+            >
+              tembak kiri
+            </button>
+            <button
+              onClick={() => addArrayOfCommand('tembak-kanan')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+            >
+              tembak kanan
+            </button>
+            <button
+              onClick={() => addArrayOfCommand('tembak-atas')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 p-2"
+            >
+              tembak atas
+            </button>
+            <button
+              onClick={() => addArrayOfCommand('tembak-bawah')}
+              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+            >
+              tembak bawah
+            </button>
+            <button
+              onClick={() => handleRun('RUN')}
+              className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+            >
+              Run
+            </button>
+            <button
+              onClick={reset}
+              className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
+            >
+              Reset
+            </button>
+          </div>
         </div>
-        <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
-          <button
-            onClick={() => addArrayOfCommand('tembak-kiri')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 py-2 px-4"
+      </div>
+    </div>
+  )
+}
+const ToastSuccess = () => {
+  return (
+    <div className="flex flex-row justify-center items-center border-2 border-black bg-black rounded-lg p-1">
+      <div>
+        <div className="flex justify-center items-center rounded-full w-[30px] h-[30px] bg-green mr-2">
+          <svg
+            width="15"
+            height="10"
+            viewBox="0 0 18 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            tembak kiri
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('tembak-kanan')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            tembak kanan
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('tembak-atas')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 p-2"
-          >
-            tembak atas
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('tembak-bawah')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            tembak bawah
-          </button>
-          <button
-            onClick={() => handleRun('RUN')}
-            className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
-          >
-            Run
-          </button>
-          <button
-            onClick={reset}
-            className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
-          >
-            Reset
-          </button>
+            <path
+              d="M17 1L6 12L1 7"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
+      </div>
+      <div>
+        <p className="text-xs font-bold text-white">Selamat kamu menang</p>
+      </div>
+    </div>
+  )
+}
+const ToastFailure = () => {
+  return (
+    <div className="flex flex-row justify-start items-center border-2 border-black bg-black rounded-lg p-1">
+      <div>
+        <div className="flex justify-center items-center rounded-full w-[30px] h-[30px] bg-red ml-1 mr-10">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18"
+              stroke="#18191F"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 6L18 18"
+              stroke="#18191F"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+      <div>
+        <p className="text-xs font-bold text-white">Kamu kalah</p>
       </div>
     </div>
   )
