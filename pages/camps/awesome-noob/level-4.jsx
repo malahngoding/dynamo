@@ -147,6 +147,19 @@ export default function Level2() {
               })
             } else if (
               currentX === 1 &&
+              currentY === 1 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex1)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 1 &&
               currentY === 2 &&
               sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
             ) {
@@ -274,6 +287,19 @@ export default function Level2() {
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else if (
+              currentX === 1 &&
+              currentY === 1 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex2)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
               currentX === 3 &&
               currentY === 1 &&
               sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex4)
@@ -387,20 +413,22 @@ export default function Level2() {
           let currentX = maps[current.playerIndex].x
           let currentY = maps[current.playerIndex].y
           if (current.playerIndex == current.trophyIndex) {
-            alert('Selamat kamu menang!')
+            setSuccessModal(true)
             setGameState({
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
               stoneIndex3: current.stoneIndex3,
+              stoneIndex4: current.stoneIndex4,
               trophyIndex: current.trophyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           } else {
-            alert('Kamu kalah')
+            setFailureModal(true)
             setGameState({
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
               stoneIndex3: current.stoneIndex3,
+              stoneIndex4: current.stoneIndex4,
               trophyIndex: current.trophyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })

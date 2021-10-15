@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
 
-export default function Level3() {
+export default function Level5() {
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const [gameState, setGameState] = useState({
