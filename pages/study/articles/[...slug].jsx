@@ -6,12 +6,10 @@ import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useSession } from 'next-auth/react'
-import { data } from 'autoprefixer'
 import { standService } from '@/lib/service'
-import Image from '@/components/Image'
 import { CommentPost, CommentList } from '@/components/CommentSection'
+import router, { Router } from 'next/router'
 const DEFAULT_LAYOUT = 'ArticlesLayout'
 
 export async function getStaticPaths() {
@@ -166,6 +164,20 @@ export default function Study({ post, authorDetails, prev, next, params }) {
         })
     }
   }
+
+  useEffect(() => {
+    const currentClick = localStorage.getItem('clickcount')
+    const result = Number(currentClick) + 1
+    console.log(result)
+    if (status === 'unauthenticated') {
+      if (currentClick >= 5) {
+        router.push('/')
+      } else {
+        localStorage.setItem('clickcount', result)
+      }
+    }
+  }, [])
+
   return (
     <LayoutWrapper>
       {frontMatter.draft !== true ? (
