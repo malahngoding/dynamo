@@ -61,7 +61,7 @@
     "tabler-icons-react": "^1.35.0",
     "tailwindcss": "^2.2.2",
     "uuid": "^8.3.2",
-    "yarn": "^1.22.11",
+    "yarn": "^1.22.15",
     "zustand": "^3.5.9"
   },
   "devDependencies": {
