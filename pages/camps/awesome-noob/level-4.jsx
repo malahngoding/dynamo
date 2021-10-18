@@ -474,9 +474,6 @@ export default function Level2() {
               className="flex justify-center items-center h-[200px] w-[200px] border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
-              <p className="font-mono">
-                ({`${item.x},${item.y}`})-[{index}]
-              </p>
               <div>
                 {gameState?.playerIndex === index ? (
                   <Image
