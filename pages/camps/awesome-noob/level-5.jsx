@@ -8,11 +8,14 @@ export default function Level3() {
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const [gameState, setGameState] = useState({
-    playerIndex: 0,
+    playerIndex: 6,
     trophyIndex: 8,
-    stoneIndex1: 3,
-    stoneIndex2: 4,
-    stoneIndex3: 5,
+    stoneIndex1: 1,
+    stoneIndex2: 2,
+    stoneIndex3: 3,
+    stoneIndex4: 5,
+    thornIndex1: 4,
+    thornIndex2: 7,
   })
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const maps = [
@@ -49,9 +52,8 @@ export default function Level3() {
     }
   }
 
-  const handleRun = (item) => {
+  const handleRun = () => {
     let currentInterval = 0
-
     let makeIntervalID = setInterval(() => {
       // HANDLE MOVEMENT
       switch (arrayOfCommand[currentInterval]) {
@@ -66,38 +68,54 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-              })
-            } else if (
-              currentX === 2 &&
-              currentY === 2 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex1)
-            ) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
               })
             } else if (
               currentX === 3 &&
               currentY === 2 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex2)
+              checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.thornIndex1)
             ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
                 trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                playerIndex: functionGetIndexFromXY(currentX - 1, currentY),
+              })
+            } else if (
+              currentX === 3 &&
+              currentY === 3 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX - 1, currentY), current.thornIndex2)
+            ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                playerIndex: functionGetIndexFromXY(currentX - 1, currentY),
               })
             } else {
               setGameState({
-                playerIndex: functionGetIndexFromXY(currentX - 1, currentY),
-                trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX - 1, currentY),
               })
             }
           })
@@ -112,11 +130,63 @@ export default function Level3() {
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
                 trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else if (
+              currentX === 1 &&
+              currentY === 1 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex1)
+            ) {
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else if (
               currentX === 1 &&
               currentY === 2 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.thornIndex1)
+            ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else if (
+              currentX === 1 &&
+              currentY === 3 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.thornIndex2)
+            ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 1 &&
               checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex2)
             ) {
               setGameState({
@@ -124,18 +194,9 @@ export default function Level3() {
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
                 trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 2 &&
-              currentY === 2 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
-            ) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else {
@@ -143,6 +204,9 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
               })
@@ -158,35 +222,14 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else if (
               currentX === 1 &&
-              currentY === 3 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex1)
-            ) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 2 &&
-              currentY === 3 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex2)
-            ) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 3 &&
               currentY === 3 &&
               checkStoneTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex3)
             ) {
@@ -194,6 +237,9 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
@@ -202,6 +248,9 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY - 1),
               })
@@ -217,50 +266,49 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 1 &&
-              currentY === 1 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex1)
-            ) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 2 &&
-              currentY === 1 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex2)
-            ) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else if (
               currentX === 3 &&
               currentY === 1 &&
-              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex3)
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex4)
             ) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 1 &&
+              checkStoneTarget(functionGetIndexFromXY(currentX, currentY + 1), current.thornIndex1)
+            ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY + 1),
               })
             } else {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY + 1),
               })
@@ -271,27 +319,14 @@ export default function Level3() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentX === 1 && currentY === 1) {
-              setGameState({
-                stoneIndex1: 100,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (currentX === 2 && currentY === 1) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: 100,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (currentX === 3 && currentY === 1) {
+            if (currentX === 3 && currentY === 1) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
-                stoneIndex3: 100,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: 100,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
@@ -300,6 +335,9 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
@@ -310,19 +348,25 @@ export default function Level3() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentX === 1 && currentY === 2) {
+            if (currentX === 1 && currentY === 1) {
+              setGameState({
+                stoneIndex1: 100,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                trophyIndex: current.trophyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+              })
+            } else if (currentX === 2 && currentY === 1) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: 100,
                 stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (currentX === 2 && currentY === 2) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: 100,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
@@ -331,6 +375,9 @@ export default function Level3() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
@@ -341,31 +388,16 @@ export default function Level3() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentX === 2 && currentY === 2) {
-              setGameState({
-                stoneIndex1: 100,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (currentX === 3 && currentY === 2) {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: 100,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else {
-              setGameState({
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            }
+            setGameState({
+              stoneIndex1: current.stoneIndex1,
+              stoneIndex2: current.stoneIndex2,
+              stoneIndex3: current.stoneIndex3,
+              stoneIndex4: current.stoneIndex4,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              trophyIndex: current.trophyIndex,
+              playerIndex: functionGetIndexFromXY(currentX, currentY),
+            })
           })
           break
         case 'tembak-atas':
@@ -374,18 +406,13 @@ export default function Level3() {
             let currentY = maps[current.playerIndex].y
             if (currentX === 1 && currentY === 3) {
               setGameState({
-                stoneIndex1: 100,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                trophyIndex: current.trophyIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (currentX === 2 && currentY === 3) {
-              setGameState({
                 stoneIndex1: current.stoneIndex1,
-                stoneIndex2: 100,
-                stoneIndex3: current.stoneIndex3,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: 100,
                 trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             } else {
@@ -394,6 +421,9 @@ export default function Level3() {
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
                 trophyIndex: current.trophyIndex,
+                stoneIndex4: current.stoneIndex4,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             }
@@ -401,18 +431,20 @@ export default function Level3() {
           break
       }
       currentInterval = currentInterval + 1
-
       // HANDLE MOVEMENT
       if (currentInterval === arrayOfCommand.length) {
         setGameState((current) => {
           let currentX = maps[current.playerIndex].x
           let currentY = maps[current.playerIndex].y
-          if (current.playerIndex == current.trophyIndex) {
+          if (current.playerIndex === current.trophyIndex) {
             setSuccessModal(true)
             setGameState({
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
               stoneIndex3: current.stoneIndex3,
+              stoneIndex4: current.stoneIndex4,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
               trophyIndex: current.trophyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
@@ -422,6 +454,9 @@ export default function Level3() {
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
               stoneIndex3: current.stoneIndex3,
+              stoneIndex4: current.stoneIndex4,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
               trophyIndex: current.trophyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
@@ -435,11 +470,14 @@ export default function Level3() {
   const reset = () => {
     setArrayOfCommand([])
     setGameState({
-      playerIndex: 0,
+      playerIndex: 6,
       trophyIndex: 8,
-      stoneIndex1: 3,
-      stoneIndex2: 4,
-      stoneIndex3: 5,
+      stoneIndex1: 1,
+      stoneIndex2: 2,
+      stoneIndex3: 3,
+      stoneIndex4: 5,
+      thornIndex1: 4,
+      thornIndex2: 7,
     })
   }
   useEffect(() => {
@@ -467,9 +505,9 @@ export default function Level3() {
               className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
-              {/* <p className="font-mono">
+              <p className="font-mono">
                 ({`${item.x},${item.y}`})-[{index}]
-              </p> */}
+              </p>
               <div>
                 {gameState?.playerIndex === index ? (
                   <Image
@@ -511,6 +549,33 @@ export default function Level3() {
                   <Image
                     className=""
                     src="/static/images/rock.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex4 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.thornIndex1 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/thorn.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.thornIndex2 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/thorn.png"
                     alt="User"
                     width="50"
                     height="50"

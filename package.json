@@ -63,7 +63,7 @@
     "tailwindcss": "^2.2.2",
     "uuid": "^8.3.2",
     "xendit-node": "^1.17.0",
-    "yarn": "^1.22.11",
+    "yarn": "^1.22.15",
     "zustand": "^3.5.9"
   },
   "devDependencies": {

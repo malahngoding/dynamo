@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
 
@@ -17,6 +17,8 @@ export default function Level2() {
     stoneIndex4: 5,
   })
   const [arrayOfCommand, setArrayOfCommand] = useState([])
+  const [successModal, setSuccessModal] = useState(false)
+  const [failureModal, setFailureModal] = useState(false)
   const maps = [
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
     { isPlayer: false, isStone: true, isFinish: false, x: 2, y: 1 },
@@ -71,13 +73,6 @@ export default function Level2() {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
             if (currentX === 1) {
-              sandungBatuTarget(
-                functionGetIndexFromXY(currentX - 1, currentY),
-                current.stoneIndex1,
-                current.stoneIndex2,
-                current.stoneIndex3,
-                current.stoneIndex4
-              )
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
                 trophyIndex: current.trophyIndex,
@@ -86,9 +81,46 @@ export default function Level2() {
                 stoneIndex3: current.stoneIndex3,
                 stoneIndex4: current.stoneIndex4,
               })
-              alert('Ada batu didepan kamu')
+            } else if (
+              currentX === 3 &&
+              currentY === 2 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex3)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 2 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex2)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 3 &&
+              currentY === 1 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex1)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
             } else {
-              alert('Ada batu didepan kamu')
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX - 1, currentY),
                 trophyIndex: current.trophyIndex,
@@ -105,13 +137,6 @@ export default function Level2() {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
             if (currentX === 3) {
-              sandungBatuTarget(
-                functionGetIndexFromXY(currentX + 1, currentY),
-                current.stoneIndex1,
-                current.stoneIndex2,
-                current.stoneIndex3,
-                current.stoneIndex4
-              )
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
@@ -120,7 +145,32 @@ export default function Level2() {
                 stoneIndex4: current.stoneIndex4,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
-              alert('Ada batu didepan kamu')
+            } else if (
+              currentX === 1 &&
+              currentY === 2 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 2 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex4)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
             } else {
               setGameState({
                 trophyIndex: current.trophyIndex,
@@ -137,16 +187,7 @@ export default function Level2() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (
-              currentY === 1 ||
-              sandungBatuTarget(
-                functionGetIndexFromXY(currentX, currentY - 1),
-                current.stoneIndex1,
-                current.stoneIndex2,
-                current.stoneIndex3,
-                current.stoneIndex4
-              )
-            ) {
+            if (currentY === 1) {
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
@@ -155,7 +196,58 @@ export default function Level2() {
                 stoneIndex4: current.stoneIndex4,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
-              alert('Ada batu didepan kamu')
+            } else if (
+              currentX === 1 &&
+              currentY === 3 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex2)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 3 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex3)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 3 &&
+              currentY === 3 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex4)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 2 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex1)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
             } else {
               setGameState({
                 trophyIndex: current.trophyIndex,
@@ -172,16 +264,7 @@ export default function Level2() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (
-              currentY === 3 ||
-              sandungBatuTarget(
-                functionGetIndexFromXY(currentX, currentY + 1),
-                current.stoneIndex1,
-                current.stoneIndex2,
-                current.stoneIndex3,
-                current.stoneIndex4
-              )
-            ) {
+            if (currentY === 3) {
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
@@ -190,7 +273,32 @@ export default function Level2() {
                 stoneIndex4: current.stoneIndex4,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
-              alert('Ada batu didepan kamu')
+            } else if (
+              currentX === 3 &&
+              currentY === 1 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex4)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
+            } else if (
+              currentX === 2 &&
+              currentY === 1 &&
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex3)
+            ) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+              })
             } else {
               sandungBatuTarget(
                 functionGetIndexFromXY(currentX, currentY + 1),
@@ -275,24 +383,30 @@ export default function Level2() {
 
       // HANDLE MOVEMENT
       if (currentInterval === arrayOfCommand.length) {
-        setPlayerIndex((current) => {
-          let currentX = maps[current].x
-          let currentY = maps[current].y
-          if (functionGetIndexFromXY(currentX, currentY) !== trophyIndex) {
-            setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
-          } else if (
-            (functionGetIndexFromXY(currentX, currentY) === gameState.stoneIndex1,
-            gameState.stoneIndex2,
-            gameState.stoneIndex3,
-            gameState.stoneIndex4)
-          ) {
-            setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
+        setGameState((current) => {
+          let currentX = maps[current.playerIndex].x
+          let currentY = maps[current.playerIndex].y
+          if (current.playerIndex == current.trophyIndex) {
+            alert('Selamat kamu menang!')
+            setGameState({
+              stoneIndex1: current.stoneIndex1,
+              stoneIndex2: current.stoneIndex2,
+              stoneIndex3: current.stoneIndex3,
+              trophyIndex: current.trophyIndex,
+              playerIndex: functionGetIndexFromXY(currentX, currentY),
+            })
           } else {
-            alert('Selamat kamu menang')
-            setPlayerIndex(functionGetIndexFromXY(currentX, currentY))
+            alert('Kamu kalah')
+            setGameState({
+              stoneIndex1: current.stoneIndex1,
+              stoneIndex2: current.stoneIndex2,
+              stoneIndex3: current.stoneIndex3,
+              trophyIndex: current.trophyIndex,
+              playerIndex: functionGetIndexFromXY(currentX, currentY),
+            })
           }
-          clearInterval(makeIntervalID)
         })
+        clearInterval(makeIntervalID)
       }
     }, 1000)
   }
@@ -308,137 +422,217 @@ export default function Level2() {
       stoneIndex4: 5,
     })
   }
+  useEffect(() => {
+    if (successModal === true) {
+      setTimeout(() => {
+        setSuccessModal(false)
+      }, 2000)
+    } else if (failureModal === true) {
+      setTimeout(() => {
+        setFailureModal(false)
+      }, 2000)
+    }
+  }, [successModal, failureModal])
   return (
-    <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full">
-      <div className="grid grid-cols-3">
-        {maps.map((item, index) => (
-          <div
-            className="flex justify-center items-center h-[200px] w-[200px] border-2 border-black"
-            key={`${item.x}_${item.y}`}
-          >
-            <p className="font-mono">
-              ({`${item.x},${item.y}`})-[{index}]
-            </p>
+    <div>
+      <div className="w-[200px] h-[50px] m-6">
+        {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
+        {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
+      </div>
+      <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full">
+        <div className="grid grid-cols-3">
+          {maps.map((item, index) => (
+            <div
+              className="flex justify-center items-center h-[200px] w-[200px] border-2 border-black"
+              key={`${item.x}_${item.y}`}
+            >
+              <p className="font-mono">
+                ({`${item.x},${item.y}`})-[{index}]
+              </p>
+              <div>
+                {gameState?.playerIndex === index ? (
+                  <Image
+                    className="animate-bounce z-10"
+                    src="/static/images/user.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}
+                {gameState?.trophyIndex === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/finish.png"
+                    alt="User"
+                    width="99"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex1 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex2 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex3 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex4 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="my-2">
+          <div className="flex flex-col justify-center items-center my-2">
+            <ul>
+              {arrayOfCommand.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-col">
             <div>
-              {gameState?.playerIndex === index ? (
-                <Image
-                  className="animate-bounce z-10"
-                  src="/static/images/user.png"
-                  alt="User"
-                  width="75"
-                  height="100"
-                />
-              ) : null}
-              {gameState?.trophyIndex === index ? (
-                <Image
-                  className=""
-                  src="/static/images/finish.png"
-                  alt="User"
-                  width="99"
-                  height="100"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex1 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="75"
-                  height="100"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex2 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="75"
-                  height="100"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex3 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="75"
-                  height="100"
-                />
-              ) : null}{' '}
-              {gameState?.stoneIndex4 === index ? (
-                <Image
-                  className=""
-                  src="/static/images/rock.png"
-                  alt="User"
-                  width="75"
-                  height="100"
-                />
-              ) : null}{' '}
+              <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
+                Kiri
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
+                Kanan
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
+                Atas
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
+                Bawah
+              </PrimaryButton>
+              <PrimaryButton
+                variant="success"
+                onClick={() => handleRun('RUN')}
+                className="border mx-2 p-2"
+              >
+                RUN
+              </PrimaryButton>
+              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                RESET
+              </PrimaryButton>
+            </div>
+            <div className="mt-2">
+              <PrimaryButton
+                onClick={() => addArrayOfCommand('tembak-kiri')}
+                className="border mx-2 p-2"
+              >
+                Tembak Kiri
+              </PrimaryButton>
+              <PrimaryButton
+                onClick={() => addArrayOfCommand('tembak-kanan')}
+                className="border mx-2 p-2"
+              >
+                Tembak Kanan
+              </PrimaryButton>
+              <PrimaryButton
+                onClick={() => addArrayOfCommand('tembak-atas')}
+                className="border mx-2 p-2"
+              >
+                Tembak Atas
+              </PrimaryButton>
+              <PrimaryButton
+                onClick={() => addArrayOfCommand('tembak-bawah')}
+                className="border mx-2 p-2"
+              >
+                Tembak Bawah
+              </PrimaryButton>
             </div>
           </div>
-        ))}
+        </div>
       </div>
-
-      <div className="my-2">
-        <div className="flex flex-col justify-center items-center my-2">
-          <ul>
-            {arrayOfCommand.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+    </div>
+  )
+}
+const ToastSuccess = () => {
+  return (
+    <div className="flex flex-row justify-center items-center border-2 border-black bg-black rounded-lg p-1">
+      <div>
+        <div className="flex justify-center items-center rounded-full w-[30px] h-[30px] bg-green mr-2">
+          <svg
+            width="15"
+            height="10"
+            viewBox="0 0 18 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17 1L6 12L1 7"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
-        <div className="flex flex-col">
-          <div>
-            <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
-              Kiri
-            </PrimaryButton>
-            <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
-              Kanan
-            </PrimaryButton>
-            <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
-              Atas
-            </PrimaryButton>
-            <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
-              Bawah
-            </PrimaryButton>
-            <PrimaryButton
-              variant="success"
-              onClick={() => handleRun('RUN')}
-              className="border mx-2 p-2"
-            >
-              RUN
-            </PrimaryButton>
-            <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-              RESET
-            </PrimaryButton>
-          </div>
-          <div className="mt-2">
-            <PrimaryButton
-              onClick={() => addArrayOfCommand('tembak-kiri')}
-              className="border mx-2 p-2"
-            >
-              Tembak Kiri
-            </PrimaryButton>
-            <PrimaryButton
-              onClick={() => addArrayOfCommand('tembak-kanan')}
-              className="border mx-2 p-2"
-            >
-              Tembak Kanan
-            </PrimaryButton>
-            <PrimaryButton
-              onClick={() => addArrayOfCommand('tembak-atas')}
-              className="border mx-2 p-2"
-            >
-              Tembak Atas
-            </PrimaryButton>
-            <PrimaryButton
-              onClick={() => addArrayOfCommand('tembak-bawah')}
-              className="border mx-2 p-2"
-            >
-              Tembak Bawah
-            </PrimaryButton>
-          </div>
+      </div>
+      <div>
+        <p className="text-xs font-bold text-white">Selamat kamu menang</p>
+      </div>
+    </div>
+  )
+}
+const ToastFailure = () => {
+  return (
+    <div className="flex flex-row justify-start items-center border-2 border-black bg-black rounded-lg p-1">
+      <div>
+        <div className="flex justify-center items-center rounded-full w-[30px] h-[30px] bg-red ml-1 mr-10">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18"
+              stroke="#18191F"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 6L18 18"
+              stroke="#18191F"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </div>
+      </div>
+      <div>
+        <p className="text-xs font-bold text-white">Kamu kalah</p>
       </div>
     </div>
   )
