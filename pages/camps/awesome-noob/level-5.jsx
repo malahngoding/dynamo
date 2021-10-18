@@ -165,7 +165,7 @@ export default function Level5() {
                 stoneIndex4: current.stoneIndex4,
                 thornIndex1: current.thornIndex1,
                 thornIndex2: current.thornIndex2,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
               })
             } else if (
               currentX === 1 &&
