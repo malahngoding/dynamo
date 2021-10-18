@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
 
-export default function Level3() {
+export default function Level5() {
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const [gameState, setGameState] = useState({
@@ -165,7 +165,7 @@ export default function Level3() {
                 stoneIndex4: current.stoneIndex4,
                 thornIndex1: current.thornIndex1,
                 thornIndex2: current.thornIndex2,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
               })
             } else if (
               currentX === 1 &&
@@ -505,9 +505,6 @@ export default function Level3() {
               className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
-              <p className="font-mono">
-                ({`${item.x},${item.y}`})-[{index}]
-              </p>
               <div>
                 {gameState?.playerIndex === index ? (
                   <Image
