@@ -97,6 +97,29 @@ export default function Camps() {
             </div>
           </div>
         </Card>
+        <Card
+          className="hover:bg-pink-100 hover:cursor-pointer dark:hover:bg-black-800"
+          onClick={(event) => {
+            handleClick(event, 'hiking')
+          }}
+        >
+          <div className="flex flex-row justify-start items-center">
+            <div className="flex w-1/4 justify-center items-center">
+              <div className="rounded-xl bg-black-100 dark:bg-black p-2">
+                <Image
+                  src="https://emojicdn.elk.sh/%F0%9F%A7%97%F0%9F%8F%BB"
+                  width="48"
+                  height="48"
+                  alt="Labs"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col justify-start items-start w-3/4 py-6 ml-4">
+              <h1 className="font-extrabold text-xl">Hiking</h1>
+              <p className="text-sm mt-2">Mendaki gunung code, belajar dengan semangat!</p>
+            </div>
+          </div>
+        </Card>
       </section>
       <section className="p-4 md:p-16 text-center">
         <Image
