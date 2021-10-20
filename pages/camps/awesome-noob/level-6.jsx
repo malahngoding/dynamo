@@ -612,9 +612,9 @@ export default function Level2() {
               key={`${item.x}_${item.y}`}
             >
               <div>
-                <p className="font-mono">
+                {/* <p className="font-mono">
                   ({`${item.x},${item.y}`})-[{index}]
-                </p>
+                </p> */}
                 {gameState?.playerIndex === index ? (
                   <Image
                     className="animate-bounce z-10"
