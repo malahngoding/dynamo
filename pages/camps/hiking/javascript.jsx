@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import Image from '@/components/Image'
+import { getSession } from 'next-auth/react'
 
 export default function JavascriptPages() {
   return (
@@ -37,4 +38,21 @@ export default function JavascriptPages() {
       </section>
     </LayoutWrapper>
   )
+}
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  if (session === null) {
+    return {
+      redirect: {
+        destination: '/',
+      },
+    }
+  } else {
+    return {
+      props: {
+        isAuthenticated: true,
+        dynamoToken: session.dynamoToken,
+      }, // will be passed to the page component as props
+    }
+  }
 }
