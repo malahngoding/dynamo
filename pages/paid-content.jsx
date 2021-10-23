@@ -13,15 +13,15 @@ export default function PaidContentPages(props) {
   const [user, setUser] = useState('')
   console.log(props)
   useEffect(() => {
-    {
-      QRCode.toDataURL(props.qr_status.qr_string)
-        .then((url) => {
-          setQr_barcode(url)
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-    }
+    QRCode.toDataURL(
+      '0002010102##########CO.XENDIT.WWW011893600#######14220002152#####414220010303TTT####015CO.XENDIT.WWW02180000000000000000000TTT52  045######ID5911XenditQRIS6007Jakarta6105121606##########3k1mOnF73h11111111#3k1mOnF73h6v53033605401163040BDB'
+    )
+      .then((url) => {
+        setQr_barcode(url)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }, [])
 
   return (
@@ -72,7 +72,7 @@ export async function getServerSideProps(context) {
       },
     }
   } else {
-    let qr_status = await axios.get('https://api.xendit.co/qr_codes/malahngoding_testing999 ', {
+    let qr_status = await axios.get('https://api.xendit.co/qr_codes/testing_id_malahngoding2 ', {
       auth: {
         username: 'xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==',
         password: '',

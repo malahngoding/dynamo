@@ -18,7 +18,7 @@ export async function getStaticProps() {
   return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-export default function Study({ posts, initialDisplayPosts, pagination }) {
+export default function Camps({ posts, initialDisplayPosts, pagination }) {
   return (
     <LayoutWrapper>
       <PageSeo title={`Camps - ${siteMetadata.author}`} description={siteMetadata.description} />
