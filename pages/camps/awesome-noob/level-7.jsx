@@ -453,8 +453,7 @@ export default function Level7() {
                 trophyIndex: current.trophyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
-            }
-            if (currentX === 3 && currentY === 2) {
+            } else if (currentX === 3 && currentY === 2) {
               setGameState({
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
