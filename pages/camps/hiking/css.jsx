@@ -63,8 +63,9 @@ export async function getServerSideProps(context) {
   const session = await getSession(context)
   let min = Math.ceil(1000000000000000)
   let max = Math.floor(9999999999999999)
+  console.log(session)
 
-  const qrCodeCheck = `js${Math.floor(Math.random() * (max - min) + min)}`
+  const qrCodeCheck = `css${Math.floor(Math.random() * (max - min) + min)}`
 
   if (session === null) {
     return {

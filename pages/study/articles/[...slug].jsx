@@ -50,7 +50,7 @@ export default function Study({ post, authorDetails, prev, next, params }) {
   const [questionss, setQuestion] = useState([])
   const [after_answer, setAfterAnswer] = useState('')
   let arrayWrongAnswer = []
-
+  console.log(session)
   questionss.length === 0 ? (
     <></>
   ) : (
