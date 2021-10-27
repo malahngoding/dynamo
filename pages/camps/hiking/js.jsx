@@ -37,7 +37,7 @@ export default function FlashCardInitiation(props) {
       <LayoutWrapper>
         <div className="flex flex-col items-center justify-center">
           {props.checkResponse.status === 'INACTIVE' ? (
-            <CSSPages />
+            <JavascriptPages />
           ) : (
             <>
               <UnpaidUser></UnpaidUser>
@@ -63,9 +63,8 @@ export async function getServerSideProps(context) {
   const session = await getSession(context)
   let min = Math.ceil(1000000000000000)
   let max = Math.floor(9999999999999999)
-  console.log(session)
 
-  const qrCodeCheck = `css${Math.floor(Math.random() * (max - min) + min)}`
+  const qrCodeCheck = `js${Math.floor(Math.random() * (max - min) + min)}`
 
   if (session === null) {
     return {
@@ -76,7 +75,7 @@ export async function getServerSideProps(context) {
   } else {
     const responseXendit = await standService.post(
       `/api/paid-content-get`,
-      { content: 'CSS_HIKE' },
+      { content: 'JS_HIKE' },
       {
         headers: {
           Authorization: `Bearer ${session.dynamoToken}`,
@@ -101,7 +100,7 @@ export async function getServerSideProps(context) {
       standService.post(
         `/api/paid-content-post`,
         {
-          content: 'CSS_HIKE',
+          content: 'JS_HIKE',
           qr_string: resp.qr_string,
           status: resp.status,
           buy_date: resp.created,
@@ -125,7 +124,7 @@ export async function getServerSideProps(context) {
     } else {
       const responseXendit = await standService.post(
         `/api/paid-content-get`,
-        { content: 'CSS_HIKE' },
+        { content: 'JS_HIKE' },
         {
           headers: {
             Authorization: `Bearer ${session.dynamoToken}`,
@@ -154,7 +153,7 @@ export async function getServerSideProps(context) {
         standService.post(
           `/api/paid-content-post`,
           {
-            content: 'CSS_HIKE',
+            content: 'JS_HIKE',
             qr_string: qr_status.data.qr_string,
             status: qr_status.data.status,
             buy_date: qr_status.data.created,
@@ -178,7 +177,7 @@ export async function getServerSideProps(context) {
       } else {
         const responseXendit = await standService.post(
           `/api/paid-content-get`,
-          { content: 'CSS_HIKE' },
+          { content: 'JS_HIKE' },
           {
             headers: {
               Authorization: `Bearer ${session.dynamoToken}`,
@@ -203,36 +202,36 @@ const UnpaidUser = () => {
     </p>
   )
 }
-const CSSPages = () => {
+const JavascriptPages = () => {
   return (
     <>
       <h3 className="mt-8 font-bold tracking-widest text-left uppercase text-blue dark:text-white md:text-center">
         ALLRIGHT
       </h3>
       <h1 className="text-5xl font-black text-left text-black dark:text-yellow md:text-center">
-        CSS Mountain
+        JavaScript Mountain
       </h1>
-      <section className="w-full  px-4 py-8 leading-normal bg-green-100 md:p-8 md:mt-10 text-md">
+      <section className="w-full  px-4 py-8 leading-normal bg-yellow-100 md:p-8 md:mt-10 text-md">
         <div className="flex flex-row justify-around">
           <div className="flex flex-col justify-center items-center">
             <h1 className="text-5xl font-black text-left text-black dark:text-yellow md:text-center">
-              CSS
+              JavaScript
             </h1>
             <h1 className="my-5 text-lg font-black text-left text-black dark:text-yellow md:text-center">
-              The language for styling web pages
+              The language for programming web pages
             </h1>
             <button className="my-3 w-[275px] h-[50px] bg-green rounded-2xl text-white font-bold">
-              Learn CSS
+              Learn JavaScript
             </button>
             <button className="my-3 w-[275px] h-[50px] bg-black rounded-2xl text-white font-bold">
-              CSS Reference
+              JavaScript Reference
             </button>
           </div>
           <div className="flex flex-col bg-white p-5">
             <p className="mb-3 text-lg font-black text-left text-black dark:text-yellow ">
-              CSS Example:
+              JavaScript Example:
             </p>
-            <Image src="/static/images/css-code.png" alt="User" width="420" height="272" />
+            <Image src="/static/images/javascript-code.png" alt="User" width="660" height="332" />
           </div>
         </div>
       </section>

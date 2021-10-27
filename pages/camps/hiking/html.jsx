@@ -1,83 +1,71 @@
+/* eslint-disable no-undef */
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { PageSeo } from '@/components/SEO'
+import { UnderConstruction } from '@/components/UnderConstruction'
+import siteMetadata from '@/data/siteMetadata'
 import Image from '@/components/Image'
-import { getSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 import { standService } from '@/lib/service'
-import { useState } from 'react'
+import Xendit from 'xendit-node'
 import QRCode from 'qrcode'
+import axios from 'axios'
 
-export default function HtmlPages(props) {
-  const [barcode, setBarcode] = useState(
-    QRCode.toDataURL(props.data.qr_string)
-      .then((url) => {
-        setBarcode(url)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+export default function FlashCardInitiation(props) {
+  const { data: session, status } = useSession()
+  const [qr_barcode, setQr_barcode] = useState(
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq_McSSqhyDIUiwOkw1lSfMBOcQwDNoJVYcQ&usqp=CAU'
   )
+
+  useEffect(() => {
+    if (props.checkResponse.qr_string === undefined) {
+      window.location.reload()
+    } else if (props.checkResponse.qr_string !== null) {
+      QRCode.toDataURL(props.checkResponse.qr_string)
+        .then((url) => {
+          setQr_barcode(url)
+          console.log(url)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
+  }, [props.checkResponse.qr_string])
   return (
-    <LayoutWrapper>
-      {props.data.status === 'ACTIVE' ? (
-        <div className="flex flex-col justify-center items-center">
-          <p className="m-5 text-center font-extrabold">
-            Untuk Melihat Konten Ini Kamu Harus Membayar Terlebih Dahulu
-          </p>
-          <img className="" src={barcode} alt="barcode" />
-          <img
-            className=""
-            src="data:image/png;base64,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"
-            alt="barcode"
-          />
-          <img
-            className="mb-5"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxaW4wAg8W-wRy2Oxv--cE_dHFESDjNEi9UQ&usqp=CAU"
-            alt="barcode"
-          />
+    <>
+      <LayoutWrapper>
+        <div className="flex flex-col items-center justify-center">
+          {props.checkResponse.status === 'INACTIVE' ? (
+            <HtmlPages />
+          ) : (
+            <>
+              <UnpaidUser></UnpaidUser>
+              <img className="" src={qr_barcode} alt="barcode" />
+              <img
+                className=""
+                src="data:image/png;base64,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"
+                alt="barcode"
+              />
+              <img
+                className=""
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxaW4wAg8W-wRy2Oxv--cE_dHFESDjNEi9UQ&usqp=CAU"
+                alt="barcode"
+              />
+            </>
+          )}
         </div>
-      ) : (
-        <>
-          <h3 className="mt-8 font-bold tracking-widest text-left uppercase text-blue dark:text-white md:text-center">
-            ALLRIGHT
-          </h3>
-          <h1 className="text-5xl font-black text-left text-black dark:text-yellow md:text-center">
-            HTML Mountain
-          </h1>
-          <section className="w-full  px-4 py-8 leading-normal bg-black md:p-8 md:mt-10 text-md">
-            <div className="flex flex-row justify-around border-2 border-black">
-              <div className="flex flex-col justify-center items-center">
-                <h1 className="text-5xl font-black text-left text-white dark:text-yellow md:text-center">
-                  H T M L
-                </h1>
-                <h1 className="my-5 text-lg font-black text-left text-white dark:text-yellow md:text-center">
-                  The language for building web pages
-                </h1>
-                <button className="my-3 w-[275px] h-[50px] bg-green rounded-2xl text-white font-bold">
-                  Learn HTML
-                </button>
-                <button className="my-3 w-[275px] h-[50px] bg-yellow-200 rounded-2xl text-black font-bold">
-                  Video Tutorial
-                </button>
-                <button className="my-3 w-[275px] h-[50px] bg-white rounded-2xl text-black font-bold">
-                  HTML Reference
-                </button>
-              </div>
-              <div className="flex flex-col bg-white p-5">
-                <p className="mb-3 text-lg font-black text-left text-black dark:text-yellow ">
-                  HTML Example:
-                </p>
-                <Image src="/static/images/html-code.png" alt="User" width="408" height="320" />
-              </div>
-            </div>
-          </section>
-        </>
-      )}
-    </LayoutWrapper>
+      </LayoutWrapper>
+    </>
   )
 }
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+  let min = Math.ceil(1000000000000000)
+  let max = Math.floor(9999999999999999)
+
+  const qrCodeCheck = `html${Math.floor(Math.random() * (max - min) + min)}`
+
   if (session === null) {
     return {
       redirect: {
@@ -85,21 +73,171 @@ export async function getServerSideProps(context) {
       },
     }
   } else {
-    let response = await standService.post(
-      `/api/paid-content-hiking-html`,
-      {},
+    const responseXendit = await standService.post(
+      `/api/paid-content-get`,
+      { content: 'HTML_HIKE' },
       {
         headers: {
           Authorization: `Bearer ${session.dynamoToken}`,
         },
       }
     )
-    return {
-      props: {
-        isAuthenticated: true,
-        dynamoToken: session.dynamoToken,
-        data: response.data[0],
-      }, // will be passed to the page component as props
+    if (responseXendit.data.length === 0) {
+      const x = new Xendit({
+        secretKey: 'xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==',
+      })
+      const { QrCode } = x
+      const qrcodeSpecificOptions = {}
+      const q = new QrCode(qrcodeSpecificOptions)
+
+      let resp = await q.createCode({
+        externalID: qrCodeCheck,
+        type: 'DYNAMIC',
+        callbackURL: 'https://yourwebsite.com/callback',
+        amount: 1500,
+      })
+
+      standService.post(
+        `/api/paid-content-post`,
+        {
+          content: 'HTML_HIKE',
+          qr_string: resp.qr_string,
+          status: resp.status,
+          buy_date: resp.created,
+          external_id: qrCodeCheck,
+          payment_date: 'empty',
+          updated_date: 'empty',
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.dynamoToken}`,
+          },
+        }
+      )
+      return {
+        props: {
+          isAuthenticated: true,
+          dynamoToken: session.dynamoToken,
+          checkResponse: resp,
+        }, // will be passed to the page component as props
+      }
+    } else {
+      const responseXendit = await standService.post(
+        `/api/paid-content-get`,
+        { content: 'HTML_HIKE' },
+        {
+          headers: {
+            Authorization: `Bearer ${session.dynamoToken}`,
+          },
+        }
+      )
+      let qr_status = await axios.get(
+        `https://api.xendit.co/qr_codes/${responseXendit.data[0].external_id} `,
+        {
+          auth: {
+            username: 'xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==',
+            password: '',
+          },
+        }
+      )
+      if (qr_status.data.status === 'INACTIVE') {
+        let qr_status = await axios.get(
+          `https://api.xendit.co/qr_codes/${responseXendit.data[0].external_id} `,
+          {
+            auth: {
+              username: 'xnd_development_P4qDfOss0OCpl8RtKrROHjaQYNCk9dN5lSfk+R1l9Wbe+rSiCwZ3jw==',
+              password: '',
+            },
+          }
+        )
+        standService.post(
+          `/api/paid-content-post`,
+          {
+            content: 'HTML_HIKE',
+            qr_string: qr_status.data.qr_string,
+            status: qr_status.data.status,
+            buy_date: qr_status.data.created,
+            external_id: qr_status.data.external_id,
+            payment_date: qr_status.data.updated,
+            updated_date: qr_status.data.updated,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${session.dynamoToken}`,
+            },
+          }
+        )
+        return {
+          props: {
+            isAuthenticated: true,
+            dynamoToken: session.dynamoToken,
+            checkResponse: qr_status.data,
+          }, // will be passed to the page component as props
+        }
+      } else {
+        const responseXendit = await standService.post(
+          `/api/paid-content-get`,
+          { content: 'HTML_HIKE' },
+          {
+            headers: {
+              Authorization: `Bearer ${session.dynamoToken}`,
+            },
+          }
+        )
+        return {
+          props: {
+            isAuthenticated: true,
+            dynamoToken: session.dynamoToken,
+            checkResponse: responseXendit.data[0],
+          }, // will be passed to the page component as props
+        }
+      }
     }
   }
+}
+const UnpaidUser = () => {
+  return (
+    <p className="m-5 text-center font-extrabold">
+      Untuk Melihat Konten Ini Kamu Harus Membayar Terlebih Dahulu
+    </p>
+  )
+}
+const HtmlPages = () => {
+  return (
+    <>
+      <h3 className="mt-8 font-bold tracking-widest text-left uppercase text-blue dark:text-white md:text-center">
+        ALLRIGHT
+      </h3>
+      <h1 className="text-5xl font-black text-left text-black dark:text-yellow md:text-center">
+        HTML Mountain
+      </h1>
+      <section className="w-full  px-4 py-8 leading-normal bg-black md:p-8 md:mt-10 text-md">
+        <div className="flex flex-row justify-around border-2 border-black">
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-5xl font-black text-left text-white dark:text-yellow md:text-center">
+              H T M L
+            </h1>
+            <h1 className="my-5 text-lg font-black text-left text-white dark:text-yellow md:text-center">
+              The language for building web pages
+            </h1>
+            <button className="my-3 w-[275px] h-[50px] bg-green rounded-2xl text-white font-bold">
+              Learn HTML
+            </button>
+            <button className="my-3 w-[275px] h-[50px] bg-yellow-200 rounded-2xl text-black font-bold">
+              Video Tutorial
+            </button>
+            <button className="my-3 w-[275px] h-[50px] bg-white rounded-2xl text-black font-bold">
+              HTML Reference
+            </button>
+          </div>
+          <div className="flex flex-col bg-white p-5">
+            <p className="mb-3 text-lg font-black text-left text-black dark:text-yellow ">
+              HTML Example:
+            </p>
+            <Image src="/static/images/html-code.png" alt="User" width="408" height="320" />
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
