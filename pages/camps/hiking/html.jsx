@@ -151,7 +151,7 @@ export async function getServerSideProps(context) {
           }
         )
         standService.post(
-          `/api/paid-content-post`,
+          `/api/update-paid-content-post`,
           {
             content: 'HTML_HIKE',
             qr_string: qr_status.data.qr_string,
