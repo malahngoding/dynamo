@@ -30,10 +30,10 @@ export default function Level2() {
     { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 3 },
     { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
   ]
+  const commandlength = arrayOfCommand.length
 
   const addArrayOfCommand = (item) => {
     setArrayOfCommand([...arrayOfCommand, item])
-    console.log(item)
   }
 
   const functionGetIndexFromXY = (x, y) => {
@@ -544,54 +544,83 @@ export default function Level2() {
           </div>
           <div className="flex flex-col">
             <div>
-              <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
-                Kiri
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
-                Kanan
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
-                Atas
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
-                Bawah
-              </PrimaryButton>
-              <PrimaryButton
-                variant="success"
-                onClick={() => handleRun('RUN')}
-                className="border mx-2 p-2"
-              >
-                RUN
-              </PrimaryButton>
-              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-                RESET
-              </PrimaryButton>
-            </div>
-            <div className="mt-2">
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-kiri')}
-                className="border mx-2 p-2"
-              >
-                Tembak Kiri
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-kanan')}
-                className="border mx-2 p-2"
-              >
-                Tembak Kanan
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-atas')}
-                className="border mx-2 p-2"
-              >
-                Tembak Atas
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-bawah')}
-                className="border mx-2 p-2"
-              >
-                Tembak Bawah
-              </PrimaryButton>
+              {commandlength < 6 ? (
+                <>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kiri')}
+                    className="border mx-2 p-2"
+                  >
+                    Kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kanan')}
+                    className="border mx-2 p-2"
+                  >
+                    Kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('atas')}
+                    className="border mx-2 p-2"
+                  >
+                    Atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('bawah')}
+                    className="border mx-2 p-2"
+                  >
+                    Bawah
+                  </PrimaryButton>
+                  <PrimaryButton
+                    variant="success"
+                    onClick={() => handleRun('RUN')}
+                    className="border mx-2 p-2"
+                  >
+                    RUN
+                  </PrimaryButton>
+                  <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                    RESET
+                  </PrimaryButton>
+                  <div className="mt-2">
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-kiri')}
+                      className="border mx-2 p-2"
+                    >
+                      Tembak Kiri
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-kanan')}
+                      className="border mx-2 p-2"
+                    >
+                      Tembak Kanan
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-atas')}
+                      className="border mx-2 p-2"
+                    >
+                      Tembak Atas
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-bawah')}
+                      className="border mx-2 p-2"
+                    >
+                      Tembak Bawah
+                    </PrimaryButton>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <PrimaryButton
+                    variant="success"
+                    onClick={() => handleRun('RUN')}
+                    className="border mx-2 p-2"
+                  >
+                    RUN
+                  </PrimaryButton>
+                  <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                    RESET
+                  </PrimaryButton>
+                </>
+              )}
             </div>
           </div>
         </div>

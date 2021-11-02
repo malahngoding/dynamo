@@ -26,6 +26,7 @@ export default function Level3() {
     { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 3 },
     { isPlayer: false, isStone: false, isFinish: false, x: 3, y: 3 },
   ]
+  const commandlength = arrayOfCommand.length
 
   const addArrayOfCommand = (item) => {
     setArrayOfCommand([...arrayOfCommand, item])
@@ -529,70 +530,90 @@ export default function Level3() {
               ))}
             </ul>
           </div>
-          <div className="flex flex-row justify-center items-center ml-2 mb-2">
-            <button
-              onClick={() => addArrayOfCommand('kiri')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
-            >
-              kiri
-            </button>
-            <button
-              onClick={() => addArrayOfCommand('kanan')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-            >
-              kanan
-            </button>
-            <button
-              onClick={() => addArrayOfCommand('atas')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-            >
-              atas
-            </button>
-            <button
-              onClick={() => addArrayOfCommand('bawah')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-            >
-              bawah
-            </button>
-          </div>
-          <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
-            <button
-              onClick={() => addArrayOfCommand('tembak-kiri')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 py-2 px-4"
-            >
-              tembak kiri
-            </button>
-            <button
-              onClick={() => addArrayOfCommand('tembak-kanan')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-            >
-              tembak kanan
-            </button>
-            <button
-              onClick={() => addArrayOfCommand('tembak-atas')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 p-2"
-            >
-              tembak atas
-            </button>
-            <button
-              onClick={() => addArrayOfCommand('tembak-bawah')}
-              className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-            >
-              tembak bawah
-            </button>
-            <button
-              onClick={() => handleRun('RUN')}
-              className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
-            >
-              Run
-            </button>
-            <button
-              onClick={reset}
-              className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
-            >
-              Reset
-            </button>
-          </div>
+
+          {commandlength < 5 ? (
+            <>
+              <div className="flex flex-row justify-center items-center ml-2 mb-2">
+                <button
+                  onClick={() => addArrayOfCommand('kiri')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
+                >
+                  kiri
+                </button>
+                <button
+                  onClick={() => addArrayOfCommand('kanan')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+                >
+                  kanan
+                </button>
+                <button
+                  onClick={() => addArrayOfCommand('atas')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+                >
+                  atas
+                </button>
+                <button
+                  onClick={() => addArrayOfCommand('bawah')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+                >
+                  bawah
+                </button>
+              </div>
+              <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
+                <button
+                  onClick={() => addArrayOfCommand('tembak-kiri')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 py-2 px-4"
+                >
+                  tembak kiri
+                </button>
+                <button
+                  onClick={() => addArrayOfCommand('tembak-kanan')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+                >
+                  tembak kanan
+                </button>
+                <button
+                  onClick={() => addArrayOfCommand('tembak-atas')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 p-2"
+                >
+                  tembak atas
+                </button>
+                <button
+                  onClick={() => addArrayOfCommand('tembak-bawah')}
+                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+                >
+                  tembak bawah
+                </button>
+                <button
+                  onClick={() => handleRun('RUN')}
+                  className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+                >
+                  Run
+                </button>
+                <button
+                  onClick={reset}
+                  className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
+                >
+                  Reset
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => handleRun('RUN')}
+                className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+              >
+                Run
+              </button>
+              <button
+                onClick={reset}
+                className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
+              >
+                Reset
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
