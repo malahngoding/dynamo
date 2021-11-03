@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -9,12 +10,20 @@ export default function Level6() {
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(0)
   const [gameState, setGameState] = useState({
-    playerIndex: 6,
-    trophyIndex: 0,
+    playerIndex: 12,
+    trophyIndex: 5,
     stoneIndex1: 1,
     stoneIndex2: 2,
-    stoneIndex3: 4,
-    blackHoleIndex: 3,
+    stoneIndex3: 3,
+    stoneIndex4: 4,
+    stoneIndex5: 11,
+    blackHoleIndex1: 6,
+    blackHoleIndex2: 13,
+    blackHoleIndex3: 16,
+    thornIndex1: 7,
+    thornIndex2: 8,
+    thornIndex3: 9,
+    keyIndex: 10,
   })
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
@@ -28,6 +37,15 @@ export default function Level6() {
     { isPlayer: false, isStone: true, isFinish: false, x: 3, y: 2 },
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 3 },
     { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
     { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
   ]
 
@@ -605,19 +623,19 @@ export default function Level6() {
         {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
       </div>
       <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full">
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-6">
           {maps.map((item, index) => (
             <div
               className="flex justify-center items-center h-[200px] w-[200px] border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
               <div>
-                {/* <p className="font-mono">
+                <p className="font-mono">
                   ({`${item.x},${item.y}`})-[{index}]
-                </p> */}
+                </p>
                 {gameState?.playerIndex === index ? (
-                  <Image
-                    className="animate-bounce z-10"
+                  <img
+                    className="animate-bounce z-10 overflow-visible"
                     src="/static/images/user.png"
                     alt="User"
                     width="75"
@@ -660,13 +678,85 @@ export default function Level6() {
                     height="100"
                   />
                 ) : null}{' '}
-                {gameState?.blackHoleIndex === index ? (
+                {gameState?.stoneIndex4 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.stoneIndex5 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/rock.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.blackHoleIndex1 === index ? (
                   <Image
                     className=""
                     src="/static/images/blackhole.png"
                     alt="User"
                     width="75"
                     height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.blackHoleIndex2 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/blackhole.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.blackHoleIndex3 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/blackhole.png"
+                    alt="User"
+                    width="75"
+                    height="100"
+                  />
+                ) : null}{' '}
+                {gameState?.thornIndex1 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/thorn.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.thornIndex2 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/thorn.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.thornIndex3 === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/thorn.png"
+                    alt="User"
+                    width="50"
+                    height="50"
+                  />
+                ) : null}{' '}
+                {gameState?.keyIndex === index ? (
+                  <Image
+                    className=""
+                    src="/static/images/keys.png"
+                    alt="User"
+                    width="50"
+                    height="50"
                   />
                 ) : null}{' '}
               </div>
