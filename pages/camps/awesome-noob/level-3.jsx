@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -472,8 +473,8 @@ export default function Level3() {
               </p> */}
               <div>
                 {gameState?.playerIndex === index ? (
-                  <Image
-                    className="animate-bounce z-10"
+                  <img
+                    className="animate-bounce z-10 overflow-visible"
                     src="/static/images/user.png"
                     alt="User"
                     width="50"

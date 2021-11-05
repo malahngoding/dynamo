@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-case-declarations */
 /* eslint-disable prettier/prettier */
@@ -137,16 +138,16 @@ export default function Level1() {
         <div className="grid grid-cols-3">
           {maps.map((item, index) => (
             <div
-              className="grid justify-center items-center h-[200px] w-[200px] border-2"
+              className="grid justify-center items-center h-[200px] w-[200px] border-2 "
               key={`${item.x}_${item.y}`}
             >
-              <div>
+              <div className="">
                 {/* <p className="font-mono">
                                 ({`${item.x},${item.y}`})-[{index}]
                             </p> */}
                 {playerIndex === index ? (
-                  <Image
-                    className="animate-bounce"
+                  <img
+                    className="animate-bounce overflow-visible"
                     src="/static/images/user.png"
                     alt="User"
                     width="75"
