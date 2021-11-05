@@ -9,6 +9,8 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { At, BrandGithub, BrandGoogle, Lock } from 'tabler-icons-react'
+import { standService } from '@/lib/service'
+import { check } from 'prettier'
 
 export default function SignIn({ providers, csrfToken }) {
   const { data: session, status } = useSession()
@@ -36,7 +38,24 @@ export default function SignIn({ providers, csrfToken }) {
   useEffect(() => {
     const handler = () => {
       if (status === 'authenticated') {
-        router.push('/')
+        standService
+          .post(
+            `/api/get-feedback`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${session.dynamoToken}`,
+              },
+            }
+          )
+          .then(function (response) {
+            // handle success
+            if (response.data.condition === 'null') {
+              router.push('/feedback')
+            } else {
+              router.push('/')
+            }
+          })
       }
     }
     handler()
@@ -187,6 +206,9 @@ export async function getServerSideProps(context) {
   const csrfToken = await getCsrfToken(context)
 
   return {
-    props: { providers, csrfToken },
+    props: {
+      providers,
+      csrfToken,
+    },
   }
 }

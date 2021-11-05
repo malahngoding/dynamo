@@ -55,7 +55,24 @@ export default function Register({ providers, csrfToken }) {
   useEffect(() => {
     const handler = () => {
       if (status === 'authenticated') {
-        router.push('/')
+        standService
+          .post(
+            `/api/get-feedback`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${session.dynamoToken}`,
+              },
+            }
+          )
+          .then(function (response) {
+            // handle success
+            if (response.data.condition === 'null') {
+              router.push('/feedback')
+            } else {
+              router.push('/')
+            }
+          })
       }
     }
     handler()
