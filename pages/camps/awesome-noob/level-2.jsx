@@ -12,6 +12,7 @@ export default function Level2() {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const commandlength = arrayOfCommand.length
   const maps = [
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
     { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 1 },
@@ -195,42 +196,62 @@ export default function Level2() {
               ))}
             </ul>
           </div>
-          <button
-            onClick={() => addArrayOfCommand('kiri')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
-          >
-            kiri
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('kanan')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            kanan
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('atas')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            atas
-          </button>
-          <button
-            onClick={() => addArrayOfCommand('bawah')}
-            className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-          >
-            bawah
-          </button>
-          <button
-            onClick={() => handleRun('RUN')}
-            className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
-          >
-            Run
-          </button>
-          <button
-            onClick={reset}
-            className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
-          >
-            Reset
-          </button>
+
+          {commandlength < 4 ? (
+            <>
+              <button
+                onClick={() => addArrayOfCommand('kiri')}
+                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
+              >
+                kiri
+              </button>
+              <button
+                onClick={() => addArrayOfCommand('kanan')}
+                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+              >
+                kanan
+              </button>
+              <button
+                onClick={() => addArrayOfCommand('atas')}
+                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+              >
+                atas
+              </button>
+              <button
+                onClick={() => addArrayOfCommand('bawah')}
+                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
+              >
+                bawah
+              </button>
+              <button
+                onClick={() => handleRun('RUN')}
+                className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+              >
+                Run
+              </button>
+              <button
+                onClick={reset}
+                className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
+              >
+                Reset
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => handleRun('RUN')}
+                className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+              >
+                Run
+              </button>
+              <button
+                onClick={reset}
+                className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
+              >
+                Reset
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

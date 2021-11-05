@@ -13,6 +13,7 @@ export default function Level1() {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const commandlength = arrayOfCommand.length
   const maps = [
     { x: 1, y: 1 },
     { x: 2, y: 1 },
@@ -175,28 +176,45 @@ export default function Level1() {
           </ul>
         </div>
         <div className="my-2">
-          <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
-            Kiri
-          </PrimaryButton>
-          <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
-            Kanan
-          </PrimaryButton>
-          <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
-            Atas
-          </PrimaryButton>
-          <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
-            Bawah
-          </PrimaryButton>
-          <PrimaryButton
-            variant="success"
-            onClick={() => handleRun('RUN')}
-            className="border mx-2 p-2"
-          >
-            RUN
-          </PrimaryButton>
-          <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-            RESET
-          </PrimaryButton>
+          {commandlength < 3 ? (
+            <>
+              <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
+                Kiri
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
+                Kanan
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
+                Atas
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
+                Bawah
+              </PrimaryButton>
+              <PrimaryButton
+                variant="success"
+                onClick={() => handleRun('RUN')}
+                className="border mx-2 p-2"
+              >
+                RUN
+              </PrimaryButton>
+              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                RESET
+              </PrimaryButton>
+            </>
+          ) : (
+            <>
+              <PrimaryButton
+                variant="success"
+                onClick={() => handleRun('RUN')}
+                className="border mx-2 p-2"
+              >
+                RUN
+              </PrimaryButton>
+              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                RESET
+              </PrimaryButton>
+            </>
+          )}
         </div>
       </div>
     </div>
