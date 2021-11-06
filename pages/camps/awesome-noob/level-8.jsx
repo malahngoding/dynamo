@@ -11,7 +11,7 @@ export default function Level6() {
   const [trophyIndex] = useState(0)
   const [gameState, setGameState] = useState({
     playerIndex: 12,
-    trophyIndex: 5,
+    trophyIndex: 0,
     stoneIndex1: 1,
     stoneIndex2: 2,
     stoneIndex3: 3,
@@ -32,22 +32,23 @@ export default function Level6() {
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
     { isPlayer: false, isStone: true, isFinish: false, x: 2, y: 1 },
     { isPlayer: false, isStone: false, isFinish: true, x: 3, y: 1 },
-    { isPlayer: false, isStone: true, isFinish: false, x: 1, y: 2 },
-    { isPlayer: false, isStone: true, isFinish: false, x: 2, y: 2 },
-    { isPlayer: false, isStone: true, isFinish: false, x: 3, y: 2 },
+    { isPlayer: false, isStone: true, isFinish: false, x: 4, y: 1 },
+    { isPlayer: false, isStone: true, isFinish: false, x: 5, y: 1 },
+    { isPlayer: false, isStone: true, isFinish: false, x: 6, y: 1 },
+    { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 2 },
+    { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 2 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 2 },
+    { isPlayer: false, isStone: false, isFinish: false, x: 4, y: 2 },
+    { isPlayer: false, isStone: false, isFinish: false, x: 5, y: 2 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 6, y: 2 },
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 3 },
     { isPlayer: false, isStone: false, isFinish: false, x: 2, y: 3 },
     { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
-    { isPlayer: true, isStone: false, isFinish: false, x: 3, y: 3 },
+    { isPlayer: false, isStone: false, isFinish: false, x: 4, y: 3 },
+    { isPlayer: false, isStone: false, isFinish: false, x: 5, y: 3 },
+    { isPlayer: true, isStone: false, isFinish: false, x: 6, y: 3 },
   ]
+  const commandlength = arrayOfCommand.length
 
   const addArrayOfCommand = (item) => {
     setArrayOfCommand([...arrayOfCommand, item])
@@ -79,6 +80,14 @@ export default function Level6() {
       return false
     }
   }
+  const blackholeTarget = (item, hole1, hole2, hole3) => {
+    console.log(item)
+    if (item === hole1 || item === hole2 || item === hole3) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   const handleRun = (item) => {
     let currentInterval = 0
@@ -90,19 +99,14 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentX === 1) {
-              setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-              })
-            } else if (
-              currentX === 3 &&
-              currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex3)
+            if (
+              (currentX === 6 &&
+                currentY === 1 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX - 1, currentY),
+                  current.stoneIndex4
+                )) ||
+              (currentX === 1 && currentY === 3)
             ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
@@ -110,15 +114,35 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else if (
-              currentX === 2 &&
-              currentY === 2 &&
-              sandungBatuTarget(
-                functionGetIndexFromXY(currentX - 1, currentY),
-                current.blackHoleIndex
-              )
+              (currentX === 3 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX - 1, currentY),
+                  current.blackHoleIndex2
+                )) ||
+              (currentX === 6 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX - 1, currentY),
+                  current.blackHoleIndex3
+                )) ||
+              (currentX === 5 &&
+                currentY === 2 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX - 1, currentY),
+                  current.thornIndex3
+                ))
             ) {
               setFailureModal(true)
               clearInterval(makeIntervalID)
@@ -128,20 +152,32 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
-            } else if (
-              currentX === 3 &&
-              currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX - 1, currentY), current.stoneIndex1)
-            ) {
+            } else if (currentX === 6 && currentY === 2) {
               setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                playerIndex: functionGetIndexFromXY(currentX - 1, currentY),
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: 100,
               })
             } else {
               setGameState({
@@ -150,7 +186,15 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             }
           })
@@ -159,32 +203,42 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentX === 3) {
-              setGameState({
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 1 &&
-              currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex1)
+            if (
+              (currentX === 1 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX + 1, currentY),
+                  current.blackHoleIndex2
+                )) ||
+              (currentX === 4 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX + 1, currentY),
+                  current.blackHoleIndex3
+                ))
             ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
               setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else if (
-              currentX === 1 &&
+              currentX === 5 &&
               currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex3)
+              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex5)
             ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
@@ -192,20 +246,32 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: 100,
               })
-            } else if (
-              currentX === 2 &&
-              currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX + 1, currentY), current.stoneIndex4)
-            ) {
+            } else if ((currentX === 6 && currentY === 1) || (currentX === 6 && currentY === 3)) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else {
               setGameState({
@@ -213,7 +279,15 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
                 playerIndex: functionGetIndexFromXY(currentX + 1, currentY),
               })
             }
@@ -223,22 +297,25 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentY === 1) {
-              setGameState({
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 1 &&
-              currentY === 3 &&
-              sandungBatuTarget(
-                functionGetIndexFromXY(currentX, currentY - 1),
-                current.blackHoleIndex
-              )
+            if (
+              (currentX === 1 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY - 1),
+                  current.blackHoleIndex1
+                )) ||
+              (currentX === 3 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY - 1),
+                  current.thornIndex2
+                )) ||
+              (currentX === 4 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY - 1),
+                  current.thornIndex3
+                ))
             ) {
               setFailureModal(true)
               clearInterval(makeIntervalID)
@@ -248,25 +325,20 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else if (
-              currentX === 2 &&
-              currentY === 3 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex3)
-            ) {
-              setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-              })
-            } else if (
-              currentX === 3 &&
+              currentX === 5 &&
               currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex2)
+              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex4)
             ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
@@ -274,12 +346,34 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: 100,
               })
             } else if (
-              currentX === 2 &&
-              currentY === 2 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY - 1), current.stoneIndex1)
+              (currentX === 6 &&
+                currentY === 3 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY - 1),
+                  current.stoneIndex5
+                )) ||
+              (currentX === 5 &&
+                currentY === 2 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY - 1),
+                  current.stoneIndex4
+                )) ||
+              (currentX === 6 && currentY === 1) ||
+              (currentX === 5 && currentY === 1) ||
+              (currentX === 4 && currentY === 1) ||
+              (currentX === 3 && currentY === 1) ||
+              (currentX === 2 && currentY === 1)
             ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
@@ -287,7 +381,15 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else {
               setGameState({
@@ -295,7 +397,15 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY - 1),
               })
             }
@@ -305,19 +415,12 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentY === 3) {
-              setGameState({
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              currentX === 1 &&
-              currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex2)
+            if (
+              (currentX === 1 && currentY === 3) ||
+              (currentX === 3 && currentY === 3) ||
+              (currentX === 4 && currentY === 3) ||
+              (currentX === 6 && currentY === 3) ||
+              (currentX === 6 && currentY === 1)
             ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
@@ -325,48 +428,112 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else if (
-              currentX === 3 &&
-              currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex4)
-            ) {
-              setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-              })
-            } else if (
-              currentX === 2 &&
-              currentY === 1 &&
-              sandungBatuTarget(functionGetIndexFromXY(currentX, currentY + 1), current.stoneIndex3)
-            ) {
-              setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-              })
-            } else {
+              currentX === 5 &&
+              currentY === 2 &&
               sandungBatuTarget(
                 functionGetIndexFromXY(currentX, currentY + 1),
-                current.stoneIndex1,
-                current.stoneIndex2,
-                current.stoneIndex3,
-                current.stoneIndex4
+                current.blackHoleIndex3
               )
+            ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY + 1),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: 100,
+              })
+            } else if (
+              (currentX === 2 &&
+                currentY === 1 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY + 1),
+                  current.thornIndex1
+                )) ||
+              (currentX === 3 &&
+                currentY === 1 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY + 1),
+                  current.thornIndex2
+                )) ||
+              (currentX === 4 &&
+                currentY === 1 &&
+                sandungBatuTarget(
+                  functionGetIndexFromXY(currentX, currentY + 1),
+                  current.thornIndex3
+                ))
+            ) {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY + 1),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
+              })
+            } else if (currentX === 5 && currentY === 1) {
+              setGameState({
+                playerIndex: functionGetIndexFromXY(currentX, currentY + 1),
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: 100,
+              })
+            } else {
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY + 1),
               })
             }
@@ -382,7 +549,15 @@ export default function Level6() {
               stoneIndex1: destroyTarget(current.stoneIndex1, search),
               stoneIndex2: destroyTarget(current.stoneIndex2, search),
               stoneIndex3: destroyTarget(current.stoneIndex3, search),
-              blackHoleIndex: current.blackHoleIndex,
+              stoneIndex4: destroyTarget(current.stoneIndex4, search),
+              stoneIndex5: destroyTarget(current.stoneIndex5, search),
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           })
@@ -397,7 +572,15 @@ export default function Level6() {
               stoneIndex1: destroyTarget(current.stoneIndex1, search),
               stoneIndex2: destroyTarget(current.stoneIndex2, search),
               stoneIndex3: destroyTarget(current.stoneIndex3, search),
-              blackHoleIndex: current.blackHoleIndex,
+              stoneIndex4: destroyTarget(current.stoneIndex4, search),
+              stoneIndex5: destroyTarget(current.stoneIndex5, search),
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           })
@@ -412,7 +595,15 @@ export default function Level6() {
               stoneIndex1: destroyTarget(current.stoneIndex1, search),
               stoneIndex2: destroyTarget(current.stoneIndex2, search),
               stoneIndex3: destroyTarget(current.stoneIndex3, search),
-              blackHoleIndex: current.blackHoleIndex,
+              stoneIndex4: destroyTarget(current.stoneIndex4, search),
+              stoneIndex5: destroyTarget(current.stoneIndex5, search),
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           })
@@ -427,7 +618,15 @@ export default function Level6() {
               stoneIndex1: destroyTarget(current.stoneIndex1, search),
               stoneIndex2: destroyTarget(current.stoneIndex2, search),
               stoneIndex3: destroyTarget(current.stoneIndex3, search),
-              blackHoleIndex: current.blackHoleIndex,
+              stoneIndex4: destroyTarget(current.stoneIndex4, search),
+              stoneIndex5: destroyTarget(current.stoneIndex5, search),
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           })
@@ -436,37 +635,62 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentY === 1) {
-              setGameState({
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (
-              (currentX === 2 && currentY === 2) ||
-              (currentX === 3 && currentY === 2) ||
-              (currentX === 3 && currentY === 1) ||
-              (currentX === 2 && currentY === 1)
+            if (
+              (currentX === 3 && currentY === 3) ||
+              (currentX === 4 && currentY === 3) ||
+              (currentX === 6 && currentY === 3)
             ) {
               setGameState({
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
+                playerIndex: functionGetIndexFromXY(currentX, currentY - 2),
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
-            } else {
+            } else if (currentX === 1 && currentY === 3 && current.trophyIndex === 100) {
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY - 2),
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
+                playerIndex: functionGetIndexFromXY(currentX - 2, currentY),
+              })
+            } else {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
+                playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             }
           })
@@ -475,31 +699,47 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if (currentX === 3) {
-              setGameState({
-                trophyIndex: current.trophyIndex,
-                stoneIndex1: current.stoneIndex1,
-                stoneIndex2: current.stoneIndex2,
-                stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
-                playerIndex: functionGetIndexFromXY(currentX, currentY),
-              })
-            } else if (currentX === 1 && currentY === 3) {
+            if (
+              (currentX === 1 && currentY === 3) ||
+              (currentX === 3 && currentY === 3) ||
+              (currentX === 4 && currentY === 3) ||
+              (currentX === 2 && currentY === 1) ||
+              (currentX === 3 && currentY === 1) ||
+              (currentX === 4 && currentY === 1)
+            ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX + 2, currentY),
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             }
@@ -509,22 +749,46 @@ export default function Level6() {
           setGameState((current) => {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
-            if ((currentX === 2 && currentY === 1) || (currentX === 3 && currentY === 1)) {
+            if (
+              (currentX === 6 && currentY === 1) ||
+              (currentX === 5 && currentY === 1) ||
+              (currentX === 4 && currentY === 1) ||
+              (currentX === 3 && currentY === 1) ||
+              (currentX === 2 && currentY === 1)
+            ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX, currentY + 2),
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
             } else {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             }
@@ -535,9 +799,14 @@ export default function Level6() {
             let currentX = maps[current.playerIndex].x
             let currentY = maps[current.playerIndex].y
             if (
-              (currentX === 3 && currentY === 1) ||
-              (currentX === 3 && currentY === 2) ||
-              (currentX === 3 && currentY === 3)
+              (currentX === 3 && currentY === 3) ||
+              (currentX === 4 && currentY === 3) ||
+              (currentX === 6 && currentY === 3) ||
+              (currentX === 5 && currentY === 2) ||
+              (currentX === 6 && currentY === 2) ||
+              (currentX === 6 && currentY === 1) ||
+              (currentX === 5 && currentY === 1) ||
+              (currentX === 4 && currentY === 1)
             ) {
               setGameState({
                 playerIndex: functionGetIndexFromXY(currentX - 2, currentY),
@@ -545,15 +814,50 @@ export default function Level6() {
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
               })
-            } else {
+            } else if (currentX === 3 && currentY === 1 && current.keyIndex === 100) {
               setGameState({
                 trophyIndex: current.trophyIndex,
                 stoneIndex1: current.stoneIndex1,
                 stoneIndex2: current.stoneIndex2,
                 stoneIndex3: current.stoneIndex3,
-                blackHoleIndex: current.blackHoleIndex,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
+                playerIndex: functionGetIndexFromXY(currentX - 2, currentY),
+              })
+            } else {
+              setFailureModal(true)
+              clearInterval(makeIntervalID)
+              setGameState({
+                trophyIndex: current.trophyIndex,
+                stoneIndex1: current.stoneIndex1,
+                stoneIndex2: current.stoneIndex2,
+                stoneIndex3: current.stoneIndex3,
+                stoneIndex4: current.stoneIndex4,
+                stoneIndex5: current.stoneIndex5,
+                blackHoleIndex1: current.blackHoleIndex1,
+                blackHoleIndex2: current.blackHoleIndex2,
+                blackHoleIndex3: current.blackHoleIndex3,
+                thornIndex1: current.thornIndex1,
+                thornIndex2: current.thornIndex2,
+                thornIndex3: current.thornIndex3,
+                keyIndex: current.keyIndex,
                 playerIndex: functionGetIndexFromXY(currentX, currentY),
               })
             }
@@ -570,21 +874,66 @@ export default function Level6() {
           if (current.playerIndex == current.trophyIndex) {
             setSuccessModal(true)
             setGameState({
+              trophyIndex: current.trophyIndex,
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
               stoneIndex3: current.stoneIndex3,
-              blackHoleIndex: current.blackHoleIndex,
+              stoneIndex4: current.stoneIndex4,
+              stoneIndex5: current.stoneIndex5,
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
+              playerIndex: functionGetIndexFromXY(currentX, currentY),
+            })
+          } else if (
+            current.playerIndex == current.blackHoleIndex1 ||
+            current.playerIndex == current.blackHoleIndex2 ||
+            current.playerIndex == current.blackHoleIndex3 ||
+            current.playerIndex == current.stoneIndex1 ||
+            current.playerIndex == current.stoneIndex2 ||
+            current.playerIndex == current.stoneIndex3 ||
+            current.playerIndex == current.stoneIndex4 ||
+            current.playerIndex == current.thornIndex1 ||
+            current.playerIndex == current.thornIndex2 ||
+            current.playerIndex == current.thornIndex3
+          ) {
+            setFailureModal(true)
+            setGameState({
               trophyIndex: current.trophyIndex,
+              stoneIndex1: current.stoneIndex1,
+              stoneIndex2: current.stoneIndex2,
+              stoneIndex3: current.stoneIndex3,
+              stoneIndex4: current.stoneIndex4,
+              stoneIndex5: current.stoneIndex5,
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           } else {
             setFailureModal(true)
             setGameState({
+              trophyIndex: current.trophyIndex,
               stoneIndex1: current.stoneIndex1,
               stoneIndex2: current.stoneIndex2,
               stoneIndex3: current.stoneIndex3,
-              blackHoleIndex: current.blackHoleIndex,
-              trophyIndex: current.trophyIndex,
+              stoneIndex4: current.stoneIndex4,
+              stoneIndex5: current.stoneIndex5,
+              blackHoleIndex1: current.blackHoleIndex1,
+              blackHoleIndex2: current.blackHoleIndex2,
+              blackHoleIndex3: current.blackHoleIndex3,
+              thornIndex1: current.thornIndex1,
+              thornIndex2: current.thornIndex2,
+              thornIndex3: current.thornIndex3,
+              keyIndex: current.keyIndex,
               playerIndex: functionGetIndexFromXY(currentX, currentY),
             })
           }
@@ -597,12 +946,20 @@ export default function Level6() {
   const reset = () => {
     setArrayOfCommand([])
     setGameState({
-      playerIndex: 6,
+      playerIndex: 12,
       trophyIndex: 0,
       stoneIndex1: 1,
       stoneIndex2: 2,
-      stoneIndex3: 4,
-      blackHoleIndex: 3,
+      stoneIndex3: 3,
+      stoneIndex4: 4,
+      stoneIndex5: 11,
+      blackHoleIndex1: 6,
+      blackHoleIndex2: 13,
+      blackHoleIndex3: 16,
+      thornIndex1: 7,
+      thornIndex2: 8,
+      thornIndex3: 9,
+      keyIndex: 10,
     })
   }
   useEffect(() => {
@@ -645,7 +1002,7 @@ export default function Level6() {
                 {gameState?.trophyIndex === index ? (
                   <Image
                     className=""
-                    src="/static/images/finish.png"
+                    src="/static/images/chess.png"
                     alt="User"
                     width="99"
                     height="100"
@@ -773,82 +1130,112 @@ export default function Level6() {
             </ul>
           </div>
           <div className="flex flex-col">
-            <div>
-              <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
-                Kiri
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
-                Kanan
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
-                Atas
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
-                Bawah
-              </PrimaryButton>
-              <PrimaryButton
-                variant="success"
-                onClick={() => handleRun('RUN')}
-                className="border mx-2 p-2"
-              >
-                RUN
-              </PrimaryButton>
-              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-                RESET
-              </PrimaryButton>
-            </div>
-            <div className="mt-2">
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('loncat-atas')}
-                className="border mx-2 p-2 bg-red-800"
-              >
-                Loncat Atas
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('loncat-bawah')}
-                className="border mx-2 p-2 bg-red-800"
-              >
-                Loncat Bawah
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('loncat-kanan')}
-                className="border mx-2 p-2 bg-red-800"
-              >
-                Loncat Kanan
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('loncat-kiri')}
-                className="border mx-2 p-2 bg-red-800"
-              >
-                Loncat Kiri
-              </PrimaryButton>
-            </div>
-            <div className="mt-2">
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-kiri')}
-                className="border mx-2 p-2"
-              >
-                Tembak Kiri
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-kanan')}
-                className="border mx-2 p-2"
-              >
-                Tembak Kanan
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-atas')}
-                className="border mx-2 p-2"
-              >
-                Tembak Atas
-              </PrimaryButton>
-              <PrimaryButton
-                onClick={() => addArrayOfCommand('tembak-bawah')}
-                className="border mx-2 p-2"
-              >
-                Tembak Bawah
-              </PrimaryButton>
-            </div>
+            {commandlength < 10 ? (
+              <>
+                <div>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kiri')}
+                    className="border mx-2 p-2"
+                  >
+                    Kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kanan')}
+                    className="border mx-2 p-2"
+                  >
+                    Kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('atas')}
+                    className="border mx-2 p-2"
+                  >
+                    Atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('bawah')}
+                    className="border mx-2 p-2"
+                  >
+                    Bawah
+                  </PrimaryButton>
+                  <PrimaryButton
+                    variant="success"
+                    onClick={() => handleRun('RUN')}
+                    className="border mx-2 p-2"
+                  >
+                    RUN
+                  </PrimaryButton>
+                  <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                    RESET
+                  </PrimaryButton>
+                </div>
+
+                <div className="mt-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('loncat-atas')}
+                    className="border mx-2 p-2 bg-red-800"
+                  >
+                    Loncat Atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('loncat-bawah')}
+                    className="border mx-2 p-2 bg-red-800"
+                  >
+                    Loncat Bawah
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('loncat-kanan')}
+                    className="border mx-2 p-2 bg-red-800"
+                  >
+                    Loncat Kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('loncat-kiri')}
+                    className="border mx-2 p-2 bg-red-800"
+                  >
+                    Loncat Kiri
+                  </PrimaryButton>
+                </div>
+                <div className="mt-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kiri')}
+                    className="border mx-2 p-2"
+                  >
+                    Tembak Kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kanan')}
+                    className="border mx-2 p-2"
+                  >
+                    Tembak Kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-atas')}
+                    className="border mx-2 p-2"
+                  >
+                    Tembak Atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-bawah')}
+                    className="border mx-2 p-2"
+                  >
+                    Tembak Bawah
+                  </PrimaryButton>
+                </div>
+              </>
+            ) : (
+              <div>
+                <PrimaryButton
+                  variant="success"
+                  onClick={() => handleRun('RUN')}
+                  className="border mx-2 p-2"
+                >
+                  RUN
+                </PrimaryButton>
+                <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                  RESET
+                </PrimaryButton>
+              </div>
+            )}
           </div>
         </div>
       </div>
