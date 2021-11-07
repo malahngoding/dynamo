@@ -1460,9 +1460,9 @@ export default function Level9() {
               className="flex justify-center items-center h-[100px] w-[60px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
-              <p className="font-mono">
+              {/* <p className="font-mono">
                 ({`${item.x},${item.y}`})-[{index}]
-              </p>
+              </p> */}
               <div>
                 {gameState?.playerIndex === index ? (
                   <img
@@ -1476,7 +1476,7 @@ export default function Level9() {
                 {gameState?.trophyIndex === index ? (
                   <Image
                     className=""
-                    src="/static/images/finish.png"
+                    src="/static/images/chess.png"
                     alt="User"
                     width="50"
                     height="50"
@@ -1595,7 +1595,7 @@ export default function Level9() {
             </ul>
           </div>
 
-          {commandlength < 99 ? (
+          {commandlength < 10 ? (
             <>
               <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
                 <div className="flex flex-row justify-center items-center ml-2 mb-2">
