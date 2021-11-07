@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
+import { PrimaryButton } from '@/components/design/button'
 
 export default function Level5() {
   const [successModal, setSuccessModal] = useState(false)
@@ -499,17 +500,20 @@ export default function Level5() {
 
   return (
     <div>
-      <div className="w-[200px] h-[50px] m-6">
+      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
         {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
         {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
       </div>
-      <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full md:flex md:flex-row md:justify-center md:item-center">
+      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
         <div className="grid grid-cols-3">
           {maps.map((item, index) => (
             <div
-              className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
+              className="flex justify-center items-center h-[110px] w-[100px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
+              {/* <p className="font-mono">
+                ({`${item.x},${item.y}`})-[{index}]
+              </p> */}
               <div>
                 {gameState?.playerIndex === index ? (
                   <img
@@ -589,83 +593,99 @@ export default function Level5() {
         </div>
 
         <div className="my-2">
-          <div className="flex flex-col flex-wrap justify-center items-center my-2">
-            <ul>
+          <div className="flex flex-col flex-wrap justify-center items-center my-2 w-full h-full">
+            <ul className="w-[150px] h-[100px] md:h-[125px] overflow-auto">
               {arrayOfCommand.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
           </div>
+
           {commandlength < 7 ? (
             <>
-              <div className="flex flex-row justify-center items-center ml-2 mb-2">
-                <button
-                  onClick={() => addArrayOfCommand('kiri')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
-                >
-                  kiri
-                </button>
-                <button
-                  onClick={() => addArrayOfCommand('kanan')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-                >
-                  kanan
-                </button>
-                <button
-                  onClick={() => addArrayOfCommand('atas')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-                >
-                  atas
-                </button>
-                <button
-                  onClick={() => addArrayOfCommand('bawah')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-                >
-                  bawah
-                </button>
-              </div>
-              <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
-                <button
-                  onClick={() => addArrayOfCommand('tembak-kiri')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 py-2 px-4"
-                >
-                  tembak kiri
-                </button>
-                <button
-                  onClick={() => addArrayOfCommand('tembak-kanan')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-                >
-                  tembak kanan
-                </button>
-                <button
-                  onClick={() => addArrayOfCommand('tembak-atas')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 my-2 p-2"
-                >
-                  tembak atas
-                </button>
-                <button
-                  onClick={() => addArrayOfCommand('tembak-bawah')}
-                  className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-                >
-                  tembak bawah
-                </button>
+              <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
+                <div className="flex flex-row justify-center items-center ml-2 mb-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kiri')}
+                    className="border-2 border-black-800 rounded-xl  mx-1 md:mx-2 md:py-2 md:px-4"
+                  >
+                    kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kanan')}
+                    className="border-2 border-black-800 rounded-xl  md:mx-2 md:p-2"
+                  >
+                    kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('atas')}
+                    className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
+                  >
+                    atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('bawah')}
+                    className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
+                  >
+                    bawah
+                  </PrimaryButton>
+                </div>
+                <div className="grid grid-cols-2 justify-center items-center md:ml-2 md:mb-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kiri')}
+                    className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:py-2 md:px-4"
+                  >
+                    tembak kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kanan')}
+                    className="border-2 border-black-800 rounded-xl my-1 md:mx-2 md:p-2"
+                  >
+                    tembak kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-atas')}
+                    className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:p-2"
+                  >
+                    tembak atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-bawah')}
+                    className="border-2 border-black-800 rounded-xl my-1  md:mx-2 md:p-2"
+                  >
+                    tembak bawah
+                  </PrimaryButton>
+                  <PrimaryButton
+                    variant="success"
+                    onClick={() => handleRun('RUN')}
+                    className="border rounded-xl  md:mx-2 mx-1 md:py-2 md:px-4"
+                  >
+                    Run
+                  </PrimaryButton>
+                  <PrimaryButton
+                    variant="normal"
+                    onClick={reset}
+                    className="rounded-xl  md:mx-2 md:p-2"
+                  >
+                    Reset
+                  </PrimaryButton>
+                </div>
               </div>
             </>
-          ) : null}
-          <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
-            <button
-              onClick={() => handleRun('RUN')}
-              className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
-            >
-              Run
-            </button>
-            <button
-              onClick={reset}
-              className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
-            >
-              Reset
-            </button>
-          </div>
+          ) : (
+            <>
+              <PrimaryButton
+                variant="success"
+                onClick={() => handleRun('RUN')}
+                className="border rounded-xl  mx-2 py-2 px-4"
+              >
+                Run
+              </PrimaryButton>
+              <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
+                Reset
+              </PrimaryButton>
+            </>
+          )}
         </div>
       </div>
     </div>
