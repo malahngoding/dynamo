@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
 
-export default function Level2() {
+export default function Level6() {
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(0)
   const [gameState, setGameState] = useState({
