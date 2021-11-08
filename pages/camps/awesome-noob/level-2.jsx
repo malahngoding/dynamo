@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
+import { PrimaryButton } from '@/components/design/button'
 
 export default function Level2() {
   const [playerIndex, setPlayerIndex] = useState(6)
@@ -141,15 +142,15 @@ export default function Level2() {
   }, [successModal, failureModal])
   return (
     <div>
-      <div className="w-[200px] h-[50px] m-6">
+      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
         {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
         {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
       </div>
-      <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full md:flex md:flex-row md:justify-center md:item-center">
+      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
         <div className="grid grid-cols-3">
           {maps.map((item, index) => (
             <div
-              className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
+              className="flex justify-center items-center h-[110px] w-[110px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
               {/* <p className="font-mono">
@@ -189,8 +190,8 @@ export default function Level2() {
         </div>
 
         <div className="my-2">
-          <div className="flex flex-col justify-center items-center my-2">
-            <ul>
+          <div className="flex flex-col justify-center items-center my-2 w-full h-full">
+            <ul className="w-[150px] h-[100px] md:h-[300px] overflow-auto">
               {arrayOfCommand.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
@@ -199,57 +200,45 @@ export default function Level2() {
 
           {commandlength < 4 ? (
             <>
-              <button
-                onClick={() => addArrayOfCommand('kiri')}
-                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 py-2 px-4"
-              >
-                kiri
-              </button>
-              <button
-                onClick={() => addArrayOfCommand('kanan')}
-                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-              >
-                kanan
-              </button>
-              <button
-                onClick={() => addArrayOfCommand('atas')}
-                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-              >
-                atas
-              </button>
-              <button
-                onClick={() => addArrayOfCommand('bawah')}
-                className="border-2 border-black-800 rounded-xl bg-yellow text-white mx-2 p-2"
-              >
-                bawah
-              </button>
-              <button
+              <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
+                Kiri
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
+                Kanan
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
+                Atas
+              </PrimaryButton>
+              <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
+                Bawah
+              </PrimaryButton>
+              <PrimaryButton
+                variant="success"
                 onClick={() => handleRun('RUN')}
-                className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+                className="border mx-2 p-2 my-2 md:my-0"
               >
-                Run
-              </button>
-              <button
+                RUN
+              </PrimaryButton>
+              <PrimaryButton
+                variant="normal"
                 onClick={reset}
-                className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
+                className="border mx-2 p-2 my-2 md:my-0"
               >
-                Reset
-              </button>
+                RESET
+              </PrimaryButton>
             </>
           ) : (
             <>
-              <button
+              <PrimaryButton
+                variant="success"
                 onClick={() => handleRun('RUN')}
-                className="border-2 border-black-800 rounded-xl bg-green text-white mx-2 py-2 px-4"
+                className="border mx-2 p-2"
               >
-                Run
-              </button>
-              <button
-                onClick={reset}
-                className="border-2 border-black-800 rounded-xl bg-red-600 text-white mx-2 p-2"
-              >
-                Reset
-              </button>
+                RUN
+              </PrimaryButton>
+              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                RESET
+              </PrimaryButton>
             </>
           )}
         </div>

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
 
-export default function Level2() {
+export default function Level4() {
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(0)
   const [gameState, setGameState] = useState({
@@ -464,25 +464,28 @@ export default function Level2() {
   }, [successModal, failureModal])
   return (
     <div>
-      <div className="w-[200px] h-[50px] m-6">
+      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
         {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
         {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
       </div>
-      <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full">
+      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
         <div className="grid grid-cols-3">
           {maps.map((item, index) => (
             <div
-              className="flex justify-center items-center h-[200px] w-[200px] border-2 border-black"
+              className="flex justify-center items-center h-[110px] w-[100px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
+              {/* <p className="font-mono">
+                ({`${item.x},${item.y}`})-[{index}]
+              </p> */}
               <div>
                 {gameState?.playerIndex === index ? (
                   <img
                     className="animate-bounce z-10 overflow-visible"
                     src="/static/images/user.png"
                     alt="User"
-                    width="75"
-                    height="100"
+                    width="50"
+                    height="65"
                   />
                 ) : null}
                 {gameState?.trophyIndex === index ? (
@@ -490,8 +493,8 @@ export default function Level2() {
                     className=""
                     src="/static/images/finish.png"
                     alt="User"
-                    width="99"
-                    height="100"
+                    width="50"
+                    height="50"
                   />
                 ) : null}{' '}
                 {gameState?.stoneIndex1 === index ? (
@@ -499,8 +502,8 @@ export default function Level2() {
                     className=""
                     src="/static/images/rock.png"
                     alt="User"
-                    width="75"
-                    height="100"
+                    width="50"
+                    height="50"
                   />
                 ) : null}{' '}
                 {gameState?.stoneIndex2 === index ? (
@@ -508,8 +511,8 @@ export default function Level2() {
                     className=""
                     src="/static/images/rock.png"
                     alt="User"
-                    width="75"
-                    height="100"
+                    width="50"
+                    height="50"
                   />
                 ) : null}{' '}
                 {gameState?.stoneIndex3 === index ? (
@@ -517,8 +520,8 @@ export default function Level2() {
                     className=""
                     src="/static/images/rock.png"
                     alt="User"
-                    width="75"
-                    height="100"
+                    width="50"
+                    height="50"
                   />
                 ) : null}{' '}
                 {gameState?.stoneIndex4 === index ? (
@@ -526,8 +529,8 @@ export default function Level2() {
                     className=""
                     src="/static/images/rock.png"
                     alt="User"
-                    width="75"
-                    height="100"
+                    width="50"
+                    height="50"
                   />
                 ) : null}{' '}
               </div>
@@ -536,94 +539,99 @@ export default function Level2() {
         </div>
 
         <div className="my-2">
-          <div className="flex flex-col justify-center items-center my-2">
-            <ul>
+          <div className="flex flex-col flex-wrap justify-center items-center my-2 w-full h-full">
+            <ul className="w-[150px] h-[100px] md:h-[125px] overflow-auto">
               {arrayOfCommand.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
           </div>
-          <div className="flex flex-col">
-            <div>
-              {commandlength < 6 ? (
-                <>
+
+          {commandlength < 6 ? (
+            <>
+              <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
+                <div className="flex flex-row justify-center items-center ml-2 mb-2">
                   <PrimaryButton
                     onClick={() => addArrayOfCommand('kiri')}
-                    className="border mx-2 p-2"
+                    className="border-2 border-black-800 rounded-xl  mx-1 md:mx-2 md:py-2 md:px-4"
                   >
-                    Kiri
+                    kiri
                   </PrimaryButton>
                   <PrimaryButton
                     onClick={() => addArrayOfCommand('kanan')}
-                    className="border mx-2 p-2"
+                    className="border-2 border-black-800 rounded-xl  md:mx-2 md:p-2"
                   >
-                    Kanan
+                    kanan
                   </PrimaryButton>
                   <PrimaryButton
                     onClick={() => addArrayOfCommand('atas')}
-                    className="border mx-2 p-2"
+                    className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
                   >
-                    Atas
+                    atas
                   </PrimaryButton>
                   <PrimaryButton
                     onClick={() => addArrayOfCommand('bawah')}
-                    className="border mx-2 p-2"
+                    className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
                   >
-                    Bawah
+                    bawah
+                  </PrimaryButton>
+                </div>
+                <div className="grid grid-cols-2 justify-center items-center md:ml-2 md:mb-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kiri')}
+                    className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:py-2 md:px-4"
+                  >
+                    tembak kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kanan')}
+                    className="border-2 border-black-800 rounded-xl my-1 md:mx-2 md:p-2"
+                  >
+                    tembak kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-atas')}
+                    className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:p-2"
+                  >
+                    tembak atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-bawah')}
+                    className="border-2 border-black-800 rounded-xl my-1  md:mx-2 md:p-2"
+                  >
+                    tembak bawah
                   </PrimaryButton>
                   <PrimaryButton
                     variant="success"
                     onClick={() => handleRun('RUN')}
-                    className="border mx-2 p-2"
+                    className="border rounded-xl  md:mx-2 mx-1 md:py-2 md:px-4"
                   >
-                    RUN
+                    Run
                   </PrimaryButton>
-                  <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-                    RESET
-                  </PrimaryButton>
-                  <div className="mt-2">
-                    <PrimaryButton
-                      onClick={() => addArrayOfCommand('tembak-kiri')}
-                      className="border mx-2 p-2"
-                    >
-                      Tembak Kiri
-                    </PrimaryButton>
-                    <PrimaryButton
-                      onClick={() => addArrayOfCommand('tembak-kanan')}
-                      className="border mx-2 p-2"
-                    >
-                      Tembak Kanan
-                    </PrimaryButton>
-                    <PrimaryButton
-                      onClick={() => addArrayOfCommand('tembak-atas')}
-                      className="border mx-2 p-2"
-                    >
-                      Tembak Atas
-                    </PrimaryButton>
-                    <PrimaryButton
-                      onClick={() => addArrayOfCommand('tembak-bawah')}
-                      className="border mx-2 p-2"
-                    >
-                      Tembak Bawah
-                    </PrimaryButton>
-                  </div>
-                </>
-              ) : (
-                <>
                   <PrimaryButton
-                    variant="success"
-                    onClick={() => handleRun('RUN')}
-                    className="border mx-2 p-2"
+                    variant="normal"
+                    onClick={reset}
+                    className="rounded-xl  md:mx-2 md:p-2"
                   >
-                    RUN
+                    Reset
                   </PrimaryButton>
-                  <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-                    RESET
-                  </PrimaryButton>
-                </>
-              )}
-            </div>
-          </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <PrimaryButton
+                variant="success"
+                onClick={() => handleRun('RUN')}
+                className="border rounded-xl  mx-2 py-2 px-4"
+              >
+                Run
+              </PrimaryButton>
+              <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
+                Reset
+              </PrimaryButton>
+            </>
+          )}
         </div>
       </div>
     </div>

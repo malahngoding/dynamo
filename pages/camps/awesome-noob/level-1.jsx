@@ -131,51 +131,53 @@ export default function Level1() {
 
   return (
     <div>
-      <div className="w-[200px] h-[50px] m-6">
+      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
         {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
         {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
       </div>
-      <div className="flex flex-col flex-wrap justify-center items-center min-h-screen w-full">
+      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
         <div className="grid grid-cols-3">
           {maps.map((item, index) => (
             <div
-              className="grid justify-center items-center h-[200px] w-[200px] border-2 "
+              className="flex justify-center items-center h-[110px] w-[110px] md:h-32 md:w-32 border-2 border-black"
               key={`${item.x}_${item.y}`}
             >
-              <div className="">
-                {/* <p className="font-mono">
-                                ({`${item.x},${item.y}`})-[{index}]
-                            </p> */}
+              {/* <p className="font-mono">
+              ({`${item.x},${item.y}`})-[{index}]
+            </p> */}
+              <div>
                 {playerIndex === index ? (
                   <img
-                    className="animate-bounce overflow-visible"
+                    className="animate-bounce z-10 overflow-visible"
                     src="/static/images/user.png"
                     alt="User"
-                    width="75"
-                    height="100"
-                    key={item.image}
+                    width="50"
+                    height="65"
                   />
-                ) : trophyIndex === index ? (
+                ) : null}
+                {trophyIndex === index ? (
                   <Image
                     className=""
                     src="/static/images/finish.png"
-                    alt="Finish"
-                    width="99"
-                    height="100"
+                    alt="User"
+                    width="50"
+                    height="50"
                   />
-                ) : null}
+                ) : null}{' '}
               </div>
             </div>
           ))}
         </div>
+
         <div className="my-2">
-          <ul>
-            {arrayOfCommand.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="my-2">
+          <div className="flex flex-col justify-center items-center my-2 w-full h-full">
+            <ul className="w-[150px] h-[100px] md:h-[300px] overflow-auto">
+              {arrayOfCommand.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
           {commandlength < 3 ? (
             <>
               <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
@@ -193,11 +195,15 @@ export default function Level1() {
               <PrimaryButton
                 variant="success"
                 onClick={() => handleRun('RUN')}
-                className="border mx-2 p-2"
+                className="border mx-2 p-2 my-2 md:my-0"
               >
                 RUN
               </PrimaryButton>
-              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+              <PrimaryButton
+                variant="normal"
+                onClick={reset}
+                className="border mx-2 p-2 my-2 md:my-0"
+              >
                 RESET
               </PrimaryButton>
             </>
