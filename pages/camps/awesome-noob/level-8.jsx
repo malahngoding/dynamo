@@ -5,10 +5,28 @@
 import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
+import { getSession, useSession } from 'next-auth/react'
+import { standService } from '@/lib/service'
 
-export default function Level6() {
+export default function Level8() {
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(0)
+  const { data: session, status } = useSession()
+
+  const PostData = async () => {
+    let res = await standService.post(
+      `/api/awsm-noob-data`,
+      {
+        level: 8,
+        steps: commandlength,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
+  }
   const [gameState, setGameState] = useState({
     playerIndex: 12,
     trophyIndex: 0,
@@ -966,6 +984,7 @@ export default function Level6() {
     if (successModal === true) {
       setTimeout(() => {
         setSuccessModal(false)
+        PostData()
       }, 2000)
     } else if (failureModal === true) {
       setTimeout(() => {

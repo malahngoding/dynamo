@@ -5,6 +5,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
+import { standService } from '@/lib/service'
+import { getSession, useSession } from 'next-auth/react'
 
 export default function Level1() {
   const [playerIndex, setPlayerIndex] = useState(4)
@@ -14,6 +16,7 @@ export default function Level1() {
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const commandlength = arrayOfCommand.length
+  const { data: session, status } = useSession()
   const maps = [
     { x: 1, y: 1 },
     { x: 2, y: 1 },
@@ -28,6 +31,21 @@ export default function Level1() {
 
   const addArrayOfCommand = (item) => {
     setArrayOfCommand([...arrayOfCommand, item])
+  }
+
+  const PostData = async () => {
+    let res = await standService.post(
+      `/api/awsm-noob-data`,
+      {
+        level: 1,
+        steps: commandlength,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
   }
 
   const functionGetIndexFromXY = (x, y) => {
@@ -120,6 +138,7 @@ export default function Level1() {
   useEffect(() => {
     if (successModal === true) {
       setTimeout(() => {
+        PostData()
         setSuccessModal(false)
       }, 2000)
     } else if (failureModal === true) {
