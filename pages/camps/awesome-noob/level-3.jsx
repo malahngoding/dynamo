@@ -5,8 +5,12 @@
 import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
+import { getSession } from 'next-auth/react'
+import ConfettiGenerator from 'confetti-js'
+import { useRouter } from 'next/router'
 
 export default function Level3() {
+  const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const [gameState, setGameState] = useState({
@@ -447,6 +451,13 @@ export default function Level3() {
   }
   useEffect(() => {
     if (successModal === true) {
+      const confettiSettings = { target: 'my-canvas' }
+      const confetti = new ConfettiGenerator(confettiSettings)
+      confetti.render()
+      setTimeout(() => {
+        router.push('http://localhost:3000/camps/awesome-noob/level-4')
+        confetti.clear()
+      }, 5000)
       setTimeout(() => {
         setSuccessModal(false)
       }, 2000)
@@ -455,7 +466,7 @@ export default function Level3() {
         setFailureModal(false)
       }, 2000)
     }
-  }, [successModal, failureModal])
+  }, [successModal, failureModal, router])
 
   return (
     <div>
@@ -679,4 +690,21 @@ const ToastFailure = () => {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  if (session === null) {
+    return {
+      redirect: {
+        destination: '/',
+      },
+    }
+  }
+  return {
+    props: {
+      isAuthenticated: true,
+      dynamoToken: session.dynamoToken,
+    }, // will be passed to the page component as props
+  }
 }
