@@ -611,202 +611,205 @@ export default function Level6() {
     }
   }, [successModal, failureModal, router])
   return (
-    <div>
-      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
-        {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
-        {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
-      </div>
-      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
-        <div className="grid grid-cols-3">
-          {maps.map((item, index) => (
-            <div
-              className="flex justify-center items-center h-[110px] w-[100px] md:h-32 md:w-32 border-2 border-black"
-              key={`${item.x}_${item.y}`}
-            >
-              {/* <p className="font-mono">
+    <>
+      <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
+      <div>
+        <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
+          {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
+          {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
+        </div>
+        <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
+          <div className="grid grid-cols-3">
+            {maps.map((item, index) => (
+              <div
+                className="flex justify-center items-center h-[110px] w-[100px] md:h-32 md:w-32 border-2 border-black"
+                key={`${item.x}_${item.y}`}
+              >
+                {/* <p className="font-mono">
                 ({`${item.x},${item.y}`})-[{index}]
               </p> */}
-              <div>
-                {gameState?.playerIndex === index ? (
-                  <img
-                    className="animate-bounce z-10 overflow-visible"
-                    src="/static/images/user.png"
-                    alt="User"
-                    width="50"
-                    height="65"
-                  />
-                ) : null}
-                {gameState?.trophyIndex === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/finish.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.stoneIndex1 === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/rock.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.stoneIndex2 === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/rock.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.stoneIndex3 === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/rock.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.blackHoleIndex === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/blackhole.png"
-                    alt="User"
-                    width="75"
-                    height="100"
-                  />
-                ) : null}{' '}
+                <div>
+                  {gameState?.playerIndex === index ? (
+                    <img
+                      className="animate-bounce z-10 overflow-visible"
+                      src="/static/images/user.png"
+                      alt="User"
+                      width="50"
+                      height="65"
+                    />
+                  ) : null}
+                  {gameState?.trophyIndex === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/finish.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.stoneIndex1 === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/rock.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.stoneIndex2 === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/rock.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.stoneIndex3 === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/rock.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.blackHoleIndex === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/blackhole.png"
+                      alt="User"
+                      width="75"
+                      height="100"
+                    />
+                  ) : null}{' '}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="my-2">
-          <div className="flex flex-col flex-wrap justify-center items-center my-2 w-full h-full">
-            <ul className="w-[150px] h-[100px] md:h-[125px] overflow-auto">
-              {arrayOfCommand.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            ))}
           </div>
 
-          {commandlength < 8 ? (
-            <>
-              <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
-                <div className="flex flex-row justify-center items-center ml-2 mb-2">
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('kiri')}
-                    className="border-2 border-black-800 rounded-xl  mx-1 md:mx-2 md:py-2 md:px-4"
-                  >
-                    kiri
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('kanan')}
-                    className="border-2 border-black-800 rounded-xl  md:mx-2 md:p-2"
-                  >
-                    kanan
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('atas')}
-                    className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
-                  >
-                    atas
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('bawah')}
-                    className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
-                  >
-                    bawah
-                  </PrimaryButton>
+          <div className="my-2">
+            <div className="flex flex-col flex-wrap justify-center items-center my-2 w-full h-full">
+              <ul className="w-[150px] h-[100px] md:h-[125px] overflow-auto">
+                {arrayOfCommand.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {commandlength < 8 ? (
+              <>
+                <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
+                  <div className="flex flex-row justify-center items-center ml-2 mb-2">
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('kiri')}
+                      className="border-2 border-black-800 rounded-xl  mx-1 md:mx-2 md:py-2 md:px-4"
+                    >
+                      kiri
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('kanan')}
+                      className="border-2 border-black-800 rounded-xl  md:mx-2 md:p-2"
+                    >
+                      kanan
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('atas')}
+                      className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
+                    >
+                      atas
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('bawah')}
+                      className="border-2 border-black-800 rounded-xl mx-1  md:mx-2 md:p-2"
+                    >
+                      bawah
+                    </PrimaryButton>
+                  </div>
+                  <div className="grid grid-cols-2 justify-center items-center md:ml-2 md:mb-2">
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-kiri')}
+                      className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:py-2 md:px-4"
+                    >
+                      tembak kiri
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-kanan')}
+                      className="border-2 border-black-800 rounded-xl my-1 md:mx-2 md:p-2"
+                    >
+                      tembak kanan
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-atas')}
+                      className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:p-2"
+                    >
+                      tembak atas
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('tembak-bawah')}
+                      className="border-2 border-black-800 rounded-xl my-1  md:mx-2 md:p-2"
+                    >
+                      tembak bawah
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('loncat-atas')}
+                      className="border mx-1 my-1 md:mx-2 md:my-2 md:p-2 bg-red-800"
+                    >
+                      Loncat Atas
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('loncat-bawah')}
+                      className="border md:mx-2 md:p-2 bg-red-800"
+                    >
+                      Loncat Bawah
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('loncat-kanan')}
+                      className="border mx-1 my-1 md:mx-2 md:my-2 md:p-2 bg-red-800"
+                    >
+                      Loncat Kanan
+                    </PrimaryButton>
+                    <PrimaryButton
+                      onClick={() => addArrayOfCommand('loncat-kiri')}
+                      className="border md:mx-2 md:p-2 bg-red-800"
+                    >
+                      Loncat Kiri
+                    </PrimaryButton>
+                    <PrimaryButton
+                      variant="success"
+                      onClick={() => handleRun('RUN')}
+                      className="border rounded-xl  md:mx-2 mx-1 md:py-2 md:px-4"
+                    >
+                      Run
+                    </PrimaryButton>
+                    <PrimaryButton
+                      variant="normal"
+                      onClick={reset}
+                      className="rounded-xl  md:mx-2 md:p-2"
+                    >
+                      Reset
+                    </PrimaryButton>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 justify-center items-center md:ml-2 md:mb-2">
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('tembak-kiri')}
-                    className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:py-2 md:px-4"
-                  >
-                    tembak kiri
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('tembak-kanan')}
-                    className="border-2 border-black-800 rounded-xl my-1 md:mx-2 md:p-2"
-                  >
-                    tembak kanan
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('tembak-atas')}
-                    className="border-2 border-black-800 rounded-xl mx-1 my-1 md:mx-2 md:my-2 md:p-2"
-                  >
-                    tembak atas
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('tembak-bawah')}
-                    className="border-2 border-black-800 rounded-xl my-1  md:mx-2 md:p-2"
-                  >
-                    tembak bawah
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('loncat-atas')}
-                    className="border mx-1 my-1 md:mx-2 md:my-2 md:p-2 bg-red-800"
-                  >
-                    Loncat Atas
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('loncat-bawah')}
-                    className="border md:mx-2 md:p-2 bg-red-800"
-                  >
-                    Loncat Bawah
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('loncat-kanan')}
-                    className="border mx-1 my-1 md:mx-2 md:my-2 md:p-2 bg-red-800"
-                  >
-                    Loncat Kanan
-                  </PrimaryButton>
-                  <PrimaryButton
-                    onClick={() => addArrayOfCommand('loncat-kiri')}
-                    className="border md:mx-2 md:p-2 bg-red-800"
-                  >
-                    Loncat Kiri
-                  </PrimaryButton>
-                  <PrimaryButton
-                    variant="success"
-                    onClick={() => handleRun('RUN')}
-                    className="border rounded-xl  md:mx-2 mx-1 md:py-2 md:px-4"
-                  >
-                    Run
-                  </PrimaryButton>
-                  <PrimaryButton
-                    variant="normal"
-                    onClick={reset}
-                    className="rounded-xl  md:mx-2 md:p-2"
-                  >
-                    Reset
-                  </PrimaryButton>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <PrimaryButton
-                variant="success"
-                onClick={() => handleRun('RUN')}
-                className="border rounded-xl  mx-2 py-2 px-4"
-              >
-                Run
-              </PrimaryButton>
-              <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
-                Reset
-              </PrimaryButton>
-            </>
-          )}
+              </>
+            ) : (
+              <>
+                <PrimaryButton
+                  variant="success"
+                  onClick={() => handleRun('RUN')}
+                  className="border rounded-xl  mx-2 py-2 px-4"
+                >
+                  Run
+                </PrimaryButton>
+                <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
+                  Reset
+                </PrimaryButton>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 const ToastSuccess = () => {
