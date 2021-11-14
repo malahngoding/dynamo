@@ -8,6 +8,8 @@ import { PrimaryButton } from '@/components/design/button'
 import { getSession } from 'next-auth/react'
 import ConfettiGenerator from 'confetti-js'
 import { useRouter } from 'next/router'
+import { standService } from '@/lib/service'
+import { getSession, useSession } from 'next-auth/react'
 
 export default function Level1() {
   const router = useRouter()
@@ -18,6 +20,7 @@ export default function Level1() {
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const commandlength = arrayOfCommand.length
+  const { data: session, status } = useSession()
   const maps = [
     { x: 1, y: 1 },
     { x: 2, y: 1 },
@@ -32,6 +35,21 @@ export default function Level1() {
 
   const addArrayOfCommand = (item) => {
     setArrayOfCommand([...arrayOfCommand, item])
+  }
+
+  const PostData = async () => {
+    let res = await standService.post(
+      `/api/awsm-noob-data`,
+      {
+        level: 1,
+        steps: commandlength,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
   }
 
   const functionGetIndexFromXY = (x, y) => {
@@ -132,6 +150,7 @@ export default function Level1() {
         confetti.clear()
       }, 5000)
       setTimeout(() => {
+        PostData()
         setSuccessModal(false)
       }, 2000)
     } else if (failureModal === true) {

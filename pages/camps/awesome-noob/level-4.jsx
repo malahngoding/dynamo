@@ -8,9 +8,12 @@ import { PrimaryButton } from '@/components/design/button'
 import { getSession } from 'next-auth/react'
 import ConfettiGenerator from 'confetti-js'
 import { useRouter } from 'next/router'
-
+import { getSession, useSession } from 'next-auth/react'
+import { standService } from '@/lib/service'
+  
 export default function Level4() {
   const router = useRouter()
+  const { data: session, status } = useSession()
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(0)
   const [gameState, setGameState] = useState({
@@ -37,6 +40,20 @@ export default function Level4() {
   ]
   const commandlength = arrayOfCommand.length
 
+  const PostData = async () => {
+    let res = await standService.post(
+      `/api/awsm-noob-data`,
+      {
+        level: 4,
+        steps: commandlength,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
+  }
   const addArrayOfCommand = (item) => {
     setArrayOfCommand([...arrayOfCommand, item])
   }
@@ -466,6 +483,7 @@ export default function Level4() {
       }, 5000)
       setTimeout(() => {
         setSuccessModal(false)
+        PostData()
       }, 2000)
     } else if (failureModal === true) {
       setTimeout(() => {
