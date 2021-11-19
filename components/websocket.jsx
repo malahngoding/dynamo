@@ -11,6 +11,7 @@ const Websocket = () => {
   window.Echo = new Echo({
     broadcaster: `pusher`,
     key: `anyKey`,
+    cluster: 'mt1',
     wsHost: window.location.hostname,
     wsPort: 6001,
     forceTLS: false,
@@ -25,33 +26,7 @@ const Websocket = () => {
     getWindow: window,
   }
   const handleClickMessage = () => {
-    window.Echo = new Echo({
-      broadcaster: `pusher`,
-      key: `anyKey`,
-      wsHost: window.location.hostname,
-      wsPort: 6001,
-      forceTLS: false,
-      disableStats: true,
-
-      authorizer: (channel, options) => {
-        return {
-          authorize: (socketId, callback) => {
-            axios
-              .post('/api/broadcasting/auth', {
-                socket_id: socketId,
-                channel_name: channel.DemoChannel,
-              })
-              .then((response) => {
-                callback(false, response.data)
-                console.log(response.data)
-              })
-              .catch((error) => {
-                callback(true, error)
-              })
-          },
-        }
-      },
-    })
+    //
   }
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen">
