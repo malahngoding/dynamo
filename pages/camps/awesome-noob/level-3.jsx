@@ -5,10 +5,14 @@
 import { useState, useEffect } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
+import { getSession } from 'next-auth/react'
+import ConfettiGenerator from 'confetti-js'
+import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
 
 export default function Level3() {
+  const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
   const { data: session, status } = useSession()
@@ -465,6 +469,13 @@ export default function Level3() {
   }
   useEffect(() => {
     if (successModal === true) {
+      const confettiSettings = { target: 'my-canvas' }
+      const confetti = new ConfettiGenerator(confettiSettings)
+      confetti.render()
+      setTimeout(() => {
+        router.push('http://localhost:3000/camps/awesome-noob/level-4')
+        confetti.clear()
+      }, 5000)
       setTimeout(() => {
         PostData()
         setSuccessModal(false)
@@ -474,137 +485,153 @@ export default function Level3() {
         setFailureModal(false)
       }, 2000)
     }
-  }, [successModal, failureModal])
+  }, [successModal, failureModal, router])
 
   return (
-    <div>
-      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
-        {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
-        {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
-      </div>
-      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
-        <div className="grid grid-cols-3">
-          {maps.map((item, index) => (
-            <div
-              className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
-              key={`${item.x}_${item.y}`}
-            >
-              {/* <p className="font-mono">
+    <>
+      <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
+      <div>
+        <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
+          {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
+          {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
+        </div>
+        <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
+          <div className="grid grid-cols-3">
+            {maps.map((item, index) => (
+              <div
+                className="flex justify-center items-center h-[100px] w-[100px] md:h-32 md:w-32 border-2 border-black"
+                key={`${item.x}_${item.y}`}
+              >
+                {/* <p className="font-mono">
                 ({`${item.x},${item.y}`})-[{index}]
               </p> */}
-              <div>
-                {gameState?.playerIndex === index ? (
-                  <img
-                    className="animate-bounce z-10 overflow-visible"
-                    src="/static/images/user.png"
-                    alt="User"
-                    width="50"
-                    height="65"
-                  />
-                ) : null}
-                {gameState?.trophyIndex === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/finish.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.stoneIndex1 === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/rock.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.stoneIndex2 === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/rock.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
-                {gameState?.stoneIndex3 === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/rock.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
+                <div>
+                  {gameState?.playerIndex === index ? (
+                    <img
+                      className="animate-bounce z-10 overflow-visible"
+                      src="/static/images/user.png"
+                      alt="User"
+                      width="50"
+                      height="65"
+                    />
+                  ) : null}
+                  {gameState?.trophyIndex === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/finish.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.stoneIndex1 === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/rock.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.stoneIndex2 === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/rock.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                  {gameState?.stoneIndex3 === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/rock.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="my-2">
-          <div className="flex flex-col flex-wrap justify-center items-center my-2 w-full h-full">
-            <ul className="w-[150px] h-[100px] md:h-[125px] overflow-auto">
-              {arrayOfCommand.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            ))}
           </div>
 
-          {commandlength < 5 ? (
-            <>
-              <div className="flex flex-row justify-center items-center ml-2 mb-2">
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('kiri')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 py-2 px-4"
-                >
-                  kiri
-                </PrimaryButton>
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('kanan')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 p-2"
-                >
-                  kanan
-                </PrimaryButton>
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('atas')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 p-2"
-                >
-                  atas
-                </PrimaryButton>
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('bawah')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 p-2"
-                >
-                  bawah
-                </PrimaryButton>
-              </div>
-              <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('tembak-kiri')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 my-2 py-2 px-4"
-                >
-                  tembak kiri
-                </PrimaryButton>
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('tembak-kanan')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 p-2"
-                >
-                  tembak kanan
-                </PrimaryButton>
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('tembak-atas')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 my-2 p-2"
-                >
-                  tembak atas
-                </PrimaryButton>
-                <PrimaryButton
-                  onClick={() => addArrayOfCommand('tembak-bawah')}
-                  className="border-2 border-black-800 rounded-xl   mx-2 p-2"
-                >
-                  tembak bawah
-                </PrimaryButton>
+          <div className="my-2">
+            <div className="flex flex-col flex-wrap justify-center items-center my-2 w-full h-full">
+              <ul className="w-[150px] h-[100px] md:h-[125px] overflow-auto">
+                {arrayOfCommand.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {commandlength < 5 ? (
+              <>
+                <div className="flex flex-row justify-center items-center ml-2 mb-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kiri')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 py-2 px-4"
+                  >
+                    kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('kanan')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 p-2"
+                  >
+                    kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('atas')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 p-2"
+                  >
+                    atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('bawah')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 p-2"
+                  >
+                    bawah
+                  </PrimaryButton>
+                </div>
+                <div className="grid grid-cols-2 justify-center items-center ml-2 mb-2">
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kiri')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 my-2 py-2 px-4"
+                  >
+                    tembak kiri
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-kanan')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 p-2"
+                  >
+                    tembak kanan
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-atas')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 my-2 p-2"
+                  >
+                    tembak atas
+                  </PrimaryButton>
+                  <PrimaryButton
+                    onClick={() => addArrayOfCommand('tembak-bawah')}
+                    className="border-2 border-black-800 rounded-xl   mx-2 p-2"
+                  >
+                    tembak bawah
+                  </PrimaryButton>
+                  <PrimaryButton
+                    variant="success"
+                    onClick={() => handleRun('RUN')}
+                    className="border rounded-xl  mx-2 py-2 px-4"
+                  >
+                    Run
+                  </PrimaryButton>
+                  <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
+                    Reset
+                  </PrimaryButton>
+                </div>
+              </>
+            ) : (
+              <>
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
@@ -615,25 +642,12 @@ export default function Level3() {
                 <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
                   Reset
                 </PrimaryButton>
-              </div>
-            </>
-          ) : (
-            <>
-              <PrimaryButton
-                variant="success"
-                onClick={() => handleRun('RUN')}
-                className="border rounded-xl  mx-2 py-2 px-4"
-              >
-                Run
-              </PrimaryButton>
-              <PrimaryButton variant="normal" onClick={reset} className="rounded-xl  mx-2 p-2">
-                Reset
-              </PrimaryButton>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 const ToastSuccess = () => {
@@ -698,4 +712,21 @@ const ToastFailure = () => {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  if (session === null) {
+    return {
+      redirect: {
+        destination: '/',
+      },
+    }
+  }
+  return {
+    props: {
+      isAuthenticated: true,
+      dynamoToken: session.dynamoToken,
+    }, // will be passed to the page component as props
+  }
 }

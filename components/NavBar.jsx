@@ -62,12 +62,13 @@ const Auth = () => {
         <p>Checking...</p>
       ) : (
         <>
-          <PrimaryButton variant="success" onClick={() => signIn()}>
-            Login
-          </PrimaryButton>
-          {session && (
+          {session ? (
             <PrimaryButton variant={shown ? 'info' : 'normal'} onClick={handleToggleDash}>
               <span className="font-bold">Dash</span>
+            </PrimaryButton>
+          ) : (
+            <PrimaryButton variant="success" onClick={() => signIn()}>
+              Login
             </PrimaryButton>
           )}
         </>

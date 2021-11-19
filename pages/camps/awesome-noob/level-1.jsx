@@ -2,13 +2,17 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-case-declarations */
 /* eslint-disable prettier/prettier */
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
+import { getSession } from 'next-auth/react'
+import ConfettiGenerator from 'confetti-js'
+import { useRouter } from 'next/router'
 import { standService } from '@/lib/service'
 import { getSession, useSession } from 'next-auth/react'
 
 export default function Level1() {
+  const router = useRouter()
   const [playerIndex, setPlayerIndex] = useState(4)
   const [trophyIndex] = useState(0)
   const [stoneIndex] = useState(8)
@@ -135,8 +139,16 @@ export default function Level1() {
     setArrayOfCommand([])
     setPlayerIndex(4)
   }
+
   useEffect(() => {
     if (successModal === true) {
+      const confettiSettings = { target: 'my-canvas' }
+      const confetti = new ConfettiGenerator(confettiSettings)
+      confetti.render()
+      setTimeout(() => {
+        router.push('http://localhost:3000/camps/awesome-noob/level-2')
+        confetti.clear()
+      }, 5000)
       setTimeout(() => {
         PostData()
         setSuccessModal(false)
@@ -146,103 +158,118 @@ export default function Level1() {
         setFailureModal(false)
       }, 2000)
     }
-  }, [successModal, failureModal])
+  }, [successModal, failureModal, router])
 
   return (
-    <div>
-      <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
-        {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
-        {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
-      </div>
-      <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
-        <div className="grid grid-cols-3">
-          {maps.map((item, index) => (
-            <div
-              className="flex justify-center items-center h-[110px] w-[110px] md:h-32 md:w-32 border-2 border-black"
-              key={`${item.x}_${item.y}`}
-            >
-              {/* <p className="font-mono">
+    <>
+      <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
+      <div className="z-20">
+        <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
+          {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
+          {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
+        </div>
+        <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
+          <div className="grid grid-cols-3">
+            {maps.map((item, index) => (
+              <div
+                className="flex justify-center items-center h-[110px] w-[110px] md:h-32 md:w-32 border-2 border-black"
+                key={`${item.x}_${item.y}`}
+              >
+                {/* <p className="font-mono">
               ({`${item.x},${item.y}`})-[{index}]
             </p> */}
-              <div>
-                {playerIndex === index ? (
-                  <img
-                    className="animate-bounce z-10 overflow-visible"
-                    src="/static/images/user.png"
-                    alt="User"
-                    width="50"
-                    height="65"
-                  />
-                ) : null}
-                {trophyIndex === index ? (
-                  <Image
-                    className=""
-                    src="/static/images/finish.png"
-                    alt="User"
-                    width="50"
-                    height="50"
-                  />
-                ) : null}{' '}
+                <div>
+                  {playerIndex === index ? (
+                    <img
+                      className="animate-bounce z-10 overflow-visible"
+                      src="/static/images/user.png"
+                      alt="User"
+                      width="50"
+                      height="65"
+                    />
+                  ) : null}
+                  {trophyIndex === index ? (
+                    <Image
+                      className=""
+                      src="/static/images/finish.png"
+                      alt="User"
+                      width="50"
+                      height="50"
+                    />
+                  ) : null}{' '}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="my-2">
-          <div className="flex flex-col justify-center items-center my-2 w-full h-full">
-            <ul className="w-[150px] h-[100px] md:h-[300px] overflow-auto">
-              {arrayOfCommand.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
+            ))}
           </div>
 
-          {commandlength < 3 ? (
-            <>
-              <PrimaryButton onClick={() => addArrayOfCommand('kiri')} className="border mx-2 p-2">
-                Kiri
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('kanan')} className="border mx-2 p-2">
-                Kanan
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('atas')} className="border mx-2 p-2">
-                Atas
-              </PrimaryButton>
-              <PrimaryButton onClick={() => addArrayOfCommand('bawah')} className="border mx-2 p-2">
-                Bawah
-              </PrimaryButton>
-              <PrimaryButton
-                variant="success"
-                onClick={() => handleRun('RUN')}
-                className="border mx-2 p-2 my-2 md:my-0"
-              >
-                RUN
-              </PrimaryButton>
-              <PrimaryButton
-                variant="normal"
-                onClick={reset}
-                className="border mx-2 p-2 my-2 md:my-0"
-              >
-                RESET
-              </PrimaryButton>
-            </>
-          ) : (
-            <>
-              <PrimaryButton
-                variant="success"
-                onClick={() => handleRun('RUN')}
-                className="border mx-2 p-2"
-              >
-                RUN
-              </PrimaryButton>
-              <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
-                RESET
-              </PrimaryButton>
-            </>
-          )}
+          <div className="my-2">
+            <div className="flex flex-col justify-center items-center my-2 w-full h-full">
+              <ul className="w-[150px] h-[100px] md:h-[300px] overflow-auto">
+                {arrayOfCommand.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {commandlength < 3 ? (
+              <>
+                <PrimaryButton
+                  onClick={() => addArrayOfCommand('kiri')}
+                  className="border mx-2 p-2"
+                >
+                  Kiri
+                </PrimaryButton>
+                <PrimaryButton
+                  onClick={() => addArrayOfCommand('kanan')}
+                  className="border mx-2 p-2"
+                >
+                  Kanan
+                </PrimaryButton>
+                <PrimaryButton
+                  onClick={() => addArrayOfCommand('atas')}
+                  className="border mx-2 p-2"
+                >
+                  Atas
+                </PrimaryButton>
+                <PrimaryButton
+                  onClick={() => addArrayOfCommand('bawah')}
+                  className="border mx-2 p-2"
+                >
+                  Bawah
+                </PrimaryButton>
+                <PrimaryButton
+                  variant="success"
+                  onClick={() => handleRun('RUN')}
+                  className="border mx-2 p-2 my-2 md:my-0"
+                >
+                  RUN
+                </PrimaryButton>
+                <PrimaryButton
+                  variant="normal"
+                  onClick={reset}
+                  className="border mx-2 p-2 my-2 md:my-0"
+                >
+                  RESET
+                </PrimaryButton>
+              </>
+            ) : (
+              <>
+                <PrimaryButton
+                  variant="success"
+                  onClick={() => handleRun('RUN')}
+                  className="border mx-2 p-2"
+                >
+                  RUN
+                </PrimaryButton>
+                <PrimaryButton variant="normal" onClick={reset} className="border mx-2 p-2">
+                  RESET
+                </PrimaryButton>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 const ToastSuccess = () => {
@@ -307,4 +334,20 @@ const ToastFailure = () => {
       </div>
     </div>
   )
+}
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  if (session === null) {
+    return {
+      redirect: {
+        destination: '/',
+      },
+    }
+  }
+  return {
+    props: {
+      isAuthenticated: true,
+      dynamoToken: session.dynamoToken,
+    }, // will be passed to the page component as props
+  }
 }
