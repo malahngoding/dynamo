@@ -5,7 +5,6 @@
 import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
-import { getSession } from 'next-auth/react'
 import ConfettiGenerator from 'confetti-js'
 import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
@@ -1162,7 +1161,7 @@ export default function Level8() {
               </ul>
             </div>
 
-            {commandlength < 9 ? (
+            {commandlength < 15 ? (
               <>
                 <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
                   <div className="flex flex-row justify-center items-center ml-2 mb-2">
