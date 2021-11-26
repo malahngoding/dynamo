@@ -1,49 +1,40 @@
-import Echo from 'laravel-echo'
-import Pusher from 'pusher-js'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
 import { PrimaryButton } from '@/components/design/button'
-import axios from 'axios'
 
 const Websocket = () => {
-  const [textEvent, setTextEvent] = useState('')
-  window.Pusher = Pusher
-
-  window.Echo = new Echo({
-    broadcaster: `pusher`,
-    key: `anyKey`,
-    cluster: 'mt1',
-    wsHost: window.location.hostname,
-    wsPort: 6001,
-    forceTLS: false,
-    disableStats: true,
+  const [message, setMessage] = useState('')
+  const socket = io('ws://localhost:6001')
+  socket.on('ChatEvent', (...args) => {
+    console.log(args)
   })
-  window.Echo.channel('DemoChannel').listen('WebsocketDemoEvent', (e) => {
-    setTextEvent(e.somedata)
-    console.log(e)
-  })
-
-  const websocket = {
-    getWindow: window,
-  }
-  const handleClickMessage = () => {
-    //
-  }
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen">
-      <p>{textEvent}</p>
-      <textarea
-        value={textEvent}
-        onChange={(e) => setTextEvent(e.target.value)}
-        className="border-2 w-[300px] h-[100px] break-words mb-6"
-        placeholder="Message"
-      ></textarea>
-      <PrimaryButton
-        onClick={() => handleClickMessage()}
-        className="border-2 border-black-800 rounded-xl  mx-1 md:mx-2 md:py-2 md:px-4"
-      >
-        Send
-      </PrimaryButton>
-    </div>
+    <>
+      <div className="flex flex-col justify-center items-center h-screen w-screen">
+        <div className="flex flex-col justify-center items-center w-full h-full">
+          <div className="mb-6">
+            <input
+              className="border-2 border-black rounded-lg text-sm font-bold text-left w-[300px] h-[139px] break-words"
+              type="text"
+              onChange={(e) => {
+                socket.emit('ChatEvent', e.target.value)
+                setMessage(e.target.value)
+              }}
+            />
+          </div>
+          <PrimaryButton
+            onClick={() => {
+              socket.emit('ChatEvent', {
+                hello: message,
+              })
+            }}
+            className="border mx-2 p-2"
+          >
+            Submit
+          </PrimaryButton>
+        </div>
+      </div>
+    </>
   )
 }
 
