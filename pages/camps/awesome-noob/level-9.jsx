@@ -5,12 +5,10 @@
 import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
-import { getSession } from 'next-auth/react'
 import ConfettiGenerator from 'confetti-js'
 import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
-
 
 export default function Level9() {
   const router = useRouter()
