@@ -29,6 +29,18 @@ export default function Level5() {
         },
       }
     )
+    let post = await standService.post(
+      `/api/awsm-level5`,
+      {
+        badge_id: 2,
+        steps: commandlength,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
   }
   const [gameState, setGameState] = useState({
     playerIndex: 6,
@@ -632,7 +644,7 @@ export default function Level5() {
               </ul>
             </div>
 
-            {commandlength < 7 ? (
+            {commandlength < 10 ? (
               <>
                 <div className="overflow-scroll h-[100px] md:overflow-auto md:h-full">
                   <div className="flex flex-row justify-center items-center ml-2 mb-2">
