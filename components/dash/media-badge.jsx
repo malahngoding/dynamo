@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from '@/components/Image'
 
 export const MediaBadge = (props) => {
-  switch (props.media[1].media) {
+  switch (props.data[0].type) {
     case 'image':
       return <ImageBadge route={props} />
     case 'svg':
@@ -18,12 +18,11 @@ export const MediaBadge = (props) => {
 }
 
 const ImageBadge = (props) => {
-  console.log(props.route.media[0].tester)
   return (
     <div>
       <Image
         className="opacity-100"
-        src={props.route.media[0].tester}
+        src={props.route.data[0].media}
         alt="badge"
         width="300"
         height="300"

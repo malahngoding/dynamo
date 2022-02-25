@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable prettier/prettier */
 import { standService } from '@/lib/service'
 import { useSession } from 'next-auth/react'
@@ -87,12 +88,34 @@ export default function Dash() {
 }
 
 const BadgeDetail = () => {
+  const { data: session, status } = useSession()
+  const [dataDetail, setDataDetail] = useState(null)
   const tes = [{ tester: '/static/images/badge_one_year.png' }, { media: 'image' }]
   const shown = useBadgeDetail((state) => state.shown)
   const toggleBadgeDetail = useBadgeDetail((state) => state.toggleBadgeDetail)
+  useEffect(() => {
+    if (status === 'authenticated') {
+      standService
+        .post(
+          `/api/get-badge-year-user`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${session.dynamoToken}`,
+            },
+          }
+        )
+        .then(function (response) {
+          setDataDetail(response.data)
+        })
+        .catch(function (error) {
+          // handle error
+        })
+    }
+  }, [session])
   return (
     <div
-      className={`absolute inset-x-0 top-0 w-full bg-black-400 opacity-90 overflow-y-auto my-20 ${
+      className={`absolute inset-x-0 top-0 w-full h-screen bg-black-400 opacity-90 my-20 overflow-y-auto ${
         shown === false ? 'hidden' : 'block'
       }`}
     >
@@ -107,13 +130,20 @@ const BadgeDetail = () => {
         </button>
       </div>
       <div className="flex justify-center items-center">
-        <MediaBadge media={tes} />
+        {dataDetail === null ? <p>Loading</p> : <MediaBadge data={dataDetail} />}
       </div>
       <div className="flex justify-center items-center">
-        <p className="uppercase font-bold text-base opacity-100">{'1 year User'}</p>
+        {dataDetail === null ? (
+          <p className="uppercase font-bold text-base opacity-100"></p>
+        ) : (
+          <p className="uppercase font-bold text-base opacity-100">{dataDetail[0].title}</p>
+        )}
       </div>
-      <div className="flex justify-center items-center opacity-100">
-        <p>{'Badge use case #2 - 1-Year User'}</p>
+      <div className="flex justify-center items-center opacity-100 mb-4">
+        {dataDetail === null ? <p></p> : <p>{dataDetail[0].description}</p>}
+      </div>
+      <div className="flex justify-center items-center opacity-100 break-words text-center mx-6 ">
+        <p>{'Users have joined for 1 year at malahngoding'}</p>
       </div>
     </div>
   )
