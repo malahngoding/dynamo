@@ -23,11 +23,29 @@ export default function Feedback() {
         )
         .then(function (response) {
           // handle success
-          console.log(response.data)
           if (response.data.success === false) {
             alert(response.data.message[0])
           } else {
-            router.push('/')
+            standService
+              .post(
+                `/api/awsm-noob-data`,
+                {
+                  level: 0,
+                  steps: 0,
+                },
+                {
+                  headers: {
+                    Authorization: `Bearer ${session.dynamoToken}`,
+                  },
+                }
+              )
+              .then(function (response) {
+                if (response.data.success === false) {
+                  alert(response.data.message[0])
+                } else {
+                  router.push('/')
+                }
+              })
           }
         })
         .catch(function (error) {

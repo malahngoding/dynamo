@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
-/* eslint-disable no-case-declarations */
-/* eslint-disable prettier/prettier */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import Image from '@/components/Image'
 import { PrimaryButton } from '@/components/design/button'
@@ -12,7 +11,7 @@ import { standService } from '@/lib/service'
 import { getSession, useSession } from 'next-auth/react'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 
-export default function Level1() {
+export default function Level1(props) {
   const router = useRouter()
   const [playerIndex, setPlayerIndex] = useState(4)
   const [trophyIndex] = useState(0)
@@ -20,6 +19,7 @@ export default function Level1() {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [level, setLevel] = useState('')
   const commandlength = arrayOfCommand.length
   const { data: session, status } = useSession()
   const maps = [
@@ -59,7 +59,7 @@ export default function Level1() {
         return true
       }
     })
-    console.log(index)
+
     return index
   }
 
@@ -142,22 +142,24 @@ export default function Level1() {
   }
 
   useEffect(() => {
-    if (successModal === true) {
-      const confettiSettings = { target: 'my-canvas' }
-      const confetti = new ConfettiGenerator(confettiSettings)
-      confetti.render()
-      setTimeout(() => {
-        router.push('http://localhost:3000/camps/awesome-noob/level-2')
-        confetti.clear()
-      }, 5000)
-      setTimeout(() => {
-        PostData()
-        setSuccessModal(false)
-      }, 2000)
-    } else if (failureModal === true) {
-      setTimeout(() => {
-        setFailureModal(false)
-      }, 2000)
+    if (status === 'authenticated' && window !== null) {
+      if (successModal === true) {
+        const confettiSettings = { target: 'my-canvas' }
+        const confetti = new ConfettiGenerator(confettiSettings)
+        confetti.render()
+        setTimeout(() => {
+          router.push('/camps/awesome-noob/level-2')
+          confetti.clear()
+        }, 5000)
+        setTimeout(() => {
+          PostData()
+          setSuccessModal(false)
+        }, 2000)
+      } else if (failureModal === true) {
+        setTimeout(() => {
+          setFailureModal(false)
+        }, 2000)
+      }
     }
   }, [successModal, failureModal, router])
 
@@ -338,17 +340,44 @@ const ToastFailure = () => {
 }
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+
   if (session === null) {
     return {
       redirect: {
         destination: '/',
       },
     }
-  }
-  return {
-    props: {
-      isAuthenticated: true,
-      dynamoToken: session.dynamoToken,
-    }, // will be passed to the page component as props
+  } else {
+    const session = await getSession(context)
+    const url_location = context.resolvedUrl
+    let ids = url_location.split('-')
+
+    let res = await standService.post(
+      `/api/check-awsm-noob`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
+    if (res !== null) {
+      let user_position = res.data + 1
+      if (parseInt(ids[2]) > user_position) {
+        return {
+          redirect: {
+            destination: `/camps/awesome-noob/level-${user_position}`,
+          },
+        }
+      }
+    }
+    return {
+      props: {
+        isAuthenticated: true,
+        dynamoToken: session.dynamoToken,
+        test: res.data,
+        sesi: ids[2],
+      }, // will be passed to the page component as props
+    }
   }
 }
