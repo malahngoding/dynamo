@@ -13,15 +13,11 @@ import '@fontsource/montserrat/900.css'
 import '@/styles/tailwind.css'
 
 import { ThemeProvider } from 'next-themes'
-import Head from 'next/head'
 
 export default function App({ Component, pageProps }) {
   return (
     <SessionProvider session={pageProps.session}>
       <ThemeProvider attribute="class" defaultTheme="light">
-        <Head>
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
-        </Head>
         <Component {...pageProps} />
       </ThemeProvider>
     </SessionProvider>
