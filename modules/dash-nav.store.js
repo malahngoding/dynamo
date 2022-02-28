@@ -7,3 +7,11 @@ export const useDashNav = create((set) => ({
       shown: !state.shown,
     })),
 }))
+
+export const useBadgeDetail = create((set) => ({
+  shown: false,
+  toggleBadgeDetail: () =>
+    set((state) => ({
+      shown: !state.shown,
+    })),
+}))

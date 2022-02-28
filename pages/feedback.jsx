@@ -4,7 +4,7 @@ import { standService } from '@/lib/service'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export default function Study() {
+export default function Feedback() {
   const { data: session, status } = useSession()
   const [feedback, setFeedback] = useState('')
   const router = useRouter()
@@ -48,7 +48,6 @@ export default function Study() {
             placeholder="Alasan kamu malahngoding?"
           />
         </div>
-
         <PrimaryButton onClick={() => handleClick()} className="border mx-2 p-2">
           Submit
         </PrimaryButton>
