@@ -10,6 +10,7 @@ import ConfettiGenerator from 'confetti-js'
 import { useRouter } from 'next/router'
 import { standService } from '@/lib/service'
 import { getSession, useSession } from 'next-auth/react'
+import { LayoutWrapper } from '@/components/LayoutWrapper'
 
 export default function Level1() {
   const router = useRouter()
@@ -161,14 +162,14 @@ export default function Level1() {
   }, [successModal, failureModal, router])
 
   return (
-    <>
+    <LayoutWrapper>
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div className="z-20">
-        <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32">
-          {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
-          {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
-        </div>
-        <div className="flex flex-col flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
+        {/* <div className="hidden w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
+        {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
+        {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
+        {/* </div> */}
+        <div className="flex flex-col flex-wrap justify-center my-20 items-center w-full md:flex md:flex-row md:justify-center md:item-center">
           <div className="grid grid-cols-3">
             {maps.map((item, index) => (
               <div
@@ -269,12 +270,12 @@ export default function Level1() {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
 const ToastSuccess = () => {
   return (
-    <div className="flex flex-row justify-center items-center border-2 border-black bg-black rounded-lg p-1">
+    <div className="w-[200px] m-5 flex flex-row justify-center items-center border-2 border-black bg-black rounded-lg p-1">
       <div>
         <div className="flex justify-center items-center rounded-full w-[30px] h-[30px] bg-green mr-2">
           <svg
@@ -302,7 +303,7 @@ const ToastSuccess = () => {
 }
 const ToastFailure = () => {
   return (
-    <div className="flex flex-row justify-start items-center border-2 border-black bg-black rounded-lg p-1">
+    <div className="w-[200px] m-5 flex flex-row justify-start items-center border-2 border-black bg-black rounded-lg p-1">
       <div>
         <div className="flex justify-center items-center rounded-full w-[30px] h-[30px] bg-red ml-1 mr-10">
           <svg
