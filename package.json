@@ -6,7 +6,7 @@
     "dev": "next dev",
     "export": "export NODE_OPTIONS=--openssl-legacy-provider && next build && next export",
     "build": "next build ",
-    "start": "next build && next start",
+    "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
