@@ -30,10 +30,9 @@ export default function Level5() {
       }
     )
     let post = await standService.post(
-      `/api/awsm-level5`,
+      `/api/associate-badge`,
       {
         badge_id: 2,
-        steps: commandlength,
       },
       {
         headers: {

@@ -13,6 +13,7 @@ export default function User() {
   const [badge, setBadge] = useState('')
   const [loading, setLoading] = useState(false)
   const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL
+  // console.log(session.dynamoToken)
 
   const getBadge = async () => {
     let get = await standService
