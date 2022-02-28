@@ -14,6 +14,7 @@ export default function Level3() {
   const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [level, setLevel] = useState('')
   const { data: session, status } = useSession()
 
   const PostData = async () => {
@@ -466,6 +467,7 @@ export default function Level3() {
       stoneIndex3: 5,
     })
   }
+
   useEffect(() => {
     if (successModal === true) {
       const confettiSettings = { target: 'my-canvas' }
@@ -476,8 +478,8 @@ export default function Level3() {
         confetti.clear()
       }, 5000)
       setTimeout(() => {
-        PostData()
         setSuccessModal(false)
+        PostData()
       }, 2000)
     } else if (failureModal === true) {
       setTimeout(() => {
@@ -715,17 +717,44 @@ const ToastFailure = () => {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+
   if (session === null) {
     return {
       redirect: {
         destination: '/',
       },
     }
-  }
-  return {
-    props: {
-      isAuthenticated: true,
-      dynamoToken: session.dynamoToken,
-    }, // will be passed to the page component as props
+  } else {
+    const session = await getSession(context)
+    const url_location = context.resolvedUrl
+    let ids = url_location.split('-')
+
+    let res = await standService.post(
+      `/api/check-awsm-noob`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
+    if (res !== null) {
+      let user_position = res.data + 1
+      if (parseInt(ids[2]) > user_position) {
+        return {
+          redirect: {
+            destination: `/camps/awesome-noob/level-${user_position}`,
+          },
+        }
+      }
+    }
+    return {
+      props: {
+        isAuthenticated: true,
+        dynamoToken: session.dynamoToken,
+        test: res.data,
+        sesi: ids[2],
+      }, // will be passed to the page component as props
+    }
   }
 }
