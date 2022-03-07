@@ -1,0 +1,119 @@
+---
+title: 'Next.js'
+date: '2022-03-09'
+lastmod: '2022-03-09'
+tags: ['nextjs']
+draft: false
+summary: 'Javascript berfungsi membuat sebuah halaman website lebih interaktif dan dinamis.'
+images: ['/static/images/canada/mountains.jpg']
+authors: ['default']
+emoji: 'https://emojicdn.elk.sh/%F0%9F%95%B6%EF%B8%8F'
+---
+
+### **Pengertian Next.JS**
+
+Next.js adalah sebuah framework yang dibuat khusus untuk React.js, framework ini bisa dibilang sebagai penyempurna React.js karena berhasil memperbaiki kekurangan React.js, terutama dalam hal rendering.
+
+![enter image description here](https://camo.githubusercontent.com/54d64f1260052c96ce70c540bd64ee83edbe865aa765941bbc012821744fe265/68747470733a2f2f6173736574732e7a6569742e636f2f696d6167652f75706c6f61642f76313533383336313039312f7265706f7369746f726965732f6e6578742d6a732f6e6578742d6a732e706e67)
+
+Next.js merupakan framework yang siap untuk membangun sebuah project dengan mudah (production ready). Artinya, ketika kamu melakukan setup project Next.js untuk pertama kali, project tersebut siap untuk dijalankan. Dengan demikian, kamu tidak perlu mengubah dari mode development ke mode production terlebih dahulu.
+
+Disamping itu, Next.js adalah framework full-stack. Artinya, Next.js merupakan framework front-end untuk membangun tampilan website sekaligus framework back-end untuk menangani proses rendering dan pengelolaan database.
+
+Dengan begitu, kamu tidak perlu menggunakan dua framework berbeda ketika membangun website.
+
+Tak heran, banyak perusahaan yang memakai Next.js untuk website mereka karena dianggap praktis dan efisien. Contohnya adalah TikTok, Hulu, Nike, AT&T, Ticketmaster, dan Marvel.
+
+![enter image description here](https://assets.materialup.com/uploads/ae464543-2843-4e93-8384-9cc209381fc4/preview.png)
+
+### **Cara Kerja NextJS**
+
+Cara kerja Next.js adalah melakukan proses rendering website pada server (pre-rendering) sehingga ketika browser meminta sebuah halaman, server langsung merespon dengan memunculkan halaman berformat HTML.
+
+Kenapa bisa begitu? Server Next.js sudah menyiapkan bundle package berisi React, JavaScript, dan HTML. Jadi, browser tidak perlu memanipulasi Document Object Model (DOM) terhadap package React dan JavaScript agar menampilkan HTML.
+
+Hasilnya, konten website bisa ditampilkan secara instan dan pengguna tidak perlu menunggu proses rendering.
+
+Hal tersebut berbeda dengan React.js di mana proses rendering website terjadi pada browser (client-side rendering). Artinya, jika ukuran website cukup besar, otomatis proses rendering akan memakan waktu yang lama.
+
+### **Fitur Pada NextJS**
+
+1.  **Routing Pages**
+
+Pada Next.js, semua file halaman pada folder pages juga merupakan file routingnya. Artinya, kamu tidak perlu membuat file routing yang berbeda untuk setiap halaman.
+
+Dengan demikian, waktu yang diperlukan untuk menulis kode program jadi lebih singkat. Dampak positifnya, project yang dibangun akan cepat selesai.
+
+2.  **Built-in CSS Support**
+
+Pada Next.js, kamu bisa mengimpor CSS dari file JavaScript karena karena Next.js memiliki fitur build in CSS support yang canggih.
+
+Next.js menggunakan tag `<style.jsx>` secara default sehingga semua skrip CSS di dalam tag tersebut dapat dipisahkan untuk halaman tertentu. Dengan begitu, kamu tidak perlu menulis ulang skrip CSS pada file halaman.
+
+3.  **Layout Component**
+
+Next.js memungkinkan kamu untuk memecah konstruksi halaman menjadi sekumpulan komponen. Nantinya, setiap komponen dapat digunakan kembali pada halaman lain dengan mudah.
+
+Contohnya, kamu bisa menggunakan komponen header yang sama untuk semua halaman website tanpa perlu menulis skrip header berulang kali.
+
+4.  **Image Optimization**
+
+Next.js menggunakan komponen gambar `next/image`, yang merupakan penyempurna dari komponen HTML `<img>`. Hal ini menyebabkan Next.js lebih cocok untuk ekosistem website modern.
+
+Pasalnya, komponen tersebut dapat melakukan resize gambar sesuai dengan konfigurasi yang ditetapkan browser. Ukuran gambar jadi lebih responsif terhadap perangkat yang digunakan untuk membuka website.
+
+5.  **Font Optimization**
+
+Secara default, Next.js akan mengatur inline font CSS secara otomatis pada tahap build. Hal tersebut dapat mempercepat proses mengenalkan (deklarasi) font.
+
+Hasilnya, waktu yang dibutuhkan sebuah halaman untuk memuat teks hingga akhirnya semua konten dapat dimunculkan jadi lebih singkat.
+
+6.  **Script Optimization**
+
+Komponen script pada Next.js memungkinkan kamu mengatur prioritas loading pada script pihak ketiga.
+
+Sebagai contoh, kamu punya tiga script yaitu analisis konten, pengelola iklan, dan widget media sosial. Kamu bisa mengatur analisis konten yang jadi prioritas utama dengan menempatkannya pada baris teratas.
+
+Hal tersebut dapat mempercepat loading website dan mencegah konten tidak muncul di website.
+
+7.  **Static File Serving**
+
+Next.js dapat menyiapkan file statis pada folder public. Gunanya, untuk memudahkan kamu ketika memanggil dan menggunakan file statis tersebut pada halaman tertentu.
+
+Contohnya, pada file gambar, kamu bisa langsung memanggil bahkan mengatur ukuran gambar tersebut di setiap halaman yang dikehendaki. Jadi, kamu tidak perlu mengunggah beberapa gambar yang sama dalam berbagai ukuran.
+
+8.  **Fast Refresh**
+
+Fast Refresh adalah fitur Next.js yang memungkinkan sebuah halaman melakukan refresh sesaat setelah mendeteksi perubahaan script.
+
+Fitur ini bermanfaat bagi developer, karena kamu tidak perlu lagi merefresh browser untuk melihat hasil setiap menulis atau mengubah script.
+
+Selain delapan fitur yang disebutkan di atas, Next.js juga membawa fitur-fitur bawaan React.js yang bisa kamu gunakan tanpa adanya permasalahan dukungan sama sekali.
+
+### **Kelebihan NextJS**
+
+1.  **SEO Friendly**
+
+Pada Next.js, HTML sudah terbentuk saat browser memuat halaman website. Hal ini memudahkan Google melakukan crawling konten website dalam format HTML.
+
+![enter image description here](https://niagaspace.sgp1.digitaloceanspaces.com/blog/wp-content/uploads/2021/11/17090001/next-js-seo-friendly.jpg)
+
+Hal itu membantu pemahaman Google lebih baik sehingga proses indeks bisa lebih mulus. Pada akhirnya, website akan cepat meranking di mesin pencari.
+
+Kalau mudah ditemukan pengunjung, potensi traffic website juga lebih besar, bukan? Itulah sebabnya Next.js adalah framework yang SEO Friendly.
+
+2.  **Setup Project Mudah**
+
+Cara setup project menggunakan Next.js sangat mudah, bahkan untuk pemula sekalipun. Kamu hanya perlu menyiapkan environment Node.js, lalu menjalankan sebuah script, tak perlu menyiapkan plugin ataupun library lain.
+
+Cara setup project Next.js ini bisa dilakukan pada platform Mac, Windows, atau Linux.
+
+Bahkan, kamu bisa mensetup Next.js di layanan hosting yang mendukung environment Node.js.
+
+3.  **Performa yang baik**
+
+Next.js punya performa yang dapat diandalkan karena menerapkan dua fungsi yaitu code splitting dan client side navigation.
+
+Berkat adanya **Code Splitting,** Next.js akan melakukan rendering JavaScript pada halaman yang akan dimuat di browser, bukan semua halaman. Dengan begitu, waktu yang dibutuhkan untuk memuat halaman jadi lebih cepat.
+
+Dengan **Client-Side Navigation,** kamu bisa menggunakan komponen link untuk membuat navigasi antar halaman seperti pada Single-Page Application. Artinya, kamu tidak akan merasakan jeda loading ketika berpindah-pindah halaman di browser.
