@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react'
 import { getSession, useSession } from 'next-auth/react'
 import CustomLink from '@/components/Link'
 import axios from 'axios'
-
 import { useRouter } from 'next/router'
 
 export default function FlashCardAnsweringQuestion(props) {
@@ -54,6 +53,13 @@ export default function FlashCardAnsweringQuestion(props) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+  if (session === null) {
+    return {
+      redirect: {
+        destination: `${process.env.NEXTAUTH_URL}/study/flash-card/404`,
+      },
+    }
+  }
   const questionss = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/get/${context.query.id}`,
     {
