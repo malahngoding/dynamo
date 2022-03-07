@@ -36,6 +36,14 @@ export default function FlashCardResults(props) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+
+  if (session === null) {
+    return {
+      redirect: {
+        destination: `${process.env.NEXTAUTH_URL}/study/flash-card/404`,
+      },
+    }
+  }
   const score = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-result/`, {
     headers: {
       Authorization: `Bearer ${session.dynamoToken}`,
