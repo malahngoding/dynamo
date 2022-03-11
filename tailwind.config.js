@@ -30,7 +30,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
-        mono: ["monospace", ...defaultTheme.fontFamily.mono],
+        mono: ["Noto Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         primary: colors.teal,

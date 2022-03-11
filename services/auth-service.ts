@@ -6,5 +6,6 @@ export const authService = async (): Promise<{
     status: string;
   };
 }> => {
-  return await standService.get("/", {});
+  const data = await standService.get("/api", {});
+  return data.data;
 };
