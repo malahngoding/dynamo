@@ -4,27 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "export": "export NODE_OPTIONS=--openssl-legacy-provider && next build && next export",
     "build": "next build ",
     "start": "next start",
-    "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
-    "postinstall": "husky install",
-    "commit": "cz"
-  },
-  "lint-staged": {
-    "./src/**/*.{ts,js,jsx,tsx}": [
-      "npm run lint --fix"
-    ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "npm run format"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
+    "lint": "next lint"
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.1",
@@ -71,25 +53,16 @@
     "zustand": "^3.5.9"
   },
   "devDependencies": {
-    "@commitlint/cli": "13.1.0",
-    "@commitlint/config-conventional": "13.1.0",
-    "@next/bundle-analyzer": "11.0.1",
-    "@svgr/webpack": "^5.5.0",
     "commitizen": "4.2.4",
     "cross-env": "^7.0.3",
-    "cz-conventional-changelog": "3.3.0",
     "dedent": "^0.7.0",
     "eslint": "^7.29.0",
     "eslint-config-next": "11.0.1",
-    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
     "file-loader": "^6.0.0",
     "globby": "11.0.3",
-    "husky": "^6.0.0",
     "inquirer": "^8.1.1",
     "lint-staged": "^11.0.0",
-    "prettier": "2.2.1",
     "rehype": "11.0.0",
     "remark-frontmatter": "3.0.0",
     "remark-parse": "9.0.0",

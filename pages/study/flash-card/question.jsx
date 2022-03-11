@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { PageSeo } from '@/components/SEO'
 import { UnderConstruction } from '@/components/UnderConstruction'

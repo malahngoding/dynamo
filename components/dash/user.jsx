@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-/* eslint-disable prettier/prettier */
-/* eslint-disable @next/next/no-img-element */
 import { useSession } from 'next-auth/react'
 import Image from '../Image'
 import { useEffect, useState } from 'react'

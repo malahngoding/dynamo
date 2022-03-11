@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/link-passhref */
-/* eslint-disable prettier/prettier */
 import CustomLink from '@/components/Link'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'

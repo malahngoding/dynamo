@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import Xendit from 'xendit-node'
 
 export default async function handler(req, res) {

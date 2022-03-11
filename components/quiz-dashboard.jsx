@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @next/next/link-passhref */
-/* eslint-disable prettier/prettier */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable prettier/prettier */
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'

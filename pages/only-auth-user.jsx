@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { getSession } from 'next-auth/react'
 

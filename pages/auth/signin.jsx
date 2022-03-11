@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { At, BrandGithub, BrandGoogle, Lock } from 'tabler-icons-react'
 import { standService } from '@/lib/service'
-import { check } from 'prettier'
 
 export default function SignIn({ providers, csrfToken }) {
   const { data: session, status } = useSession()

@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import Image from '@/components/Image'
 import { getSession } from 'next-auth/react'

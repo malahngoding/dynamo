@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable prettier/prettier */
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { getSession } from 'next-auth/react'
 import QRCode from 'qrcode'

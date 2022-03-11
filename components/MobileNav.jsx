@@ -48,7 +48,6 @@ const MobileNav = () => {
             <div key={`mobile-nav${link.title}`} className="px-12 py-4 w-full">
               <Link
                 href={link.href}
-                // eslint-disable-next-line prettier/prettier
                 className={`text-2xl tracking-widest ${
                   link.title === 'Bergabung'
                     ? 'text-red  dark:text-pink'

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import create from 'zustand'
 
 export const useLoading = create((set) => ({

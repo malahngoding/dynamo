@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable prettier/prettier */
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
