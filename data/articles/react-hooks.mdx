@@ -1,0 +1,127 @@
+# React Hooks
+
+Hooks merupakan penambahan baru pada _React_ 16.8. Hooks memungkinkan Anda menggunakan keadaan(_state_) dan fitur _React_ lainnya tanpa membuat sebuah kelas.
+
+### :fa-pencil: Hooks State
+
+Hooks merupakan fungsi yang memungkinkan Anda untuk “_mengaitkan_” state dan fitur-fitur lifecycle React dari function component. Hooks tidak dapat berfungsi didalam kelas ~ Hooks memungkinkan menggunakan React tanpa kelas. (_Kami tidak merekomendasikan Anda untuk membuat ulang komponen yang sudah ada, tetapi Anda dapat menggunakan Hooks untuk komponen yang baru jika diinginkan._)
+
+#### Cara mengimport Hook _useState_
+
+```javascript
+import React, { useState } from 'react'
+
+function BelajarReactHooks() {
+  // ...
+}
+```
+
+Hook adalah fungsi spesial yang memungkinkan Anda “_terhubung_” dengan fitur-fitur di React. Sebagai contoh, _useState_ adalah sebuah Hook yang memungkinkan Anda memberi _state_ pada _function components_.
+
+Contoh kelas react sebelumnya, sebagai berikut:
+
+```javascript
+class BelajarReactHooks extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Jumlah tombol yang Anda tekan: {this.state.count} kali</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>Tombol</button>
+      </div>
+    )
+  }
+}
+```
+
+Contoh kelas menggunakan Hooks, sebagai berikut:
+
+```javascript
+import React, { useState } from 'react'
+
+function BelajarReactHooks() {
+  // Deklarasi variabel state baru yang kita sebut dengan "count"
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>Jumlah tombol yang Anda tekan: {count} kali</p>
+      <button onClick={() => setCount(count + 1)}>Tombol</button>
+    </div>
+  )
+}
+```
+
+### :fa-rocket: Hooks Effect
+
+_useEffect_ adalah "side effect/efek samping" sebuah fungsi pada suatu komponen yang biasa digunakan untuk fetching data. Dapat dipanggil langsung atau dipanggil setelah terjadi perubahan.
+
+#### Cara mengimport Hook _useEffect_
+
+```javascript
+import React, { useEffect } from 'react'
+
+function BelajarReactHooks() {
+  // ...
+}
+```
+
+Hooks memungkinkan untuk menata atau mengatur efek samping pada suatu komponen dengan bagian-bagian mana yang terkait (seperti menambah dan menghapus suatu subscription), daripada memaksa pemisahan pada lifecycle method.
+
+Anda tentunya pernah melakukan pengambilan data, atau secara manual mengubah DOM dari komponen React sebelumnya. Kami menyebut operasi-operasi seperti ini “efek samping (side effects)” (atau singkatnya “efek (effects)”) karena dapat mempengaruhi komponen lain dan tidak dapat dilakukan pada saat proses render.
+
+Contoh kelas react sebelumnya, sebagai berikut:
+
+```javascript
+class BelajarReactHooks extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+
+  componentDidMount() {
+    document.title = `Jumlah tombol yang di tekan: ${this.state.count} kali`
+  }
+  componentDidUpdate() {
+    document.title = `Jumlah tombol yang di tekan: ${this.state.count} kali`
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Jumlah tombol yang di tekan: {this.state.count} kali</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>Tombol</button>
+      </div>
+    )
+  }
+}
+```
+
+Contoh kelas menggunakan Hooks, sebagai berikut:
+
+```javascript
+import React, { useState, useEffect } from 'react'
+
+function BelajarReactHooks() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    document.title = `Jumlah tombol yang di tekan: ${count} kali`
+  })
+
+  return (
+    <div>
+      <p>Jumlah tombol yang di tekan: {count} kali</p>
+      <button onClick={() => setCount(count + 1)}>Tombol</button>
+    </div>
+  )
+}
+```

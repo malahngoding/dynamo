@@ -990,7 +990,7 @@ export default function Level8() {
       const confetti = new ConfettiGenerator(confettiSettings)
       confetti.render()
       setTimeout(() => {
-        router.push('http://localhost:3000/camps/awesome-noob/level-9')
+        router.push('/camps/awesome-noob/level-9')
         confetti.clear()
       }, 5000)
       setTimeout(() => {
