@@ -344,7 +344,7 @@ export async function getServerSideProps(context) {
   if (session === null) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/camps/awesome-noob/login',
       },
     }
   } else {
