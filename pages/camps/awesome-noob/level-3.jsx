@@ -518,7 +518,7 @@ export default function Level3() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/finish.png"
+                      src="/static/images/laser-gun.png"
                       alt="User"
                       width="50"
                       height="50"

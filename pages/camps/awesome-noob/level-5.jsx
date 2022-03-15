@@ -559,7 +559,7 @@ export default function Level5() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/finish.png"
+                      src="/static/images/chip.png"
                       alt="User"
                       width="50"
                       height="50"

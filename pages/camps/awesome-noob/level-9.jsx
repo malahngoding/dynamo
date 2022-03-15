@@ -1508,10 +1508,10 @@ export default function Level9() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/chess.png"
+                      src="/static/images/atom.png"
                       alt="User"
-                      width="50"
-                      height="50"
+                      width="70"
+                      height="70"
                     />
                   ) : null}{' '}
                   {gameState?.keys === index ? (
