@@ -6,10 +6,25 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { email } from '@/data/siteMetadata'
+import { standService } from '@/lib/service'
+
 export const QuizResultPages = (props) => {
   const { data: session, status } = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
+  const PostData = async () => {
+    let post = await standService.post(
+      `/api/associate-badge`,
+      {
+        badge_id: 3,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${session.dynamoToken}`,
+        },
+      }
+    )
+  }
 
   return (
     <div>
@@ -66,9 +81,12 @@ export const QuizResultPages = (props) => {
           </div>
         </div>
         <CustomLink href="/study/flash-card">
-          <div className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold">
+          <button
+            className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold"
+            onClick={() => PostData()}
+          >
             Selesai
-          </div>
+          </button>
         </CustomLink>
       </div>
     </div>

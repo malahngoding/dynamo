@@ -49,6 +49,14 @@ export async function getServerSideProps(context) {
       Authorization: `Bearer ${session.dynamoToken}`,
     },
   })
+  const quizGroup = await axios.post(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`,
+    {
+      headers: {
+        Authorization: `Bearer ${session.dynamoToken}`,
+      },
+    }
+  )
   return {
     props: {
       score: score.data,
