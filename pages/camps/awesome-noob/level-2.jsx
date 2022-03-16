@@ -204,7 +204,7 @@ export default function Level2() {
                   {trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/finish.png"
+                      src="/static/images/screw.png"
                       alt="User"
                       width="50"
                       height="50"

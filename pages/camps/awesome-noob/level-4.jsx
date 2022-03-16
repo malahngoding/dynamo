@@ -522,10 +522,10 @@ export default function Level4() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/finish.png"
+                      src="/static/images/nuclear.png"
                       alt="User"
                       width="50"
-                      height="50"
+                      height="70"
                     />
                   ) : null}{' '}
                   {gameState?.stoneIndex1 === index ? (

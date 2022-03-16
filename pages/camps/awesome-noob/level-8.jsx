@@ -1034,7 +1034,7 @@ export default function Level8() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/chess.png"
+                      src="/static/images/bitcoin.png"
                       alt="User"
                       width="50"
                       height="50"

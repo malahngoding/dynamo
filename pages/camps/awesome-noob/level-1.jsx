@@ -194,7 +194,7 @@ export default function Level1(props) {
                   {trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/finish.png"
+                      src="/static/images/wrench.png"
                       alt="User"
                       width="50"
                       height="50"

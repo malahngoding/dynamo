@@ -644,10 +644,10 @@ export default function Level7() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/chess.png"
+                      src="/static/images/space-suit.png"
                       alt="User"
-                      width="50"
-                      height="50"
+                      width="70"
+                      height="70"
                     />
                   ) : null}{' '}
                   {gameState?.keys === index ? (

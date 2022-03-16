@@ -660,10 +660,10 @@ export default function Level6() {
                   {gameState?.trophyIndex === index ? (
                     <Image
                       className=""
-                      src="/static/images/finish.png"
+                      src="/static/images/pc.jpg"
                       alt="User"
-                      width="50"
-                      height="50"
+                      width="100"
+                      height="100"
                     />
                   ) : null}{' '}
                   {gameState?.stoneIndex1 === index ? (
