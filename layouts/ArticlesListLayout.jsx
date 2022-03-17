@@ -7,6 +7,8 @@ import Image from '@/components/Image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { ArticleCard } from '@/components/ArticleCard'
+import _ from 'lodash'
+import { number } from 'sharp/lib/is'
 
 const ArticlesListLayout = ({
   posts,
@@ -15,14 +17,18 @@ const ArticlesListLayout = ({
   category,
   initialDisplayPosts = [],
   pagination,
+  articleCategory,
+  mantap,
 }) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
-
   const router = useRouter()
+  const jsCategory = []
+  const phpCategory = []
+  const etcCategory = []
 
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
@@ -31,6 +37,21 @@ const ArticlesListLayout = ({
     event.preventDefault()
     router.push(rule)
   }
+
+  // Article Group
+  const groupInfo = mantap.reduce((tags, value, index) => {
+    if (value.tags.includes('javascript')) {
+      return jsCategory.push(value.article)
+    }
+    if (value.tags.includes(...'php')) {
+      return phpCategory.push(value.article)
+    } else {
+      return etcCategory.push(value.article)
+    }
+  }, {})
+  const arrayJsCategory = [].concat.apply([], jsCategory)
+  const arrayPhpCategory = [].concat.apply([], phpCategory)
+  const arrayEtcCategory = [].concat.apply([], etcCategory)
 
   return (
     <>
@@ -58,9 +79,91 @@ const ArticlesListLayout = ({
           </div>
         </div>
         <section className="container mx-auto" style={{ maxWidth: '960px' }}>
+          {!filteredBlogPosts.length && 'No posts found.'}
+          <h1 className="text-3xl font-black text-left text-black dark:text-yellow md:text-center md:m-10">
+            Javascript
+          </h1>
           <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
-            {!filteredBlogPosts.length && 'No posts found.'}
-            {displayPosts.map((frontMatter) => {
+            {arrayJsCategory.map((frontMatter) => {
+              const { slug, date, title, summary, tags, emoji } = frontMatter
+              return (
+                <Link key={slug} href={`/study/${category}/${slug}`} passHref>
+                  <a>
+                    <ArticleCard>
+                      <Image src={emoji} width="48" height="48" alt="Article" />
+                      <time dateTime={date}>{formatDate(date)}</time>
+                      <h1 className="font-extrabold text-xl"> {title}</h1>
+                      <div className="flex flex-row">
+                        {tags.map((tag) => (
+                          <Tag key={tag} text={tag} />
+                        ))}
+                      </div>
+                      <p className="text-sm mt-2 hidden">{summary}</p>
+                    </ArticleCard>
+                  </a>
+                </Link>
+              )
+            })}
+            {/* {displayPosts.map((frontMatter) => {
+              const { slug, date, title, summary, tags, emoji } = frontMatter
+              return (
+                <Link key={slug} href={`/study/${category}/${slug}`} passHref>
+                  <a>
+                    <ArticleCard>
+                      <Image src={emoji} width="48" height="48" alt="Article" />
+                      <time dateTime={date}>{formatDate(date)}</time>
+                      <h1 className="font-extrabold text-xl"> {title}</h1>
+                      <div className="flex flex-row">
+                        {tags.map((tag) => (
+                          <Tag key={tag} text={tag} />
+                        ))}
+                      </div>
+                      <p className="text-sm mt-2 hidden">{summary}</p>
+                    </ArticleCard>
+                  </a>
+                </Link>
+              )
+            })} */}
+          </div>
+          <div className="text-3xl font-black text-left text-black dark:text-yellow md:text-center md:m-10">
+            Lihat Semua
+          </div>
+        </section>
+        <section className="container mx-auto" style={{ maxWidth: '960px' }}>
+          {!filteredBlogPosts.length && 'No posts found.'}
+          <h1 className="text-3xl font-black text-left text-black dark:text-yellow md:text-center md:m-10">
+            PHP
+          </h1>
+          <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
+            {arrayPhpCategory.map((frontMatter) => {
+              const { slug, date, title, summary, tags, emoji } = frontMatter
+              return (
+                <Link key={slug} href={`/study/${category}/${slug}`} passHref>
+                  <a>
+                    <ArticleCard>
+                      <Image src={emoji} width="48" height="48" alt="Article" />
+                      <time dateTime={date}>{formatDate(date)}</time>
+                      <h1 className="font-extrabold text-xl"> {title}</h1>
+                      <div className="flex flex-row">
+                        {tags.map((tag) => (
+                          <Tag key={tag} text={tag} />
+                        ))}
+                      </div>
+                      <p className="text-sm mt-2 hidden">{summary}</p>
+                    </ArticleCard>
+                  </a>
+                </Link>
+              )
+            })}
+          </div>
+        </section>
+        <section className="container mx-auto" style={{ maxWidth: '960px' }}>
+          {!filteredBlogPosts.length && 'No posts found.'}
+          <h1 className="text-3xl font-black text-left text-black dark:text-yellow md:text-center md:m-10">
+            Lain - lain
+          </h1>
+          <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
+            {arrayEtcCategory.map((frontMatter) => {
               const { slug, date, title, summary, tags, emoji } = frontMatter
               return (
                 <Link key={slug} href={`/study/${category}/${slug}`} passHref>

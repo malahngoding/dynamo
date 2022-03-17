@@ -2,7 +2,7 @@
 title: 'Cara Membuat Button Dengan Tailwind'
 date: '2021-10-06'
 lastmod: '2021-10-06'
-tags: ['html', 'tailwind']
+tags: ['html', 'tailwind', 'others']
 draft: false
 summary: 'Seperti yang telah di katakan, Selain memiliki kelebihan PHP, PHP juga memiliki beberapa kekurangan.'
 authors: ['default']
