@@ -1,0 +1,96 @@
+---
+title: 'React State Management'
+date: '2022-04-30'
+lastmod: '2022-04-30'
+tags: ['javascript']
+draft: false
+summary: 'Setelah membaca apa itu PHP beserta fungsinya, Anda mungkin penasaran mengapa kita tidak bisa menggunakan JavaScript saja..'
+images: ['/static/images/canada/mountains.jpg']
+authors: ['default']
+emoji: 'https://emojicdn.elk.sh/%F0%9F%91%94'
+---
+
+# State Komponen
+
+### Apa yang `setState` lakukan?
+
+`setState()` merencanakan suatu pembaruan ke suatu `state` objek komponen. Ketika _state_ berubah, komponen merespons dengan me-_render_ ulang.
+
+### Apa perbedaan antara `state` dan `props`?
+
+`props` (kependekan dari “properti”) dan `state` adalah objek JavaScript biasa. Meskipun keduanya menyimpan informasi yang mempengaruhi keluaran dari _render_, keduanya berbeda satu sama lain: `props` diteruskan _ke_ komponen (mirip dengan _function parameters_) sedangkan `state` dikelola _dalam_ komponen (mirip dengan variabel yang dideklarasikan dalam suatu _function_).
+
+### Kenapa `setState` memberikan saya `value` yang salah?
+
+Di React, baik `this.props` dan `this.state` mewakili nilai yang telah di-_render_, yaitu apa yang saat ini ada di layar.
+
+Pemanggilan `setState` bersifat _asynchronous_ - jangan mengandalkan `this.state` untuk mencerminkan nilai baru segera setelah memanggil `setState`. Mengoper pembaruan _function_ sebagai ganti _object_ jika anda perlu menghitung nilai berdasarkan _state_ saat ini (lihat di bawah untuk lebih lanjut).
+
+Contoh kode yang _tidak_ akan berperilaku seperti yang diharapkan:
+
+```javascript
+incrementCount() {
+  // Catatan: ini mungkin *tidak* akan bekerja sebagaimana mestinya.
+  this.setState({count: this.state.count + 1});
+}
+
+handleSomething() {
+  // Anggap saja `this.state.count` dimulai dari 0.
+  this.incrementCount();
+  this.incrementCount();
+  this.incrementCount();
+  // Ketika React me-render ulang komponennya, `this.state.count` akan menjadi 1, tapi anda mengharapkannya menjadi 3.
+
+  // Ini karena fungsi `incrementCount()` di atas membacanya dari `this.state.count`,
+  // tapi React tidak memperbarui `this.state.count` sampai komponennya me-render ulang.
+  // Jadi `incrementCount()` akhirnya membaca `this.state.count` sebagai 0 setiap waktu, dan mengubahnya ke 1.
+
+  // Perbaikan dari masalah ini dijelaskan di bawah!
+}
+```
+
+### Bagaimana cara saya memperbarui `state` dengan `value` yang bergantung pada `state` saat ini?
+
+Oper sebuah _function_ bukan _object_ ke dalam `setState` untuk memastikan pemanggilannya selalu menggunakan versi terbaru dari _state_ (lihat di bawah).
+
+### Apa perbedaan antara mengoper sebuah `object` atau `function` dalam `setState`?
+
+Mengoper pembaruan _function_ memungkinkan anda untuk mengakses nilai _state_ saat ini dalam pembaruan. Karena pemanggilan `setState` dikelompokkan, ini memungkinkan anda merangkai pembaruan dan memastikannya terjadi secara bertumpukan bukan bertentangan:
+
+```javascript
+incrementCount() {
+  this.setState((state) => {
+    // Penting: membaca `state` bukan `this.state` ketika memperbarui.
+    return {count: state.count + 1}
+  });
+}
+
+handleSomething() {
+  // Anggap saja `this.state.count` dimulai dari 0.
+  this.incrementCount();
+  this.incrementCount();
+  this.incrementCount();
+
+  // Jika anda membaca `this.state.count` sekarang, itu pasti tetap 0.
+  // Tapi ketika React me-render ulang komponennya, hasilnya akan menjadi 3.
+}
+```
+
+### Kapan `setState` _asynchronous_?
+
+Saat ini, `setState` _asynchronous_ di dalam _event handler_.
+
+Ini memastikan, sebagai contoh, jika kedua `Parent` dan `Child` memanggil `setState` selagi _click event_, `Child` tidak perlu me-_render_ ulang dua kali. Bahkan sebaliknya, React “membilas” pembaruan _state_ pada akhir _browser event_. Ini menghasilkan peningkatan kinerja yang signifikan pada aplikasi-aplikasi yang lebih besar.
+
+Ini adalah implementasi secara rinci untuk menghindari mengandalkannya secara langsung. Di versi yang mendatang, React akan melakukan sejumlah pembaruan secara _default_ dalam kasus-kasus yang lebih banyak.
+
+### Kenapa React tidak memperbarui `this.state` secara _synchronous_?
+
+Seperti yang sudah dijelaskan di bagian sebelumnya, React dengan sengaja “menunggu” sampai semua komponen memanggil `setState()` di _event handlers_ sebelum me-_render_ ulang. Ini meningkatkan kinerja dengan menghindari _render_ ulang yang tidak perlu.
+
+Namun, anda mungkin masih bertanya-tanya kenapa React tidak langsung memperbarui `this.state` tanpa proses _render_ ulang.
+
+Ada dua alasan utama:
+
+- Ini akan merusak konsistensi antara `props` dan `state`, menyebabkan masalah yang sangat sulit untuk di-_debug_.
+- Ini akan membuat beberapa fitur baru yang sedang kami kerjakan menjadi mustahil untuk diimplementasikan.
