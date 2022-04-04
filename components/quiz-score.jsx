@@ -12,19 +12,6 @@ export const QuizResultPages = (props) => {
   const { data: session, status } = useSession()
   const [result, setResult] = useState([])
   const [updatequizgroup, setUpdateQuizGroup] = useState(0)
-  const PostData = async () => {
-    let post = await standService.post(
-      `/api/associate-badge`,
-      {
-        badge_id: 3,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${session.dynamoToken}`,
-        },
-      }
-    )
-  }
 
   return (
     <div>
@@ -81,12 +68,11 @@ export const QuizResultPages = (props) => {
           </div>
         </div>
         <CustomLink href="/study/flash-card">
-          <button
-            className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold"
-            onClick={() => PostData()}
-          >
-            Selesai
-          </button>
+          <div className="flex flex-col justify-center items-center w-full">
+            <button className=" my-8 rounded-full py-3 px-4 border-2 border-purple-400 bg-white text-black font-bold">
+              Selesai
+            </button>
+          </div>
         </CustomLink>
       </div>
     </div>

@@ -15,6 +15,7 @@ export default function Level7() {
   const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const { data: session, status } = useSession()
 
   const PostData = async () => {
@@ -76,6 +77,7 @@ export default function Level7() {
   }
 
   const handleRun = () => {
+    setHideButtonModal(false)
     let currentInterval = 0
     let makeIntervalID = setInterval(() => {
       // HANDLE MOVEMENT
@@ -592,6 +594,7 @@ export default function Level7() {
       stoneIndex3: 4,
       keys: 5,
     })
+    setHideButtonModal(true)
   }
   useEffect(() => {
     if (successModal === true) {
@@ -776,7 +779,7 @@ export default function Level7() {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border rounded-xl  mx-2 py-2 px-4"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   Run
                 </PrimaryButton>

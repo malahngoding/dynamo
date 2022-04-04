@@ -12,13 +12,13 @@ import { getSession } from 'next-auth/react'
 
 export default function FlashCardResults(props) {
   const router = useRouter()
-
   return (
     <LayoutWrapper>
       <PageSeo
         title={siteMetadata.titleHandler('Flash Card')}
         description={siteMetadata.description}
       />
+
       <div className="hidden">
         <UnderConstruction title="Jawab Pertanyaan!" subTitle="Flash Card" />
       </div>
@@ -49,14 +49,7 @@ export async function getServerSideProps(context) {
       Authorization: `Bearer ${session.dynamoToken}`,
     },
   })
-  const quizGroup = await axios.post(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quiz-group-name/`,
-    {
-      headers: {
-        Authorization: `Bearer ${session.dynamoToken}`,
-      },
-    }
-  )
+
   return {
     props: {
       score: score.data,

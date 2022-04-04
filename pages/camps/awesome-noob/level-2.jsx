@@ -19,6 +19,7 @@ export default function Level2() {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const [level, setLevel] = useState('')
   const { data: session, status } = useSession()
   const commandlength = arrayOfCommand.length
@@ -64,6 +65,7 @@ export default function Level2() {
   }
 
   const handleRun = (item) => {
+    setHideButtonModal(false)
     let currentInterval = 0
 
     let makeIntervalID = setInterval(() => {
@@ -151,6 +153,7 @@ export default function Level2() {
   const reset = () => {
     setArrayOfCommand([])
     setPlayerIndex(6)
+    setHideButtonModal(true)
   }
 
   useEffect(() => {
@@ -279,7 +282,7 @@ export default function Level2() {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border mx-2 p-2"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   RUN
                 </PrimaryButton>

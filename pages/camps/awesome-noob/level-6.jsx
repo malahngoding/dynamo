@@ -42,6 +42,7 @@ export default function Level6() {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const maps = [
     { isPlayer: false, isStone: false, isFinish: false, x: 1, y: 1 },
     { isPlayer: false, isStone: true, isFinish: false, x: 2, y: 1 },
@@ -86,6 +87,7 @@ export default function Level6() {
   }
 
   const handleRun = (item) => {
+    setHideButtonModal(false)
     let currentInterval = 0
 
     let makeIntervalID = setInterval(() => {
@@ -609,6 +611,7 @@ export default function Level6() {
       stoneIndex3: 4,
       blackHoleIndex: 3,
     })
+    setHideButtonModal(true)
   }
   useEffect(() => {
     if (successModal === true) {
@@ -816,7 +819,7 @@ export default function Level6() {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border rounded-xl  mx-2 py-2 px-4"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   Run
                 </PrimaryButton>

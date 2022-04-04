@@ -29,6 +29,10 @@ class MyDocument extends Document {
             integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc"
             crossOrigin="anonymous"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          />
         </Head>
         <body className="antialiased text-black bg-white dark:bg-black dark:text-white">
           <Main />
