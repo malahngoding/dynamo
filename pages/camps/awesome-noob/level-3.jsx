@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -665,12 +666,20 @@ const Landing3 = () => {
   )
 }
 const Modal = () => {
+  const [nextPages, setNextPages] = useState(1)
   const [isOpen, setIsOpen] = useState(true)
+  const handleClick = () => {
+    setIsOpen(false)
+  }
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
       <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-400 p-4 z-30">
-        <button onClick={() => setIsOpen(false)}>
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-400 p-4 z-30 ${
+          nextPages === 1 ? '' : 'hidden'
+        }`}
+      >
+        <button onClick={() => setNextPages(nextPages + 1)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -698,6 +707,23 @@ const Modal = () => {
           <p>6. Tembak Kiri untuk menhancurkan batu di sebelah kiri</p>
           <p>7. Tembak Atas untuk menhancurkan batu di sebelah atas</p>
           <p>8. Tembak Bawah untuk menhancurkan batu di sebelah bawah</p>
+        </div>
+      </div>
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30 ${
+          nextPages === 2 ? '' : 'hidden'
+        }`}
+      >
+        <div className="opacity-100 text-black">
+          <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL LASERGUN</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <PrimaryButton
+            variant={`success`}
+            children={`Mulai`}
+            onClick={handleClick}
+            parentClassName={`mt-6`}
+          />
         </div>
       </div>
     </Dialog>

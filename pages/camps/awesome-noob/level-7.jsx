@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -10,8 +11,17 @@ import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { Dialog } from '@headlessui/react'
 
 export default function Level7() {
+  return (
+    <LayoutWrapper>
+      <Landing7 />
+      <Modal />
+    </LayoutWrapper>
+  )
+}
+const Landing7 = () => {
   const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
@@ -617,7 +627,7 @@ export default function Level7() {
   }, [successModal, failureModal, router])
 
   return (
-    <LayoutWrapper>
+    <>
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div>
         {/* <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
@@ -791,7 +801,31 @@ export default function Level7() {
           </div>
         </div>
       </div>
-    </LayoutWrapper>
+    </>
+  )
+}
+const Modal = () => {
+  const [isOpen, setIsOpen] = useState(true)
+  const handleClick = () => {
+    setIsOpen(false)
+  }
+  return (
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
+      <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30">
+        <div className="opacity-100 text-black">
+          <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL BAJU ASTRONOT</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <PrimaryButton
+            variant={`success`}
+            children={`Mulai`}
+            onClick={handleClick}
+            parentClassName={`mt-6`}
+          />
+        </div>
+      </div>
+    </Dialog>
   )
 }
 const ToastSuccess = () => {
