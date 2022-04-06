@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { standService } from '@/lib/service'
 import { getSession, useSession } from 'next-auth/react'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { HowToPlay } from '@/components/page/awesome-noob/how-to-play'
 
 export default function Level1(props) {
   const router = useRouter()
@@ -165,6 +166,11 @@ export default function Level1(props) {
 
   return (
     <LayoutWrapper>
+      <HowToPlay
+        title="Cara Bermain"
+        description1="Kiri untuk jalan ke kiri 1 blok"
+        description2="Kanan untuk jalan ke kanan 1 blok"
+      />
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div className="z-20">
         {/* <div className="hidden w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
