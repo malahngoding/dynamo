@@ -10,6 +10,7 @@ import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { HowToPlay } from '@/components/page/awesome-noob/how-to-play'
 
 export default function Level4() {
   const router = useRouter()
@@ -493,6 +494,11 @@ export default function Level4() {
   }, [successModal, failureModal, router])
   return (
     <LayoutWrapper>
+      <HowToPlay
+        title="Cara Bermain"
+        description1="Lompat Kiri untuk melewati 1 blok ke kiri"
+        description2="Lompat kanan untuk melewati 1 blok ke kanan"
+      />
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div>
         {/* <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
