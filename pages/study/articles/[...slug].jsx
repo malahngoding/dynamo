@@ -6,10 +6,11 @@ import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
 import { useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
 import { CommentPost, CommentList } from '@/components/CommentSection'
 import router, { Router } from 'next/router'
+import { getSession, useSession } from 'next-auth/react'
+
 const DEFAULT_LAYOUT = 'ArticlesLayout'
 
 export async function getStaticPaths() {
@@ -36,7 +37,6 @@ export async function getStaticProps({ params }) {
     return authorResults.frontMatter
   })
   const authorDetails = await Promise.all(authorPromise)
-
   // rss
   const rss = generateRss(allPosts)
   fs.writeFileSync('./public/feed.xml', rss)
@@ -50,7 +50,6 @@ export default function Study({ post, authorDetails, prev, next, params }) {
   const [questionss, setQuestion] = useState([])
   const [after_answer, setAfterAnswer] = useState('')
   let arrayWrongAnswer = []
-  console.log(session)
   questionss.length === 0 ? (
     <></>
   ) : (
@@ -77,6 +76,7 @@ export default function Study({ post, authorDetails, prev, next, params }) {
       ;[arr[i], arr[j]] = [arr[j], arr[i]]
     }
   }
+  console.log(shuffleArray(arr))
   useEffect(() => {
     if (status === 'authenticated') {
       standService
@@ -94,6 +94,9 @@ export default function Study({ post, authorDetails, prev, next, params }) {
           if (response.data.length === 0) {
             standService
               .get(`/api/article-question/getQuestion`, {
+                params: {
+                  url: params.slug[0],
+                },
                 headers: {
                   Authorization: `Bearer ${session.dynamoToken}`,
                 },
@@ -168,7 +171,6 @@ export default function Study({ post, authorDetails, prev, next, params }) {
   useEffect(() => {
     const currentClick = localStorage.getItem('clickcount')
     const result = Number(currentClick) + 1
-    console.log(result)
     if (status === 'unauthenticated') {
       if (currentClick >= 5) {
         router.push('/')
