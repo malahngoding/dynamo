@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -10,11 +11,21 @@ import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { Dialog } from '@headlessui/react'
 
 export default function Level5() {
+  return (
+    <LayoutWrapper>
+      <Landing5 />
+      <Modal />
+    </LayoutWrapper>
+  )
+}
+const Landing5 = () => {
   const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const { data: session, status } = useSession()
 
   const PostData = async () => {
@@ -89,6 +100,7 @@ export default function Level5() {
   }
 
   const handleRun = () => {
+    setHideButtonModal(false)
     let currentInterval = 0
     let makeIntervalID = setInterval(() => {
       // HANDLE MOVEMENT
@@ -518,6 +530,7 @@ export default function Level5() {
       thornIndex1: 4,
       thornIndex2: 7,
     })
+    setHideButtonModal(true)
   }
   useEffect(() => {
     if (successModal === true) {
@@ -525,7 +538,7 @@ export default function Level5() {
       const confetti = new ConfettiGenerator(confettiSettings)
       confetti.render()
       setTimeout(() => {
-        router.push('http://localhost:3000/camps/awesome-noob/level-6')
+        router.push('/camps/awesome-noob/level-6')
         confetti.clear()
       }, 5000)
       setTimeout(() => {
@@ -540,7 +553,7 @@ export default function Level5() {
   }, [successModal, failureModal, router])
 
   return (
-    <LayoutWrapper>
+    <>
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div>
         {/* <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
@@ -720,7 +733,7 @@ export default function Level5() {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border rounded-xl  mx-2 py-2 px-4"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   Run
                 </PrimaryButton>
@@ -732,7 +745,31 @@ export default function Level5() {
           </div>
         </div>
       </div>
-    </LayoutWrapper>
+    </>
+  )
+}
+const Modal = () => {
+  const [isOpen, setIsOpen] = useState(true)
+  const handleClick = () => {
+    setIsOpen(false)
+  }
+  return (
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
+      <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30">
+        <div className="opacity-100 text-black">
+          <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL MICROCHIP</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <PrimaryButton
+            variant={`success`}
+            children={`Mulai`}
+            onClick={handleClick}
+            parentClassName={`mt-6`}
+          />
+        </div>
+      </div>
+    </Dialog>
   )
 }
 const ToastSuccess = () => {
@@ -805,7 +842,7 @@ export async function getServerSideProps(context) {
   if (session === null) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/camps/awesome-noob/login',
       },
     }
   } else {

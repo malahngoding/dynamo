@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { email } from '@/data/siteMetadata'
+import { standService } from '@/lib/service'
+
 export const QuizResultPages = (props) => {
   const { data: session, status } = useSession()
   const [result, setResult] = useState([])
@@ -66,8 +68,10 @@ export const QuizResultPages = (props) => {
           </div>
         </div>
         <CustomLink href="/study/flash-card">
-          <div className="flex mx-24 my-8 justify-center rounded-full py-3 px-4 flex-row border-2 border-purple-400 bg-white text-black font-bold">
-            Selesai
+          <div className="flex flex-col justify-center items-center w-full">
+            <button className=" my-8 rounded-full py-3 px-4 border-2 border-purple-400 bg-white text-black font-bold">
+              Selesai
+            </button>
           </div>
         </CustomLink>
       </div>

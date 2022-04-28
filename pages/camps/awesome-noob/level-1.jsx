@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
@@ -10,8 +11,17 @@ import { useRouter } from 'next/router'
 import { standService } from '@/lib/service'
 import { getSession, useSession } from 'next-auth/react'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { Dialog } from '@headlessui/react'
 
 export default function Level1(props) {
+  return (
+    <LayoutWrapper>
+      <Landing1 />
+      <Modal />
+    </LayoutWrapper>
+  )
+}
+const Landing1 = () => {
   const router = useRouter()
   const [playerIndex, setPlayerIndex] = useState(4)
   const [trophyIndex] = useState(0)
@@ -19,6 +29,7 @@ export default function Level1(props) {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const [level, setLevel] = useState('')
   const commandlength = arrayOfCommand.length
   const { data: session, status } = useSession()
@@ -64,6 +75,7 @@ export default function Level1(props) {
   }
 
   const handleRun = (item) => {
+    setHideButtonModal(false)
     let currentInterval = 0
 
     let makeIntervalID = setInterval(() => {
@@ -139,6 +151,7 @@ export default function Level1(props) {
   const reset = () => {
     setArrayOfCommand([])
     setPlayerIndex(4)
+    setHideButtonModal(true)
   }
 
   useEffect(() => {
@@ -164,7 +177,7 @@ export default function Level1(props) {
   }, [successModal, failureModal, router])
 
   return (
-    <LayoutWrapper>
+    <>
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div className="z-20">
         {/* <div className="hidden w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
@@ -260,7 +273,7 @@ export default function Level1(props) {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border mx-2 p-2"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   RUN
                 </PrimaryButton>
@@ -272,7 +285,31 @@ export default function Level1(props) {
           </div>
         </div>
       </div>
-    </LayoutWrapper>
+    </>
+  )
+}
+const Modal = () => {
+  const [isOpen, setIsOpen] = useState(true)
+  const handleClick = () => {
+    setIsOpen(false)
+  }
+  return (
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
+      <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30">
+        <div className="opacity-100 text-black">
+          <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL OBENG DAN PALU</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <PrimaryButton
+            variant={`success`}
+            children={`Mulai`}
+            onClick={handleClick}
+            parentClassName={`mt-6`}
+          />
+        </div>
+      </div>
+    </Dialog>
   )
 }
 const ToastSuccess = () => {
@@ -344,7 +381,7 @@ export async function getServerSideProps(context) {
   if (session === null) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/camps/awesome-noob/login',
       },
     }
   } else {

@@ -1,0 +1,75 @@
+---
+title: 'CSS In JS'
+date: '2022-04-06'
+lastmod: '2022-04-06'
+tags: ['css', 'javascript']
+draft: false
+summary: 'CSS kepanjangan dari _Cascading Style Sheet_'
+images: ['/static/images/canada/mountains.jpg']
+authors: ['default']
+emoji: 'https://emojicdn.elk.sh/%F0%9F%95%B6%EF%B8%8F'
+---
+
+# CSS in JS
+
+CSS kepanjangan dari _Cascading Style Sheet_ adalah bahasa-bahasa yang merepresentasikan halaman website, seperti warna, layout, dan font. Dengan menggunakan CSS, seorang web developer dapat membuat halaman website yang dapat beradaptasi dengan berbagai macam ukuran layar. Sedangkan _JavaScript_ mengimplementasikan fitur yang dirancang untuk mengendalikan bagaimana sebuah halaman web berinteraksi dengan _user_ atau penggunanya.
+
+## Implementasi CSS dengan JS
+
+Kita dapat menggunakan JavaScript untuk secara langsung menetapkan _style_ pada suatu elemen, dan kita juga dapat menggunakan JavaScript untuk menambah atau menghapus nilai kelas pada elemen yang akan mengubah aturan _style_ mana yang diterapkan.
+Contoh implementasi penggunaan CSS dengan javascript
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    #square {
+      width: 20em;
+      height: 20em;
+      border: 2px inset gray;
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      padding: .5em 2em;
+    }
+    </style>
+    </head>
+    <body>
+
+    <h1>CSS in JS</h1>
+
+    <div id="square">
+    	<p>Malahngoding</p>
+    </div>
+
+    <button type="button" id="clickMe">UJI COBA</button>
+
+    <script>
+    // JavaScript demonstration
+
+    var square = document.getElementById("square");
+    var clickMe = document.getElementById('clickMe');
+    function doDemo () {
+
+      var button = this;
+      square.style.backgroundColor = "#fa4";
+      button.setAttribute("disabled", "true");
+      setTimeout(clearDemo, 2000, button);
+    }
+
+    function clearDemo (button) {
+      var square = document.getElementById("square");
+      square.style.backgroundColor = "transparent";
+      button.removeAttribute("disabled");
+    }
+
+    clickMe.onclick = doDemo;
+    </script>
+
+    </body>
+    </html>

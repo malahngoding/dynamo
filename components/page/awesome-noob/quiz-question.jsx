@@ -79,7 +79,7 @@ export const QuizQuestionPage = (props) => {
     setTotalScore(
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
-    setQuizGroup(parseInt(router.query.id) + 1)
+    setQuizGroup(router.query.id)
 
     axios
       .post(
@@ -93,7 +93,7 @@ export const QuizQuestionPage = (props) => {
           rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
           totalscore: parseInt(props.totalscore) + CorrectScore,
           soal_dilewati: Soal_dilewati + 1,
-          QuizGroup: parseInt(router.query.id) + 1,
+          QuizGroup: router.query.id,
         },
         {
           headers: {
@@ -125,7 +125,7 @@ export const QuizQuestionPage = (props) => {
     setTotalScore(
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
-    setQuizGroup(parseInt(router.query.id) + 1)
+    setQuizGroup(router.query.id)
 
     axios
       .post(
@@ -142,7 +142,7 @@ export const QuizQuestionPage = (props) => {
           totalscore:
             parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score,
           soal_dilewati: Soal_dilewati,
-          QuizGroup: parseInt(router.query.id) + 1,
+          QuizGroup: router.query.id,
         },
         {
           headers: {
@@ -176,7 +176,7 @@ export const QuizQuestionPage = (props) => {
     setTotalScore(
       parseInt(props.totalscore) + CorrectScore + props.question[props.currentPage - 1].score
     )
-    setQuizGroup(parseInt(router.query.id) + 1)
+    setQuizGroup(router.query.id)
 
     axios
       .post(
@@ -190,7 +190,7 @@ export const QuizQuestionPage = (props) => {
           rata_rata: AvarageScore + CorrectScore / (TotalAnswerCount + 1),
           totalscore: parseInt(props.totalscore) + CorrectScore,
           soal_dilewati: Soal_dilewati,
-          QuizGroup: parseInt(router.query.id) + 1,
+          QuizGroup: router.query.id,
         },
         {
           headers: {

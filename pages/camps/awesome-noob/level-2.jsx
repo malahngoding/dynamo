@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -10,8 +11,17 @@ import { useRouter } from 'next/router'
 import { standService } from '@/lib/service'
 import { getSession, useSession } from 'next-auth/react'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { Dialog } from '@headlessui/react'
 
 export default function Level2() {
+  return (
+    <LayoutWrapper>
+      <Landing2 />
+      <Modal />
+    </LayoutWrapper>
+  )
+}
+const Landing2 = () => {
   const router = useRouter()
   const [playerIndex, setPlayerIndex] = useState(6)
   const [trophyIndex] = useState(2)
@@ -19,6 +29,7 @@ export default function Level2() {
   const [arrayOfCommand, setArrayOfCommand] = useState([])
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const [level, setLevel] = useState('')
   const { data: session, status } = useSession()
   const commandlength = arrayOfCommand.length
@@ -64,6 +75,7 @@ export default function Level2() {
   }
 
   const handleRun = (item) => {
+    setHideButtonModal(false)
     let currentInterval = 0
 
     let makeIntervalID = setInterval(() => {
@@ -151,6 +163,7 @@ export default function Level2() {
   const reset = () => {
     setArrayOfCommand([])
     setPlayerIndex(6)
+    setHideButtonModal(true)
   }
 
   useEffect(() => {
@@ -159,7 +172,7 @@ export default function Level2() {
       const confetti = new ConfettiGenerator(confettiSettings)
       confetti.render()
       setTimeout(() => {
-        router.push('http://localhost:3000/camps/awesome-noob/level-3 ')
+        router.push('/camps/awesome-noob/level-3 ')
         confetti.clear()
       }, 5000)
       setTimeout(() => {
@@ -174,7 +187,7 @@ export default function Level2() {
   }, [successModal, failureModal, router])
 
   return (
-    <LayoutWrapper>
+    <>
       <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
       <div>
         {/* <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
@@ -279,7 +292,7 @@ export default function Level2() {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border mx-2 p-2"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   RUN
                 </PrimaryButton>
@@ -291,7 +304,31 @@ export default function Level2() {
           </div>
         </div>
       </div>
-    </LayoutWrapper>
+    </>
+  )
+}
+const Modal = () => {
+  const [isOpen, setIsOpen] = useState(true)
+  const handleClick = () => {
+    setIsOpen(false)
+  }
+  return (
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
+      <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30">
+        <div className="opacity-100 text-black">
+          <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL BAUT</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <PrimaryButton
+            variant={`success`}
+            children={`Mulai`}
+            onClick={handleClick}
+            parentClassName={`mt-6`}
+          />
+        </div>
+      </div>
+    </Dialog>
   )
 }
 const ToastSuccess = () => {
@@ -364,7 +401,7 @@ export async function getServerSideProps(context) {
   if (session === null) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/camps/awesome-noob/login',
       },
     }
   } else {

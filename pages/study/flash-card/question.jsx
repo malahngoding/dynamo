@@ -23,9 +23,6 @@ export default function FlashCardAnsweringQuestion(props) {
   const [TotalScores, setTotalScores] = useState(props.dataTotalScore)
 
   const { data: session, status } = useSession()
-  console.log(props.id)
-  console.log(props.dataQuestions)
-  console.log(props.dataTotalScore)
 
   return (
     <LayoutWrapper>

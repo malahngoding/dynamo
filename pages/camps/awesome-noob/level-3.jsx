@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -10,11 +11,21 @@ import { useRouter } from 'next/router'
 import { getSession, useSession } from 'next-auth/react'
 import { standService } from '@/lib/service'
 import { LayoutWrapper } from '@/components/LayoutWrapper'
+import { Dialog } from '@headlessui/react'
 
 export default function Level3() {
+  return (
+    <LayoutWrapper>
+      <Landing3 />
+      <Modal />
+    </LayoutWrapper>
+  )
+}
+const Landing3 = () => {
   const router = useRouter()
   const [successModal, setSuccessModal] = useState(false)
   const [failureModal, setFailureModal] = useState(false)
+  const [hideButtonModal, setHideButtonModal] = useState(true)
   const [level, setLevel] = useState('')
   const { data: session, status } = useSession()
 
@@ -76,6 +87,7 @@ export default function Level3() {
   }
 
   const handleRun = (item) => {
+    setHideButtonModal(false)
     let currentInterval = 0
 
     let makeIntervalID = setInterval(() => {
@@ -467,6 +479,7 @@ export default function Level3() {
       stoneIndex2: 4,
       stoneIndex3: 5,
     })
+    setHideButtonModal(true)
   }
 
   useEffect(() => {
@@ -475,7 +488,7 @@ export default function Level3() {
       const confetti = new ConfettiGenerator(confettiSettings)
       confetti.render()
       setTimeout(() => {
-        router.push('http://localhost:3000/camps/awesome-noob/level-4')
+        router.push('/camps/awesome-noob/level-4')
         confetti.clear()
       }, 5000)
       setTimeout(() => {
@@ -490,14 +503,14 @@ export default function Level3() {
   }, [successModal, failureModal, router])
 
   return (
-    <LayoutWrapper>
-      <canvas className="fixed w-full h-full z-10 pointer-events-none" id="my-canvas"></canvas>
+    <>
+      <canvas className="fixed w-full h-full z-10 pointer-events-none " id="my-canvas"></canvas>
       <div>
         {/* <div className="w-[200px] h-[50px] m-6 mb-0 md:mb-32"> */}
         {successModal === false ? null : <ToastSuccess setModals={setSuccessModal} />}
         {failureModal === false ? null : <ToastFailure setModals={setFailureModal} />}
         {/* </div> */}
-        <div className="flex flex-col my-20 flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center">
+        <div className="flex flex-col my-20 flex-wrap justify-center items-center w-full md:flex md:flex-row md:justify-center md:item-center overflow-hidden">
           <div className="grid grid-cols-3">
             {maps.map((item, index) => (
               <div
@@ -637,7 +650,7 @@ export default function Level3() {
                 <PrimaryButton
                   variant="success"
                   onClick={() => handleRun('RUN')}
-                  className="border rounded-xl  mx-2 py-2 px-4"
+                  className={`border mx-2 p-2 ${hideButtonModal === true ? `block` : `hidden`}`}
                 >
                   Run
                 </PrimaryButton>
@@ -649,7 +662,71 @@ export default function Level3() {
           </div>
         </div>
       </div>
-    </LayoutWrapper>
+    </>
+  )
+}
+const Modal = () => {
+  const [nextPages, setNextPages] = useState(1)
+  const [isOpen, setIsOpen] = useState(true)
+  const handleClick = () => {
+    setIsOpen(false)
+  }
+  return (
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
+      <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-400 p-4 z-30 ${
+          nextPages === 1 ? '' : 'hidden'
+        }`}
+      >
+        <button onClick={() => setNextPages(nextPages + 1)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="absolute top-2 right-2 feather feather-x rounded-full border-2 border-black"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div className="opacity-100 text-black">
+          <p className="font-black">Perintah yang tersedia</p>
+          <p>1. Kanan untuk jalan 1 blok ke arah kanan</p>
+          <p>2. Kiri untuk jalan 1 blok ke arah kiri</p>
+          <p>3. Atas untuk jalan 1 blok ke arah atas</p>
+          <p>4. Bawah untuk jalan 1 blok ke arah bawah</p>
+          <p>5. Tembak Kanan untuk menhancurkan batu di sebelah kanan</p>
+          <p>6. Tembak Kiri untuk menhancurkan batu di sebelah kiri</p>
+          <p>7. Tembak Atas untuk menhancurkan batu di sebelah atas</p>
+          <p>8. Tembak Bawah untuk menhancurkan batu di sebelah bawah</p>
+        </div>
+      </div>
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30 ${
+          nextPages === 2 ? '' : 'hidden'
+        }`}
+      >
+        <div className="opacity-100 text-black">
+          <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL LASERGUN</p>
+        </div>
+        <div className="flex justify-center items-center">
+          <PrimaryButton
+            variant={`success`}
+            children={`Mulai`}
+            onClick={handleClick}
+            parentClassName={`mt-6`}
+          />
+        </div>
+      </div>
+    </Dialog>
   )
 }
 const ToastSuccess = () => {
@@ -722,7 +799,7 @@ export async function getServerSideProps(context) {
   if (session === null) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/camps/awesome-noob/login',
       },
     }
   } else {
