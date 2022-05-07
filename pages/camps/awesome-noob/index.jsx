@@ -6,13 +6,18 @@ import siteMetadata from '@/data/siteMetadata'
 import { UnderConstruction } from '@/components/UnderConstruction'
 import { useState } from 'react'
 import { PrimaryButton } from '@/components/design/button'
+import { useRouter } from 'next/router'
 
 export default function AwesomeNoobs() {
+  const router = useRouter()
   const [slidePages, setSlidePages] = useState(1)
   const [animationPages, setAnimationPages] = useState(true)
   const handleClick = () => {
     setSlidePages(slidePages + 1)
     setAnimationPages(!animationPages)
+  }
+  const handleClickStart = () => {
+    router.push('/camps/awesome-noob/level-1')
   }
   return (
     <LayoutWrapper>
@@ -25,7 +30,7 @@ export default function AwesomeNoobs() {
         <PrimaryButton
           variant={`success`}
           children={slidePages < 3 ? `Lanjut..` : `Mulai`}
-          onClick={handleClick}
+          onClick={slidePages < 3 ? handleClick : handleClickStart}
           parentClassName={`mt-6 `}
         />
       </div>
