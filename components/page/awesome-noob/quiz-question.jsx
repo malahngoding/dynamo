@@ -85,7 +85,7 @@ export const QuizQuestionPage = (props) => {
       .post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`,
         {
-          email: session.user.email,
+          name: session.user.name,
           nilai: CorrectScore,
           jawaban_benar: CorrectAnswerCount,
           akurasi: AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,
@@ -131,7 +131,7 @@ export const QuizQuestionPage = (props) => {
       .post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`,
         {
-          email: session.user.email,
+          name: session.user.name,
           nilai: CorrectScore + props.question[props.currentPage - 1].score,
           jawaban_benar: CorrectAnswerCount + 1,
           akurasi: AccuracyScore + ((CorrectAnswerCount + 1) / (TotalAnswerCount + 1)) * 100,
@@ -182,7 +182,7 @@ export const QuizQuestionPage = (props) => {
       .post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/post-result`,
         {
-          email: session.user.email,
+          name: session.user.name,
           nilai: CorrectScore,
           jawaban_benar: CorrectAnswerCount,
           akurasi: AccuracyScore + (CorrectAnswerCount / (TotalAnswerCount + 1)) * 100,

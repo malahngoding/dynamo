@@ -8,10 +8,10 @@ import axios from 'axios'
 import { QuizDashboardPages } from '@/components/quiz-dashboard'
 import { getSession, useSession } from 'next-auth/react'
 
-export default function FlashCardInitiation() {
+export default function FlashCardInitiation(props) {
   const { data: session, status } = useSession()
-
   const [currentQuestionGroup, setCurrentQuestionGroup] = useState(1)
+
   // GET CURRENT QUESTION GROUP
   return (
     <LayoutWrapper>
@@ -24,7 +24,7 @@ export default function FlashCardInitiation() {
       </div>
 
       <div className="flex flex-col justify-center items-center my-8">
-        <QuizDashboardPages />
+        <QuizDashboardPages rankings={props.rankings} />
       </div>
     </LayoutWrapper>
   )
@@ -39,10 +39,15 @@ export async function getServerSideProps(context) {
       },
     }
   } else {
+    const rankings = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-ranked-score/`,
+      {}
+    )
     return {
       props: {
         isAuthenticated: true,
         dynamoToken: session.dynamoToken,
+        rankings: rankings.data,
       }, // will be passed to the page component as props
     }
   }

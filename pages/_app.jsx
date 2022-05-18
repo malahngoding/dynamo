@@ -1,4 +1,5 @@
 import { SessionProvider } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 import '@fontsource/montserrat/100.css'
 import '@fontsource/montserrat/200.css'
@@ -15,10 +16,11 @@ import '@/styles/tailwind.css'
 import { ThemeProvider } from 'next-themes'
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter()
   return (
     <SessionProvider session={pageProps.session}>
       <ThemeProvider attribute="class" defaultTheme="light">
-        <Component {...pageProps} />
+        <Component key={router.asPath} {...pageProps} />
       </ThemeProvider>
     </SessionProvider>
   )
