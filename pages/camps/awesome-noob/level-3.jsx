@@ -703,10 +703,10 @@ const Modal = () => {
           <p>2. Kiri untuk jalan 1 blok ke arah kiri</p>
           <p>3. Atas untuk jalan 1 blok ke arah atas</p>
           <p>4. Bawah untuk jalan 1 blok ke arah bawah</p>
-          <p>5. Tembak Kanan untuk menhancurkan batu di sebelah kanan</p>
-          <p>6. Tembak Kiri untuk menhancurkan batu di sebelah kiri</p>
-          <p>7. Tembak Atas untuk menhancurkan batu di sebelah atas</p>
-          <p>8. Tembak Bawah untuk menhancurkan batu di sebelah bawah</p>
+          <p>5. Tembak Kanan untuk menghancurkan batu di sebelah kanan</p>
+          <p>6. Tembak Kiri untuk menghancurkan batu di sebelah kiri</p>
+          <p>7. Tembak Atas untuk menghancurkan batu di sebelah atas</p>
+          <p>8. Tembak Bawah untuk menghancurkan batu di sebelah bawah</p>
         </div>
       </div>
       <div
