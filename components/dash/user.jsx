@@ -57,7 +57,6 @@ export default function User() {
     }
     // Ini yang akan dilakukan
   }, [loading, feedback])
-  console.log(badge)
   return (
     <div>
       {status === 'authenticated' && loading === true ? (
@@ -72,9 +71,9 @@ export default function User() {
           <h1 className="font-extrabold text-xl mt-4">{session.user.name}</h1>
           <p className="font-extrabold text-center text-md mt-2">Semangatku malahngoding karena:</p>
           <p className="font-extrabold text-center text-md mt-2">{feedback}</p>
-          <div className="grid grid-cols-2  gap-4 border-2 border-white mt-2">
+          <div className="grid grid-cols-2  gap-4 border-2 border-white mt-2 pb-24">
             {badge.map((item, i) => (
-              <div key={i} className="flex flex-col border-2 border-white">
+              <div key={i} className="flex flex-col border-2 border-white ">
                 {item.type === 'image' ? (
                   <>
                     <div className="border-2 border-">

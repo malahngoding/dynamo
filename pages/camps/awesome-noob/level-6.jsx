@@ -845,6 +845,7 @@ const Landing6 = () => {
   )
 }
 const Modal = () => {
+  const [nextPages, setNextPages] = useState(1)
   const [isOpen, setIsOpen] = useState(true)
   const handleClick = () => {
     setIsOpen(false)
@@ -852,7 +853,50 @@ const Modal = () => {
   return (
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="">
       <div className="absolute inset-0 bg-black opacity-50 z-20"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30">
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-400 p-4 z-30 ${
+          nextPages === 1 ? '' : 'hidden'
+        }`}
+      >
+        <button onClick={() => setNextPages(nextPages + 1)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="absolute top-2 right-2 feather feather-x rounded-full border-2 border-black"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div className="opacity-100 text-black">
+          <p className="font-black">Perintah yang tersedia</p>
+          <p>1. Kanan untuk jalan 1 blok ke arah kanan</p>
+          <p>2. Kiri untuk jalan 1 blok ke arah kiri</p>
+          <p>3. Atas untuk jalan 1 blok ke arah atas</p>
+          <p>4. Bawah untuk jalan 1 blok ke arah bawah</p>
+          <p>5. Tembak Kanan untuk menghancurkan batu di sebelah kanan</p>
+          <p>6. Tembak Kiri untuk menghancurkan batu di sebelah kiri</p>
+          <p>7. Tembak Atas untuk menghancurkan batu di sebelah atas</p>
+          <p>8. Tembak Bawah untuk menghancurkan batu di sebelah bawah</p>
+          <p>9. Loncat Kanan untuk melompat 1 blok ke arah kanan</p>
+          <p>10. Loncat Kiri untuk melompat 1 blok ke arah kiri</p>
+          <p>11. Loncat Atas untuk melompat 1 blok ke arah atas</p>
+          <p>12. Loncat Bawah untuk melompat 1 blok ke arah bawah</p>
+        </div>
+      </div>
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black-400 p-4 z-30 ${
+          nextPages === 2 ? '' : 'hidden'
+        }`}
+      >
         <div className="opacity-100 text-black">
           <p className="font-black">MISI KALI INI EMANG AKAN MENGAMBIL KOMPUTER</p>
         </div>
